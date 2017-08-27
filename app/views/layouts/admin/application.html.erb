@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nomini管理画面</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'admin/application', media: 'all' %>
+    <%= javascript_include_tag 'admin/application' %>
+  </head>
+
+  <body class="skin-blue sidebar-mini wysihtml5-supported">
+    <div class="wrapper">
+      <%= render partial: 'admin/shared/header' %>
+      <%= render partial: 'admin/shared/sidebar' %>
+      <div class="content-wrapper">
+        <section class="content-header">
+          <%= yield :content_header %>
+        </section>
+        <section class="content">
+          <div class="row content-bg">
+            <%= yield %>
+          </div>
+        </section>
+      </div>
+      <%= render partial: 'admin/shared/footer' %>
+    </div>
+  </body>
+</html>
