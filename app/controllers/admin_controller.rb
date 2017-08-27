@@ -3,6 +3,8 @@ class AdminController < ActionController::Base
 
   layout 'admin/application'
 
+  before_action :authenticate_admin!
+
   def dashboard
   end
 end
