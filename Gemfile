@@ -20,6 +20,13 @@ gem 'coffee-rails', '~> 4.2'
 # Server
 gem 'puma', '~> 3.7'
 
+# devise
+gem 'devise', '~> 4.3'
+
+# OAuth
+gem 'omniauth', '~> 1.6'
+gem 'omniauth-facebook', '~> 4.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
