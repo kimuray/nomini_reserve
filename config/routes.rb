@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     only: :session
   namespace :admin do
     get :dashboard
+    resources :shops
   end
 end

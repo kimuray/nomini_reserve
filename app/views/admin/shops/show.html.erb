@@ -1,0 +1,67 @@
+<% content_for :content_header do %>
+  <h1>店舗詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:description) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.description %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:image) %></h3>
+    </div>
+    <div class="box-body">
+      <%= image_tag @shop.image if @shop.image.present? %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:service_time) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.service_time %>h
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:price) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.price %>円
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Shop.human_attribute_name(:phone_number) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @shop.phone_number %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_shop_path(@shop), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_shop_path(@shop), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>
