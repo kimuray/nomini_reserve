@@ -1,0 +1,2 @@
+class EnqueteAnswer < ApplicationRecord
+end

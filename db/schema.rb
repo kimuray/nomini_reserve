@@ -10,7 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827143905) do
+ActiveRecord::Schema.define(version: 20170828063744) do
+
+  create_table "enquete_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "enquete_item_id"
+    t.bigint "enquete_id"
+    t.text "string_value"
+    t.integer "integer_value"
+    t.boolean "boolean_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enquete_id"], name: "index_enquete_answers_on_enquete_id"
+    t.index ["enquete_item_id"], name: "index_enquete_answers_on_enquete_item_id"
+  end
+
+  create_table "enquete_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "content", null: false
+    t.integer "answer_type", default: 0, null: false
+    t.boolean "invalid_flg", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enquetes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "reservation_id"
+    t.date "answer_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_enquetes_on_reservation_id"
+  end
+
+  create_table "reservation_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "shop_id"
+    t.bigint "user_id"
+    t.bigint "reservation_category_id"
+    t.integer "people_count", null: false
+    t.date "use_date", null: false
+    t.time "use_time", null: false
+    t.text "message"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_category_id"], name: "index_reservations_on_reservation_category_id"
+    t.index ["shop_id"], name: "index_reservations_on_shop_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "image"
+    t.float "service_time", limit: 24
+    t.decimal "price", precision: 10
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -46,4 +107,10 @@ ActiveRecord::Schema.define(version: 20170827143905) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "enquete_answers", "enquete_items"
+  add_foreign_key "enquete_answers", "enquetes"
+  add_foreign_key "enquetes", "reservations"
+  add_foreign_key "reservations", "reservation_categories"
+  add_foreign_key "reservations", "shops"
+  add_foreign_key "reservations", "users"
 end

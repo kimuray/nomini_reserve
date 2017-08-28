@@ -44,7 +44,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :uid
       t.string   :provider
       t.integer  :point_count
-      
+
       t.timestamps null: false
     end
 
