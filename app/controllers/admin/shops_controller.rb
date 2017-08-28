@@ -46,7 +46,7 @@ class Admin::ShopsController < AdminController
 
   def shop_params
     params.fetch(:shop, {}).permit(
-      :name, :description, :image, :service_time, :price, :phone_number
+      :name, :description, :image, :image_cache, :service_time, :price, :phone_number
     )
   end
 end
