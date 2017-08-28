@@ -2,7 +2,7 @@ class Admin::ShopsController < AdminController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   
   def index
-    @shops = Shop.all
+    @shops = Shop.page(params[:id])
   end
 
   def show
