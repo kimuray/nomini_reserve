@@ -1,0 +1,22 @@
+<h1>店舗一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>店舗画像</th>
+      <th>店舗名</th>
+      <th>店舗説明</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shops.each do |shop| %>
+    <tr>
+      <td><%= image_tag shop.image, size: '50x50' %></td>
+      <td><%= shop.name %></td>
+      <td><%= simple_format(shop.description) %></td>
+      <td><%= link_to '予約する', shop_path(shop) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

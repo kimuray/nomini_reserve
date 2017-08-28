@@ -1,0 +1,16 @@
+<h1><%= @shop.name %></h1>
+<div>
+  <div>
+    <%= image_tag @shop.image, size: '100x100' %>
+  </div>
+  <div>
+    <ul>
+      <li><%= @shop.service_time %></li>
+      <li><%= @shop.price %></li>
+    </ul>
+  </div>
+  <div>
+    <%= simple_format(@shop.description) %>
+  </div>
+</div>
+<%= link_to '一覧に戻る', shops_path %>
