@@ -4,6 +4,6 @@ class Enquete < ApplicationRecord
   has_many :enquete_answer
 
   # Validation
-  validates :content,presence: true
-  validates :answer_type,presence: true
+  validates :content, presence: true
+  validates :answer_type, presence: true
 end

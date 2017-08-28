@@ -7,8 +7,8 @@ class Reservation < ApplicationRecord
 
   # Validation
   validates :people_count, presence: true
-  validates :use_date,presence: true
-  validates :use_time,presence: true
-  validates :status  ,presence: true
+  validates :use_date, presence: true
+  validates :use_time, presence: true
+  validates :status  , presence: true
 
 end
