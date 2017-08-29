@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      shop:
+        name: 店舗名
+        description: 店舗説明
+        image: 店舗イメージ
+        service_time: サービス提供時間
+        price: 価格
+        phone_number: 電話番号

@@ -1,4 +1,6 @@
 class Shop < ApplicationRecord
+  mount_uploader :image, ShopImageUploader
+
   # Association
   has_many :reservation
 

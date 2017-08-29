@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, shop] do |form| %>
+        <%= form.text_field :name %>
+        <%= form.text_area :description %>
+        <%= form.file_field :image %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.number_field :service_time %>
+        <%= form.number_field :price %>
+        <%= form.text_field :phone_number %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
