@@ -23,4 +23,17 @@ class User < ApplicationRecord
     value.tr!('０-９ー','0-9-') if value.is_a?(String)
     super(value)
   end
+
+  # FaceBookログイン用
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.new(
+        email: auth.info.email
+      )
+      user.skip_confirmation!
+      user.save(validate: false)
+    end
+    user
+  end
 end
