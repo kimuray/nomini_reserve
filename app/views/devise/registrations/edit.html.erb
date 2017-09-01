@@ -11,24 +11,70 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+  <% if f.object.password_required? %>
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l_name %><br />
+    <%= f.text_field :l_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_name %><br />
+    <%= f.text_field :f_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l_name_kana %><br />
+    <%= f.text_field :l_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_name_kana %><br />
+    <%= f.text_field :f_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enterprise_name %><br />
+    <%= f.text_field :enterprise_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_name %><br />
+    <%= f.text_field :bank_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_branch_name %><br />
+    <%= f.text_field :bank_branch_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_account_number %><br />
+    <%= f.text_field :bank_account_number %>
   </div>
 
   <div class="actions">
