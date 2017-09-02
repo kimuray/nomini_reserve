@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard
     resources :shops
+    resources :reservation_categories
   end
 
 end

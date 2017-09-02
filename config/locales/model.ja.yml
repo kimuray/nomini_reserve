@@ -8,3 +8,5 @@ ja:
         service_time: サービス提供時間
         price: 価格
         phone_number: 電話番号
+      reservation_category:
+        name: 予約カテゴリ名
