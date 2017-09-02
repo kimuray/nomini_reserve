@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     resources :shops
   end
 
-  resources :users,only: [:show]
+  get  '/mypage',    to: 'users#mypage'
 end
