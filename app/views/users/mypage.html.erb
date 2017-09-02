@@ -1,3 +1,5 @@
 <h1>マイページ</h1>
 <p><%= @user.l_name %>様</p>
-<h2>予約履歴一覧</h2>
+<p><%= link_to "店舗一覧", shops_path %></p>
+<p><%= link_to "ユーザー設定", edit_user_registration_path %></p>
+<p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
