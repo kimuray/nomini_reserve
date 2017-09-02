@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :reservation_categories
     resources :enquete_items
     resources :users
+    resources :reservations
   end
 
 end

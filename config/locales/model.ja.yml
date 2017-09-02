@@ -42,3 +42,18 @@ ja:
         confirmed_at: メール認証日時
         created_at: 登録日時
         updated_at: 更新日時
+      reservation:
+        shop: 店舗
+        shop_id: 店舗ID
+        user: ユーザー
+        user_id: ユーザーID
+        reservation_category: 予約カテゴリ
+        reservation_category_id: 予約カテゴリID
+        people_count: 利用人数
+        use_date: 利用日付
+        use_time: 利用時刻
+        message: メッセージ
+        status: 予約ステータス
+        created_at: 登録日時
+        updated_at: 更新日時
+
