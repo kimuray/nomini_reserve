@@ -1,0 +1,47 @@
+<% content_for :content_header do %>
+  <h1>ユーザー一覧</h1>
+  <h2><%= link_to '新しくユーザーを登録する', new_admin_user_path, class: 'btn btn-primary' %></h2>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+
+  <div class="box box-primary">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-striped">
+        <tr>
+          <th class="col-md-1"><%= User.human_attribute_name(:id) %></th>
+          <th class="col-md-3"><%= User.human_attribute_name(:email) %></th>
+          <th class="col-md-3"><%= User.human_attribute_name(:name) %></th>
+          <th class="col-md-2"><%= User.human_attribute_name(:provider) %></th>
+          <th class="col-md-3"></th>
+        </tr>
+          <% if @users.any? %>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= "#{user.l_name_kana} #{user.f_name_kana}" %></td>
+              <td><%= user.provider.presence || 'メールアドレス登録' %></td>
+              <td>
+                <div class="text-right">
+                <%= link_to admin_user_path(user), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
+                <%= link_to edit_admin_user_path(user), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
+                <%= link_to admin_user_path(user), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <i class="fa fa-trash-o"></i> 削除
+                <% end %>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan=5>登録されているユーザーが存在しません</td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+    <div class="box-footer clearfix">
+      <%= paginate @users, theme: :admin %>
+    </div>
+  </div>
+</div>

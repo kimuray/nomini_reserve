@@ -1,0 +1,102 @@
+<% content_for :content_header do %>
+  <h1>ユーザー詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:email) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.email %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= "#{@user.l_name} #{@user.f_name}" %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:name_kana) %></h3>
+    </div>
+    <div class="box-body">
+      <%= "#{@user.l_name_kana} #{@user.f_name_kana}" %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:created_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.created_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:confirmed_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.confirmed_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:phone_number) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.phone_number %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:enterprise_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.enterprise_name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:bank_information) %></h3>
+    </div>
+    <div class="box-body">
+      <%= "#{@user.bank_name} #{@user.bank_branch_name} #{@user.bank_account_number}" %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:occupation) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.occupation %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:provider) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.provider.presence || 'メールアドレス登録' %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:point_count) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.point_count %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_user_path(@user), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>

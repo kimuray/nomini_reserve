@@ -8,9 +8,37 @@ ja:
         service_time: サービス提供時間
         price: 価格
         phone_number: 電話番号
+        created_at: 登録日時
+        updated_at: 更新日時
       reservation_category:
         name: 予約カテゴリ名
+        created_at: 登録日時
+        updated_at: 更新日時
       enquete_item:
         content: 内容
         answer_type: 回答書式
         invalid_flg: 無効フラグ
+        created_at: 登録日時
+        updated_at: 更新日時
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認用)
+        name: フルネーム
+        l_name: 姓
+        f_name: 名
+        name_kana: フルネーム(フリガナ)
+        l_name_kana: 姓(フリガナ)
+        f_name_kana: 名(フリガナ)
+        phone_number: 電話番号
+        enterprise_name: 会社・組織名
+        bank_information: 口座情報
+        bank_name: 銀行名
+        bank_branch_name: 支店名
+        bank_account_number: 口座番号
+        occupation: 職種
+        provider: OAuth分類
+        point_count: ポイント
+        confirmed_at: メール認証日時
+        created_at: 登録日時
+        updated_at: 更新日時
