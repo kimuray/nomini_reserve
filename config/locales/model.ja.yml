@@ -10,3 +10,7 @@ ja:
         phone_number: 電話番号
       reservation_category:
         name: 予約カテゴリ名
+      enquete_item:
+        content: 内容
+        answer_type: 回答書式
+        invalid_flg: 無効フラグ
