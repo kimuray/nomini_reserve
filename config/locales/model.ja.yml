@@ -50,6 +50,7 @@ ja:
         reservation_category: 予約カテゴリ
         reservation_category_id: 予約カテゴリID
         people_count: 利用人数
+        use_datetime: 利用日時
         use_date: 利用日付
         use_time: 利用時刻
         message: メッセージ
