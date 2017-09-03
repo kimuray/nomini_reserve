@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    confirmations: 'users/confirmations'
+  }
+  get  '/mypage',    to: 'users#mypage'
 
   resources :shops, only: [:index, :show]
 
@@ -11,4 +18,5 @@ Rails.application.routes.draw do
     get :dashboard
     resources :shops
   end
+
 end

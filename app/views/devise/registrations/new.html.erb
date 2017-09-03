@@ -7,18 +7,69 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+  <% if f.object.password_required? %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  <% end %>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :l_name %><br />
+    <%= f.text_field :l_name %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :f_name %><br />
+    <%= f.text_field :f_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l_name_kana %><br />
+    <%= f.text_field :l_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_name_kana %><br />
+    <%= f.text_field :f_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enterprise_name %><br />
+    <%= f.text_field :enterprise_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_name %><br />
+    <%= f.text_field :bank_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_branch_name %><br />
+    <%= f.text_field :bank_branch_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bank_account_number %><br />
+    <%= f.text_field :bank_account_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :occupation %><br />
+    <%= f.text_field :occupation %>
   </div>
 
   <div class="actions">

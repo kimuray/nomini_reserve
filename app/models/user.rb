@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :l_name, presence: true
   validates :f_name, presence: true
   validates :l_name_kana, presence: true
-  validates :f_name_kane, presence: true
+  validates :f_name_kana, presence: true
   validates :phone_number, presence: true, format: { with: /\A[0-9-]+\z/, message: "電話番号は数字、ハイフンのみ入力できます。"}
   validates :bank_name, presence: true
   validates :bank_branch_name, presence: true
@@ -22,5 +22,29 @@ class User < ApplicationRecord
   def phone_number=(value)
     value.tr!('０-９ー','0-9-') if value.is_a?(String)
     super(value)
+  end
+
+  # FaceBookログイン用
+  def self.find_for_facebook_oauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.skip_confirmation!
+    end
+  end
+
+  # providerがある（Facebook経由で認証した）場合は、
+  # passwordは要求しないようにする。
+  def password_required?
+    super && provider.blank?
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"]) do |user|
+        user.attributes = params
+      end
+    else
+      super
+    end
   end
 end
