@@ -12,6 +12,7 @@
           <th class="col-md-1"><%= EnqueteItem.human_attribute_name(:id) %></th>
           <th class="col-md-3"><%= EnqueteItem.human_attribute_name(:content) %></th>
           <th class="col-md-3"><%= EnqueteItem.human_attribute_name(:answer_type) %></th>
+          <th class="col-md-2"><%= EnqueteItem.human_attribute_name(:invalid_flg) %></th>
           <th class="col-md-3"></th>
         </tr>
           <% if @enquete_items.any? %>
@@ -21,10 +22,17 @@
               <td><%= enquete_item.content %></td>
               <td><%= enquete_item.answer_type %></td>
               <td>
+                <% if enquete_item.invalid_flg %>
+                  <span class="label label-danger">無効</span>
+                <% else %>
+                  <span class="label label-primary">有効</span>
+                <% end %>
+              </td>
+              <td>
                 <div class="text-right">
-                <%= link_to admin_enquete_item_path(reservation_category), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
-                <%= link_to edit_admin_enquete_item_path(reservation_category), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
-                <%= link_to admin_enquete_item_path(reservation_category), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                <%= link_to admin_enquete_item_path(enquete_item), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
+                <%= link_to edit_admin_enquete_item_path(enquete_item), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
+                <%= link_to admin_enquete_item_path(enquete_item), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
                   <i class="fa fa-trash-o"></i> 削除
                 <% end %>
                 </div>
