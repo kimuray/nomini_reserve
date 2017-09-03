@@ -56,4 +56,10 @@ ja:
         status: 予約ステータス
         created_at: 登録日時
         updated_at: 更新日時
+      enquete:
+        reservation_id: 予約ID
+        reservation: 予約情報
+        answer_date: 回答日時
+        created_at: 登録日時
+        updated_at: 更新日時
 

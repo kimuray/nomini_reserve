@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :enquete_items
     resources :users
     resources :reservations
+    resources :enquetes
   end
 
 end
