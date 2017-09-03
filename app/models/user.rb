@@ -25,8 +25,8 @@ class User < ApplicationRecord
   end
 
   # FaceBookログイン用
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  def self.find_for_facebook_oauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
       user.skip_confirmation!
     end

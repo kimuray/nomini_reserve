@@ -22,4 +22,10 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  # ログイン後マイページに遷移
+  def after_sign_in_path_for(resource)
+    mypage_path
+  end
+
 end
