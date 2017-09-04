@@ -53,3 +53,37 @@
     <!-- /.box-footer-->
   </div>
 </div>
+
+<% if @enquete.enquete_answers.any? %>
+<section class="content-header">
+  <h1>アンケート回答一覧</h1>
+</section>
+
+<div class="col-xs-12">
+  <div class="box box-danger">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-striped">
+        <tr>
+          <th class="col-md-1"><%= EnqueteItem.human_attribute_name(:content) %></th>
+          <th class="col-md-3"><%= EnqueteAnswer.human_attribute_name(:answer) %></th>
+          <th class="col-md-3"></th>
+        </tr>
+          <% @enquete.enquete_answers.each do |enquete_answer| %>
+            <tr>
+              <td><%= enquete_answer.enquete_item&.content %></td>
+              <td><%= enquete_answer.feedback %></td>
+              <td>
+                <div class="text-right">
+                <%= link_to edit_admin_enquete_answer_path(enquete_answer), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
+                <%= link_to admin_enquete_answer_path(enquete_answer), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <i class="fa fa-trash-o"></i> 削除
+                <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

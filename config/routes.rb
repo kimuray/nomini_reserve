@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :enquete_items
     resources :users
     resources :reservations
-    resources :enquetes
+    resources :enquetes, shallow: true do
+      resources :enquete_answers, only: [:edit, :update, :destroy]
+    end
   end
 
 end

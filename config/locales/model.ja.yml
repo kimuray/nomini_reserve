@@ -63,4 +63,14 @@ ja:
         answer_date: 回答日時
         created_at: 登録日時
         updated_at: 更新日時
-
+      enquete_answer:
+        enquete_item_id: アンケート項目ID
+        enquete_item: アンケート項目
+        enquete_id: アンケートID
+        enquete: アンケート
+        answer: 回答
+        string_value: 回答(文字列形式)
+        integer_value: 回答(数字形式)
+        boolean_value: 回答(yes, no形式)
+        created_at: 登録日時
+        updated_at: 更新日時
