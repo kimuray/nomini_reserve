@@ -8,3 +8,69 @@ ja:
         service_time: サービス提供時間
         price: 価格
         phone_number: 電話番号
+        created_at: 登録日時
+        updated_at: 更新日時
+      reservation_category:
+        name: 予約カテゴリ名
+        created_at: 登録日時
+        updated_at: 更新日時
+      enquete_item:
+        content: 内容
+        answer_type: 回答書式
+        invalid_flg: 無効フラグ
+        created_at: 登録日時
+        updated_at: 更新日時
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認用)
+        name: フルネーム
+        l_name: 姓
+        f_name: 名
+        name_kana: フルネーム(フリガナ)
+        l_name_kana: 姓(フリガナ)
+        f_name_kana: 名(フリガナ)
+        phone_number: 電話番号
+        enterprise_name: 会社・組織名
+        bank_information: 口座情報
+        bank_name: 銀行名
+        bank_branch_name: 支店名
+        bank_account_number: 口座番号
+        occupation: 職種
+        provider: OAuth分類
+        point_count: ポイント
+        confirmed_at: メール認証日時
+        created_at: 登録日時
+        updated_at: 更新日時
+      reservation:
+        shop: 店舗
+        shop_id: 店舗ID
+        user: ユーザー
+        user_id: ユーザーID
+        reservation_category: 予約カテゴリ
+        reservation_category_id: 予約カテゴリID
+        people_count: 利用人数
+        use_datetime: 利用日時
+        use_date: 利用日付
+        use_time: 利用時刻
+        message: メッセージ
+        status: 予約ステータス
+        created_at: 登録日時
+        updated_at: 更新日時
+      enquete:
+        reservation_id: 予約ID
+        reservation: 予約情報
+        answer_date: 回答日時
+        created_at: 登録日時
+        updated_at: 更新日時
+      enquete_answer:
+        enquete_item_id: アンケート項目ID
+        enquete_item: アンケート項目
+        enquete_id: アンケートID
+        enquete: アンケート
+        answer: 回答
+        string_value: 回答(文字列形式)
+        integer_value: 回答(数字形式)
+        boolean_value: 回答(yes, no形式)
+        created_at: 登録日時
+        updated_at: 更新日時

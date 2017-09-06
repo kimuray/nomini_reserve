@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard
     resources :shops
+    resources :reservation_categories
+    resources :enquete_items
+    resources :users
+    resources :reservations
+    resources :enquetes, shallow: true do
+      resources :enquete_answers, only: [:edit, :update, :destroy]
+    end
   end
 
 end

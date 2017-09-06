@@ -1,8 +1,8 @@
 class Reservation < ApplicationRecord
   # Association
-  belong_to :user
-  belong_to :shop
-  belong_to :reservation_category
+  belongs_to :user
+  belongs_to :shop
+  belongs_to :reservation_category
   has_many :enquete
 
   # Validation
@@ -11,4 +11,5 @@ class Reservation < ApplicationRecord
   validates :use_time, presence: true
   validates :status  , presence: true
 
+  enum status: { done: 0, visited: 1, answered: 2, canceled: 3 }
 end

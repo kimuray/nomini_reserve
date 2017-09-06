@@ -1,0 +1,49 @@
+<% content_for :content_header do %>
+  <h1>予約一覧</h1>
+  <h2><%= link_to '新しく予約を登録する', new_admin_reservation_path, class: 'btn btn-primary' %></h2>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+
+  <div class="box box-primary">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-striped">
+        <tr>
+          <th class="col-md-1"><%= Reservation.human_attribute_name(:id) %></th>
+          <th class="col-md-2"><%= Reservation.human_attribute_name(:shop) %></th>
+          <th class="col-md-2"><%= Reservation.human_attribute_name(:user) %></th>
+          <th class="col-md-3"><%= Reservation.human_attribute_name(:use_datetime) %></th>
+          <th class="col-md-1"><%= Reservation.human_attribute_name(:status) %></th>
+          <th class="col-md-3"></th>
+        </tr>
+          <% if @reservations.any? %>
+            <% @reservations.each do |reservation| %>
+            <tr>
+              <td><%= reservation.id %></td>
+              <td><%= reservation.shop&.name %></td>
+              <td><%= reservation.user&.full_name_kana %></td>
+              <td><%= "#{reservation.use_date} #{reservation.use_time}" %></td>
+              <td><%= reservation.status %></td>
+              <td>
+                <div class="text-right">
+                <%= link_to admin_reservation_path(reservation), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
+                <%= link_to edit_admin_reservation_path(reservation), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
+                <%= link_to admin_reservation_path(reservation), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                  <i class="fa fa-trash-o"></i> 削除
+                <% end %>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan=5>登録されている予約が存在しません</td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+    <div class="box-footer clearfix">
+      <%= paginate @reservations, theme: :admin %>
+    </div>
+  </div>
+</div>

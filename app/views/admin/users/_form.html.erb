@@ -1,0 +1,35 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, user] do |form| %>
+        <%= form.email_field :email %>
+        <%= form.password_field :password %>
+        <%= form.password_field :password_confirmation %>
+        <%= form.datetime_field :confirmed_at %>
+        <div class="col-md-6">
+          <%= form.text_field :l_name %>
+        </div>
+        <div class="col-md-6">
+          <%= form.text_field :f_name %>
+        </div>
+        <div class="col-md-6">
+          <%= form.text_field :l_name_kana %>
+        </div>
+        <div class="col-md-6">
+          <%= form.text_field :f_name_kana %>
+        </div>
+        <%= form.text_field :phone_number %>
+        <%= form.text_field :enterprise_name %>
+        <%= form.text_field :bank_name %>
+        <%= form.text_field :bank_branch_name %>
+        <%= form.text_field :bank_account_number %>
+        <%= form.text_field :occupation %>
+        <%= form.number_field :point_count %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

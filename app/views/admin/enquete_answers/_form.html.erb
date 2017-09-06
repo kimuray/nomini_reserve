@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, enquete_answer] do |form| %>
+        <%= form.number_field :enquete_item_id %>
+        <%= form.number_field :enquete_id %>
+        <%= form.text_area :string_value %>
+        <%= form.check_box :boolean_value %>
+        <%= form.number_field :integer_value %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

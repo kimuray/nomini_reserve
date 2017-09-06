@@ -1,0 +1,60 @@
+<% content_for :content_header do %>
+  <h1>アンケート項目詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @enquete_item.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:content) %></h3>
+    </div>
+    <div class="box-body">
+      <%= simple_format(@enquete_item.content) %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:invalid_flg) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @enquete_item.invalid_flg %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:answer_type) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @enquete_item.answer_type %>
+    </div>
+    
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:created_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @enquete_item.created_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= EnqueteItem.human_attribute_name(:updated_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @enquete_item.updated_at %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_enquete_item_path(@enquete_item), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_enquete_item_path(@enquete_item), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>

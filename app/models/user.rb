@@ -47,4 +47,12 @@ class User < ApplicationRecord
       super
     end
   end
+
+  def full_name
+    "#{l_name} #{f_name}"
+  end
+
+  def full_name_kana
+    "#{l_name_kana} #{f_name_kana}"
+  end
 end

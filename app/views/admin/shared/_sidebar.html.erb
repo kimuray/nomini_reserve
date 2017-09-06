@@ -9,8 +9,33 @@
         <% end %>
       </li>
       <li>
+        <%= link_to admin_users_path do %>
+          <i class="fa fa-beer"></i> <span>ユーザー</span>
+        <% end %>
+      </li>
+      <li>
         <%= link_to admin_shops_path do %>
           <i class="fa fa-beer"></i> <span>店舗</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_reservations_path do %>
+          <i class="fa fa-beer"></i> <span>予約</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_reservation_categories_path do %>
+          <i class="fa fa-beer"></i> <span>予約カテゴリ</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_enquete_items_path do %>
+          <i class="fa fa-beer"></i> <span>アンケート項目</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_enquetes_path do %>
+          <i class="fa fa-beer"></i> <span>アンケート</span>
         <% end %>
       </li>
     </ul>
