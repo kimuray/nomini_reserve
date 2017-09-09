@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
   has_many :reservation
   has_many :reservation_categories, through: :shop_reservations
   has_many :shop_reservations, dependent: :destroy
+  accepts_nested_attributes_for :shop_reservations, allow_destroy: true
 
   # Validation
   validates :name,     presence: true
