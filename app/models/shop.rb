@@ -3,6 +3,8 @@ class Shop < ApplicationRecord
 
   # Association
   has_many :reservation
+  has_many :reservation_categories, through: :shop_reservations
+  has_many :shop_reservations, depenent: :destroy
 
   # Validation
   validates :name,     presence: true
