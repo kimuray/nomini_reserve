@@ -9,10 +9,17 @@
         <%= form.number_field :service_time %>
         <%= form.number_field :price %>
         <%= form.text_field :phone_number %>
-        <% @reservation_categories.each do |rc| %>
+        <% if params[:action] == 'new' %>
+          <% ReservationCategory.all.each do |rc| %>
+            <%= form.fields_for :shop_reservations do |price_form| %>
+              <%= price_form.hidden_field :reservation_category_id, value: rc.id %>
+              <%= price_form.number_field :price, label: rc.name + "価格" %>
+            <% end %>
+          <% end %>
+        <% else %>
           <%= form.fields_for :shop_reservations do |price_form| %>
-            <%= price_form.hidden_field :reservation_category_id, value: rc.id %>
-            <%= price_form.number_field :price, label: rc.name + "価格" %>
+            <%= price_form.hidden_field :reservation_category_id %>
+            <%= price_form.number_field :price, label: @reservation_categories.find(price_form.object.reservation_category_id).name %>
           <% end %>
         <% end %>
 

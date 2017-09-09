@@ -6,6 +6,8 @@ class Admin::ShopsController < AdminController
   end
 
   def show
+    @reservation_categories = ReservationCategory.all
+    @shop_reservations = @shop.shop_reservations
   end
 
   def new
@@ -15,6 +17,10 @@ class Admin::ShopsController < AdminController
   end
 
   def edit
+    @reservation_categories = ReservationCategory.all
+    @reservation_categories.each do |reservation_category|
+      @shop.shop_reservations.find_or_create_by(reservation_category_id: reservation_category.id)
+    end
   end
 
   def create
@@ -48,7 +54,7 @@ class Admin::ShopsController < AdminController
 
   def shop_params
     params.fetch(:shop, {}).permit(
-      :name, :description, :image, :image_cache, :service_time, :price, :phone_number, shop_reservations_attributes: [:reservation_category_id, :price]
+      :name, :description, :image, :image_cache, :service_time, :price, :phone_number, shop_reservations_attributes: [:id, :reservation_category_id, :price]
     )
   end
 end
