@@ -71,10 +71,10 @@
       <h3 class="box-title">価格</h3>
     </div>
     <div class="box-body">
-      <% @shop_reservations.each do |shop_reservation| %>
+      <% @shop_usages.each do |shop_usage| %>
         <p>
-          <%= @reservation_categories.find(shop_reservation.reservation_category_id).name %>
-          <%= shop_reservation.price || '未設定' %>
+          <%= @reservation_categories.find(shop_usage.reservation_category_id).name %>
+          <%= shop_usage.price || '未設定' %>
         </p>
       <% end %>
     </div>

@@ -3,9 +3,9 @@ class Shop < ApplicationRecord
 
   # Association
   has_many :reservation
-  has_many :reservation_categories, through: :shop_reservations
-  has_many :shop_reservations, dependent: :destroy
-  accepts_nested_attributes_for :shop_reservations, allow_destroy: true
+  has_many :reservation_categories, through: :shop_usages
+  has_many :shop_usages, dependent: :destroy
+  accepts_nested_attributes_for :shop_usages, allow_destroy: true
 
   # Validation
   validates :name,     presence: true
@@ -19,7 +19,7 @@ class Shop < ApplicationRecord
 
   # 価格が設定されている予約カテゴリ
   def valid_categories
-    shop_reservations.where("price > 0")
+    shop_usages.where("price > 0")
   end
 
 end
