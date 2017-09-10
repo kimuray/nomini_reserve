@@ -1,0 +1,12 @@
+<div>
+  <p><b><%= answer_form.object.enquete_item.content %></b><p>
+  <% if answer_form.object.enquete_item.num? %>
+    <%= answer_form.number_field :integer_value %>
+  <% elsif answer_form.object.enquete_item.str? %>
+    <%= answer_form.text_field :string_value %>
+  <% else %>
+    <%= answer_form.check_box :boolean_value %>はい
+  <% end %>
+  <%= answer_form.hidden_field :enquete_item_id %>
+</div>
+

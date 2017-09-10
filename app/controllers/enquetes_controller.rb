@@ -3,13 +3,16 @@ class EnquetesController < ApplicationController
 
   def new
     @enquete = Reservation.find(params[:reservation_id]).enquetes.build
+    EnqueteItem.ids.each { |item_id| @enquete.enquete_answers.build(enquete_item_id: item_id) }
   end
 
   def create
     @enquete = Reservation.find(params[:reservation_id]).enquetes.build(enquete_params)
+    @enquete.answer_date = Date.today
     if @enquete.save
-      redirect_to mypage_url, notice: 'アンケートを作成しました'
+      redirect_to mypage_url, notice: 'アンケートを送信しました'
     else
+      binding.pry
       render :new
     end
   end

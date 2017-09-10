@@ -1,8 +1,7 @@
 <h1>アンケート</h1>
-
-<%= form_with url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
-  <% EnqueteItem.all.each do |enquete_item| %>
-    <p><b><%= enquete_item.content %></b><p>
+<%= form_with model: @enquete, url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
+  <%= form.fields_for :enquete_answers, @enquete.enquete_answers do |answer_form| %>
+    <%= render 'enquete_item', answer_form: answer_form %>
   <% end %>
 
   <%= form.submit '送信' %>
