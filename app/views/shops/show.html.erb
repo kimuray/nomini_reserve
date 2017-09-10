@@ -12,6 +12,6 @@
   <div>
     <%= simple_format(@shop.description) %>
   </div>
-  <%= link_to '予約する', new_reservation_path(shop_id: @shop.id) %>
+  <%= link_to '予約する', new_shop_reservation_path(shop_id: @shop.id) %>
 </div>
 <%= link_to '一覧に戻る', shops_path %>

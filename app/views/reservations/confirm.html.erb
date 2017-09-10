@@ -44,7 +44,7 @@
       <%= simple_format(@reservation.message) %>
     </div>
 
-    <%= form_for @reservation do |f| %>
+    <%= form_for @reservation, url: polymorphic_path([@reservation.shop, @reservation]) do |f| %>
       <%= f.hidden_field :shop_id %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :people_count %>

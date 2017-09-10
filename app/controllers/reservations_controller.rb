@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
     if params[:back]
       render :new
     elsif @reservation.save
-      redirect_to reservations_url, notice: '予約しました。'
+      redirect_to shop_reservations_url, notice: '予約しました。'
     else
       render :new
     end
