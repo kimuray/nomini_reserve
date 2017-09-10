@@ -17,4 +17,9 @@ class Shop < ApplicationRecord
     super(value)
   end
 
+  # 価格が設定されている予約カテゴリ
+  def valid_categories
+    shop_reservations.where("price > 0")
+  end
+
 end

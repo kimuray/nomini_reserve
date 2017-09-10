@@ -12,4 +12,9 @@ class Reservation < ApplicationRecord
   validates :status  , presence: true
 
   enum status: { done: 0, visited: 1, answered: 2, canceled: 3 }
+
+  # カテゴリに基づく料金
+  def category_price
+    shop.valid_categories.find_by(reservation_category_id: self.id).price
+  end
 end
