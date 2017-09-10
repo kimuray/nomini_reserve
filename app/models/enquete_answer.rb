@@ -4,7 +4,7 @@ class EnqueteAnswer < ApplicationRecord
   belongs_to :enquete
 
   # Validation
-  
+
   def feedback
     case enquete_item.answer_type
     when 'bool'

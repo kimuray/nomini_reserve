@@ -5,7 +5,8 @@
   <% elsif answer_form.object.enquete_item.str? %>
     <%= answer_form.text_field :string_value %>
   <% else %>
-    <%= answer_form.check_box :boolean_value %>はい
+    <%= answer_form.radio_button :boolean_value, true %>はい
+    <%= answer_form.radio_button :boolean_value, false %>いいえ
   <% end %>
   <%= answer_form.hidden_field :enquete_item_id %>
 </div>

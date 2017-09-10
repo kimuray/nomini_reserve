@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910122834) do
+ActiveRecord::Schema.define(version: 20170910154659) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20170910122834) do
     t.boolean "invalid_flg", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "select_value"
+  end
+
+  create_table "enquete_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "enquete_item_id"
+    t.string "content"
+    t.integer "answer_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enquete_item_id", "answer_value"], name: "index_enquete_selections_on_enquete_item_id_and_answer_value", unique: true
+    t.index ["enquete_item_id"], name: "index_enquete_selections_on_enquete_item_id"
   end
 
   create_table "enquetes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170910122834) do
 
   add_foreign_key "enquete_answers", "enquete_items"
   add_foreign_key "enquete_answers", "enquetes"
+  add_foreign_key "enquete_selections", "enquete_items"
   add_foreign_key "enquetes", "reservations"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"
