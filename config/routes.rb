@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       post :confirm, on: :collection
     end
   end
+  resources :reservation, only: [], shallow: true do
+    resources :enquetes, only: [:new, :create]
+  end
 
   devise_for :admins,
     path: 'admin',

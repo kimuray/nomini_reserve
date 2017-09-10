@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   belongs_to :reservation_category
-  has_many :enquete
+  has_many :enquetes
 
   # Validation
   validates :people_count, presence: true

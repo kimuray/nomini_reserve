@@ -5,4 +5,6 @@ class Enquete < ApplicationRecord
 
   # Validation
   validates :answer_date, presence: true
+
+  accepts_nested_attributes_for :enquete_answers
 end
