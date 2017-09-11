@@ -18,9 +18,6 @@ class Admin::ShopsController < AdminController
 
   def edit
     @reservation_categories = ReservationCategory.all
-    @reservation_categories.each do |reservation_category|
-      @shop.shop_usages.find_or_create_by(reservation_category_id: reservation_category.id)
-    end
   end
 
   def create
