@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   }
   get  '/mypage',    to: 'users#mypage'
 
-  resources :shops, only: [:index, :show]
+  resources :shops, only: [:index, :show], shallow: true do
+    resources :reservations do
+      post :confirm, on: :collection
+    end
+  end
 
   devise_for :admins,
     path: 'admin',

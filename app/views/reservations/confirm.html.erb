@@ -1,0 +1,60 @@
+<h1>予約確認</h1>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Reservation.human_attribute_name(:shop) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation.shop&.name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation.reservation_category&.name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title">料金</h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation.shop.valid_categories.find_by(reservation_category_id: @reservation.reservation_category_id).price %>円
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Reservation.human_attribute_name(:people_count) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation.people_count %>人
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
+    </div>
+    <div class="box-body">
+      <%= "#{@reservation.use_date} #{@reservation.use_time}" %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Reservation.human_attribute_name(:message) %></h3>
+    </div>
+    <div class="box-body">
+      <%= simple_format(@reservation.message) %>
+    </div>
+
+    <%= form_for @reservation, url: polymorphic_path([@reservation.shop, @reservation]) do |f| %>
+      <%= f.hidden_field :shop_id %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :people_count %>
+      <%= f.hidden_field :use_date %>
+      <%= f.hidden_field :use_time %>
+      <%= f.hidden_field :message %>
+      <%= f.hidden_field :reservation_category_id %>
+      <%= f.submit 'Back!', name: 'back' %>
+      <%= f.submit 'create!' %>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<h1>予約画面</h1>
+<!-- Main content -->
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for (@reservation), url: confirm_shop_reservations_path do |form| %>
+        <h2><%= @reservation.shop.name %></h2>
+        <%= form.hidden_field :shop_id, value: params[:shop_id] || @reservation.shop_id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+
+        <%= form.select :reservation_category_id, @reservation.shop.valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}, label: "予約カテゴリ" %>
+        <%= form.number_field :people_count %>
+        <%= form.date_field :use_date %>
+        <%= form.time_field :use_time %>
+        <%= form.text_area :message %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

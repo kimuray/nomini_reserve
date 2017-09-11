@@ -67,6 +67,18 @@
       <%= @shop.updated_at %>
     </div>
 
+    <div class="box-header with-border">
+      <h3 class="box-title">価格</h3>
+    </div>
+    <div class="box-body">
+      <% @shop_usages.each do |shop_usage| %>
+        <p>
+          <%= @reservation_categories.find(shop_usage.reservation_category_id).name %>
+          <%= shop_usage.price || '未設定' %>
+        </p>
+      <% end %>
+    </div>
+
     <!-- /.box-body -->
     <div class="box-footer">
       <%= link_to edit_admin_shop_path(@shop), class: 'btn btn-info' do %>

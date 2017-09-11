@@ -17,8 +17,10 @@ class Admin::ReservationCategoriesController < AdminController
 
   def create
     @reservation_category = ReservationCategory.new(reservation_category_params)
-
     if @reservation_category.save
+      Shop.all.each do |shop|
+        shop.shop_usages.create(reservation_category_id: @reservation_category.id)
+      end
       redirect_to admin_reservation_category_url(@reservation_category), notice: 'Reservation category was successfully created.'
     else
       render :new
@@ -39,7 +41,7 @@ class Admin::ReservationCategoriesController < AdminController
   end
 
   private
-  
+
   def set_reservation_category
     @reservation_category = ReservationCategory.find(params[:id])
   end

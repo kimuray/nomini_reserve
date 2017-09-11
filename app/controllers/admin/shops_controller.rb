@@ -1,18 +1,23 @@
 class Admin::ShopsController < AdminController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @shops = Shop.page(params[:id])
   end
 
   def show
+    @reservation_categories = ReservationCategory.all
+    @shop_usages = @shop.shop_usages
   end
 
   def new
     @shop = Shop.new
+    @shop.shop_usages.build
+    @reservation_categories = ReservationCategory.all
   end
 
   def edit
+    @reservation_categories = ReservationCategory.all
   end
 
   def create
@@ -46,7 +51,7 @@ class Admin::ShopsController < AdminController
 
   def shop_params
     params.fetch(:shop, {}).permit(
-      :name, :description, :image, :image_cache, :service_time, :price, :phone_number
+      :name, :description, :image, :image_cache, :service_time, :price, :phone_number, shop_usages_attributes: [:id, :reservation_category_id, :price]
     )
   end
 end
