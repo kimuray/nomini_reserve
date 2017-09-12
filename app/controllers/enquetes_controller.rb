@@ -12,7 +12,6 @@ class EnquetesController < ApplicationController
     if @enquete.save
       redirect_to mypage_url, notice: 'アンケートを送信しました'
     else
-      binding.pry
       render :new
     end
   end

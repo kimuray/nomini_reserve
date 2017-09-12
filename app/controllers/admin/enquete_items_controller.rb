@@ -10,6 +10,7 @@ class Admin::EnqueteItemsController < AdminController
 
   def new
     @enquete_item = EnqueteItem.new
+    10.times { @enquete_item.enquete_selections.build }
   end
 
   def edit
@@ -45,6 +46,9 @@ class Admin::EnqueteItemsController < AdminController
   end
 
   def enquete_item_params
-    params.fetch(:enquete_item, {}).permit(:content, :answer_type, :invalid_flg)
+    params.fetch(:enquete_item, {}).permit(
+      :content, :answer_type, :invalid_flg,
+      enquete_selections_attributes: [:id, :content, :answer_value]
+    )
   end
 end
