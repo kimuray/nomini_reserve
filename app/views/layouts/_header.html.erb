@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+    <a class="navbar-brand" id="nomini-brand" href="#">nomini</a>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-info" %>
+      <% else %>
+        <%= link_to "ログイン", new_session_path(resource_name), class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

@@ -8,9 +8,22 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body class="bg-light">
+    <header class="bg-white">
+      <%= render 'layouts/header' %>
+    </header>
+    <% if notice || alert %>
+      <div class="alert-area container bg-white mt-3">
+        <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="main-area container bg-white mt-3 p-4 px-5">
+      <%= yield %>
+    </div>
   </body>
 </html>

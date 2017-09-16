@@ -3,6 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   def facebook
+    session[:sns_flg] = true
     user = User.find_for_facebook_oauth(request.env["omniauth.auth"])
     if user.persisted?
       # ログインに成功
