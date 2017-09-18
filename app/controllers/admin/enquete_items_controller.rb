@@ -10,10 +10,11 @@ class Admin::EnqueteItemsController < AdminController
 
   def new
     @enquete_item = EnqueteItem.new
-    10.times { @enquete_item.enquete_selections.build }
+    @enquete_item.build_select_item
   end
 
   def edit
+    @enquete_item.build_select_item
   end
 
   def create
