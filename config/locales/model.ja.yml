@@ -75,3 +75,10 @@ ja:
         boolean_value: 回答(yes, no形式)
         created_at: 登録日時
         updated_at: 更新日時
+      enquete_selection:
+        enquete_item_id: アンケート項目ID
+        enquete_item: アンケート項目
+        content: 選択肢
+        answer_value: 値
+        created_at: 登録日時
+        updated_at: 更新日時

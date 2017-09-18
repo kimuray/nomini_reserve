@@ -1,8 +1,10 @@
 class Enquete < ApplicationRecord
   # Association
   belongs_to :reservation
-  has_many :enquete_answers
+  has_many :enquete_answers, dependent: :destroy
 
   # Validation
   validates :answer_date, presence: true
+
+  accepts_nested_attributes_for :enquete_answers
 end

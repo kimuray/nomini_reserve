@@ -58,3 +58,34 @@
     <!-- /.box-footer-->
   </div>
 </div>
+
+<div class="col-xs-12">
+
+  <div class="box box-primary">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-striped">
+        <tr>
+          <th class="col-md-3"><%= EnqueteSelection.human_attribute_name(:content) %></th>
+          <th class="col-md-3"><%= EnqueteSelection.human_attribute_name(:answer_value) %></th>
+          <th class="col-md-3"></th>
+        </tr>
+          <% if @enquete_item.enquete_selections.any? %>
+            <% @enquete_item.enquete_selections.each do |enquete_selection| %>
+            <tr>
+              <td><%= enquete_selection.content %></td>
+              <td><%= enquete_selection.answer_value %></td>
+              <td>
+                <div class="text-right">
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan=5>登録されている選択肢が存在しません</td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

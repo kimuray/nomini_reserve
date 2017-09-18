@@ -6,6 +6,13 @@
         <%= form.select :answer_type, EnqueteItem.answer_types.keys.to_a, {}  %>
         <%= form.check_box :invalid_flg %>
 
+        <%= form.fields_for :enquete_selections, enquete_item.enquete_selections do |selection_form| %>
+          <hr>
+          <h3>選択肢1</h3>
+          <%= selection_form.text_field :content %>
+          <%= selection_form.number_field :answer_value %>
+        <% end %>
+
         <div class="box-footer">
           <%= form.primary '登録する' %>
         </div>

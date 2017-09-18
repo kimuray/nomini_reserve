@@ -1,0 +1,15 @@
+<div>
+  <p><b><%= answer_form.object.enquete_item.content %></b><p>
+  <% if answer_form.object.enquete_item.num? %>
+    <%= answer_form.number_field :integer_value %>
+  <% elsif answer_form.object.enquete_item.str? %>
+    <%= answer_form.text_field :string_value %>
+  <% elsif answer_form.object.enquete_item.selection? %>
+    <%= answer_form.collection_select :integer_value, answer_form.object.enquete_item.enquete_selections, :answer_value, :content %>
+  <% else %>
+    <%= answer_form.radio_button :boolean_value, true %>はい
+    <%= answer_form.radio_button :boolean_value, false %>いいえ
+  <% end %>
+  <%= answer_form.hidden_field :enquete_item_id %>
+</div>
+

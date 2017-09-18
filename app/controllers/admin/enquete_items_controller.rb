@@ -10,9 +10,11 @@ class Admin::EnqueteItemsController < AdminController
 
   def new
     @enquete_item = EnqueteItem.new
+    @enquete_item.build_select_item
   end
 
   def edit
+    @enquete_item.build_select_item
   end
 
   def create
@@ -45,6 +47,9 @@ class Admin::EnqueteItemsController < AdminController
   end
 
   def enquete_item_params
-    params.fetch(:enquete_item, {}).permit(:content, :answer_type, :invalid_flg)
+    params.fetch(:enquete_item, {}).permit(
+      :content, :answer_type, :invalid_flg,
+      enquete_selections_attributes: [:id, :content, :answer_value]
+    )
   end
 end
