@@ -1,0 +1,9 @@
+@import "bootstrap/_functions.scss";
+@import "bootstrap/_variables.scss";
+@import "bootstrap/mixins/*";
+@import "bootstrap/*";
+@import "custom.scss";
+
+/*
+ *= require_tree .
+ */

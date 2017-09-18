@@ -8,9 +8,19 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body class="bg-light">
+    <header class="nomini-header bg-white">
+      <%= render 'layouts/header' %>
+    </header>
+
+    <% flash.each do |key, value| %>
+      <div class="alert-area container bg-white mt-3">
+        <p class="alert alert-<%= key %>"><%= value %></p>
+      </div>
+    <% end %>
+
+    <div class="main-area container bg-white mt-3 p-4 px-5">
+      <%= yield %>
+    </div>
   </body>
 </html>

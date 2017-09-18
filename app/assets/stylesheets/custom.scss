@@ -1,0 +1,44 @@
+.nomini-header{
+  border-bottom: 1px solid #e3e8ed;
+  #nomini-brand{
+    color: #999;
+  }
+}
+
+.alert-area{
+  border: 1px solid #e3e8ed;
+  .alert{
+    margin: 0;
+  }
+}
+
+.main-area{
+  border: 1px solid #e3e8ed;
+  .page-heading{
+    font-size: 2vw;
+    font-weight: 800;
+  }
+}
+
+.facebook-login-button{
+  color: #fff;
+  background: #4267b2;
+  width: auto;
+  text-align: center;
+  padding: 10px 20px;
+  &:hover{
+    color: #fff;
+    background: #3b5998;
+  }
+  .fa-facebook{
+    margin-right: 5px;
+  }
+}
+
+.account-sub{
+  border-top: 1px solid #e3e8ed;
+}
+
+.login-form{
+  width: 250px;
+}
