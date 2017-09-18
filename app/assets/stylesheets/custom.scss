@@ -20,10 +20,6 @@
   }
 }
 
-.account-sub{
-  border-top: 1px solid #e3e8ed;
-}
-
 .facebook-login-button{
   color: #fff;
   background: #4267b2;
@@ -37,4 +33,12 @@
   .fa-facebook{
     margin-right: 5px;
   }
+}
+
+.account-sub{
+  border-top: 1px solid #e3e8ed;
+}
+
+.login-form{
+  width: 250px;
 }
