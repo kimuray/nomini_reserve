@@ -1,4 +1,4 @@
-header{
+.nomini-header{
   border-bottom: 1px solid #e3e8ed;
   #nomini-brand{
     color: #999;
@@ -7,14 +7,14 @@ header{
 
 .alert-area{
   border: 1px solid #e3e8ed;
-  p{
+  .alert{
     margin: 0;
   }
 }
 
 .main-area{
   border: 1px solid #e3e8ed;
-  h2{
+  .page-heading{
     font-size: 2vw;
     font-weight: 800;
   }
@@ -34,7 +34,7 @@ header{
     color: #fff;
     background: #3b5998;
   }
-  i{
+  .fa-facebook{
     margin-right: 5px;
   }
 }
