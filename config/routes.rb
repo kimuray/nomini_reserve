@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     confirmations: 'users/confirmations'
   }
-  get  '/mypage',    to: 'users#mypage'
+  get  '/mypage',    to: 'reservations#index'
 
   resources :shops, only: [:index, :show], shallow: true do
     resources :reservations do

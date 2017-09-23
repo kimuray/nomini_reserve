@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = Reservation.includes(:shop).page(params[:page])
+    @recommend_shop = Shop.limit(3)
   end
 
   def show

@@ -1,8 +1,29 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 76px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  border-top: 1px solid #e3e8ed;
+  .container{
+    height: 100%;
+    .navbar{
+      height: 100%;
+    }
+  }
+}
+
 .nomini-header{
   border-bottom: 1px solid #e3e8ed;
-  #nomini-brand{
-    color: #999;
-  }
 }
 
 .alert-area{
@@ -41,4 +62,46 @@
 
 .login-form{
   width: 250px;
+}
+
+.user-info{
+  color: #999;
+}
+
+.top-nav{
+  .nav{
+    .nav-item{
+      color: #999;
+    }
+  }
+}
+
+.active-menu{
+  background: #f6cf8a;
+  .nav-link{
+    color: #fff !important;
+  }
+}
+.text-black{
+  color: #333;
+}
+
+.reservation-tr{
+  &:hover{
+    background-color: #f6cf8a;
+  }
+  .reservation-td{
+    &:hover{
+      text-decoration: none;
+      color: #333;
+    }
+  }
+}
+
+.recommend-area{
+  height: 5%;
+}
+
+body > .container{
+  padding-top: 60px;
 }
