@@ -18,9 +18,9 @@
         <p class="alert alert-<%= key %>"><%= value %></p>
       </div>
     <% end %>
-    <% unless @recommend_shop.blank? %>
+    <% unless @recommend_shops.blank? %>
       <div class="main-area container bg-white mt-3 p-4 px-5 recommend-area">
-        <%= render 'layouts/recommend' %>
+        <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
       </div>
     <% end %>
 

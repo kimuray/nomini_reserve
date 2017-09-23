@@ -2,7 +2,7 @@ class Shop < ApplicationRecord
   mount_uploader :image, ShopImageUploader
 
   # Association
-  has_many :reservation
+  has_many :reservations
   has_many :reservation_categories, through: :shop_usages
   has_many :shop_usages, dependent: :destroy
   accepts_nested_attributes_for :shop_usages, allow_destroy: true

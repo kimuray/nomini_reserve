@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reservations = Reservation.includes(:shop).page(params[:page])
-    @recommend_shop = Shop.limit(3)
+    @reservations = current_user.reservations.includes(:shop).page(params[:page])
+    @recommend_shops = Shop.limit(3)
   end
 
   def show
