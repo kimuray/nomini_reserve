@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20170910154659) do
     t.string "occupation"
     t.string "uid"
     t.string "provider"
-    t.integer "point_count"
+    t.integer "point_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

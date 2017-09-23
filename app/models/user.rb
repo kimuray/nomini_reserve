@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:facebook]
 
   # Association
-  has_many :reservation
+  has_many :reservations
 
   # Validation
   validates :l_name, presence: true

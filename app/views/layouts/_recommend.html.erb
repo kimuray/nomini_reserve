@@ -1,0 +1,9 @@
+<h2 class="text-info page-heading mb-4 mt-1">PickUp</h2>
+<div class="card-deck">
+  <% recommend_shops.each do |recommend_shop| %>
+    <div class="card">
+      <div class="card-body"><%= recommend_shop.name %></div>
+      <%= image_tag recommend_shop.image, class: "card-img-bottom img-responsive", size: '150' %>
+    </div>
+  <% end %>
+</div>

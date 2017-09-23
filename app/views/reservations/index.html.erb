@@ -1,31 +1,35 @@
-<h1>予約一覧</h1>
-
+<h2 class="text-info page-heading mb-4 mt-1">予約履歴一覧</h2>
 <!-- Main content -->
-<div class="col-xs-12">
-
+<div>
   <div class="box box-primary">
-    <div class="box-body table-responsive no-padding">
-      <table class="table table-striped">
-        <tr>
-          <th class="col-md-1"><%= Reservation.human_attribute_name(:id) %></th>
-          <th class="col-md-2"><%= Reservation.human_attribute_name(:shop) %></th>
-          <th class="col-md-3"><%= Reservation.human_attribute_name(:use_datetime) %></th>
-          <th class="col-md-1"><%= Reservation.human_attribute_name(:status) %></th>
-          <th class="col-md-3"></th>
-        </tr>
+    <div class="box-body no-padding">
+      <table class="table container">
+          <tr class="row">
+            <th class="col-sm-5">予約日時</th>
+            <th class="col-sm-5">店舗名</th>
+            <th class="col-sm-2">状況</th>
+          </tr>
           <% if @reservations.any? %>
             <% @reservations.each do |reservation| %>
-            <tr>
-              <td><%= reservation.id %></td>
-              <td><%= reservation.shop&.name %></td>
-              <td><%= "#{reservation.use_date} #{reservation.use_time}" %></td>
-              <td><%= reservation.status %></td>
-              <td>
-                <div class="text-right">
-                <%= link_to reservation_path(reservation), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
-                </div>
-              </td>
-            </tr>
+                <tr class="row reservation-tr">
+                  <td class="col-sm-5 p-0">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= l(reservation.use_date, format: :long)  %>
+                      <%= reservation.use_time.strftime("%H時%M分") %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-5 p-0">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= reservation.shop&.name %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-2 p-0">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= reservation.status %>
+                    <% end %>
+                  </td>
+                </tr>
+
             <% end %>
           <% else %>
             <tr>
