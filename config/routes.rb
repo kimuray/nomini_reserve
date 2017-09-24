@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :reservation, only: [], shallow: true do
     resources :enquetes, only: [:new, :create]
   end
+  resources :payments, only: [:new, :create]
 
   devise_for :admins,
     path: 'admin',
@@ -33,5 +34,4 @@ Rails.application.routes.draw do
     end
     resources :payments
   end
-
 end
