@@ -4,12 +4,12 @@
     <%= link_to "nomini", mypage_path, class: "navbar-brand text-muted"%>
     <ul class="nav">
       <% if user_signed_in? %>
-        <li class="nav-item align-self-center mr-4">
+        <li class="nav-item align-self-center mr-4 pc-only-inline">
           <span class="text-info">現在のポイント：<%= current_user.point_count %></span>
         </li>
-        <li class="dropdown nav-item mr-3 align-self-center">
+        <li class="dropdown nav-item mr-3 align-self-center user-menu">
           <button class="btn-link dropdown-toggle user-info" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user"></i><span class="user-name pl-1"><%= current_user.full_name %>様</span>
+            <i class="fa fa-user"></i><span class="user-name pl-1 pc-only-inline"><%= current_user.full_name %>様</span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -18,10 +18,10 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to "店舗を見る", shops_path, class: "btn btn-info" %>
+          <%= link_to "店舗を見る", shops_path, class: "btn btn-info shop-guide-btn" %>
         </li>
       <% else %>
-        <%= link_to "ログイン", new_session_path(resource_name), class: "btn btn-info" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
       <% end %>
     </ul>
   </div>

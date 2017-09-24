@@ -1,3 +1,5 @@
+$text-main: #333;
+
 html {
   position: relative;
   min-height: 100%;
@@ -5,6 +7,9 @@ html {
 
 body {
   margin-bottom: 76px;
+  @media (max-width: 767px) {
+    margin-bottom: 136px;
+  }
 }
 
 .footer {
@@ -20,6 +25,25 @@ body {
       height: 100%;
     }
   }
+  @media (max-width: 767px) {
+    height: 120px;
+    .nav-item{
+      text-align: center;
+    }
+    .copy-area{
+      width: 100%;
+      text-align: center;
+    }
+    .contact-area{
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.shop-show-image{
+  width: 100%;
+  height: auto;
 }
 
 .nomini-header{
@@ -36,9 +60,29 @@ body {
 .main-area{
   border: 1px solid #e3e8ed;
   .page-heading{
-    font-size: 2vw;
+    font-size: 1.5rem;
     font-weight: 800;
   }
+}
+
+.login-form{
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form{
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-label{
+  font-size: 0.9rem;
+  display: flex;
+	align-items: center;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 .facebook-login-button{
@@ -58,10 +102,6 @@ body {
 
 .account-sub{
   border-top: 1px solid #e3e8ed;
-}
-
-.login-form{
-  width: 250px;
 }
 
 .user-info{
@@ -96,12 +136,113 @@ body {
       color: #333;
     }
   }
+  @media (max-width: 767px) {
+    margin-bottom: 8px;
+    border-left: 1px solid #e3e8ed;
+    border-right: 1px solid #e3e8ed;
+    border-bottom: 1px solid #e3e8ed;
+  }
 }
 
 .recommend-area{
   height: 5%;
+  @media (max-width: 767px){
+    display: none;
+  }
 }
 
-body > .container{
-  padding-top: 60px;
+.shop-description{
+  font-size: 0.8rem;
+}
+
+.shop-name{
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: $text-main;
+}
+
+.shop-detail-title{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.course-price{
+  font-size: 0.8rem;
+}
+
+.shop-detail{
+  white-space: pre-wrap;
+}
+
+.image-wrap{
+  overflow: hidden;
+  width: 100%;/* トリミングしたい枠の幅 */
+  height: 100%;/* トリミングしたい枠の高さ */
+}
+
+.visible-origin-xs {
+  display: none;
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .mobile-only-inline{
+    display: inline;;
+  }
+  .pc-only-inline{
+    display: none;
+  }
+  .pc-only-block{
+    display: none;
+  }
+  .shop-detail-btn{
+    width: 100%;
+  }
+  .shop-name{
+    margin-left: 16px;
+    padding-bottom: 8px;
+  }
+  .user-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 12px;
+  }
+  .shop-guide-btn{
+    margin-right: 48px;
+  }
+  .dropdown-menu.show{
+    right: 0 !important;
+    left: auto !important;
+  }
+  .shop-image{
+    height: auto;
+    width: 120%;
+  }
+}
+
+/* PC */
+@media (min-width: 767px){
+  .mobile-only-inline{
+    display: none;
+  }
+  .pc-only-inline{
+    display: inline;
+  }
+  .shop-list{
+    height: 150px;
+  }
+  .shop-name{
+    padding-top: 8px;
+  }
+  .shop-image{
+    height: 150%;
+    width: auto;
+  }
+}
+
+.recommend-shop-name{
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
