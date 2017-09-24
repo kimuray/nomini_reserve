@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, payment] do |form| %>
+        <%= form.number_field :user_id %>
+        <%= form.select :status, Payment.statuses.keys.to_a, {} %>
+        <%= form.text_field :token_id %>
+        <%= form.text_field :customer_id %>
+        <%= form.text_field :subscription_id %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
