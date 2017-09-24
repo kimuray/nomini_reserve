@@ -3,7 +3,7 @@
   <head>
     <title>NominiReserve</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -19,14 +19,13 @@
       </div>
     <% end %>
     <% unless @recommend_shops.blank? %>
-      <div class="main-area container bg-white mt-3 p-4 px-5 recommend-area">
+      <div class="main-area container bg-white mt-3 recommend-area pb-3">
         <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
       </div>
     <% end %>
 
-    <div class="main-area container bg-white mt-3 p-4 px-5">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>
