@@ -5,7 +5,8 @@ class PaymentsController < ApplicationController
 
   def create
    payment = current_user.build_payment
-   payment.create_subscription(params['payjp-token'])
+   token = Payment.create_token(params)
+   payment.create_subscription(token.id, ENV['PAYJP_PLAN_ID'])
    redirect_to mypage_url, notice: '支払い情報を保存しました'
   end
 end

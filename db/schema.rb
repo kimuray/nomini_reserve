@@ -71,14 +71,14 @@ ActiveRecord::Schema.define(version: 20170924151342) do
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.integer "status", default: 1
-    t.string "token_id"
+    t.string "payjp_token"
     t.string "customer_id"
     t.string "subscription_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["payjp_token"], name: "index_payments_on_payjp_token"
     t.index ["subscription_id"], name: "index_payments_on_subscription_id"
-    t.index ["token_id"], name: "index_payments_on_token_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 

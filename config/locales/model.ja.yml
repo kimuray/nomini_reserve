@@ -85,7 +85,7 @@ ja:
       payment:
         user_id: ユーザーID
         status: ステータス
-        token_id: トークンID(payjp)
+        payjp_token: トークンID(payjp)
         customer_id: カスタマーID(payjp)
         subscription_id: 定期購読ID(payjp)
         created_at: 登録日時

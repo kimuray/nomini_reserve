@@ -45,6 +45,6 @@ class Admin::PaymentsController < AdminController
   end
 
   def payment_params
-    params.fetch(:payment, {}).permit(:user_id, :status, :token_id, :customer_id, :subscription_id)
+    params.fetch(:payment, {}).permit(:user_id, :status, :payjp_token, :customer_id, :subscription_id)
   end
 end

@@ -19,10 +19,10 @@
     </div>
 
     <div class="box-header with-border">
-      <h3 class="box-title"><%= Payment.human_attribute_name(:token_id) %></h3>
+      <h3 class="box-title"><%= Payment.human_attribute_name(:payjp_token) %></h3>
     </div>
     <div class="box-body">
-      <%= @payment.token_id %>
+      <%= @payment.payjp_token %>
     </div>
 
     <div class="box-header with-border">

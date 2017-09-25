@@ -11,7 +11,7 @@
         <tr>
           <th class="col-md-1"><%= Payment.human_attribute_name(:id) %></th>
           <th class="col-md-3"><%= Payment.human_attribute_name(:status) %></th>
-          <th class="col-md-3"><%= Payment.human_attribute_name(:token_id) %></th>
+          <th class="col-md-3"><%= Payment.human_attribute_name(:payjp_token) %></th>
           <th class="col-md-2"><%= Payment.human_attribute_name(:subscription_id) %></th>
           <th class="col-md-3"></th>
         </tr>
@@ -20,7 +20,7 @@
             <tr>
               <td><%= payment.id %></td>
               <td><%= payment.status %></td>
-              <td><%= payment.token_id %></td>
+              <td><%= payment.payjp_token %></td>
               <td><%= payment.subscription_id %></td>
               <td>
                 <div class="text-right">
