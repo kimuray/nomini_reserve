@@ -62,6 +62,15 @@
       <%= link_to admin_payment_path(@payment), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
         <i class="fa fa-trash-o">削除</i>
       <% end %>
+      <% if @payment.active? %>
+        <%= link_to cancel_admin_payment_path(@payment), class: 'btn btn-danger', method: :patch,  data: { confirm: '課金を停止します。よろしいですか' } do %>
+          <i class="fa fa-edit">課金停止</i>
+        <% end %>
+      <% else %>
+        <%= link_to restart_admin_payment_path(@payment), class: 'btn btn-success', method: :patch, data: { confirm: '課金を停止します。よろしいですか' } do %>
+          <i class="fa fa-edit">課金再開</i>
+        <% end %>
+      <% end %>
     </div>
     <!-- /.box-footer-->
   </div>

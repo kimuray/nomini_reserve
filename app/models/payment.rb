@@ -1,6 +1,8 @@
 class Payment < ApplicationRecord
   belongs_to :user
 
+  before_destroy :delete_subscription
+
   enum status: { cancel: 0, active: 1, trial: 2 }
 
   def create_subscription(token, plan)
@@ -10,6 +12,23 @@ class Payment < ApplicationRecord
     self.save
   end
   
+  def cancel_subscription
+    self.cancel!
+    subscription = Payjp::Subscription.retrieve(self.subscription_id)
+    subscription.pause
+  end
+
+  def restart_subscription
+    self.active!
+    subscription = Payjp::Subscription.retrieve(self.subscription_id)
+    subscription.resume
+  end
+
+  def delete_subscription
+    subscription = Payjp::Subscription.retrieve(self.subscription_id)
+    subscription.delete
+  end
+
   def self.create_token(params)
     token = Payjp::Token.create(
       card: { 

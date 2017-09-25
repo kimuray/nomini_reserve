@@ -1,5 +1,5 @@
 class Admin::PaymentsController < AdminController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: [:show, :edit, :update, :destroy, :cancel, :restart]
 
   def index
     @payments = Payment.page(params[:page])
@@ -36,6 +36,16 @@ class Admin::PaymentsController < AdminController
   def destroy
     @payment.destroy
     redirect_to admin_payments_url, notice: 'Payment was successfully destroyed.'
+  end
+
+  def cancel
+    @payment.cancel_subscription
+    redirect_to admin_payment_url(@payment), notice: '課金を停止しました'
+  end
+
+  def restart
+    @payment.restart_subscription
+    redirect_to admin_payment_url(@payment), notice: '課金を再開しました'
   end
 
   private

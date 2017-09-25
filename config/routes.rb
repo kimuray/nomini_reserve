@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :enquetes, shallow: true do
       resources :enquete_answers, only: [:edit, :update, :destroy]
     end
-    resources :payments
+    resources :payments do
+      patch :cancel, on: :member
+      patch :restart, on: :member
+    end
   end
 end
