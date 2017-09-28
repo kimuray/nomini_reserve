@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910154659) do
+ActiveRecord::Schema.define(version: 20170924151342) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(version: 20170910154659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reservation_id"], name: "index_enquetes_on_reservation_id"
+  end
+
+  create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.integer "status", default: 1
+    t.string "payjp_token"
+    t.string "customer_id"
+    t.string "subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["payjp_token"], name: "index_payments_on_payjp_token"
+    t.index ["subscription_id"], name: "index_payments_on_subscription_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "reservation_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -151,6 +165,7 @@ ActiveRecord::Schema.define(version: 20170910154659) do
   add_foreign_key "enquete_answers", "enquetes"
   add_foreign_key "enquete_selections", "enquete_items"
   add_foreign_key "enquetes", "reservations"
+  add_foreign_key "payments", "users"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"
   add_foreign_key "reservations", "users"

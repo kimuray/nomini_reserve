@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script type="text/javascript" src="https://js.pay.jp/"></script>
+    <script type="text/javascript">Payjp.setPublicKey("<%= ENV['PAYJP_PUBLIC_KEY'] %>");</script>
     <%= javascript_include_tag 'application' %>
   </head>
 

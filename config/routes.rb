@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :reservation, only: [], shallow: true do
     resources :enquetes, only: [:new, :create]
   end
+  resources :payments, only: [:new, :create]
 
   devise_for :admins,
     path: 'admin',
@@ -31,6 +32,9 @@ Rails.application.routes.draw do
     resources :enquetes, shallow: true do
       resources :enquete_answers, only: [:edit, :update, :destroy]
     end
+    resources :payments do
+      patch :cancel, on: :member
+      patch :restart, on: :member
+    end
   end
-
 end

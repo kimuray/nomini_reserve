@@ -1,0 +1,28 @@
+<div class="main-area container bg-white mt-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">クレジットカード登録</h2>
+
+  <%= form_for(@payment) do |f| %>
+    <span class="charge-errors"></span>
+    <div class="field form-group text-center">
+      <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
+    </div>
+
+    <div class="field form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" class="form-control exp_month" name="exp_month" maxlength="2" placeholder="月">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control exp_year" name="exp_year" maxlength="4" placeholder="年">
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="CVC">
+        </div>
+      </div>
+    </div>
+
+    <div class="actions form-group text-center">
+      <%= f.submit '登録', class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

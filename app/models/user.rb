@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   # Association
   has_many :reservations
+  has_one :payment
 
   # Validation
   validates :l_name, presence: true

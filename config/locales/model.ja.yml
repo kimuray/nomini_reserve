@@ -82,3 +82,11 @@ ja:
         answer_value: 値
         created_at: 登録日時
         updated_at: 更新日時
+      payment:
+        user_id: ユーザーID
+        status: ステータス
+        payjp_token: トークンID(payjp)
+        customer_id: カスタマーID(payjp)
+        subscription_id: 定期購読ID(payjp)
+        created_at: 登録日時
+        updated_at: 更新日時
