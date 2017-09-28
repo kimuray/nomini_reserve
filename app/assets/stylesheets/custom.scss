@@ -219,6 +219,9 @@ body {
     height: auto;
     width: 120%;
   }
+  .shop-info-1{
+    margin-top: 16px;
+  }
 }
 
 /* PC */
@@ -245,4 +248,35 @@ body {
   font-size: 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#reservation_use_time_4i,#reservation_use_time_5i{
+  width: 30%;
+  display: inline-block;
+}
+
+.confirm-label{
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.confirm-value{
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  @media (max-width: 767px) {
+      padding-top: 8px;
+      padding-left: 8px;
+  }
+}
+
+.confirm-list{
+  border-bottom: 1px solid #e3e8ed;
+  padding: 16px 0;
+  @media (max-width: 767px) {
+      padding: 8px 0;
+  }
+}
+
+.confirm-box{
+  padding: 0 16px;
 }

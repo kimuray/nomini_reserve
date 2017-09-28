@@ -8,6 +8,8 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.includes(:reservation_category).new
+    @reservation.shop = Shop.find(params[:id])
   end
 
   private
