@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get  '/mypage',    to: 'reservations#index'
 
   resources :shops, only: [:index, :show], shallow: true do
-    resources :reservations do
+    resources :reservations, only: [:index, :show, :create, :confirm] do
       post :confirm, on: :collection
     end
   end

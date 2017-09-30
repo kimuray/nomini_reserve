@@ -70,8 +70,6 @@
 
       <div class="confirm-form mt-3 mb-2">
         <%= form_for @reservation, url: polymorphic_path([@reservation.shop, @reservation]) do |f| %>
-          <%= f.hidden_field :shop_id %>
-          <%= f.hidden_field :user_id %>
           <%= f.hidden_field :people_count %>
           <%= f.hidden_field :use_date %>
           <%= f.hidden_field :use_time %>

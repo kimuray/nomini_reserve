@@ -1,26 +1,19 @@
-<div class="container bg-white mt-3 pb-2">
-  <!-- Main content -->
-  <div>
-    <div class="box box-primary">
-      <div class="box-body">
-        <%= bootstrap_form_for (@reservation), url: confirm_shop_reservations_path do |form| %>
-          <h2 class="shop-name text-info py-3 m-0"><%= @reservation.shop.name %></h2>
-          <%= form.hidden_field :shop_id, value: params[:shop_id] || @reservation.shop_id %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-          <%= form.select :reservation_category_id, @reservation.shop.valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}, label: "予約カテゴリ" %>
-          <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
-          <%= form.text_field :use_date, id: "datetimepicker" %>
-          <%= form.time_select :use_time, minute_step: 10 %>
-          <%= form.text_area :message %>
+<div class=" p-3 border border-mated rounded mt-3">
+  <h3 class="shop-detail-title text-info text-center">予約情報入力</h3>
+  <ul class="reservation-chack text-danger">
+    <% reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <%= bootstrap_form_for (reservation), url: confirm_shop_reservations_path(shop_id: shop.id) do |form| %>
+    <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約カテゴリ" %>
+    <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
+    <%= form.text_field :use_date, id: "datetimepicker" %>
+    <%= form.time_select :use_time, minute_step: 10 %>
+    <%= form.text_area :message %>
 
-          <div class="box-footer">
-            <%= form.primary '登録する' %>
-          </div>
-        <% end %>
-      </div>
+    <div class="box-footer text-center">
+      <%= form.primary '予約情報を確認する', class: "btn btn-info" %>
     </div>
-  </div>
+  <% end %>
 </div>
-<script type="text/javascript">
-  flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
-</script>

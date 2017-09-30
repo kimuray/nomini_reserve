@@ -22,4 +22,9 @@ class Shop < ApplicationRecord
     shop_usages.where("price > 0")
   end
 
+  # 有効カテゴリのセレクトボックス表示
+  def valid_categories_list
+    valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}
+  end
+
 end

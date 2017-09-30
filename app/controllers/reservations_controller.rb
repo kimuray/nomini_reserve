@@ -16,11 +16,9 @@ class ReservationsController < ApplicationController
   #end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    if params[:back]
-      @shop = @reservation.shop
-      render template: "shops/show"
-    elsif @reservation.save
+    @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
+    @reservation.user_id = current_user.id
+    if params[:back].blank? && @reservation.save
       redirect_to shop_reservations_url, notice: '予約しました。'
     else
       @shop = @reservation.shop
@@ -29,7 +27,12 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
+    @reservation.user_id = current_user.id
+    @shop = @reservation.shop
+    unless @reservation.valid?
+      render template: "shops/show"
+    end
   end
 
   private

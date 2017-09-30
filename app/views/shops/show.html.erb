@@ -6,11 +6,6 @@
     </div>
 
     <div class="col-md-4 shop-info-1">
-      <!--
-      <div class="mt-2 my-4">
-        <%= link_to '予約する', new_shop_reservation_path(shop_id: @shop.id), class: "btn btn-info btn-lg reservation-btn btn-block" %>
-      </div>
-      -->
       <h3 class="shop-detail-title text-info">提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
       <h3 class="shop-detail-title text-info">価格</h3>
@@ -31,7 +26,6 @@
         <%= @shop.phone_number %>
       </div>
     </div>
-
   </div>
   <div class="row">
     <div class="col-md-8">
@@ -39,22 +33,7 @@
       <div class="shop-detail mb-3"><%= @shop.description %></div>
     </div>
     <div class="col-md-4">
-      <div class=" p-3 border border-mated rounded mt-3">
-        <h3 class="shop-detail-title text-info text-center">予約情報入力</h3>
-        <%= bootstrap_form_for (@reservation), url: confirm_shop_reservations_path(shop_id: @shop.id) do |form| %>
-          <%= form.hidden_field :shop_id, value: params[:shop_id] || @reservation.shop_id %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-          <%= form.select :reservation_category_id, @shop.valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}, label: "予約カテゴリ" %>
-          <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
-          <%= form.text_field :use_date, id: "datetimepicker" %>
-          <%= form.time_select :use_time, minute_step: 10 %>
-          <%= form.text_area :message %>
-
-          <div class="box-footer text-center">
-            <%= form.primary '予約情報を確認する', class: "btn btn-info" %>
-          </div>
-        <% end %>
-      </div>
+      <%= render template: 'reservations/new', locals: { reservation: @reservation, shop: @shop } %>
     </div>
   </div>
 </div>
