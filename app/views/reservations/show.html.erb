@@ -1,62 +1,91 @@
-<h1>予約詳細</h1>
-<!-- Main content -->
-<div class="col-xs-12">
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:shop) %></h3>
-    </div>
-    <div class="box-body">
-      <%= link_to @reservation.shop&.name, shop_path(@reservation.shop&.id) %>
-    </div>
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0">予約情報</h2>
+  <!-- Main content -->
+  <div class="confirm-box">
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:shop) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.shop&.name %>
+          </p>
+        </div>
+      </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.reservation_category&.name %>
+          </p>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
-    </div>
-    <div class="box-body">
-      <%= @reservation.reservation_category&.name %>
-    </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label">料金</h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.output_price %>円
+          </p>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title">料金</h3>
-    </div>
-    <div class="box-body">
-      <%= @reservation.category_price %>円
-    </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:people_count) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.people_count %>人
+          </p>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:people_count) %></h3>
-    </div>
-    <div class="box-body">
-      <%= @reservation.people_count %>人
-    </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= l(@reservation.use_date, format: :long)  %>
+            <%= @reservation.use_time.strftime("%H時%M分") %>
+          </p>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
-    </div>
-    <div class="box-body">
-      <%= "#{@reservation.use_date} #{@reservation.use_time}" %>
-    </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:message) %></h3>
+        </div>
+        <div class="col-md-9">
+          <%= simple_format(@reservation.message, class: "message-format") %>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:message) %></h3>
-    </div>
-    <div class="box-body">
-      <%= simple_format(@reservation.message) %>
-    </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:status) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.status %>
+          </p>
+        </div>
+      </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:status) %></h3>
+      <div class="row confirm-list mb-3">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:created_at) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= l(@reservation.created_at, format: :default) %>
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="box-body">
-      <%= @reservation.status %>
-    </div>
-
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= Reservation.human_attribute_name(:created_at) %></h3>
-    </div>
-    <div class="box-body">
-      <%= @reservation.created_at %>
-    </div>
-
-  </div>
 </div>

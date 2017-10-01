@@ -10,24 +10,29 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.includes(:shop, :reservation_category).find(params[:id])
   end
 
-  def new
-    @reservation = Reservation.includes(:reservation_category).new
-    @reservation.shop = Shop.find(params[:shop_id])
-  end
+  #def new
+  #  @reservation = Reservation.includes(:reservation_category).new
+  #  @reservation.shop = Shop.find(params[:shop_id])
+  #end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    if params[:back]
-      render :new
-    elsif @reservation.save
+    @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
+    @reservation.user_id = current_user.id
+    if params[:back].blank? && @reservation.save
       redirect_to shop_reservations_url, notice: '予約しました。'
     else
-      render :new
+      @shop = @reservation.shop
+      render template: "shops/show"
     end
   end
 
   def confirm
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
+    @reservation.user_id = current_user.id
+    @shop = @reservation.shop
+    unless @reservation.valid?
+      render template: "shops/show"
+    end
   end
 
   private

@@ -5,10 +5,7 @@
       <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
     </div>
 
-    <div class="col-md-4">
-      <div class="mt-2 my-4">
-        <%= link_to '予約する', new_shop_reservation_path(shop_id: @shop.id), class: "btn btn-info btn-lg reservation-btn btn-block" %>
-      </div>
+    <div class="col-md-4 shop-info-1">
       <h3 class="shop-detail-title text-info">提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
       <h3 class="shop-detail-title text-info">価格</h3>
@@ -29,9 +26,17 @@
         <%= @shop.phone_number %>
       </div>
     </div>
-
   </div>
-  <h3 class="shop-detail-title text-info pt-3">お店詳細</h3>
-  <div class="shop-detail mb-3"><%= @shop.description %></div>
-  <%= link_to 'お店一覧に戻る', shops_path, class: "text-info" %>
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="shop-detail-title text-info pt-3">お店詳細</h3>
+      <div class="shop-detail mb-3"><%= @shop.description %></div>
+    </div>
+    <div class="col-md-4">
+      <%= render template: 'reservations/new', locals: { reservation: @reservation, shop: @shop } %>
+    </div>
+  </div>
 </div>
+<script type="text/javascript">
+  flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
+</script>

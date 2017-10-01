@@ -17,4 +17,9 @@ class Reservation < ApplicationRecord
   def category_price
     shop.valid_categories.find_by(reservation_category_id: self.id).price
   end
+
+  # 価格表示
+  def output_price
+    ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
+  end
 end

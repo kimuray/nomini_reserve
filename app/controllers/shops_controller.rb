@@ -8,6 +8,7 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @reservation = Shop.find(params[:id]).reservations.build
   end
 
   private
