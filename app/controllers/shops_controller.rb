@@ -8,8 +8,7 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.includes(:reservation_category).new
-    @shop = Shop.find(params[:id])
+    @reservation = Shop.find(params[:id]).reservations.build
   end
 
   private
