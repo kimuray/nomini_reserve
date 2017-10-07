@@ -57,4 +57,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  def update_resource(resource, params)
+    if current_user.encrypted_password.blank?
+      resource.update_without_current_password(params)
+    else
+      super
+    end
+
+  end
 end
