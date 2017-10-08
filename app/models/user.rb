@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   # Association
   has_many :reservations
+  has_one :bank_account, dependent: :destroy
   has_one :payment
 
   # Validation
@@ -15,9 +16,6 @@ class User < ApplicationRecord
   validates :l_name_kana, presence: true
   validates :f_name_kana, presence: true
   validates :phone_number, presence: true, format: { with: /\A[0-9-]+\z/, message: "電話番号は数字、ハイフンのみ入力できます。"}
-  validates :bank_name, presence: true
-  validates :bank_branch_name, presence: true
-  validates :bank_account_number, presence: true
 
   # 全角を半角に変換
   def phone_number=(value)
