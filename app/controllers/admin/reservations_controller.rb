@@ -41,6 +41,7 @@ class Admin::ReservationsController < AdminController
 
   def done
     @reservation.done!
+    ReservationMailer.done_reservation_to_user(@reservation).deliver_now
     redirect_to admin_reservation_url(@reservation), notice: '予約を承認しました'
   end
 

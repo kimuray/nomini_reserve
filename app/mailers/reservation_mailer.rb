@@ -16,4 +16,9 @@ class ReservationMailer < ApplicationMailer
     @reservation = reservation
     mail(to: @reservation.user.email, subject: '予約がキャンセルされました')
   end
+
+  def done_reservation_to_user(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '予約が承認されました')
+  end
 end
