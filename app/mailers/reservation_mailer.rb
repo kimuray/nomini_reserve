@@ -9,6 +9,11 @@ class ReservationMailer < ApplicationMailer
 
   def notice_reservation_to_user(reservation)
     @reservation = reservation
-    mail(to: Settings.mail.to, subject: '予約申請を承りました')
+    mail(to: @reservation.user.email, subject: '予約申請を承りました')
+  end
+
+  def remand_reservation_to_user(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '予約がキャンセルされました')
   end
 end

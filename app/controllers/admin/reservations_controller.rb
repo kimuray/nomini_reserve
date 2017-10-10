@@ -46,6 +46,7 @@ class Admin::ReservationsController < AdminController
 
   def remand
     @reservation.remand!
+    ReservationMailer.remand_reservation_to_user(@reservation).deliver_now
     redirect_to admin_reservation_url(@reservation), notice: '予約を却下しました'
   end
 
