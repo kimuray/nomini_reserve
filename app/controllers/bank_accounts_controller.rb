@@ -28,7 +28,7 @@ class BankAccountsController < ApplicationController
   private
   def bank_account_params
     params.fetch(:bank_account, {}).permit(
-      :user_id, :bank_name, :bank_branch_name, :bank_account_number
+      :bank_name, :bank_branch_name, :bank_account_number
     )
   end
 
