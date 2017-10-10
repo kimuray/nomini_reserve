@@ -1,5 +1,5 @@
 class Admin::ReservationsController < AdminController
-  before_action :set_reservation, only: [:edit, :update, :destroy]
+  before_action :set_reservation, only: [:edit, :update, :destroy, :done, :remand]
 
   def index
     @reservations = Reservation.includes(:shop, :user).page(params[:page])
@@ -37,6 +37,16 @@ class Admin::ReservationsController < AdminController
   def destroy
     @reservation.destroy
     redirect_to admin_reservations_url, notice: 'Reservation was successfully destroyed.'
+  end
+
+  def done
+    @reservation.done!
+    redirect_to admin_reservation_url(@reservation), notice: '予約を承認しました'
+  end
+
+  def remand
+    @reservation.remand!
+    redirect_to admin_reservation_url(@reservation), notice: '予約を却下しました'
   end
 
   private
