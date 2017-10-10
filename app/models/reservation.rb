@@ -22,4 +22,12 @@ class Reservation < ApplicationRecord
   def output_price
     ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
   end
+
+  def sum_price
+    output_price * people_count
+  end
+
+  def tax_included_price
+    (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
+  end
 end
