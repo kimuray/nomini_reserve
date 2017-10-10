@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     confirmations: 'users/confirmations'
   }
+  devise_scope :users do
+    resource :bank_account, only: [:new, :create, :edit, :update]
+  end
+
   get  '/mypage',    to: 'reservations#index'
 
   resources :shops, only: [:index, :show], shallow: true do

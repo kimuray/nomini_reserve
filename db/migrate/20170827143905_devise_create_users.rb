@@ -37,9 +37,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :f_name_kana
       t.string   :phone_number
       t.string   :enterprise_name
-      t.string   :bank_name
-      t.string   :bank_branch_name
-      t.string   :bank_account_number
       t.string   :occupation
       t.string   :uid
       t.string   :provider
