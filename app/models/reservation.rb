@@ -11,7 +11,7 @@ class Reservation < ApplicationRecord
   validates :use_time, presence: true
   validates :status  , presence: true
 
-  enum status: { done: 0, visited: 1, answered: 2, canceled: 3 }
+  enum status: { applying: 0, remand: 1, done: 2, visited: 3, answered: 4, canceled: 5 }
 
   # カテゴリに基づく料金
   def category_price
