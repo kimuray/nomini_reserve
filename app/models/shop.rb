@@ -1,5 +1,5 @@
 class Shop < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :image, ShopImageUploader
@@ -12,7 +12,10 @@ class Shop < ApplicationRecord
 
   # Validation
   validates :name,     presence: true
-  validates :phone_number,  presence: true, format: { with: /\A[0-9-]+\z/, message: "電話番号は数字、ハイフンのみ入力できます。"}
+  validates :phone_number,
+            presence: true,
+            format: { with: /\A[0-9-]+\z/, message: '電話番号は数字、ハイフンのみ入力できます。' },
+            unless: :new_record?
 
   # 全角を半角に変換
   def phone_number=(value)
@@ -29,5 +32,4 @@ class Shop < ApplicationRecord
   def valid_categories_list
     valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}
   end
-
 end

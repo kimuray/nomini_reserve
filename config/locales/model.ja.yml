@@ -2,6 +2,9 @@ ja:
   activerecord:
     attributes:
       shop:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認用)
         name: 店舗名
         description: 店舗説明
         image: 店舗イメージ
