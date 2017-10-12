@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'reservations#index'
 
+  devise_for :shops
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',

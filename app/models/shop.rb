@@ -1,4 +1,7 @@
 class Shop < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   mount_uploader :image, ShopImageUploader
 
   # Association
