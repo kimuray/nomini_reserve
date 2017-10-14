@@ -71,7 +71,7 @@ body {
   margin-right: auto;
 }
 
-.signup-form{
+.center-form{
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -293,4 +293,22 @@ body {
   .help-block{
     display: none;
   }
+}
+
+.enquete-label{
+  font-weight: bold;
+  display: flex;
+	align-items: center;
+  @media (max-width: 767px){
+    padding-left: 0;
+    padding-bottom: 16px;
+  }
+}
+
+.enquete-radio{
+  display: flex;
+	align-items: center;
+}
+.radio-input{
+  margin-bottom: 2px;
 }

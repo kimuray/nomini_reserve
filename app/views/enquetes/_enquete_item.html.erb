@@ -1,15 +1,14 @@
-<div>
-  <p><b><%= answer_form.object.enquete_item.content %></b><p>
+<div class="field form-group row center-form">
+  <label class="col-sm-4 m-0 enquete-label"><%= answer_form.object.enquete_item.content %></label>
   <% if answer_form.object.enquete_item.num? %>
-    <%= answer_form.number_field :integer_value %>
+    <%= answer_form.number_field :integer_value, class: "col-sm-8 form-control" %>
   <% elsif answer_form.object.enquete_item.str? %>
-    <%= answer_form.text_field :string_value %>
+    <%= answer_form.text_field :string_value, class: "col-sm-8 form-control" %>
   <% elsif answer_form.object.enquete_item.selection? %>
-    <%= answer_form.collection_select :integer_value, answer_form.object.enquete_item.enquete_selections, :answer_value, :content %>
+    <%= answer_form.collection_select :integer_value, answer_form.object.enquete_item.enquete_selections, :answer_value, :content, {}, { class: "col-sm-8 form-control custom-select" } %>
   <% else %>
-    <%= answer_form.radio_button :boolean_value, true %>はい
-    <%= answer_form.radio_button :boolean_value, false %>いいえ
+    <label class="mr-2 mb-0 enquete-radio"><%= answer_form.radio_button :boolean_value, true, class: "mr-1 radio-input" %><span>はい</span></label>
+    <label class="mb-0 enquete-radio"><%= answer_form.radio_button :boolean_value, false, class: "mr-1 radio-input" %><span>いいえ</span></label>
   <% end %>
   <%= answer_form.hidden_field :enquete_item_id %>
 </div>
-
