@@ -24,7 +24,7 @@
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
       <% end %>
       <% if shop_signed_in? %>
-        <li class="nav-item mgl-10">
+        <li class="nav-item ml-3">
           <%= link_to "店舗ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-info shop-guide-btn" %>
         </li>
       <% end %>

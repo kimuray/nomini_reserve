@@ -38,4 +38,8 @@ class Shop < ApplicationRecord
     build_count = ReservationCategory.count - self.shop_usages.size
     build_count.times { self.shop_usages.build }
   end
+
+  def correct?(current_shop)
+    self == current_shop
+  end
 end
