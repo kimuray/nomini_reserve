@@ -94,3 +94,9 @@ ja:
         subscription_id: 定期購読ID(payjp)
         created_at: 登録日時
         updated_at: 更新日時
+      shop_usage:
+        reservation_category_id: 予約カテゴリ
+        shop_id: 店舗
+        price: 値段
+        created_at: 登録日時
+        updated_at: 更新日時

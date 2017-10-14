@@ -8,7 +8,8 @@ class Shop < ApplicationRecord
   has_many :reservations
   has_many :reservation_categories, through: :shop_usages
   has_many :shop_usages, dependent: :destroy
-  accepts_nested_attributes_for :shop_usages, allow_destroy: true
+
+  accepts_nested_attributes_for :shop_usages, allow_destroy: true, reject_if: :all_blank
 
   # Validation
   validates :name,     presence: true
@@ -31,5 +32,10 @@ class Shop < ApplicationRecord
   # 有効カテゴリのセレクトボックス表示
   def valid_categories_list
     valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}
+  end
+
+  def build_shop_usages
+    build_count = ReservationCategory.count - self.shop_usages.size
+    build_count.times { self.shop_usages.build }
   end
 end

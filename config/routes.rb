@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   root 'reservations#index'
 
+  # deviseルーティングより前に置かないと優先度で負けるため先に記載
+  resource :shops, only: [:edit, :update]
+
   devise_for :shops, controllers: {
     sessions: 'shops/sessions',
     registrations: 'shops/registrations',
     confirmations: 'shops/confirmations'
   }
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -27,6 +31,7 @@ Rails.application.routes.draw do
       post :confirm, on: :collection
     end
   end
+
   resources :reservation, only: [], shallow: true do
     resources :enquetes, only: [:new, :create]
   end
