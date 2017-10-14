@@ -2,6 +2,7 @@ class ShopsController < ApplicationController
   # TODO: ログイン周りが完成したらコメントアウト外す
   # before_action :authenticate_user!
   before_action :set_shop, only: [:show]
+  before_action :authenticate_shop!, only: [:edit, :update]
 
   def index
     @shops = Shop.page(params[:page])
