@@ -2,17 +2,17 @@
   <h2 class="text-info text-center page-heading mb-4 mt-4">口座情報更新</h2>
 
   <%= form_for @bank_account, url: bank_account_path do |f| %>
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :bank_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :bank_name, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :bank_branch_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :bank_branch_name, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :bank_account_number, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :bank_account_number, class: "col-sm-9 form-control" %>
     </div>
