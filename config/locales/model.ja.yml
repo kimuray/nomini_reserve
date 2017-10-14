@@ -11,6 +11,7 @@ ja:
         service_time: サービス提供時間
         price: 価格
         phone_number: 電話番号
+        remember_me: ログインしたままにする
         created_at: 登録日時
         updated_at: 更新日時
       reservation_category:

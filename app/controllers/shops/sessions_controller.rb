@@ -22,4 +22,16 @@ class Shops::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    if resource.phone_number.present?
+      shop_url(resource)
+    else
+      edit_shops_url
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    new_shop_session_path
+  end
 end
