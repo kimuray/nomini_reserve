@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'reservations#index'
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -8,10 +6,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     confirmations: 'users/confirmations'
   }
-  
-  devise_scope :user do
-    get 'users/edit/password', to: 'users/registrations#password_edit'
-    patch 'users/edit/password', to: 'users/registrations#password_update'
+  devise_scope :users do
     resource :bank_account, only: [:new, :create, :edit, :update]
   end
 
