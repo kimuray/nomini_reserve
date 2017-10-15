@@ -9,25 +9,6 @@
       <%= f.email_field :email, autofocus: true, class: "col-sm-9 form-control" %>
     </div>
 
-    <% if f.object.encrypted_password.present? %>
-      <div class="field form-group row signup-form">
-        <%= f.label :password, class: "col-sm-3 signup-label" %>
-        <%= f.password_field :password, autocomplete: "off", placeholder: "#{@minimum_password_length}文字以上", class: "col-sm-9 form-control" %>
-      </div>
-
-      <div class="field form-group row signup-form">
-        <%= f.label :password_confirmation, class: "col-sm-3 signup-label" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "#{@minimum_password_length}文字以上", class: "col-sm-9 form-control" %>
-      </div>
-
-      <div class="field form-group row signup-form">
-        <%= f.label "現在のパスワード", class: "col-sm-3 signup-label" %><br />
-        <%= f.password_field :current_password, autocomplete: "off", placeholder:"現在のパスワードを入力してください。", class: "col-sm-9 form-control" %>
-      </div>
-    <% end %>
-
-
-
     <div class="field form-group row signup-form">
       <%= f.label :l_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :l_name, class: "col-sm-9 form-control" %>
@@ -67,6 +48,9 @@
       <%= f.submit "更新する", class: "btn btn-info" %>
     </div>
   <% end %>
+  <div class="text-center account-sub p-4">
+    <%= link_to "パスワード変更", users_edit_password_path,class: "text-info" %>
+  </div>
 
   <div class="text-center account-sub p-4">
     <% if current_user.bank_account.blank? %>
