@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :password_edit ,:password_update]
 
   # GET /resource/sign_up
   # def new
@@ -26,6 +27,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+  # パスワード更新画面
+  def password_edit
+  end
+
+  def password_update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    if resource_updated
+      bypass_sign_in resource, scope: resource_name
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      redirect_to users_edit_password_path, notice: '現在のパスワード、または更新パスワードが無効です。'
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -57,4 +77,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def password_params
+    params.fetch(:user, {}).permit(
+      :password, :password_confirmation, :current_password
+    )
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    if params[:password].blank? && params[:password_confirmation].blank?
+      resource.update_without_password(params)
+    else
+      super
+    end
+  end
+
 end
