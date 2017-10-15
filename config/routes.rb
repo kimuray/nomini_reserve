@@ -8,10 +8,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     confirmations: 'users/confirmations'
   }
-
+  
   devise_scope :user do
     get 'users/edit/password', to: 'users/registrations#password_edit'
     patch 'users/edit/password', to: 'users/registrations#password_update'
+    resource :bank_account, only: [:new, :create, :edit, :update]
   end
 
   get  '/mypage',    to: 'reservations#index'
@@ -36,7 +37,10 @@ Rails.application.routes.draw do
     resources :reservation_categories
     resources :enquete_items
     resources :users
-    resources :reservations
+    resources :reservations do
+      patch :done, on: :member
+      patch :remand, on: :member
+    end
     resources :enquetes, shallow: true do
       resources :enquete_answers, only: [:edit, :update, :destroy]
     end

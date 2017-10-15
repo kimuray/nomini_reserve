@@ -63,8 +63,17 @@
       <%= f.submit "更新する", class: "btn btn-info" %>
     </div>
   <% end %>
+  
   <div class="text-center account-sub p-4">
     <%= link_to "パスワード変更", users_edit_password_path,class: "text-info" %>
+  </div>
+
+  <div class="text-center account-sub p-4">
+    <% if current_user.bank_account.blank? %>
+      <%= link_to "口座情報を登録する", new_bank_account_path %>
+    <% else %>
+      <%= link_to "口座情報を更新する", edit_bank_account_path %>
+    <% end %>
   </div>
 
 </div>

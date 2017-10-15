@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924151342) do
+ActiveRecord::Schema.define(version: 20171008042749) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20170924151342) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bank_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "bank_name"
+    t.string "bank_branch_name"
+    t.string "bank_account_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bank_accounts_on_user_id"
   end
 
   create_table "enquete_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -147,9 +157,6 @@ ActiveRecord::Schema.define(version: 20170924151342) do
     t.string "f_name_kana"
     t.string "phone_number"
     t.string "enterprise_name"
-    t.string "bank_name"
-    t.string "bank_branch_name"
-    t.string "bank_account_number"
     t.string "occupation"
     t.string "uid"
     t.string "provider"
@@ -161,6 +168,7 @@ ActiveRecord::Schema.define(version: 20170924151342) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "bank_accounts", "users"
   add_foreign_key "enquete_answers", "enquete_items"
   add_foreign_key "enquete_answers", "enquetes"
   add_foreign_key "enquete_selections", "enquete_items"
