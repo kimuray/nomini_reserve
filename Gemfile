@@ -20,7 +20,7 @@ gem 'bootstrap_form'
 gem 'kaminari'
 
 # Server
-gem 'puma', '~> 3.7'
+gem 'unicorn'
 
 # Authentication
 gem 'devise', '~> 4.3'
