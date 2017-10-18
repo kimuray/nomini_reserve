@@ -6,6 +6,11 @@
     </div>
 
     <div class="col-md-4 shop-info-1">
+      <div class="mb-3">
+        <% if shop_signed_in? && @shop.correct?(current_shop) %>
+          <%= link_to '店舗情報編集', edit_shops_path, class: "btn btn-block btn-primary" %>
+        <% end %>
+      </div>
       <h3 class="shop-detail-title text-info">提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
       <h3 class="shop-detail-title text-info">価格</h3>

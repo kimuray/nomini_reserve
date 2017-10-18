@@ -1,15 +1,22 @@
 class Shop < ApplicationRecord
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   mount_uploader :image, ShopImageUploader
 
   # Association
   has_many :reservations
   has_many :reservation_categories, through: :shop_usages
   has_many :shop_usages, dependent: :destroy
-  accepts_nested_attributes_for :shop_usages, allow_destroy: true
+
+  accepts_nested_attributes_for :shop_usages, allow_destroy: true, reject_if: :all_blank
 
   # Validation
   validates :name,     presence: true
-  validates :phone_number,  presence: true, format: { with: /\A[0-9-]+\z/, message: "電話番号は数字、ハイフンのみ入力できます。"}
+  validates :phone_number,
+            presence: true,
+            format: { with: /\A[0-9-]+\z/, message: '電話番号は数字、ハイフンのみ入力できます。' },
+            unless: :new_record?
 
   # 全角を半角に変換
   def phone_number=(value)
@@ -27,4 +34,12 @@ class Shop < ApplicationRecord
     valid_categories.map{|category| ["#{category.reservation_category.name} #{category.price}円", category.reservation_category_id]}
   end
 
+  def build_shop_usages
+    build_count = ReservationCategory.count - self.shop_usages.size
+    build_count.times { self.shop_usages.build }
+  end
+
+  def correct?(current_shop)
+    self == current_shop
+  end
 end
