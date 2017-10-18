@@ -3,30 +3,31 @@
   <div class="container">
     <%= link_to "nomini", mypage_path, class: "navbar-brand text-muted"%>
     <ul class="nav">
-      <% if user_signed_in? %>
-        <li class="nav-item align-self-center mr-4 pc-only-inline">
-          <span class="text-info">現在のポイント：<%= current_user.point_count %></span>
-        </li>
-        <li class="dropdown nav-item mr-3 align-self-center user-menu">
-          <button class="btn-link dropdown-toggle user-info" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user"></i><span class="user-name pl-1 pc-only-inline"><%= current_user.full_name %>様</span>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            <%= link_to "ユーザー設定", edit_user_registration_path, class: "dropdown-item" %>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "店舗を見る", shops_path, class: "btn btn-info shop-guide-btn" %>
-        </li>
-      <% else %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
-      <% end %>
       <% if shop_signed_in? %>
-        <li class="nav-item ml-3">
-          <%= link_to "店舗ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-info shop-guide-btn" %>
-        </li>
+          <li class="nav-item ml-3">
+            <%= link_to "店舗ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-info shop-guide-btn" %>
+          </li>
+      <% else %>
+        <% if user_signed_in? %>
+          <li class="nav-item align-self-center mr-4 pc-only-inline">
+            <span class="text-info">現在のポイント：<%= current_user.point_count %></span>
+          </li>
+          <li class="dropdown nav-item mr-3 align-self-center user-menu">
+            <button class="btn-link dropdown-toggle user-info" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user"></i><span class="user-name pl-1 pc-only-inline"><%= current_user.full_name %>様</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "ユーザー設定", edit_user_registration_path, class: "dropdown-item" %>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "店舗を見る", shops_path, class: "btn btn-info shop-guide-btn" %>
+          </li>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
+        <% end %>
       <% end %>
     </ul>
   </div>
