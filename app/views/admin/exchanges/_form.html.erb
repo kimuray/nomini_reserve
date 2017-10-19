@@ -3,7 +3,7 @@
     <div class="box-body">
       <%= bootstrap_form_for [:admin, exchange] do |form| %>
           <%= form.number_field :user_id %>
-          <%= form.select :status, [0, 1] %>
+          <%= form.select :status, Exchange.statuses.keys.to_a, {} %>
           <%= form.text_field :point %>
           <%= form.datetime_field :paied_at %>
 

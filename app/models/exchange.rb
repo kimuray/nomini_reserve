@@ -1,6 +1,8 @@
 class Exchange < ApplicationRecord
   belongs_to :user
 
+  enum status: { pending: 0, done: 1, remand: 2, resubmit: 3 }
+
   validates :point, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 10_000 }
   validate :less_than_possession_points

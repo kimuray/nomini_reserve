@@ -1,5 +1,5 @@
 class Admin::ExchangesController < AdminController
-  before_action :set_exchange, only: [:show, :edit, :update, :destroy]
+  before_action :set_exchange, only: [:show, :edit, :update, :destroy, :done, :remand]
 
   def index
     @exchanges = Exchange.page(params[:page])
@@ -36,6 +36,16 @@ class Admin::ExchangesController < AdminController
   def destroy
     @exchange.destroy
     redirect_to admin_exchanges_url, notice: 'Exchange was successfully destroyed.'
+  end
+
+  def done
+    @exchange.done!
+    redirect_to admin_exchange_url(@exchange), notice: '換金を完了しました'
+  end
+
+  def remand
+    @exchange.remand!
+    redirect_to admin_exchange_url(@exchange), notice: '換金を差し戻しました'
   end
 
   private

@@ -62,6 +62,9 @@ Rails.application.routes.draw do
       patch :cancel, on: :member
       patch :restart, on: :member
     end
-    resources :exchanges
+    resources :exchanges do
+      patch :done, on: :member
+      patch :remand, on: :member
+    end
   end
 end

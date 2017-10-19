@@ -16,6 +16,12 @@
     </div>
     <div class="box-body">
       <%= @exchange.status %>
+      <%= link_to done_admin_exchange_path(@exchange), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
+        <i class="fa fa-edit">完了</i>
+      <% end %>
+      <%= link_to remand_admin_exchange_path(@exchange), class: 'btn btn-danger', method: :patch, data: { confirm: '却下してよろしいですか？' } do %>
+        <i class="fa fa-edit">差戻し</i>
+      <% end %>
     </div>
 
     <div class="box-header with-border">
