@@ -2,6 +2,17 @@
   <h2 class="text-info text-center page-heading mb-4 mt-4">換金申請</h2>
 
   <%= form_with(model: @exchange, url: exchanges_path, local: true) do |form| %>
+    <% if @exchange.errors.any? %>
+      <div class="field form-group signup-form">
+        <div class="alert alert-danger">
+          <ul>
+          <% @exchange.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
     <div class="field form-group signup-form">
       <p>現在のポイント数: <b><%= current_user.point_count %></b></p>
       <p>
