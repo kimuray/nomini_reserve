@@ -60,12 +60,7 @@
       <%= @user.enterprise_name %>
     </div>
 
-    <div class="box-header with-border">
-      <h3 class="box-title"><%= User.human_attribute_name(:bank_information) %></h3>
-    </div>
-    <div class="box-body">
-      <%= "#{@user.bank_name} #{@user.bank_branch_name} #{@user.bank_account_number}" %>
-    </div>
+    <%# TODO: 口座情報を表示するように修正する %>
 
     <div class="box-header with-border">
       <h3 class="box-title"><%= User.human_attribute_name(:occupation) %></h3>
