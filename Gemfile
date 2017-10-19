@@ -30,6 +30,7 @@ gem 'omniauth-facebook', '~> 4.0'
 # Image
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'fog'
 
 # API
 gem 'payjp'
