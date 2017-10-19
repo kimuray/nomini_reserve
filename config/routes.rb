@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'exchanges/new'
+
   root 'reservations#index'
 
   # deviseルーティングより前に置かないと優先度で負けるため先に記載
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
     resources :enquetes, only: [:new, :create]
   end
   resources :payments, only: [:new, :create]
+  resources :exchanges, only: [:new, :create]
 
   devise_for :admins,
     path: 'admin',

@@ -1,0 +1,21 @@
+<div class="main-area container bg-white mt-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">換金申請</h2>
+
+  <%= form_with(model: @exchange, url: exchanges_path, local: true) do |form| %>
+    <div class="field form-group signup-form">
+      <p>現在のポイント数: <b><%= current_user.point_count %></b></p>
+      <p>
+        下記入力フォームより換金したいポイント数を入力してください。<br>
+        ※ ポイントの換金は10,000ポイントからとなります。
+      </p>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.number_field :point, class: "form-control"  %>
+    </div>
+
+    <div class="actions text-center mb-3">
+      <%= form.submit '申請する', class: 'btn btn-info', data: { confirm: '申請してもよろしいですか？' } %>
+    </div>
+  <% end %>
+</div>
