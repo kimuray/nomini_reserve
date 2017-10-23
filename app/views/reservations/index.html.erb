@@ -60,13 +60,19 @@
             <% @exchanges.each do |exchange| %>
               <tr class="row reservation-tr">
                 <td class="col-sm-5 p-0 reservation-datetime">
-                  <%= l(exchange.created_at, format: :date_time)  %>
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= l(exchange.created_at, format: :date_time)  %>
+                  <% end %>
                 </td>
                 <td class="col-sm-5 p-0">
-                  <%= exchange.point %>
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= exchange.point %>
+                  <% end %>
                 </td>
                 <td class="col-sm-2 p-0">
-                  <%= exchange.status %>
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= exchange.status %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>

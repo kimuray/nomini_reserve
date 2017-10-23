@@ -12,7 +12,7 @@ class Exchange < ApplicationRecord
   private
 
   def less_than_possession_points
-    if user.point_count < point
+    if point.present? && user.point_count < point
       errors.add(:point, 'は所持ポイントより大きな値は設定できません')
     end
   end

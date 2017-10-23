@@ -1,0 +1,92 @@
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0">換金申請情報</h2>
+  <!-- Main content -->
+  <div class="confirm-box">
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label">申請日時</h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= l(@exchange.created_at, format: :date_time) %>
+        </p>
+      </div>
+    </div>
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:point) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @exchange.point %> pt
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:status) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @exchange.status %>
+          <% if @exchange.remand? && @exchange.remand_reason.present? %>
+            <div class="alert alert-warning">
+              <strong><%= Exchange.human_attribute_name(:remand_reason) %></strong>
+              <%= simple_format(@exchange.remand_reason) %>
+            </div>
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:paied_at) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <% if @exchange.paied_at.present? %>
+            <%= l(@exchange.paied_at, format: :date_time)  %>
+          <% else %>
+            <p>審査待ち</p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @exchange.remand? %>
+  <div class="container bg-white mt-3 pb-2">
+    <h2 class="text-info py-3 m-0">換金再申請フォーム</h2>
+    <%= form_with(model: @exchange, url: reapply_exchange_path(@exchange), local: true) do |form| %>
+      <% if @exchange.errors.any? %>
+          <div class="field form-group signup-form">
+            <div class="alert alert-danger">
+              <ul>
+                <% @exchange.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      <% end %>
+      <div class="field form-group signup-form">
+        <p>現在のポイント数: <b><%= current_user.point_count %></b></p>
+        <p>
+          下記入力フォームより換金したいポイント数を入力してください。<br>
+          ※ ポイントの換金は10,000ポイントからとなります。
+        </p>
+      </div>
+
+      <div class="field form-group row signup-form">
+        <%= form.number_field :point, class: "form-control"  %>
+      </div>
+
+      <div class="actions text-center mb-3">
+        <%= form.submit '再申請する', class: 'btn btn-info', data: { confirm: '申請してもよろしいですか？' } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

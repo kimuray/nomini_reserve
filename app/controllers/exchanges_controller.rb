@@ -1,5 +1,9 @@
 class ExchangesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_exchange, only: [:show, :reapply]
+
+  def show
+  end
 
   def new
     @exchange = Exchange.new
@@ -14,7 +18,20 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def reapply
+    if @exchange.update(exchange_params)
+      @exchange.resubmit!
+      redirect_to exchange_url(@exchange), notice: '換金再申請を行いました'
+    else
+      render :show
+    end
+  end
+
   private
+
+  def set_exchange
+    @exchange = Exchange.find(params[:id])
+  end
 
   def exchange_params
     params.fetch(:exchange, {}).permit(:point)
