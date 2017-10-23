@@ -2,6 +2,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :password_edit ,:password_update]
+  before_action :set_introduction_params, only: [:new]
+  after_action :introduction_registrate, only: [:create]
 
   # GET /resource/sign_up
   # def new
@@ -83,6 +85,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.fetch(:user, {}).permit(
       :password, :password_confirmation, :current_password
     )
+  end
+
+  def set_introduction_params
+    session[:introduction_token] = params[:introduction_token] unless params[:introduction_token].blank?
+  end
+
+  def introduction_registrate
+    if session[:introduction_token].present? && resource.persisted?
+      introduction = Introduction.find_by(introduction_token: session[:introduction_token])
+      introduction.registrate(resource.id)
+      session.delete(:introduction_token)
+    end
   end
 
   protected
