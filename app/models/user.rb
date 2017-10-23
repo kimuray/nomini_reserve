@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :reservations
   has_one :bank_account, dependent: :destroy
   has_one :payment
+  has_many :introductions
 
   # Validation
   validates :l_name, presence: true
