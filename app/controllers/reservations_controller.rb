@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = current_user.reservations.includes(:shop).page(params[:page])
+    @exchanges = current_user.exchanges.limit(10)
     @recommend_shops = Shop.limit(3)
   end
 
