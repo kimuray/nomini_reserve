@@ -1,6 +1,7 @@
 class ExchangesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_exchange, only: [:show, :reapply]
+  before_action :check_bank_account
 
   def show
   end
@@ -35,5 +36,11 @@ class ExchangesController < ApplicationController
 
   def exchange_params
     params.fetch(:exchange, {}).permit(:point)
+  end
+
+  def check_bank_account
+    if current_user.bank_account.blank?
+      redirect_to new_bank_account_url, notice: '換金申請を行うためには口座情報を登録が必要です'
+    end
   end
 end
