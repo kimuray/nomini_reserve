@@ -19,8 +19,11 @@
       <%= link_to done_admin_exchange_path(@exchange), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
         <i class="fa fa-edit">完了</i>
       <% end %>
-      <%= link_to remand_admin_exchange_path(@exchange), class: 'btn btn-danger', method: :patch, data: { confirm: '却下してよろしいですか？' } do %>
-        <i class="fa fa-edit">差戻し</i>
+      <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#remand_form"><i class="fa fa-edit">差戻し</i></a>
+      <%= render 'remand_modal_form', exchange: @exchange %>
+      <% if @exchange.remand_reason.present? %>
+        <h4><%= Exchange.human_attribute_name(:remand_reason) %></h4>
+        <%= simple_format(@exchange.remand_reason) %>
       <% end %>
     </div>
 
