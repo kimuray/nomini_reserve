@@ -1,0 +1,75 @@
+<% content_for :content_header do %>
+  <h1>申請ポイント詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:shop_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.reservation&.shop&.name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:user_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.user&.full_name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:status) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.status %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:use_price) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.use_price %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:point) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.point %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:created_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.created_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ApplyPoint.human_attribute_name(:updated_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @apply_point.updated_at %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_apply_point_path(@apply_point), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_apply_point_path(@apply_point), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>
+

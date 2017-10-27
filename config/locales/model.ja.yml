@@ -103,3 +103,13 @@ ja:
         price: 値段
         created_at: 登録日時
         updated_at: 更新日時
+      apply_point:
+        reservation_id: 予約ID
+        shop_name: 店舗名
+        user_id: ユーザーID
+        user_name: 利用者氏名
+        use_price: 利用金額
+        point: 加算ポイント
+        status: ステータス
+        created_at: 登録日時
+        updated_at: 更新日時

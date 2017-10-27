@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   # Association
   has_many :reservations
+  has_many :apply_points
   has_one :bank_account, dependent: :destroy
   has_one :payment
 

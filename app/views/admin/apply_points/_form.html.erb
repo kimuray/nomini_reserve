@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, apply_point] do |form| %>
+          <%= form.number_field :user_id %>
+          <%= form.number_field :reservation_id %>
+          <%= form.select :status, ApplyPoint.statuses.keys.to_a, {} %>
+          <%= form.number_field :point %>
+          <%= form.number_field :use_price %>
+
+          <div class="box-footer">
+            <%= form.primary '登録する' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

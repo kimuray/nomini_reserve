@@ -4,6 +4,7 @@ class Reservation < ApplicationRecord
   belongs_to :shop
   belongs_to :reservation_category
   has_many :enquetes
+  has_one :apply_point
 
   # Validation
   validates :people_count, presence: true
