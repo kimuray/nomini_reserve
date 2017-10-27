@@ -1,12 +1,69 @@
 <div class="container bg-white mt-3 pb-2">
   <h2 class="text-info py-3 m-0 text-center">アンケート</h2>
-  <%= form_with model: @enquete, url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
-    <%= form.fields_for :enquete_answers, @enquete.enquete_answers do |answer_form| %>
-      <%= render 'enquete_item', answer_form: answer_form %>
-    <% end %>
-
-    <div class="actions text-center mb-3">
-      <%= form.submit '送信', class: "btn btn-info" %>
+  <!-- Main content -->
+  <div class="confirm-box">
+    <div class="field form-group row center-form">
+      <div class="col-sm-4 m-0 enquete-label">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:user_name) %></h3>
+      </div>
+      <div class="col-sm-8">
+        <p class="confirm-value">
+          <%= @reservation.user&.full_name %>
+        </p>
+      </div>
     </div>
-  <% end %>
+
+    <div class="field form-group row center-form">
+      <div class="col-sm-4 m-0 enquete-label">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:shop) %></h3>
+      </div>
+      <div class="col-sm-8">
+        <p class="confirm-value">
+          <%= @reservation.shop&.name %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field form-group row center-form">
+      <div class="col-sm-4 m-0 enquete-label">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:use_date) %></h3>
+      </div>
+      <div class="col-sm-8">
+        <p class="confirm-value">
+          <%= @reservation.use_date %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field form-group row center-form">
+      <div class="col-sm-4 m-0 enquete-label">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+      </div>
+      <div class="col-sm-8">
+        <p class="confirm-value">
+          <%= @reservation.reservation_category&.name %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field form-group row center-form">
+      <div class="col-sm-4 m-0 enquete-label">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:price) %></h3>
+      </div>
+      <div class="col-sm-8">
+        <p class="confirm-value">
+          <%= @reservation.sum_price %>円(税込 <%= @reservation.tax_included_price %>円)
+        </p>
+      </div>
+    </div>
+    <%= form_with model: @enquete, url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
+      <%= form.fields_for :enquete_answers, @enquete.enquete_answers do |answer_form| %>
+          <%= render 'enquete_item', answer_form: answer_form %>
+      <% end %>
+
+      <div class="actions text-center mb-3">
+        <%= form.submit '送信', class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
 </div>

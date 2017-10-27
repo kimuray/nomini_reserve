@@ -5,7 +5,7 @@
   <% elsif answer_form.object.enquete_item.str? %>
     <%= answer_form.text_field :string_value, class: "col-sm-8 form-control" %>
   <% elsif answer_form.object.enquete_item.selection? %>
-    <%= answer_form.collection_select :integer_value, answer_form.object.enquete_item.enquete_selections, :answer_value, :content, {}, { class: "col-sm-8 form-control custom-select" } %>
+    <%= answer_form.collection_select :integer_value, answer_form.object.enquete_item.enquete_selections, :answer_value, :content, {}, { class: 'col-sm-8 form-control custom-select', prompt: '選択してください' } %>
   <% else %>
     <label class="mr-2 mb-0 enquete-radio"><%= answer_form.radio_button :boolean_value, true, class: "mr-1 radio-input" %><span>はい</span></label>
     <label class="mb-0 enquete-radio"><%= answer_form.radio_button :boolean_value, false, class: "mr-1 radio-input" %><span>いいえ</span></label>

@@ -5,31 +5,36 @@
       <div class="box-body no-padding">
         <table class="table container">
             <tr class="row pc-only-block">
-              <th class="col-sm-5">予約日時</th>
-              <th class="col-sm-5">店舗名</th>
+              <th class="col-sm-4">予約日時</th>
+              <th class="col-sm-4">店舗名</th>
               <th class="col-sm-2">状況</th>
+              <th class="col-sm-2">アンケート</th>
             </tr>
             <% if @reservations.any? %>
               <% @reservations.each do |reservation| %>
-                  <tr class="row reservation-tr">
-                    <td class="col-sm-5 p-0 reservation-datetime">
-                      <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
-                        <%= l(reservation.use_date, format: :long)  %>
-                        <%= reservation.use_time.strftime("%H時%M分") %>
-                      <% end %>
-                    </td>
-                    <td class="col-sm-5 p-0">
-                      <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
-                        <%= reservation.shop&.name %>
-                      <% end %>
-                    </td>
-                    <td class="col-sm-2 p-0">
-                      <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
-                        <%= reservation.status %>
-                      <% end %>
-                    </td>
-                  </tr>
-
+                <tr class="row reservation-tr">
+                  <td class="col-sm-4 p-0 reservation-datetime">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= l(reservation.use_date, format: :long)  %>
+                      <%= reservation.use_time.strftime("%H時%M分") %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-4 p-0">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= reservation.shop&.name %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-2 p-0">
+                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                      <%= reservation.status %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-2 p-0">
+                    <%= link_to new_reservation_enquete_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                        アンケートに回答
+                    <% end %>
+                  </td>
+                </tr>
               <% end %>
             <% else %>
               <tr>

@@ -2,7 +2,8 @@ class EnquetesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @enquete = Reservation.find(params[:reservation_id]).enquetes.build
+    @reservation = Reservation.find(params[:reservation_id])
+    @enquete = @reservation.enquetes.build
     EnqueteItem.ids.each { |item_id| @enquete.enquete_answers.build(enquete_item_id: item_id) }
   end
 

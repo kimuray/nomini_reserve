@@ -53,6 +53,7 @@ ja:
         shop_id: 店舗ID
         user: ユーザー
         user_id: ユーザーID
+        user_name: 利用者指名
         reservation_category: 予約カテゴリ
         reservation_category_id: 予約カテゴリID
         people_count: 利用人数
@@ -61,6 +62,7 @@ ja:
         use_time: 利用時刻
         message: メッセージ
         status: 予約ステータス
+        price: 利用料金
         created_at: 登録日時
         updated_at: 更新日時
       enquete:
