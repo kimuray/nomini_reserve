@@ -101,3 +101,12 @@ ja:
         price: 値段
         created_at: 登録日時
         updated_at: 更新日時
+      exchange:
+        user_id: ユーザーID
+        user_name: ユーザー名
+        point: 申請ポイント数
+        status: ステータス
+        remand_reason: 差戻し理由
+        paied_at: 支払い日時
+        created_at: 登録日時
+        updated_at: 更新日時

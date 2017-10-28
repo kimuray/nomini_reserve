@@ -1,0 +1,19 @@
+<div class="modal fade" id="remand_form">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">差戻し理由入力</h4>
+      </div>
+      <div class="modal-body">
+        <%= bootstrap_form_for [:admin, exchange], url: remand_admin_exchange_path(exchange), method: :patch do |form| %>
+          <%= form.text_area :remand_reason, required: true %>
+          <%= form.submit '差戻す', class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

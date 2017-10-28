@@ -20,11 +20,9 @@
         </div>
         <%= form.text_field :phone_number %>
         <%= form.text_field :enterprise_name %>
-        <%= form.text_field :bank_name %>
-        <%= form.text_field :bank_branch_name %>
-        <%= form.text_field :bank_account_number %>
         <%= form.text_field :occupation %>
         <%= form.number_field :point_count %>
+        <%# TODO: 口座情報を登録できるように修正する %>
 
         <div class="box-footer">
           <%= form.primary '登録する' %>

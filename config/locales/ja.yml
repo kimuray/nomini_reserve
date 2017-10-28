@@ -204,4 +204,5 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
       time_only: "%H:%M"
+      date_time: "%Y年%m月%d日(%a) %H時%M分"
     pm: 午後
