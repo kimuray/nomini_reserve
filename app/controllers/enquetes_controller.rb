@@ -10,7 +10,7 @@ class EnquetesController < ApplicationController
     @enquete = Reservation.find(params[:reservation_id]).enquetes.build(enquete_params)
     @enquete.answer_date = Date.today
     if @enquete.save
-      introduction_point_add
+      current_user.passive_introduction.point_add
       redirect_to mypage_url, notice: 'アンケートを送信しました'
     else
       render :new
@@ -25,13 +25,4 @@ class EnquetesController < ApplicationController
     )
   end
 
-  # 友人紹介から利用したユーザーの場合、紹介者にポイント付与
-  def introduction_point_add
-    introduction = Introduction.registered&.find_by(introduced_id: current_user.id)
-    if introduction.present?
-      introduction.user.point_count += 3000
-      introduction.user.save!
-      introduction.provided!
-    end
-  end
 end
