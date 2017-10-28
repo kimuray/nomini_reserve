@@ -19,6 +19,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               <%= link_to "ユーザー設定", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "友人紹介", new_introduction_path, class: "dropdown-item" %>
             </div>
           </li>
 

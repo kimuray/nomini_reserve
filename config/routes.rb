@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'users/edit/password', to: 'users/registrations#password_edit'
     patch 'users/edit/password', to: 'users/registrations#password_update'
     resource :bank_account, only: [:new, :create, :edit, :update]
+    resource :introduction, only: [:new, :create]
   end
 
   get  '/mypage',    to: 'reservations#index'
