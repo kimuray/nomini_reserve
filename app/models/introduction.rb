@@ -5,7 +5,7 @@ class Introduction < ApplicationRecord
 
   # Association
   belongs_to :user
-  belongs_to :introduced, class_name: "User", optional: true
+  belongs_to :introduced_user, class_name: "User", optional: true
 
   # Validation
   validates :user_id, presence: true
@@ -15,21 +15,23 @@ class Introduction < ApplicationRecord
   enum status: { sent: 0, registered: 1, provided: 2 }
 
   # scope
-  scope :by_token, -> token { find_by(introduction_token: token) }
+  scope :find_by_token, -> token { find_by(introduction_token: token) }
 
   # 友人紹介から登録された際のステータス変更&ユーザーID登録
   def registrate(user_id)
     self.registered! unless self.provided?
-    self.introduced_id = user_id
+    self.introduced_user_id = user_id
     self.save!
   end
 
   # 友人紹介から利用したユーザーの場合、紹介者にポイント付与
   def point_add
     if registered?
-      user.point_count += INTRODUCTION_POINT
-      user.save!
-      provided!
+      ActiveRecord::Base.transaction do
+        user.point_count += INTRODUCTION_POINT
+        user.save!
+        provided!
+      end
     end
   end
 end

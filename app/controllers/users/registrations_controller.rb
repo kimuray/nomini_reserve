@@ -88,13 +88,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_introduction_params
-    session[:introduction_token] = params[:introduction_token] unless params[:introduction_token].blank?
+    session[:introduction_token] = params[:introduction_token] if params[:introduction_token].present?
   end
 
   # 紹介されたユーザーの場合、紹介ステータスの更新&ユーザーID登録
   def introduction_registrate
     if session[:introduction_token].present? && resource.persisted?
-      Introduction.by_token(session[:introduction_token]).registrate(resource.id)
+      Introduction.find_by_token(session[:introduction_token]).registrate(resource.id)
       session.delete(:introduction_token)
     end
   end
