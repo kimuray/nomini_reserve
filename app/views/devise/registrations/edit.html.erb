@@ -4,42 +4,42 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :email, class: "col-sm-3 signup-label m-0" %><br />
       <%= f.email_field :email, autofocus: true, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :l_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :l_name, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :f_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :f_name, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :l_name_kana, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :l_name_kana, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :f_name_kana, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :f_name_kana, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :enterprise_name, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :enterprise_name, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :phone_number, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :phone_number, class: "col-sm-9 form-control" %>
     </div>
 
-    <div class="field form-group row signup-form">
+    <div class="field form-group row center-form">
       <%= f.label :occupation, class: "col-sm-3 signup-label" %><br />
       <%= f.text_field :occupation, class: "col-sm-9 form-control" %>
     </div>

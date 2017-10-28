@@ -1,9 +1,12 @@
-<h1>アンケート</h1>
-<%= form_with model: @enquete, url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
-  <%= form.fields_for :enquete_answers, @enquete.enquete_answers do |answer_form| %>
-    <%= render 'enquete_item', answer_form: answer_form %>
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0 text-center">アンケート</h2>
+  <%= form_with model: @enquete, url: reservation_enquetes_path(params[:reservation_id]), local: true do |form| %>
+    <%= form.fields_for :enquete_answers, @enquete.enquete_answers do |answer_form| %>
+      <%= render 'enquete_item', answer_form: answer_form %>
+    <% end %>
+
+    <div class="actions text-center mb-3">
+      <%= form.submit '送信', class: "btn btn-info" %>
+    </div>
   <% end %>
-
-  <%= form.submit '送信' %>
-<% end %>
-
+</div>
