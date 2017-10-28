@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  root 'reservations#index'
+
+  # deviseルーティングより前に置かないと優先度で負けるため先に記載
+  resource :shops, only: [:edit, :update]
+
+  devise_for :shops, controllers: {
+    sessions: 'shops/sessions',
+    registrations: 'shops/registrations',
+    confirmations: 'shops/confirmations'
+  }
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -6,7 +17,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     confirmations: 'users/confirmations'
   }
-  devise_scope :users do
+
+  devise_scope :user do
+    get 'users/edit/password', to: 'users/registrations#password_edit'
+    patch 'users/edit/password', to: 'users/registrations#password_update'
     resource :bank_account, only: [:new, :create, :edit, :update]
   end
 
@@ -17,6 +31,7 @@ Rails.application.routes.draw do
       post :confirm, on: :collection
     end
   end
+
   resources :reservation, only: [], shallow: true do
     resources :enquetes, only: [:new, :create]
   end
@@ -32,7 +47,10 @@ Rails.application.routes.draw do
     resources :reservation_categories
     resources :enquete_items
     resources :users
-    resources :reservations
+    resources :reservations do
+      patch :done, on: :member
+      patch :remand, on: :member
+    end
     resources :enquetes, shallow: true do
       resources :enquete_answers, only: [:edit, :update, :destroy]
     end

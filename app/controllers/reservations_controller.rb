@@ -19,6 +19,7 @@ class ReservationsController < ApplicationController
     @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
     @reservation.user_id = current_user.id
     if params[:back].blank? && @reservation.save
+      send_reservation_mail
       redirect_to shop_reservations_url, notice: '予約しました。'
     else
       @shop = @reservation.shop
@@ -36,10 +37,16 @@ class ReservationsController < ApplicationController
   end
 
   private
+
   def reservation_params
     params.fetch(:reservation, {}).permit(
       :shop_id, :user_id, :reservation_category_id, :people_count,
       :use_date, :use_time, :message, :status
     )
+  end
+
+  def send_reservation_mail
+    ReservationMailer.notice_reservation_to_nomini(@reservation).deliver_now
+    ReservationMailer.notice_reservation_to_user(@reservation).deliver_now
   end
 end

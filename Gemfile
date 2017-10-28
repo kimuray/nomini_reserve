@@ -20,7 +20,7 @@ gem 'bootstrap_form'
 gem 'kaminari'
 
 # Server
-gem 'puma', '~> 3.7'
+gem 'unicorn'
 
 # Authentication
 gem 'devise', '~> 4.3'
@@ -30,12 +30,14 @@ gem 'omniauth-facebook', '~> 4.0'
 # Image
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'fog'
 
 # API
 gem 'payjp'
 
 # Util
 gem 'dotenv-rails'
+gem 'config'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -55,6 +57,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rbenv'
 end
 
 group :test do

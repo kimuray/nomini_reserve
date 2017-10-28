@@ -1,0 +1,28 @@
+<div class="main-area container bg-white mt-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">店舗ログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field form-group text-center login-form">
+      <%= f.email_field :email, autofocus: true, placeholder: t("activerecord.attributes.user.email"), class: "form-control" %>
+    </div>
+
+    <div class="field form-group text-center login-form">
+      <%= f.password_field :password, autocomplete: "off", placeholder: t("activerecord.attributes.user.password"), class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+        <div class="field form-group text-center mb-2">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+    <% end -%>
+
+    <div class="actions form-group text-center">
+      <%= f.submit "ログイン", class: "btn btn-info" %>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <p class="text-center"><%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name), class: "text-info" %></p>
+  <% end -%>
+</div>

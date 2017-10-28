@@ -1,0 +1,49 @@
+<div class="main-area container bg-white mt-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">店舗情報編集</h2>
+
+  <%= form_with(model: @shop, url: shops_path, method: :put, local: true) do |form| %>
+    <div class="field form-group row signup-form">
+      <%= form.label :name, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_field :name, class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :image, class: "col-sm-3 signup-label" %><br />
+      <%= form.file_field :image, class: "col-sm-9 form-control" %>
+      <%= form.hidden_field :image_cache %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :phone_number, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_field :phone_number, class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :service_time, class: "col-sm-3 signup-label" %><br />
+      <%= form.number_field :service_time, class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :description, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_area :description, class: "col-sm-9 form-control" %>
+    </div>
+
+    <h4 class="field form-group row signup-form">値段設定</h4>
+
+    <%= form.fields_for :shop_usages, @shop.shop_usages do |su_form| %>
+      <%= su_form.hidden_field :id %>
+      <div class="field form-group row signup-form">
+        <%= su_form.label :reservation_category_id, class: 'col-sm-3 signup-label' %><br />
+        <%= su_form.collection_select :reservation_category_id, ReservationCategory.select(:id, :name), :id, :name, class: 'col-sm-9 form-control'  %>
+      </div>
+      <div class="field form-group row signup-form">
+        <%= su_form.label :price, class: 'col-sm-3 signup-label' %><br />
+        <%= su_form.number_field :price, class: "col-sm-9 form-control"  %>
+      </div>
+    <% end %>
+
+    <div class="actions text-center mb-3">
+      <%= form.submit '更新する', class: 'btn btn-info' %>
+    </div>
+  <% end %>
+</div>
