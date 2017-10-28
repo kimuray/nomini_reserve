@@ -36,6 +36,9 @@
               <%= simple_format(@exchange.remand_reason) %>
             </div>
           <% end %>
+          <% if @exchange.remand? %>
+            <%= link_to '再度換金申請を行う', new_exchange_path %>
+          <% end %>
         </p>
       </div>
     </div>
@@ -57,36 +60,3 @@
   </div>
 </div>
 
-<% if @exchange.remand? %>
-  <div class="container bg-white mt-3 pb-2">
-    <h2 class="text-info py-3 m-0">換金再申請フォーム</h2>
-    <%= form_with(model: @exchange, url: reapply_exchange_path(@exchange), local: true) do |form| %>
-      <% if @exchange.errors.any? %>
-          <div class="field form-group signup-form">
-            <div class="alert alert-danger">
-              <ul>
-                <% @exchange.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-      <% end %>
-      <div class="field form-group signup-form">
-        <p>現在のポイント数: <b><%= current_user.point_count %></b></p>
-        <p>
-          下記入力フォームより換金したいポイント数を入力してください。<br>
-          ※ ポイントの換金は10,000ポイントからとなります。
-        </p>
-      </div>
-
-      <div class="field form-group row signup-form">
-        <%= form.number_field :point, class: "form-control"  %>
-      </div>
-
-      <div class="actions text-center mb-3">
-        <%= form.submit '再申請する', class: 'btn btn-info', data: { confirm: '申請してもよろしいですか？' } %>
-      </div>
-    <% end %>
-  </div>
-<% end %>

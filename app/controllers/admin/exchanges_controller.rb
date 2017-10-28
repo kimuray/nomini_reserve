@@ -44,7 +44,7 @@ class Admin::ExchangesController < AdminController
   end
 
   def remand
-    @exchange.update(remand_reason: exchange_params[:remand_reason], status: :remand)
+    @exchange.remand_apply!(exchange_params[:remand_reason])
     redirect_to admin_exchange_url(@exchange), notice: '換金を差し戻しました'
   end
 

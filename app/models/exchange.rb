@@ -1,13 +1,21 @@
 class Exchange < ApplicationRecord
   belongs_to :user
 
-  enum status: { pending: 0, done: 1, remand: 2, resubmit: 3 }
+  enum status: { pending: 0, done: 1, remand: 2 }
 
   validates :point, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 10_000 }
   validate :less_than_possession_points
 
   after_create :update_point_balance
+
+  def remand_apply!(reason)
+    point_diff = user.point_count + point
+    ActiveRecord::Base.transaction do
+      update!(remand_reason: reason, status: :remand)
+      user.update!(point_count: point_diff)
+    end
+  end
 
   private
 

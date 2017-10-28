@@ -16,11 +16,13 @@
     </div>
     <div class="box-body">
       <%= @exchange.status %>
-      <%= link_to done_admin_exchange_path(@exchange), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
-        <i class="fa fa-edit">完了</i>
+      <% if @exchange.pending? %>
+        <%= link_to done_admin_exchange_path(@exchange), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
+          <i class="fa fa-edit">完了</i>
+        <% end %>
+        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#remand_form"><i class="fa fa-edit">差戻し</i></a>
+        <%= render 'remand_modal_form', exchange: @exchange %>
       <% end %>
-      <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#remand_form"><i class="fa fa-edit">差戻し</i></a>
-      <%= render 'remand_modal_form', exchange: @exchange %>
       <% if @exchange.remand_reason.present? %>
         <h4><%= Exchange.human_attribute_name(:remand_reason) %></h4>
         <%= simple_format(@exchange.remand_reason) %>
