@@ -9,4 +9,12 @@ class ApplyPoint < ApplicationRecord
   def set_point
     self.point = (use_price * EXCHANGE_RATE).to_i
   end
+
+  def grant_to_user!
+    user.point_count += point
+    ActiveRecord::Base.transaction do
+      done!
+      user.save!
+    end
+  end
 end

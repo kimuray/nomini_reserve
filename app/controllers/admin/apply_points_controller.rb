@@ -1,5 +1,5 @@
 class Admin::ApplyPointsController < AdminController
-  before_action :set_apply_point, only: [:show, :edit, :update, :destroy]
+  before_action :set_apply_point, only: [:show, :edit, :update, :destroy, :done, :remand]
 
   def index
     @apply_points = ApplyPoint.page(params[:page])
@@ -36,6 +36,16 @@ class Admin::ApplyPointsController < AdminController
   def destroy
     @apply_point.destroy
     redirect_to admin_apply_points_url, notice: 'Apply point was successfully destroyed.'
+  end
+
+  def done
+    @apply_point.grant_to_user!
+    redirect_to admin_apply_point_url(@apply_point), notice: 'ポイントを承認しました'
+  end
+
+  def remand
+    @apply_point.remand!
+    redirect_to admin_apply_point_url(@apply_point), notice: 'ポイントを却下しました'
   end
 
   private

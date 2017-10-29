@@ -30,6 +30,14 @@
     </div>
     <div class="box-body">
       <%= @apply_point.status %>
+        <% if !(@apply_point.done? || @apply_point.remand?) %>
+        <%= link_to done_admin_apply_point_path(@apply_point), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
+          <i class="fa fa-edit">承認</i>
+        <% end %>
+        <%= link_to remand_admin_apply_point_path(@apply_point), class: 'btn btn-danger', method: :patch, data: { confirm: '却下してよろしいですか？' } do %>
+          <i class="fa fa-edit">却下</i>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="box-header with-border">
