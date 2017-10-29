@@ -26,8 +26,8 @@ class ReservationsController < ApplicationController
   def cancel
     @reservation = Reservation.find(params[:id])
     @reservation.canceled!
-    ReservationMailer.remand_reservation_to_user(@reservation).deliver_now
-    ReservationMailer.remand_reservation_to_nomini(@reservation).deliver_now
+    ReservationMailer.cancel_reservation_to_user(@reservation).deliver_now
+    ReservationMailer.cancel_reservation_to_nomini(@reservation).deliver_now
     redirect_to root_path, notice: '予約をキャンセルしました'
   end
 
