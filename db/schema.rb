@@ -99,6 +99,18 @@ ActiveRecord::Schema.define(version: 20171027155614) do
     t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
+  create_table "introductions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.integer "introduced_user_id"
+    t.string "introduced_email"
+    t.string "introduction_token"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "introduced_user_id"], name: "index_introductions_on_user_id_and_introduced_user_id", unique: true
+    t.index ["user_id"], name: "index_introductions_on_user_id"
+  end
+
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.integer "status", default: 1
@@ -211,6 +223,7 @@ ActiveRecord::Schema.define(version: 20171027155614) do
   add_foreign_key "enquete_selections", "enquete_items"
   add_foreign_key "enquetes", "reservations"
   add_foreign_key "exchanges", "users"
+  add_foreign_key "introductions", "users"
   add_foreign_key "payments", "users"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"

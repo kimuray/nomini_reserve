@@ -49,3 +49,45 @@
     </div>
   </div>
 </div>
+
+<div class="main-area container bg-white mt-3">
+  <h2 class="text-info page-heading py-3 m-0">換金履歴一覧</h2>
+  <div class="px-3">
+    <div class="box box-primary">
+      <div class="box-body no-padding">
+        <table class="table container">
+          <tr class="row pc-only-block">
+            <th class="col-sm-5">換金申請日</th>
+            <th class="col-sm-5">申請ポイント数</th>
+            <th class="col-sm-2">状況</th>
+          </tr>
+          <% if @exchanges.any? %>
+            <% @exchanges.each do |exchange| %>
+              <tr class="row reservation-tr">
+                <td class="col-sm-5 p-0 reservation-datetime">
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= l(exchange.created_at, format: :date_time)  %>
+                  <% end %>
+                </td>
+                <td class="col-sm-5 p-0">
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= exchange.point %>
+                  <% end %>
+                </td>
+                <td class="col-sm-2 p-0">
+                  <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= exchange.status %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan=5>換金申請情報が存在しません</td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

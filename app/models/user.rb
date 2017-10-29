@@ -8,8 +8,13 @@ class User < ApplicationRecord
   # Association
   has_many :reservations
   has_many :apply_points
+  has_many :exchanges
   has_one :bank_account, dependent: :destroy
   has_one :payment
+  has_many :introductions, dependent: :destroy
+  has_one :passive_introduction, class_name: "Introduction",
+                                 foreign_key: "introduced_user_id",
+                                 dependent: :destroy
 
   # Validation
   validates :l_name, presence: true

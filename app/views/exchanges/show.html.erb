@@ -1,0 +1,62 @@
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0">換金申請情報</h2>
+  <!-- Main content -->
+  <div class="confirm-box">
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label">申請日時</h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= l(@exchange.created_at, format: :date_time) %>
+        </p>
+      </div>
+    </div>
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:point) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @exchange.point %> pt
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:status) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @exchange.status %>
+          <% if @exchange.remand? && @exchange.remand_reason.present? %>
+            <div class="alert alert-warning">
+              <strong><%= Exchange.human_attribute_name(:remand_reason) %></strong>
+              <%= simple_format(@exchange.remand_reason) %>
+            </div>
+          <% end %>
+          <% if @exchange.remand? %>
+            <%= link_to '再度換金申請を行う', new_exchange_path %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Exchange.human_attribute_name(:paied_at) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <% if @exchange.paied_at.present? %>
+            <%= l(@exchange.paied_at, format: :date_time)  %>
+          <% else %>
+            <p>審査待ち</p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -11,6 +11,7 @@ class EnquetesController < ApplicationController
     @enquete = Reservation.find(params[:reservation_id]).enquetes.build(enquete_params)
     @enquete.answer_date = Date.today
     if @enquete.save
+      current_user.passive_introduction.point_add
       redirect_to mypage_url, notice: 'アンケートを送信しました'
     else
       render :new
@@ -24,4 +25,5 @@ class EnquetesController < ApplicationController
       enquete_answers_attributes: [:enquete_item_id, :string_value, :integer_value, :boolean_value]
     )
   end
+
 end

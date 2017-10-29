@@ -11,4 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
+//= require admin/AdminLTE/plugins/jquery-2.2.3.min
+//= require admin/AdminLTE/plugins/jquery-ui.min
+//= require admin/AdminLTE/plugins/jquery.slimscroll.min
+//= require admin/AdminLTE/plugins/fastclick.min
+//= require admin/AdminLTE/bootstrap.min
+//= require admin/AdminLTE/app.min
