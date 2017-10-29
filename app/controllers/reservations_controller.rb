@@ -11,11 +11,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.includes(:shop, :reservation_category).find(params[:id])
   end
 
-  #def new
-  #  @reservation = Reservation.includes(:reservation_category).new
-  #  @reservation.shop = Shop.find(params[:shop_id])
-  #end
-
   def create
     @reservation = Shop.find(params[:shop_id]).reservations.build(reservation_params)
     @reservation.user_id = current_user.id
@@ -26,6 +21,14 @@ class ReservationsController < ApplicationController
       @shop = @reservation.shop
       render template: "shops/show"
     end
+  end
+
+  def remand
+    @reservation = Reservation.find(params[:id])
+    @reservation.remand!
+    ReservationMailer.remand_reservation_to_user(@reservation).deliver_now
+    ReservationMailer.remand_reservation_to_nomini(@reservation).deliver_now
+    redirect_to root_path, notice: '予約をキャンセルしました'
   end
 
   def confirm

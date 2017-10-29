@@ -87,5 +87,10 @@
         </p>
       </div>
     </div>
+    <% unless @reservation.remand? %>
+      <div class="mb-3 clearfix">
+        <%= link_to "予約をキャンセルする", remand_reservation_path(@reservation), class: "btn btn-outline-secondary float-right", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>
+      </div>
+    <% end %>
   </div>
 </div>
