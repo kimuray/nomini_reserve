@@ -31,6 +31,7 @@ class Admin::ShopsController < AdminController
   end
 
   def update
+    @reservation_categories = ReservationCategory.all
     if @shop.update(shop_params)
       redirect_to admin_shop_url(@shop), notice: 'Shop was successfully updated.'
     else

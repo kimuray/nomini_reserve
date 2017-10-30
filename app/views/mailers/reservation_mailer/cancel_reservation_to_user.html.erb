@@ -1,0 +1,42 @@
+<p><%= @reservation.user.full_name %>様</p>
+
+<p>
+  予約をキャンセルいたしました。<br>
+  次のご利用をお待ちいたしましております。
+</p>
+
+<ul>
+  <li>
+    <h4>カテゴリ</h4>
+    <p><%= @reservation.reservation_category.name %></p>
+  </li>
+  <li>
+    <h4>予約店舗</h4>
+    <p>
+      <%= @reservation.shop.name %><br>
+      URL: <%= link_to shop_url(@reservation.shop), shop_url(@reservation.shop) %>
+    </p>
+  </li>
+  <li>
+    <h4>予約日時</h4>
+    <p><%= "#{l(@reservation.use_date, format: :long)} #{l(@reservation.use_time, format: :time_only)}" %></p>
+  </li>
+  <li>
+    <h4>予約人数</h4>
+    <p><%= @reservation.people_count %>人</p>
+  </li>
+  <li>
+    <h4>予約者</h4>
+    <p><%= @reservation.user.full_name %></p>
+  </li>
+  <li>
+    <h4>金額</h4>
+    <p><%= @reservation.tax_included_price %>円</p>
+  </li>
+  <li>
+    <h4>備考</h4>
+    <%= simple_format(@reservation.message) %>
+  </li>
+</ul>
+
+このメールは配信専用です。返信はできませんので御了承ください。

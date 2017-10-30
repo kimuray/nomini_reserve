@@ -2,90 +2,95 @@
   <h2 class="text-info py-3 m-0">予約情報</h2>
   <!-- Main content -->
   <div class="confirm-box">
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:shop) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= @reservation.shop&.name %>
-          </p>
-        </div>
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:shop) %></h3>
       </div>
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= @reservation.reservation_category&.name %>
-          </p>
-        </div>
-      </div>
-
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label">料金</h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= @reservation.output_price %>円
-          </p>
-        </div>
-      </div>
-
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:people_count) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= @reservation.people_count %>人
-          </p>
-        </div>
-      </div>
-
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= l(@reservation.use_date, format: :long)  %>
-            <%= @reservation.use_time.strftime("%H時%M分") %>
-          </p>
-        </div>
-      </div>
-
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:message) %></h3>
-        </div>
-        <div class="col-md-9">
-          <%= simple_format(@reservation.message, class: "message-format") %>
-        </div>
-      </div>
-
-      <div class="row confirm-list">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:status) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= @reservation.status %>
-          </p>
-        </div>
-      </div>
-
-      <div class="row confirm-list mb-3">
-        <div class="col-md-3">
-          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:created_at) %></h3>
-        </div>
-        <div class="col-md-9">
-          <p class="confirm-value">
-            <%= l(@reservation.created_at, format: :default) %>
-          </p>
-        </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation.shop&.name %>
+        </p>
       </div>
     </div>
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation.reservation_category&.name %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label">料金</h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation.output_price %>円
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:people_count) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation.people_count %>人
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= l(@reservation.use_date, format: :long)  %>
+          <%= @reservation.use_time.strftime("%H時%M分") %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:message) %></h3>
+      </div>
+      <div class="col-md-9">
+        <%= simple_format(@reservation.message, class: "message-format") %>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:status) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation.status %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list mb-3">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:created_at) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= l(@reservation.created_at, format: :default) %>
+        </p>
+      </div>
+    </div>
+    <% unless @reservation.canceled? %>
+      <div class="mb-3 clearfix">
+        <%= link_to "予約をキャンセルする", cancel_reservation_path(@reservation), class: "btn btn-outline-secondary float-right", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>
+      </div>
+    <% end %>
+  </div>
 </div>
