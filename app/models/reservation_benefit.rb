@@ -1,4 +1,4 @@
-class ApplyPoint < ApplicationRecord
+class ReservationBenefit < ApplicationRecord
   EXCHANGE_RATE = 0.1
 
   belongs_to :reservation

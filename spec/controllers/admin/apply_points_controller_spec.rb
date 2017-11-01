@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe Admin::ApplyPointsController, type: :controller do
+RSpec.describe Admin::ReservationBenefitsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Admin::ApplyPoint. As you add validations to Admin::ApplyPoint, be sure to
+  # Admin::ReservationBenefit. As you add validations to Admin::ReservationBenefit, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe Admin::ApplyPointsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # Admin::ApplyPointsController. Be sure to keep this updated too.
+  # Admin::ReservationBenefitsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      apply_point = Admin::ApplyPoint.create! valid_attributes
+      reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -51,8 +51,8 @@ RSpec.describe Admin::ApplyPointsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      apply_point = Admin::ApplyPoint.create! valid_attributes
-      get :show, params: {id: apply_point.to_param}, session: valid_session
+      reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+      get :show, params: {id: reservation_benefit.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe Admin::ApplyPointsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      apply_point = Admin::ApplyPoint.create! valid_attributes
-      get :edit, params: {id: apply_point.to_param}, session: valid_session
+      reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+      get :edit, params: {id: reservation_benefit.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Admin::ApplyPoint" do
+      it "creates a new Admin::ReservationBenefit" do
         expect {
-          post :create, params: {admin_apply_point: valid_attributes}, session: valid_session
-        }.to change(Admin::ApplyPoint, :count).by(1)
+          post :create, params: {admin_reservation_benefit: valid_attributes}, session: valid_session
+        }.to change(Admin::ReservationBenefit, :count).by(1)
       end
 
-      it "redirects to the created admin_apply_point" do
-        post :create, params: {admin_apply_point: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Admin::ApplyPoint.last)
+      it "redirects to the created admin_reservation_benefit" do
+        post :create, params: {admin_reservation_benefit: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Admin::ReservationBenefit.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {admin_apply_point: invalid_attributes}, session: valid_session
+        post :create, params: {admin_reservation_benefit: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe Admin::ApplyPointsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested admin_apply_point" do
-        apply_point = Admin::ApplyPoint.create! valid_attributes
-        put :update, params: {id: apply_point.to_param, admin_apply_point: new_attributes}, session: valid_session
-        apply_point.reload
+      it "updates the requested admin_reservation_benefit" do
+        reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+        put :update, params: {id: reservation_benefit.to_param, admin_reservation_benefit: new_attributes}, session: valid_session
+        reservation_benefit.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the admin_apply_point" do
-        apply_point = Admin::ApplyPoint.create! valid_attributes
-        put :update, params: {id: apply_point.to_param, admin_apply_point: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(apply_point)
+      it "redirects to the admin_reservation_benefit" do
+        reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+        put :update, params: {id: reservation_benefit.to_param, admin_reservation_benefit: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(reservation_benefit)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        apply_point = Admin::ApplyPoint.create! valid_attributes
-        put :update, params: {id: apply_point.to_param, admin_apply_point: invalid_attributes}, session: valid_session
+        reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+        put :update, params: {id: reservation_benefit.to_param, admin_reservation_benefit: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested admin_apply_point" do
-      apply_point = Admin::ApplyPoint.create! valid_attributes
+    it "destroys the requested admin_reservation_benefit" do
+      reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
       expect {
-        delete :destroy, params: {id: apply_point.to_param}, session: valid_session
-      }.to change(Admin::ApplyPoint, :count).by(-1)
+        delete :destroy, params: {id: reservation_benefit.to_param}, session: valid_session
+      }.to change(Admin::ReservationBenefit, :count).by(-1)
     end
 
-    it "redirects to the admin_apply_points list" do
-      apply_point = Admin::ApplyPoint.create! valid_attributes
-      delete :destroy, params: {id: apply_point.to_param}, session: valid_session
-      expect(response).to redirect_to(admin_apply_points_url)
+    it "redirects to the admin_reservation_benefits list" do
+      reservation_benefit = Admin::ReservationBenefit.create! valid_attributes
+      delete :destroy, params: {id: reservation_benefit.to_param}, session: valid_session
+      expect(response).to redirect_to(admin_reservation_benefits_url)
     end
   end
 

@@ -1,6 +1,6 @@
-class CreateApplyPoints < ActiveRecord::Migration[5.1]
+class CreateReservationBenefits < ActiveRecord::Migration[5.1]
   def change
-    create_table :apply_points do |t|
+    create_table :reservation_benefits do |t|
       t.integer :point
       t.integer :use_price
       t.integer :reservation_id

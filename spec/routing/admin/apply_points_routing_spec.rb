@@ -1,38 +1,38 @@
 require "rails_helper"
 
-RSpec.describe Admin::ApplyPointsController, type: :routing do
+RSpec.describe Admin::ReservationBenefitsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/admin/apply_points").to route_to("admin/apply_points#index")
+      expect(:get => "/admin/reservation_benefits").to route_to("admin/reservation_benefits#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/admin/apply_points/new").to route_to("admin/apply_points#new")
+      expect(:get => "/admin/reservation_benefits/new").to route_to("admin/reservation_benefits#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/admin/apply_points/1").to route_to("admin/apply_points#show", :id => "1")
+      expect(:get => "/admin/reservation_benefits/1").to route_to("admin/reservation_benefits#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/admin/apply_points/1/edit").to route_to("admin/apply_points#edit", :id => "1")
+      expect(:get => "/admin/reservation_benefits/1/edit").to route_to("admin/reservation_benefits#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/admin/apply_points").to route_to("admin/apply_points#create")
+      expect(:post => "/admin/reservation_benefits").to route_to("admin/reservation_benefits#create")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/admin/apply_points/1").to route_to("admin/apply_points#update", :id => "1")
+      expect(:put => "/admin/reservation_benefits/1").to route_to("admin/reservation_benefits#update", :id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/admin/apply_points/1").to route_to("admin/apply_points#update", :id => "1")
+      expect(:patch => "/admin/reservation_benefits/1").to route_to("admin/reservation_benefits#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/admin/apply_points/1").to route_to("admin/apply_points#destroy", :id => "1")
+      expect(:delete => "/admin/reservation_benefits/1").to route_to("admin/reservation_benefits#destroy", :id => "1")
     end
 
   end

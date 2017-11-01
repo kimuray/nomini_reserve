@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :apply_point do
+  factory :reservation_benefit do
     point 1
     use_price 1
     reservation_id 1

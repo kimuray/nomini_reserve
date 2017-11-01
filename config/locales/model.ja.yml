@@ -103,7 +103,7 @@ ja:
         price: 値段
         created_at: 登録日時
         updated_at: 更新日時
-      apply_point:
+      reservation_benefit:
         reservation_id: 予約ID
         shop_name: 店舗名
         user_id: ユーザーID

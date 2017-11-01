@@ -8,16 +8,16 @@ class Enquete < ApplicationRecord
 
   accepts_nested_attributes_for :enquete_answers
 
-  after_create :create_apply_point_record
+  after_create :create_reservation_benefit_record
 
   private
 
-  def create_apply_point_record
-    apply_point = reservation.build_apply_point(
+  def create_reservation_benefit_record
+    reservation_benefit = reservation.build_reservation_benefit(
       user: reservation.user,
       use_price: reservation.sum_price
     )
-    apply_point.set_point
-    apply_point.save
+    reservation_benefit.set_point
+    reservation_benefit.save
   end
 end
