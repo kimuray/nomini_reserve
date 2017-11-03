@@ -1,7 +1,7 @@
 <div class="container bg-white mt-3 pb-2">
   <h2 class="text-info py-3 m-0">予約情報</h2>
   <!-- Main content -->
-  <div class="confirm-box">
+  <div class="confirm-box clearfix">
     <div class="row confirm-list">
       <div class="col-md-3">
         <h3 class="confirm-label"><%= Reservation.human_attribute_name(:shop) %></h3>
@@ -88,9 +88,9 @@
       </div>
     </div>
     <% unless @reservation.canceled? %>
-      <div class="mb-3 clearfix">
-        <%= link_to "予約をキャンセルする", cancel_reservation_path(@reservation), class: "btn btn-outline-secondary float-right", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>
-        <%= link_to "予約内容を変更する", edit_reservation_path(@reservation), class: "btn btn-outline-info float-right mr-2" %>
+      <div class="mb-2 float-right">
+        <%= link_to "予約内容を変更する", edit_reservation_path(@reservation), class: "btn btn-outline-info mr-2 mb-1" %>
+        <%= link_to "予約をキャンセルする", cancel_reservation_path(@reservation), class: "btn btn-outline-secondary mb-1", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>
       </div>
     <% end %>
   </div>
