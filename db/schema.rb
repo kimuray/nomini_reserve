@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023142757) do
+ActiveRecord::Schema.define(version: 20171027155614) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -89,6 +89,18 @@ ActiveRecord::Schema.define(version: 20171023142757) do
     t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
+  create_table "introductions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.integer "introduced_user_id"
+    t.string "introduced_email"
+    t.string "introduction_token"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "introduced_user_id"], name: "index_introductions_on_user_id_and_introduced_user_id", unique: true
+    t.index ["user_id"], name: "index_introductions_on_user_id"
+  end
+
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.integer "status", default: 1
@@ -101,6 +113,16 @@ ActiveRecord::Schema.define(version: 20171023142757) do
     t.index ["payjp_token"], name: "index_payments_on_payjp_token"
     t.index ["subscription_id"], name: "index_payments_on_subscription_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "reservation_benefits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "point"
+    t.integer "use_price"
+    t.integer "reservation_id"
+    t.integer "user_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservation_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -201,6 +223,7 @@ ActiveRecord::Schema.define(version: 20171023142757) do
   add_foreign_key "enquete_selections", "enquete_items"
   add_foreign_key "enquetes", "reservations"
   add_foreign_key "exchanges", "users"
+  add_foreign_key "introductions", "users"
   add_foreign_key "payments", "users"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"

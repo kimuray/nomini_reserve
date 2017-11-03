@@ -1,0 +1,83 @@
+<% content_for :content_header do %>
+  <h1>申請ポイント詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:shop_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.reservation&.shop&.name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:user_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.user&.full_name %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:status) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.status %>
+        <% if !(@reservation_benefit.done? || @reservation_benefit.remand?) %>
+        <%= link_to done_admin_reservation_benefit_path(@reservation_benefit), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
+          <i class="fa fa-edit">承認</i>
+        <% end %>
+        <%= link_to remand_admin_reservation_benefit_path(@reservation_benefit), class: 'btn btn-danger', method: :patch, data: { confirm: '却下してよろしいですか？' } do %>
+          <i class="fa fa-edit">却下</i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:use_price) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.use_price %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:point) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.point %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:created_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.created_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationBenefit.human_attribute_name(:updated_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_benefit.updated_at %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_reservation_benefit_path(@reservation_benefit), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_reservation_benefit_path(@reservation_benefit), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>
+

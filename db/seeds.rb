@@ -1,7 +1,40 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+enquete_item1 = EnqueteItem.create!(content: '店舗の雰囲気はいかがでしたか？', answer_type: :selection)
+enquete_item1.enquete_selections.create!(content: '大変良い', answer_value: 1)
+enquete_item1.enquete_selections.create!(content: '良い', answer_value: 2)
+enquete_item1.enquete_selections.create!(content: '普通', answer_value: 3)
+enquete_item1.enquete_selections.create!(content: '悪い', answer_value: 4)
+enquete_item1.enquete_selections.create!(content: '大変悪い', answer_value: 5)
+
+enquete_item2 = EnqueteItem.create(content: '上記質問で悪い、大変悪いを選んだ方は具体的に教えてください', answer_type: :selection)
+enquete_item2.enquete_selections.create(content: '店内が騒がしい(BGM・客層等)', answer_value: 1)
+enquete_item2.enquete_selections.create(content: '清潔感がない', answer_value: 2)
+enquete_item2.enquete_selections.create(content: '店内の照明', answer_value: 3)
+enquete_item2.enquete_selections.create(content: '席が落ち着かない', answer_value: 4)
+
+enquete_item3= EnqueteItem.create(content: '接客対応はいかがでしたか？', answer_type: :selection)
+enquete_item3.enquete_selections.create(content: '大変良い', answer_value: 1)
+enquete_item3.enquete_selections.create(content: '良い', answer_value: 2)
+enquete_item3.enquete_selections.create(content: '普通', answer_value: 3)
+enquete_item3.enquete_selections.create(content: '悪い', answer_value: 4)
+enquete_item3.enquete_selections.create(content: '大変悪い', answer_value: 5)
+
+enquete_item4 = EnqueteItem.create(content: '上記質問で悪い、大変悪いを選んだ方は具体的に教えてください', answer_type: :selection)
+enquete_item4.enquete_selections.create(content: '店員同士の会話が目立つ', answer_value: 1)
+enquete_item4.enquete_selections.create(content: '呼んでもなかなか店員が来ない', answer_value: 2)
+enquete_item4.enquete_selections.create(content: '注文したものがなかなか来ない', answer_value: 3)
+enquete_item4.enquete_selections.create(content: '店員の態度が悪い(言葉遣い・愛想)', answer_value: 4)
+
+enquete_item5= EnqueteItem.create(content: 'お食事・ドリンクは満足のいくものでしたか？', answer_type: :selection)
+enquete_item5.enquete_selections.create(content: '大変良い', answer_value: 1)
+enquete_item5.enquete_selections.create(content: '良い', answer_value: 2)
+enquete_item5.enquete_selections.create(content: '普通', answer_value: 3)
+enquete_item5.enquete_selections.create(content: '悪い', answer_value: 4)
+enquete_item5.enquete_selections.create(content: '大変悪い', answer_value: 5)
+
+enquete_item6 = EnqueteItem.create(content: '上記質問で悪い、大変悪いを選んだ方は具体的に教えてください', answer_type: :selection)
+enquete_item6.enquete_selections.create(content: '味付け(濃すぎ・薄すぎ)', answer_value: 1)
+enquete_item6.enquete_selections.create(content: '量が少ない', answer_value: 2)
+enquete_item6.enquete_selections.create(content: '提供が遅い', answer_value: 3)
+enquete_item6.enquete_selections.create(content: '値段が高い', answer_value: 4)
+
+enquete_item7 = EnqueteItem.create(content: 'その他気になった点があればお聞かせ願います', answer_type: :str)
