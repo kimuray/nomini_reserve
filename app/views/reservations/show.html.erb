@@ -90,6 +90,7 @@
     <% unless @reservation.canceled? %>
       <div class="mb-3 clearfix">
         <%= link_to "予約をキャンセルする", cancel_reservation_path(@reservation), class: "btn btn-outline-secondary float-right", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>
+        <%= link_to "予約内容を変更する", edit_reservation_path(@reservation), class: "btn btn-outline-info float-right mr-2" %>
       </div>
     <% end %>
   </div>

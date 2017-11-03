@@ -29,6 +29,16 @@ class ReservationMailer < ApplicationMailer
 
   def cancel_reservation_to_user(reservation)
     @reservation = reservation
-    mail(to: Settings.mail.to, subject: '予約をキャンセルしました')
+    mail(to: @reservation.user.email, subject: '予約をキャンセルしました')
+  end
+
+  def update_reservation_to_nomini(reservation)
+    @reservation = reservation
+    mail(to: Settings.mail.to, subject: '予約内容が変更されました')
+  end
+
+  def update_reservation_to_user(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '予約内容を変更しました')
   end
 end
