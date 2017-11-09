@@ -23,6 +23,21 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update(reservation_params)
+      ReservationMailer.update_reservation_to_user(@reservation).deliver_now
+      ReservationMailer.update_reservation_to_nomini(@reservation).deliver_now
+      redirect_to reservation_url(@reservation), notice: '予約内容を変更しました。'
+    else
+      render :edit
+    end
+  end
+
   def cancel
     @reservation = Reservation.find(params[:id])
     @reservation.canceled!

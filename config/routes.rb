@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get  '/mypage',    to: 'reservations#index'
 
   resources :shops, only: [:index, :show], shallow: true do
-    resources :reservations, only: [:index, :show, :create, :confirm, :cancel] do
+    resources :reservations, except: [:new] do
       post :confirm, on: :collection
       patch :cancel, on: :member
     end
