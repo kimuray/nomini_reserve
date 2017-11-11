@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   root 'reservations#index'
 
+  namespace :shop_page do
+    root 'reservations#index'
+    resources :reservations, only: [:index]
+  end
+
   # deviseルーティングより前に置かないと優先度で負けるため先に記載
   resource :shops, only: [:edit, :update]
 
