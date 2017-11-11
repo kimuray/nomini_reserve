@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NominiReserve</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class="bg-light">
+    <header class="nomini-header bg-white">
+      <%= render 'layouts/shop_page/header' %>
+    </header>
+
+    <% flash.each do |key, value| %>
+      <div class="alert-area container bg-white mt-3">
+        <p class="alert alert-<%= key %>"><%= value %></p>
+      </div>
+    <% end %>
+    <% unless @recommend_shops.blank? %>
+      <div class="main-area container bg-white mt-3 recommend-area pb-3">
+        <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

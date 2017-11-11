@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<nav class="navbar navbar-light">
+  <div class="container">
+    <%= link_to "nomini 店舗管理画面", mypage_path, class: "navbar-brand text-muted"%>
+    <ul class="nav">
+      <li class="dropdown nav-item mr-3 align-self-center user-menu">
+        <button class="btn-link dropdown-toggle user-info" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user"></i><span class="user-name pl-1 pc-only-inline"><%= current_shop.name %>様</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <%= link_to "店舗ログアウト", destroy_shop_session_path, method: :delete, class: "dropdown-item" %>
+          <%= link_to "店舗設定", edit_shops_url(current_shop.id), class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
