@@ -39,12 +39,12 @@ class Admin::SubscriptionsController < AdminController
   end
 
   def cancel
-    @subscription.cancel_subscription
+    @subscription.cancel
     redirect_to admin_subscription_url(@subscription), notice: '課金を停止しました'
   end
 
   def restart
-    @subscription.restart_subscription
+    @subscription.restart
     redirect_to admin_subscription_url(@subscription), notice: '課金を再開しました'
   end
 
