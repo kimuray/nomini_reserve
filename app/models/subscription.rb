@@ -5,38 +5,29 @@ class Subscription < ApplicationRecord
 
   enum status: { cancel: 0, active: 1, trial: 2 }
 
+  # TODO: PayjpApiの呼び出しを後でリファクタリング
   def create_subscription(token, plan)
-    customer = Payjp::Customer.create(card: token)
-    subscription = Payjp::Subscription.create(plan: plan, customer: customer.id)
+    payjp_api = PayjpApi.new
+    customer = payjp_api.create_customer(token)
+    subscription = payjp_api.create_subscription(customer.id, plan)
     self.attributes = { payjp_token: token, customer_id: customer.id, subscription_id: subscription.id }
     self.save
   end
   
   def cancel_subscription
+    payjp_api = PayjpApi.new
+    payjp_api.restart_subscription(subscription_id)
     self.cancel!
-    subscription = Payjp::Subscription.retrieve(self.subscription_id)
-    subscription.pause
   end
 
   def restart_subscription
+    payjp_api = PayjpApi.new
+    payjp_api.restart_subscription(self.subscription_id)
     self.active!
-    subscription = Payjp::Subscription.retrieve(self.subscription_id)
-    subscription.resume
   end
 
   def delete_subscription
-    subscription = Payjp::Subscription.retrieve(self.subscription_id)
-    subscription.delete
-  end
-
-  def self.create_token(params)
-    token = Payjp::Token.create(
-      card: { 
-        number: params[:number], 
-        cvc: params[:cvc], 
-        exp_month: params[:exp_month], 
-        exp_year: params[:exp_year]
-      }
-    )
+    payjp_api = PayjpApi.new
+    payjp_api.delete_subscription(self.subscription_id)
   end
 end
