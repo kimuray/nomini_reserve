@@ -15,7 +15,15 @@ class PayjpApi
   end
 
   def create_subscription(customer, plan)
-    Payjp::Subscription.create(plan: plan, customer: customer.id)
+    Payjp::Subscription.create(plan: plan, customer: customer)
+  end
+
+  def create_charge(token, amount, currency='jpy')
+    Payjp::Charge.create(
+      amount: amount,
+      card: token,
+      currency: currency,
+    )
   end
 
   def cancel_subscription(subscription_id)

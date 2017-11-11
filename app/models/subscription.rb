@@ -16,7 +16,7 @@ class Subscription < ApplicationRecord
   
   def cancel_subscription
     payjp_api = PayjpApi.new
-    payjp_api.restart_subscription(subscription_id)
+    payjp_api.cancel_subscription(subscription_id)
     self.cancel!
   end
 
