@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Admin::PaymentsController, type: :routing do
+RSpec.describe Admin::SubscriptionsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

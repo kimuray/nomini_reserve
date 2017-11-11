@@ -39,8 +39,8 @@
         <% end %>
       </li>
       <li>
-        <%= link_to admin_payments_path do %>
-          <i class="fa fa-beer"></i> <span>支払い情報</span>
+        <%= link_to admin_subscriptions_path do %>
+          <i class="fa fa-beer"></i> <span>定期課金情報</span>
         <% end %>
       </li>
       <li>
@@ -51,6 +51,11 @@
       <li>
         <%= link_to admin_exchanges_path do %>
           <i class="fa fa-beer"></i> <span>換金申請</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_reservation_payments_path do %>
+          <i class="fa fa-beer"></i> <span>決済情報</span>
         <% end %>
       </li>
     </ul>

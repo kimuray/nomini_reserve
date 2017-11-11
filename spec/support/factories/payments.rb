@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :payment do
+  factory :subscription do
     user nil
     status 1
     token_id "MyString"

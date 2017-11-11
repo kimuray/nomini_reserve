@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027155614) do
+ActiveRecord::Schema.define(version: 20171111060202) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -101,20 +101,6 @@ ActiveRecord::Schema.define(version: 20171027155614) do
     t.index ["user_id"], name: "index_introductions_on_user_id"
   end
 
-  create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.integer "status", default: 1
-    t.string "payjp_token"
-    t.string "customer_id"
-    t.string "subscription_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_payments_on_customer_id"
-    t.index ["payjp_token"], name: "index_payments_on_payjp_token"
-    t.index ["subscription_id"], name: "index_payments_on_subscription_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
-  end
-
   create_table "reservation_benefits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "point"
     t.integer "use_price"
@@ -129,6 +115,19 @@ ActiveRecord::Schema.define(version: 20171027155614) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reservation_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "reservation_id"
+    t.string "payjp_token_id", null: false
+    t.string "currency", default: "jpy", null: false
+    t.integer "amount", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reservation_payments_on_reservation_id"
+    t.index ["user_id"], name: "index_reservation_payments_on_user_id"
   end
 
   create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -185,6 +184,20 @@ ActiveRecord::Schema.define(version: 20171027155614) do
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
   end
 
+  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.integer "status", default: 1
+    t.string "payjp_token"
+    t.string "customer_id"
+    t.string "subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
+    t.index ["payjp_token"], name: "index_subscriptions_on_payjp_token"
+    t.index ["subscription_id"], name: "index_subscriptions_on_subscription_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -224,10 +237,12 @@ ActiveRecord::Schema.define(version: 20171027155614) do
   add_foreign_key "enquetes", "reservations"
   add_foreign_key "exchanges", "users"
   add_foreign_key "introductions", "users"
-  add_foreign_key "payments", "users"
+  add_foreign_key "reservation_payments", "reservations"
+  add_foreign_key "reservation_payments", "users"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"
   add_foreign_key "reservations", "users"
   add_foreign_key "shop_usages", "reservation_categories"
   add_foreign_key "shop_usages", "shops"
+  add_foreign_key "subscriptions", "users"
 end

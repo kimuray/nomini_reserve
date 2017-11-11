@@ -89,7 +89,7 @@ ja:
         answer_value: 値
         created_at: 登録日時
         updated_at: 更新日時
-      payment:
+      subscription:
         user_id: ユーザーID
         status: ステータス
         payjp_token: トークンID(payjp)
@@ -120,6 +120,16 @@ ja:
         status: ステータス
         remand_reason: 差戻し理由
         paied_at: 支払い日時
+        created_at: 登録日時
+        updated_at: 更新日時
+      reservation_payment:
+        user_id: ユーザーID
+        reservation_id: 予約ID
+        user_name: ユーザー名
+        payjp_token_id: トークンID(payjp)
+        amount: 支払い額
+        currency: ISOコード
+        status: ステータス
         created_at: 登録日時
         updated_at: 更新日時
       introduction:

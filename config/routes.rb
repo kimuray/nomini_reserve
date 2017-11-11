@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   resources :reservation, only: [], shallow: true do
     resources :enquetes, only: [:new, :create]
   end
-  resources :payments, only: [:new, :create]
+  resources :subscriptions, only: [:new, :create]
   resources :exchanges, only: [:new, :create, :show] do
     patch :reapply, on: :member
   end
@@ -66,7 +66,7 @@ Rails.application.routes.draw do
     resources :enquetes, shallow: true do
       resources :enquete_answers, only: [:edit, :update, :destroy]
     end
-    resources :payments do
+    resources :subscriptions do
       patch :cancel, on: :member
       patch :restart, on: :member
     end
@@ -78,5 +78,6 @@ Rails.application.routes.draw do
       patch :done, on: :member
       patch :remand, on: :member
     end
+    resources :reservation_payments
   end
 end

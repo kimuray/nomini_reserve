@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PaymentsController, type: :controller do
+RSpec.describe SubscriptionsController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do

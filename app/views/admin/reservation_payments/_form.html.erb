@@ -1,0 +1,18 @@
+<div class="col-md-12">
+  <div class="box box-primary">
+    <div class="box-body">
+      <%= bootstrap_form_for [:admin, reservation_payment] do |form| %>
+        <%= form.number_field :user_id %>
+        <%= form.number_field :reservation_id %>
+        <%#= form.select :status, ReservationPayment.statuses.keys.to_a, {} %>
+        <%= form.text_field :payjp_token_id %>
+        <%= form.text_field :amount %>
+        <%= form.text_field :currency %>
+
+        <div class="box-footer">
+          <%= form.primary '登録する' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

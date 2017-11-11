@@ -1,6 +1,6 @@
 class CreatePayments < ActiveRecord::Migration[5.1]
   def change
-    create_table :payments do |t|
+    create_table :subscriptions do |t|
       t.references :user, foreign_key: true
       t.integer :status, default: 1
       t.string :payjp_token, index: true
