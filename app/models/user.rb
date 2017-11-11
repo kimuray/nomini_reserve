@@ -18,15 +18,13 @@ class User < ApplicationRecord
                                  dependent: :destroy
 
   # Validation
-  validates :l_name, presence: true
-  validates :f_name, presence: true
-  validates :l_name_kana, presence: true
-  validates :f_name_kana, presence: true
-  validates :phone_number, presence: true, format: { with: /\A[0-9-]+\z/, message: "電話番号は数字、ハイフンのみ入力できます。"}
+  validates :l_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}
+  validates :f_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}
+  validates :phone_number, presence: true, format: { with: /\A[0-9]+\z/, message: "電話番号は数字のみで入力してください。"}
 
   # 全角を半角に変換
   def phone_number=(value)
-    value.tr!('０-９ー','0-9-') if value.is_a?(String)
+    value.tr!('０-９','0-9') if value.is_a?(String)
     super(value)
   end
 
