@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(version: 20171111060202) do
   create_table "reservation_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "reservation_id"
-    t.string "payjp_token_id"
-    t.string "currency"
-    t.integer "amount"
-    t.integer "status"
+    t.string "payjp_token_id", null: false
+    t.string "currency", default: "jpy", null: false
+    t.integer "amount", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reservation_id"], name: "index_reservation_payments_on_reservation_id"

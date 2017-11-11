@@ -73,5 +73,6 @@ Rails.application.routes.draw do
       patch :done, on: :member
       patch :remand, on: :member
     end
+    resources :reservation_payments
   end
 end

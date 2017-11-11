@@ -1,0 +1,83 @@
+<% content_for :content_header do %>
+  <h1>予約決済情報詳細</h1>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:status) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.status %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:user_name) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.user.full_name_kana %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:reservation_id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= link_to '予約情報', admin_reservation_path(@reservation_payment.reservation) %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:payjp_token_id) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.payjp_token_id %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:amount) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.amount %> 円
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:currency) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.currency %>
+    </div>
+
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:created_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.created_at %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= ReservationPayment.human_attribute_name(:updated_at) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @reservation_payment.updated_at %>
+    </div>
+
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= link_to edit_admin_reservation_payment_path(@reservation_payment), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">編集</i>
+      <% end %>
+      <%= link_to admin_reservation_payment_path(@reservation_payment), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+        <i class="fa fa-trash-o">削除</i>
+      <% end %>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>
+

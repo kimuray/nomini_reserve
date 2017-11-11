@@ -1,0 +1,49 @@
+<% content_for :content_header do %>
+  <h1>予約決済情報一覧</h1>
+  <h2><%= link_to '支払い情報を登録する', new_admin_reservation_payment_path, class: 'btn btn-primary' %></h2>
+<% end %>
+<!-- Main content -->
+<div class="col-xs-12">
+
+  <div class="box box-primary">
+    <div class="box-body table-responsive no-padding">
+      <table class="table table-striped">
+        <tr>
+          <th class="col-md-1"><%= ReservationPayment.human_attribute_name(:id) %></th>
+          <th class="col-md-1"><%= ReservationPayment.human_attribute_name(:status) %></th>
+          <th class="col-md-2"><%= ReservationPayment.human_attribute_name(:user_name) %></th>
+          <th class="col-md-3"><%= ReservationPayment.human_attribute_name(:payjp_token_id) %></th>
+          <th class="col-md-2"><%= ReservationPayment.human_attribute_name(:amount) %></th>
+          <th class="col-md-3"></th>
+        </tr>
+        <% if @reservation_payments.any? %>
+          <% @reservation_payments.each do |reservation_payment| %>
+            <tr>
+              <td><%= reservation_payment.id %></td>
+              <td><%= reservation_payment.status %></td>
+              <td><%= reservation_payment.user.full_name_kana %></td>
+              <td><%= reservation_payment.payjp_token_id %></td>
+              <td><%= reservation_payment.amount %> 円</td>
+              <td>
+                <div class="text-right">
+                  <%= link_to admin_reservation_payment_path(reservation_payment), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>
+                  <%= link_to edit_admin_reservation_payment_path(reservation_payment), class: 'btn btn-info' do %><i class="fa fa-edit"></i> 編集<% end %>
+                  <%= link_to admin_reservation_payment_path(reservation_payment), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
+                      <i class="fa fa-trash-o"></i> 削除
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan=5>登録されている支払い情報が存在しません</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="box-footer clearfix">
+      <%= paginate @reservation_payments, theme: :admin %>
+    </div>
+  </div>
+</div>
