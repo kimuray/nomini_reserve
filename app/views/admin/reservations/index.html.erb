@@ -23,7 +23,7 @@
               <td><%= reservation.shop&.name %></td>
               <td><%= reservation.user&.full_name_kana %></td>
               <td><%= "#{reservation.use_date} #{reservation.use_time}" %></td>
-              <td><%= reservation.status %></td>
+              <td><%= reservation.status_i18n %></td>
               <td>
                 <div class="text-right">
                 <%= link_to admin_reservation_path(reservation), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>

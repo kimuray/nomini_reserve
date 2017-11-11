@@ -3,7 +3,7 @@
     <div class="box-body">
       <%= bootstrap_form_for [:admin, enquete_item] do |form| %>
         <%= form.text_area :content %>
-        <%= form.select :answer_type, EnqueteItem.answer_types.keys.to_a, {}  %>
+        <%= form.select :answer_type, EnqueteItem.answer_types_i18n.invert, {}  %>
         <%= form.check_box :invalid_flg %>
 
         <%= form.fields_for :enquete_selections, enquete_item.enquete_selections do |selection_form| %>

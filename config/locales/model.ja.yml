@@ -122,3 +122,47 @@ ja:
         paied_at: 支払い日時
         created_at: 登録日時
         updated_at: 更新日時
+      introduction:
+        user_id: 紹介ユーザーID
+        introduced_user_id: 被紹介ユーザーID
+        introduced_email: 被紹介ユーザーメールアドレス
+        introduction_token: 紹介トークン
+        status: 紹介ステータス
+        created_at: 登録日時
+        updated_at: 更新日時
+  enums:
+    reservation:
+      status:
+        applying: 承認待ち
+        remand: 取消
+        done: 承認済
+        visited: 利用済
+        answered: アンケート回答済
+        canceled: キャンセル
+    reservation_benefit:
+      status:
+        pending: 承認待ち
+        done: 承認済
+        remand: 取消
+        resubmit: 再申請
+    exchange:
+      status:
+        pending: 承認待ち
+        done: 承認済み
+        remand: 取消
+    payment:
+      status:
+        cancel: キャンセル
+        active: 有効
+        trial: トライアル
+    introduction:
+      status:
+        sent: 送信
+        registered: 登録済
+        provided: ポイント付与済
+    enquete_item:
+      answer_type:
+        bool: 真偽値
+        num: 数値
+        str: 文字列
+        selection: 選択肢

@@ -4,7 +4,7 @@
       <%= bootstrap_form_for [:admin, reservation_benefit] do |form| %>
           <%= form.number_field :user_id %>
           <%= form.number_field :reservation_id %>
-          <%= form.select :status, ReservationBenefit.statuses.keys.to_a, {} %>
+          <%= form.select :status, ReservationBenefit.statuses_i18n.invert, {} %>
           <%= form.number_field :point %>
           <%= form.number_field :use_price %>
 
