@@ -25,7 +25,7 @@ class Shops::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     if resource.phone_number.present?
-      shop_url(resource)
+      shop_page_root_url
     else
       edit_shops_url
     end

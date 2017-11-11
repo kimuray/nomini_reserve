@@ -20,7 +20,7 @@ class ShopsController < ApplicationController
   def update
     @shop = current_shop
     if @shop.update_without_password(shop_params)
-      redirect_to shop_url(@shop), notice: '店舗情報を更新しました'
+      redirect_to shop_page_root_url, notice: '店舗情報を更新しました'
     else
       render :edit
     end
