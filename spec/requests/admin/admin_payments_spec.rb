@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Admin::Payments", type: :request do
+RSpec.describe "Admin::Subscriptions", type: :request do
   describe "GET /admin_payments" do
     it "works! (now write some real specs)" do
       get admin_payments_path

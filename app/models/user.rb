@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :reservation_benefits
   has_many :exchanges
   has_one :bank_account, dependent: :destroy
-  has_one :payment
+  has_one :subscription
   has_many :introductions, dependent: :destroy
   has_one :passive_introduction, class_name: "Introduction",
                                  foreign_key: "introduced_user_id",

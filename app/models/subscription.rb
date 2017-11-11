@@ -1,4 +1,4 @@
-class Payment < ApplicationRecord
+class Subscription < ApplicationRecord
   belongs_to :user
 
   before_destroy :delete_subscription
