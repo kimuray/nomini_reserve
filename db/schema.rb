@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111045935) do
+ActiveRecord::Schema.define(version: 20171111060202) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -115,6 +115,19 @@ ActiveRecord::Schema.define(version: 20171111045935) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reservation_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "reservation_id"
+    t.string "payjp_token_id"
+    t.string "currency"
+    t.integer "amount"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reservation_payments_on_reservation_id"
+    t.index ["user_id"], name: "index_reservation_payments_on_user_id"
   end
 
   create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -224,6 +237,8 @@ ActiveRecord::Schema.define(version: 20171111045935) do
   add_foreign_key "enquetes", "reservations"
   add_foreign_key "exchanges", "users"
   add_foreign_key "introductions", "users"
+  add_foreign_key "reservation_payments", "reservations"
+  add_foreign_key "reservation_payments", "users"
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"
   add_foreign_key "reservations", "users"

@@ -8,10 +8,11 @@ class User < ApplicationRecord
   # Association
   has_many :reservations
   has_many :reservation_benefits
+  has_many :reservation_payments, dependent: :destroy
   has_many :exchanges
+  has_many :introductions, dependent: :destroy
   has_one :bank_account, dependent: :destroy
   has_one :subscription
-  has_many :introductions, dependent: :destroy
   has_one :passive_introduction, class_name: "Introduction",
                                  foreign_key: "introduced_user_id",
                                  dependent: :destroy

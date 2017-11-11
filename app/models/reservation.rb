@@ -5,6 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :reservation_category
   has_many :enquetes
   has_one :reservation_benefit
+  has_one :reservation_payment
 
   # Validation
   validates :people_count, presence: true
