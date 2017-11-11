@@ -15,7 +15,7 @@
       <h3 class="box-title"><%= Payment.human_attribute_name(:status) %></h3>
     </div>
     <div class="box-body">
-      <%= @payment.status %>
+      <%= @payment.status_i18n %>
     </div>
 
     <div class="box-header with-border">
@@ -39,7 +39,7 @@
       <%= @payment.subscription_id %>
     </div>
 
-    
+
     <div class="box-header with-border">
       <h3 class="box-title"><%= Payment.human_attribute_name(:created_at) %></h3>
     </div>
@@ -75,4 +75,3 @@
     <!-- /.box-footer-->
   </div>
 </div>
-

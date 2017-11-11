@@ -20,7 +20,7 @@
             <% @exchanges.each do |exchange| %>
                 <tr>
                   <td><%= exchange.id %></td>
-                  <td><%= exchange.status %></td>
+                  <td><%= exchange.status_i18n %></td>
                   <td><%= exchange.user&.full_name_kana %></td>
                   <td><%= exchange.point %></td>
                   <td><%= exchange.paied_at %></td>

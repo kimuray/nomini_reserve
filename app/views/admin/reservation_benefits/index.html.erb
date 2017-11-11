@@ -25,7 +25,7 @@
                   <td><%= reservation_benefit.reservation&.shop&.name %></td>
                   <td><%= reservation_benefit.use_price %>円</td>
                   <td><%= reservation_benefit.point %></td>
-                  <td><%= reservation_benefit.status %></td>
+                  <td><%= reservation_benefit.status_i18n %></td>
                   <td>
                     <div class="text-right">
                       <%= link_to admin_reservation_benefit_path(reservation_benefit), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>

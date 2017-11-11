@@ -26,7 +26,7 @@
                   </td>
                   <td class="col-sm-2 p-0">
                     <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
-                      <%= reservation.status %>
+                      <%= reservation.status_i18n %>
                     <% end %>
                   </td>
                   <td class="col-sm-2 p-0">
@@ -76,7 +76,7 @@
                 </td>
                 <td class="col-sm-2 p-0">
                   <%= link_to exchange_path(exchange), class: 'd-block p-2 text-black reservation-td' do %>
-                    <%= exchange.status %>
+                    <%= exchange.status_i18n %>
                   <% end %>
                 </td>
               </tr>

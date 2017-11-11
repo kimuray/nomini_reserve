@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-9">
         <p class="confirm-value">
-          <%= @exchange.status %>
+          <%= @exchange.status_i18n %>
           <% if @exchange.remand? && @exchange.remand_reason.present? %>
             <div class="alert alert-warning">
               <strong><%= Exchange.human_attribute_name(:remand_reason) %></strong>
@@ -59,4 +59,3 @@
     </div>
   </div>
 </div>
-

@@ -19,7 +19,7 @@
             <% @payments.each do |payment| %>
             <tr>
               <td><%= payment.id %></td>
-              <td><%= payment.status %></td>
+              <td><%= payment.status_i18n %></td>
               <td><%= payment.payjp_token %></td>
               <td><%= payment.subscription_id %></td>
               <td>

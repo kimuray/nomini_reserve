@@ -3,7 +3,7 @@
     <div class="box-body">
       <%= bootstrap_form_for [:admin, payment] do |form| %>
         <%= form.number_field :user_id %>
-        <%= form.select :status, Payment.statuses.keys.to_a, {} %>
+        <%= form.select :status, Payment.statuses_i18n.invert.keys.to_a, {} %>
         <%= form.text_field :payjp_token %>
         <%= form.text_field :customer_id %>
         <%= form.text_field :subscription_id %>

@@ -15,7 +15,7 @@
       <h3 class="box-title"><%= Exchange.human_attribute_name(:status) %></h3>
     </div>
     <div class="box-body">
-      <%= @exchange.status %>
+      <%= @exchange.status_i18n %>
       <% if @exchange.pending? %>
         <%= link_to done_admin_exchange_path(@exchange), class: 'btn btn-success', method: :patch, data: { confirm: '承認してよろしいですか？' } do %>
           <i class="fa fa-edit">完了</i>
@@ -77,4 +77,3 @@
     <!-- /.box-footer-->
   </div>
 </div>
-
