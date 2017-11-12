@@ -44,8 +44,8 @@ class ShopPage::ReservationsController < ShopPageController
   end
 
   def send_reservation_mail
-    ReservationMailer.notice_reservation_to_nomini(@reservation).deliver_now
-    ReservationMailer.notice_reservation_to_user(@reservation).deliver_now
+    ReservationMailer.notice_reservation_to_nomini_from_shop(@reservation).deliver_now
+    ReservationMailer.notice_reservation_to_user_from_shop(@reservation).deliver_now
   end
 
 
