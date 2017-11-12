@@ -1,3 +1,3 @@
-<p><%= @introduction.user.full_name %>様より、nominiへの招待が届きました。</p>
+<p><%= @introduction.user.full_name_kana %>様より、nominiへの招待が届きました。</p>
 <p>会員登録をお願いいたします。</p>
 <p><%= link_to 'nomini会員登録', new_user_registration_url(introduction_token: @introduction.introduction_token) %></p>
