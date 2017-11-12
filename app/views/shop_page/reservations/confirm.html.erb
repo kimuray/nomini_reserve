@@ -1,0 +1,83 @@
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0">予約情報確認</h2>
+  <!-- Main content -->
+  <div class="confirm-box">
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label">お客様のお名前</h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @customer_user.l_name_kana %>
+          </p>
+        </div>
+      </div>
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.reservation_category&.name %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label">料金</h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.output_price %>円
+          </p>
+        </div>
+      </div>
+
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:people_count) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= @reservation.people_count %>人
+          </p>
+        </div>
+      </div>
+
+      <div class="row confirm-list">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:use_datetime) %></h3>
+        </div>
+        <div class="col-md-9">
+          <p class="confirm-value">
+            <%= l(@reservation.use_date, format: :long)  %>
+            <%= @reservation.use_time.strftime("%H時%M分") %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row confirm-list mb-3">
+        <div class="col-md-3">
+          <h3 class="confirm-label"><%= Reservation.human_attribute_name(:message) %></h3>
+        </div>
+        <div class="col-md-9">
+          <%= simple_format(@reservation.message, class: "message-format") %>
+        </div>
+      </div>
+
+      <div class="confirm-form mt-3 mb-2">
+        <%= form_for @reservation, url: shop_page_reservations_path(@reservation) do |f| %>
+          <%= f.hidden_field :customer_id, value: @customer_user.id %>
+          <%= f.hidden_field :people_count %>
+          <%= f.hidden_field :use_date %>
+          <%= f.hidden_field :use_time %>
+          <%= f.hidden_field :message %>
+          <%= f.hidden_field :reservation_category_id %>
+          <%= f.submit '戻る', name: 'back', class: "btn btn-outline-secondary" %>
+          <%= f.submit '予約確定', class: "btn btn-info" %>
+        <% end %>
+      </div>
+
+    </div>
+</div>
