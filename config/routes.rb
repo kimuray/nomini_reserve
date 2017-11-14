@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   namespace :shop_page do
     root 'reservations#index'
-    resources :reservations, only: [:index]
+    resources :reservations, only: [:index, :new, :create, :confirm] do
+      post :confirm, on: :collection
+    end
   end
 
   # deviseルーティングより前に置かないと優先度で負けるため先に記載
