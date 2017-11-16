@@ -1,0 +1,25 @@
+<div class="container bg-white mt-3 pb-2">
+  <h2 class="text-info py-3 m-0">予約内容変更</h2>
+  <ul class="reservation-chack text-danger">
+    <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <p>お客様のお名前</p>
+  <p class="ml-2 font-weight-bold"><%= @reservation.user&.l_name_kana %>様</p>
+  <%= bootstrap_form_for (@reservation), url: shop_page_reservation_path(@reservation) do |form| %>
+    <%= form.select :reservation_category_id, @reservation.shop.valid_categories_list, label: "予約カテゴリ" %>
+    <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
+    <%= form.text_field :use_date, id: "datetimepicker" %>
+    <%= form.time_select :use_time, minute_step: 10 %>
+    <%= form.text_area :message %>
+
+    <div class="box-footer text-center mb-2">
+      <%= form.primary '上記内容で予約情報を変更する', class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
+</script>
