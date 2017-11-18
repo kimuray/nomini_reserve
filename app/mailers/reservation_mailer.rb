@@ -52,6 +52,7 @@ class ReservationMailer < ApplicationMailer
     mail(to: @reservation.user.email, subject: 'nomini店舗予約詳細')
   end
 
+<<<<<<< HEAD
   def update_reservation_to_nomini_from_shop(reservation)
     @reservation = reservation
     mail(to: @reservation.user.email, subject: '店舗が予約変更を受理しました')
@@ -70,5 +71,10 @@ class ReservationMailer < ApplicationMailer
   def cancel_reservation_to_user_from_shop(reservation)
     @reservation = reservation
     mail(to: @reservation.user.email, subject: '予約をキャンセルしました')
+  end
+
+  def confirm_use_price_to_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.shop.email, subject: '【nomini】予約金額確認')
   end
 end

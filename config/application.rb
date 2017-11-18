@@ -10,6 +10,8 @@ module NominiReserve
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
 
+    config.paths.add 'lib', eager_load: true
+
     config.generators do |g|
       g.test_framework       :rspec, view_specs: false, helper_specs: false, fixture: true
       g.helper               false
