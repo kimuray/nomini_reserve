@@ -17,23 +17,23 @@
               <% @reservations.each do |reservation| %>
                 <tr class="row reservation-tr">
                   <td class="col-sm-3 p-0 reservation-datetime">
-                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= l(reservation.use_date, format: :long)  %>
                       <%= reservation.use_time.strftime("%H時%M分") %>
                     <% end %>
                   </td>
                   <td class="col-sm-3 p-0">
-                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.user&.full_name_kana %>
                     <% end %>
                   </td>
                   <td class="col-sm-3 p-0">
-                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.user&.phone_number %>
                     <% end %>
                   </td>
                   <td class="col-sm-3 p-0">
-                    <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
+                    <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.status_i18n %>
                     <% end %>
                   </td>

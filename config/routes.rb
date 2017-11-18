@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   namespace :shop_page do
     root 'reservations#index'
-    resources :reservations, only: [:index, :new, :create, :confirm] do
+    resources :reservations do
       post :confirm, on: :collection
+      patch :cancel, on: :member
     end
   end
 

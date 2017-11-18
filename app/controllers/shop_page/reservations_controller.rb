@@ -1,7 +1,11 @@
 class ShopPage::ReservationsController < ShopPageController
 
   def index
-    @reservations = current_shop.reservations.page(params[:page])
+    @reservations = current_shop.reservations.includes(:user).page(params[:page])
+  end
+
+  def show
+    @reservation = Reservation.find(params[:id])
   end
 
   def new
@@ -12,12 +16,34 @@ class ShopPage::ReservationsController < ShopPageController
     @reservation = Reservation.new(reservation_params)
     @reservation.user = User.find(params[:reservation][:customer_id])
     @reservation.shop = current_shop
+    @reservation.done!
     if params[:back].blank? && @reservation.save
       send_reservation_mail
       redirect_to shop_page_root_path, notice: '予約を作成しました。'
     else
       render :new
     end
+  end
+
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update(reservation_params)
+      send_update_mail
+      redirect_to shop_page_reservation_url(@reservation), notice: '予約内容を変更しました。'
+    else
+      render :edit
+    end
+  end
+
+  def cancel
+    @reservation = Reservation.find(params[:id])
+    @reservation.canceled!
+    send_cancel_mail
+    redirect_to shop_page_root_path, notice: '予約をキャンセルしました'
   end
 
   def confirm
@@ -48,5 +74,14 @@ class ShopPage::ReservationsController < ShopPageController
     ReservationMailer.notice_reservation_to_user_from_shop(@reservation).deliver_now
   end
 
+  def send_update_mail
+    ReservationMailer.update_reservation_to_nomini_from_shop(@reservation).deliver_now
+    ReservationMailer.update_reservation_to_user_from_shop(@reservation).deliver_now
+  end
+
+  def send_cancel_mail
+    ReservationMailer.cancel_reservation_to_nomini_from_shop(@reservation).deliver_now
+    ReservationMailer.cancel_reservation_to_user_from_shop(@reservation).deliver_now
+  end
 
 end

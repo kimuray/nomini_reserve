@@ -51,4 +51,24 @@ class ReservationMailer < ApplicationMailer
     @reservation = reservation
     mail(to: @reservation.user.email, subject: 'nomini店舗予約詳細')
   end
+
+  def update_reservation_to_nomini_from_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '店舗が予約変更を受理しました')
+  end
+
+  def update_reservation_to_user_from_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '予約内容を変更しました')
+  end
+
+  def cancel_reservation_to_nomini_from_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '店舗が予約キャンセルを受理しました')
+  end
+
+  def cancel_reservation_to_user_from_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.user.email, subject: '予約をキャンセルしました')
+  end
 end
