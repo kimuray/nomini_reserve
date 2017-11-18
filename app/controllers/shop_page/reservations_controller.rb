@@ -1,7 +1,7 @@
 class ShopPage::ReservationsController < ShopPageController
 
   def index
-    @reservations = current_shop.reservations.page(params[:page])
+    @reservations = current_shop.reservations.includes(:user).page(params[:page])
   end
 
   def show
