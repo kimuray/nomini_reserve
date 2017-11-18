@@ -16,8 +16,8 @@ class ShopPage::ReservationsController < ShopPageController
     @reservation = Reservation.new(reservation_params)
     @reservation.user = User.find(params[:reservation][:customer_id])
     @reservation.shop = current_shop
+    @reservation.done!
     if params[:back].blank? && @reservation.save
-      @reservation.done!
       send_reservation_mail
       redirect_to shop_page_root_path, notice: '予約を作成しました。'
     else
