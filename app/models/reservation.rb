@@ -32,4 +32,10 @@ class Reservation < ApplicationRecord
   def tax_included_price
     (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
   end
+
+  def setting_payment(params=nil)
+    payment = build_reservation_payment(params)
+    payment.user = user
+    payment
+  end
 end

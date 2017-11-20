@@ -1,0 +1,63 @@
+<div class="main-area container bg-white mt-3 pb-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">予約情報入力</h2>
+  <div class="confirm-box">
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label">お客様のお名前</h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation_payment.reservation.user.full_name_kana %>様
+        </p>
+      </div>
+    </div>
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation_payment.reservation.reservation_category&.name %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label">料金</h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation_payment.reservation.output_price %>円
+        </p>
+      </div>
+    </div>
+
+    <div class="row confirm-list">
+      <div class="col-md-3">
+        <h3 class="confirm-label"><%= Reservation.human_attribute_name(:people_count) %></h3>
+      </div>
+      <div class="col-md-9">
+        <p class="confirm-value">
+          <%= @reservation_payment.reservation.people_count %>人
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <ul class="reservation-chack text-danger text-center list-unstyled">
+    <% @reservation_payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <%= form_with model: [:shop_page, @reservation_payment], local: true do |form| %>
+    <div class="field form-group row center-form">
+      <%= form.label '利用金額(税抜き) 修正がない場合はそのまま確定ボタンを押してください', class: "col-sm-4 signup-label m-0" %>
+      <%= form.text_field :amount, placeholder: '金額を入力してください', value: @reservation_payment.reservation.sum_price, class: "col-sm-8 form-control" %>
+    </div>
+
+    <div class="box-footer text-center">
+      <%= form.submit '確定', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

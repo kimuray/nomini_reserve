@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111060202) do
+ActiveRecord::Schema.define(version: 20171120153143) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20171111060202) do
   create_table "reservation_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "reservation_id"
-    t.string "payjp_token_id", null: false
+    t.string "payjp_token_id"
     t.string "currency", default: "jpy", null: false
     t.integer "amount", default: 0, null: false
     t.integer "status", default: 0, null: false

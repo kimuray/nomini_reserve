@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
+  namespace :shop_page do
+    get 'payments/new'
+  end
+
   get 'exchanges/new'
 
   root 'reservations#index'
 
   namespace :shop_page do
     root 'reservations#index'
-    resources :reservations do
+    resources :reservations, shallow: true do
       post :confirm, on: :collection
       patch :cancel, on: :member
+      resources :payments, only: [:new, :create]
     end
   end
 
