@@ -129,6 +129,9 @@ body {
 .reservation-tr{
   &:hover{
     background-color: #FFDD95;
+    .enquete-link{
+      background-color: #fff;
+    }
   }
   .reservation-td{
     &:hover{
