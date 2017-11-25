@@ -2,7 +2,14 @@
 <div class="card-deck">
   <% recommend_shops.each do |recommend_shop| %>
     <div class="card">
-      <div class="card-body recommend-shop-name"><%= recommend_shop.name %></div>
+      <div class="card-body recommend-shop-name">
+        <span>
+          <%= recommend_shop.name %>
+        </span>
+        <span class="float-right text-info font-weight-bold">
+          〜<%= recommend_shop.top_price %>円
+        </span>
+      </div>
       <%= image_tag recommend_shop.image, class: "card-img-bottom img-responsive", size: '150' %>
     </div>
   <% end %>

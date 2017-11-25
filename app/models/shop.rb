@@ -42,4 +42,9 @@ class Shop < ApplicationRecord
   def correct?(current_shop)
     self == current_shop
   end
+
+  # 有効なカテゴリ内でもっとも高い価格を取得
+  def top_price
+    shop_usages.pluck(:price).max
+  end
 end
