@@ -12,6 +12,9 @@ class Batches::ForcePaymentBatch < Batches::Base
     ReservationPayment.requested.where(limited_on: Date.yesterday).find_each do |payment|
       payjp_token = payment.user&.subscription&.payjp_token
       payment.force_liquidation(payjp_token)
+      if payment.force_paid?
+        PaymentMailer.force_paid(payment).deliver_now
+      end
       logger.info("Force_payment,#{payment.user_id},#{payment.reservation_id},#{payment.tax_included_amount},#{payment.status}")
     end
   end
