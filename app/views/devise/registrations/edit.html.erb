@@ -54,9 +54,9 @@
 
   <div class="text-center account-sub p-4">
     <% if current_user.bank_account.blank? %>
-      <%= link_to "口座情報を登録する", new_bank_account_path %>
+      <%= link_to "口座情報を登録する", new_bank_account_path, class: "text-info" %>
     <% else %>
-      <%= link_to "口座情報を更新する", edit_bank_account_path %>
+      <%= link_to "口座情報を更新する", edit_bank_account_path, class: "text-info" %>
     <% end %>
   </div>
 
