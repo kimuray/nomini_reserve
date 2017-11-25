@@ -2,7 +2,15 @@
   <h2 class="text-info text-center page-heading mb-4 mt-4">新規会員登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <% if resource.errors.any? %>
+      <div class="field form-group center-form">
+        <div class="alert alert-danger">
+          <ul>
+            <%= devise_error_messages! %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
 
     <div class="field form-group row center-form">
       <%= f.label :email, class: "col-sm-4 signup-label m-0" %><br />
