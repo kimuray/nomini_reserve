@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :shop_page do
-    get 'payments/new'
-  end
-
-  get 'exchanges/new'
-
   root 'reservations#index'
 
   namespace :shop_page do
