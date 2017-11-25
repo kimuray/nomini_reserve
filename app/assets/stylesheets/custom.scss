@@ -41,6 +41,10 @@ body {
   }
 }
 
+.shop-list{
+  border: 1px solid #e3e8ed;
+}
+
 .shop-show-image{
   width: 100%;
   height: auto;
@@ -129,6 +133,9 @@ body {
 .reservation-tr{
   &:hover{
     background-color: #FFDD95;
+    .enquete-link{
+      background-color: #fff;
+    }
   }
   .reservation-td{
     &:hover{
@@ -248,6 +255,11 @@ body {
   font-size: 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+  a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 #reservation_use_time_4i,#reservation_use_time_5i{

@@ -1,7 +1,7 @@
 <div class="main-area container bg-white mt-3">
   <h2 class="text-info text-center page-heading mb-4 mt-4">換金申請</h2>
 
-  <%= form_with(model: @exchange, url: exchanges_path, local: true) do |form| %>
+  <%= form_with(model: @exchange, url: exchanges_path, local: true, class: "mr-3 ml-3") do |form| %>
     <% if @exchange.errors.any? %>
       <div class="field form-group signup-form">
         <div class="alert alert-danger">
