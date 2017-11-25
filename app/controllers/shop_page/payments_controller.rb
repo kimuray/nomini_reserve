@@ -7,6 +7,7 @@ class ShopPage::PaymentsController < ApplicationController
     @reservation = Reservation.find(params[:reservation_id])
     @reservation_payment = @reservation.setting_payment(reservation_payment_params)
     if @reservation_payment.save
+      PaymentMailer.notification(@reservation_payment).deliver_now
       redirect_to shop_page_root_url, notice: '支払い情報を確定しました。'
     else
       render :new
