@@ -1,5 +1,6 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @resource.full_name_kana %>様</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>この度はnominiへの会員登録をお申し込みいただき、誠にありがとうございました。</p>
+<p>以下のURLをクリック、またはお使いのブラウザのアドレスバーに入力いただきアクセスしていただいた時点で会員登録が完了します。</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to nil, confirmation_url(@resource, confirmation_token: @token) %></p>
