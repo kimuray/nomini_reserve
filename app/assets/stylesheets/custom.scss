@@ -251,6 +251,11 @@ body {
   font-size: 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+  a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 #reservation_use_time_4i,#reservation_use_time_5i{

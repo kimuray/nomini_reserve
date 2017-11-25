@@ -4,13 +4,17 @@
     <div class="card">
       <div class="card-body recommend-shop-name">
         <span>
-          <%= recommend_shop.name %>
+          <%= link_to shop_path(recommend_shop) do %>
+            <%= recommend_shop.name %>
+          <% end %>
         </span>
         <span class="float-right text-info font-weight-bold">
           〜<%= recommend_shop.top_price %>円
         </span>
       </div>
-      <%= image_tag recommend_shop.image, class: "card-img-bottom img-responsive", size: '150' %>
+      <%= link_to shop_path(recommend_shop) do %>
+        <%= image_tag recommend_shop.image, class: "card-img-bottom img-responsive", size: '150' %>
+      <% end %>
     </div>
   <% end %>
 </div>
