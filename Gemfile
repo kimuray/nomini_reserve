@@ -39,6 +39,7 @@ gem 'payjp'
 gem 'dotenv-rails'
 gem 'config'
 gem 'enum_help'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

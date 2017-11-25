@@ -1,0 +1,43 @@
+<div class="main-area container bg-white mt-3 pb-3">
+  <h2 class="text-info text-center page-heading mb-4 mt-4">予約情報入力</h2>
+  <ul class="reservation-chack text-danger text-center list-unstyled">
+    <% @reservation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <%= form_with model: @reservation, url: confirm_shop_page_reservations_url, local: true do |form| %>
+    <div class="field form-group row center-form">
+      <%= form.label 'お客様の電話番号', class: "col-sm-4 signup-label m-0" %>
+      <%= form.text_field :phone_number, placeholder: 'ハイフンなしで入力してください。', class: "col-sm-8 form-control" %>
+    </div>
+
+    <div class="field form-group row center-form">
+      <%= form.label :reservation_category_id, class: "col-sm-4 signup-label m-0" %>
+      <%= form.select :reservation_category_id, current_shop.valid_categories_list, {label: "予約カテゴリ"}, { class: "col-sm-8 form-control" } %>
+    </div>
+
+    <div class="field form-group row center-form">
+      <%= form.label :people_count, class: "col-sm-4 signup-label m-0" %>
+      <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}, {}, { class: "col-sm-8 form-control" } %>
+    </div>
+
+    <div class="field form-group row center-form">
+      <%= form.label :use_date, class: "col-sm-4 signup-label m-0" %>
+      <%= form.text_field :use_date, id: "datetimepicker", class: "col-sm-8 form-control" %>
+    </div>
+
+    <div class="field form-group row center-form">
+      <%= form.label :use_time, class: "col-sm-4 signup-label m-0" %>
+      <%= form.time_select :use_time, { minute_step: 10 }, { class: "col-sm-3 form-control" } %>
+    </div>
+
+    <div class="field form-group row center-form">
+      <%= form.label :message, class: "col-sm-4 signup-label m-0" %>
+      <%= form.text_area :message, class: "col-sm-8 form-control" %>
+    </div>
+
+    <div class="box-footer text-center">
+      <%= form.submit '予約情報を確認する', class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

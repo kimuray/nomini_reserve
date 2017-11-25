@@ -1,0 +1,42 @@
+<p><%= @reservation.shop.name %> ご担当者様</p>
+
+<p>
+  ご利用金額確認をお願いいたします。
+</p>
+
+<ul>
+  <li>
+    <h4>カテゴリ</h4>
+    <p><%= @reservation.reservation_category.name %></p>
+  </li>
+  <li>
+    <h4>予約者名</h4>
+    <p>
+      <%= @reservation.user.full_name_kana %><br>
+    </p>
+  </li>
+  <li>
+    <h4>登録者電話番号</h4>
+    <p>
+      <%= @reservation.user.phone_number %><br>
+    </p>
+  </li>
+  <li>
+    <h4>予約日時</h4>
+    <p><%= "#{l(@reservation.use_date, format: :long)} #{l(@reservation.use_time, format: :time_only)}" %></p>
+  </li>
+  <li>
+    <h4>予約人数</h4>
+    <p><%= @reservation.people_count %>人</p>
+  </li>
+  <li>
+    <h4>金額</h4>
+    <p><%= @reservation.tax_included_price %>円</p>
+  </li>
+  <li>
+    <h4>以下、URLから金額の確定をよろしくお願いいたします</h4>
+    <p><%= link_to '金額確認画面へ', new_shop_page_reservation_payment_url(@reservation) %></p>
+  </li>
+</ul>
+
+このメールは配信専用です。返信はできませんので御了承ください。

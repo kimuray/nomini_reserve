@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  get 'exchanges/new'
-
   root 'reservations#index'
 
   namespace :shop_page do
     root 'reservations#index'
-    resources :reservations do
+    resources :reservations, shallow: true do
       post :confirm, on: :collection
       patch :cancel, on: :member
+      resources :payments, only: [:new, :create]
     end
   end
 
@@ -51,6 +50,7 @@ Rails.application.routes.draw do
   resources :exchanges, only: [:new, :create, :show] do
     patch :reapply, on: :member
   end
+  resources :reservation_payments, only: [:show, :update]
 
   devise_for :admins,
     path: 'admin',

@@ -71,4 +71,9 @@ class ReservationMailer < ApplicationMailer
     @reservation = reservation
     mail(to: @reservation.user.email, subject: '予約をキャンセルしました')
   end
+
+  def confirm_use_price_to_shop(reservation)
+    @reservation = reservation
+    mail(to: @reservation.shop.email, subject: '【nomini】予約金額確認')
+  end
 end
