@@ -20,9 +20,11 @@ class ReservationPayment < ApplicationRecord
   def liquidation(params)
     payjp_api = PayjpApi.new
     begin
-      token = PayjpApi.create_token(params)
-      update!(payjp_token_id: token.id, status: :paid)
-      payjp_api.create_charge(payjp_token_id, tax_included_amount)
+      ActiveRecord::Base.transaction do
+        token = PayjpApi.create_token(params)
+        update!(payjp_token_id: token.id, status: :paid)
+        payjp_api.create_charge(payjp_token_id, tax_included_amount)
+      end
     rescue => e
       errors[:base] << '支払いに失敗しました'
       return false
