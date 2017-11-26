@@ -19,6 +19,7 @@ class ReservationPayment < ApplicationRecord
       ActiveRecord::Base.transaction do
         token = PayjpApi.create_token(params)
         update!(payjp_token_id: token.id, status: :paid)
+        reservation.paid!
         payjp_api.create_charge(payjp_token_id, tax_included_amount)
       end
     rescue => e
