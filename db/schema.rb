@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120153143) do
+ActiveRecord::Schema.define(version: 20171125094547) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20171120153143) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "limited_on"
     t.index ["reservation_id"], name: "index_reservation_payments_on_reservation_id"
     t.index ["user_id"], name: "index_reservation_payments_on_user_id"
   end

@@ -36,6 +36,7 @@ class Reservation < ApplicationRecord
   def setting_payment(params=nil)
     payment = build_reservation_payment(params)
     payment.user = user
+    payment.limited_on = Date.tomorrow # TODO: 決済日付が決定次第変更可能性あり
     payment
   end
 end

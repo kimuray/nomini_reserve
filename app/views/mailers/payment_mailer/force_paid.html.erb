@@ -1,0 +1,26 @@
+<p><%= @payment.user.full_name_kana %>様</p>
+
+<p>
+  nominiをご利用いただきありがとうございます。<br>
+  下記、決済を行いましたのでご確認ください。
+</p>
+
+<ul>
+  <li>
+    <h4>ご利用店舗</h4>
+    <p><%= @payment.reservation.shop.name %></p>
+    URL: <%= link_to shop_url(@payment.reservation.shop), shop_url(@payment.reservation.shop) %>
+  </li>
+  <li>
+    <h4>ご利用日時</h4>
+    <p>
+      <%= "#{l(@payment.reservation.use_date, format: :long)} #{l(@payment.reservation.use_time, format: :time_only)}" %>
+    </p>
+  </li>
+  <li>
+    <h4>決済金額(税込)</h4>
+    <p><%= @payment.tax_included_amount %>円</p>
+  </li>
+</ul>
+
+このメールは配信専用です。返信はできませんので御了承ください。

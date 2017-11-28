@@ -1,11 +1,11 @@
 class Batches::PaymentConfirmBatch < Batches::Base
   def self.exec
-    logger.info('start')
+    logger.info('Payment confirm batch start')
     logger.debug('show only in dryrun mode.')
     unless dryrun?
       send_confirm_price_mail
     end
-    logger.info('finish.')
+    logger.info('Payment confirm batch finish.')
   end
 
   def self.send_confirm_price_mail

@@ -130,6 +130,7 @@ ja:
         amount: 支払い額
         currency: ISOコード
         status: ステータス
+        limited_on: 決済期限日付
         created_at: 登録日時
         updated_at: 更新日時
       introduction:
@@ -176,3 +177,9 @@ ja:
         num: 数値
         str: 文字列
         selection: 選択肢
+    reservation_payment:
+      status:
+        requested: 決済待ち
+        paid: 決済完了
+        force_paid: 強制決済
+        failed: 決済失敗
