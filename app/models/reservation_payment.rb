@@ -75,6 +75,7 @@ class ReservationPayment < ApplicationRecord
     )
     reservation_benefit.set_point
     reservation_benefit.save!
+    reservation_benefit.grant_to_user! # TODO: 既存の仕組みをそのまま利用しているためリファクタ必要
     reservation.paid!
   end
 end
