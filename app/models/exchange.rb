@@ -27,6 +27,6 @@ class Exchange < ApplicationRecord
 
   def update_point_balance
     point_diff = user.point_count - point
-    user.update(point_count: point_diff)
+    user.update!(point_count: point_diff)
   end
 end
