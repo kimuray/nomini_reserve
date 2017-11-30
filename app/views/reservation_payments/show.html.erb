@@ -43,7 +43,8 @@
       </ul>
 
       <div class="mb-3">
-        <%= link_to '登録済みカードで決済する', registed_card_reservation_payment_path(@reservation_payment), method: :patch, class: 'btn btn-primary btn-block' %>
+        <%= link_to '登録済みカードで決済する', registed_card_reservation_payment_path(@reservation_payment),
+                    method: :patch, class: 'btn btn-primary btn-block', data: { confirm: '登録しているカード決済します。よろしいでしょうか。' } %>
       </div>
 
       <%= form_for(@reservation_payment) do |f| %>
