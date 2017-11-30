@@ -324,3 +324,27 @@ body {
 .radio-input{
   margin-bottom: 2px;
 }
+
+.payment-info{
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 767px) {
+    width: auto;
+  }
+  .payment-form{
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width: 767px) {
+      width: auto;
+    }
+    .expiration-date{
+      margin: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+  }
+}
