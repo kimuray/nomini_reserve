@@ -26,6 +26,14 @@ class PayjpApi
     )
   end
 
+  def create_charge_by_registed_card(customer, amount, currency='jpy')
+    Payjp::Charge.create(
+      amount: amount,
+      customer: customer,
+      currency: currency,
+    )
+  end
+
   def cancel_subscription(subscription_id)
     subscription = Payjp::Subscription.retrieve(subscription_id)
     subscription.pause
