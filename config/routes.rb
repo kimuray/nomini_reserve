@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     patch :reapply, on: :member
   end
   resources :reservation_payments, only: [:show, :update]
+  resources :cities, only: [:index]
 
   devise_for :admins,
     path: 'admin',

@@ -1,0 +1,1 @@
+$('#shop_city_code').html('<%= j(select :city_code, :city_code, @cities.map{|city| [city.name, city.city_code]}) %>');
