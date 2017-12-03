@@ -13,6 +13,14 @@ class ReservationPaymentsController < ApplicationController
     end
   end
 
+  def registed_card
+    if @reservation_payment.registed_card_liquidation(current_user)
+      redirect_to mypage_url, notice: '決済を完了しました'
+    else
+      render :show
+    end
+  end
+
   private
 
   def set_reservation_payment
