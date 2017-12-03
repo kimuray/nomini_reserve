@@ -179,6 +179,7 @@ body {
 
 .shop-detail{
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .image-wrap{
@@ -347,4 +348,9 @@ body {
       font-weight: bold;
     }
   }
+}
+
+.area-info{
+  font-size: 0.8rem;
+  font-weight: bold;
 }

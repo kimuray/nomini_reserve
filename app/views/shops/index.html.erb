@@ -14,9 +14,13 @@
 
       <div class="col-md-9 pt-2" >
         <div class="row">
-          <h3 class="shop-name col-md-10 pl-0">
-            <%= shop.name %>
-          </h3>
+          <div class="shop-name col-md-10 pl-0">
+            <h3 class="area-info text-info">
+              <span><%= shop.city.name %></span>
+              <span><%= shop.area_text %></span>
+            </h3>
+            <h3><%= shop_name_text(shop) %></h3>
+          </div>
           <div class="col-md-2">
             <%= link_to '詳細を見る', shop_path(shop), class: "float-md-right btn btn-info shop-detail-btn" %>
           </div>
