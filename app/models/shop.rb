@@ -55,4 +55,8 @@ class Shop < ApplicationRecord
     name
   end
 
+  def address_text
+    "#{prefecture.name} #{city.name} #{area_text} #{address_detail}"
+  end
+
 end

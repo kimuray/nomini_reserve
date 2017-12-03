@@ -15,4 +15,12 @@ module ApplicationHelper
     city ||= City.initial_display
     options_for_select(city.same_prefecture_cities.map{|city| [city.name, city.city_code]}, city.city_code)
   end
+
+  # 店舗名の表示制御
+  def shop_name_text(shop)
+    if current_user.subscription.present?
+      shop.name
+    end
+  end
+
 end
