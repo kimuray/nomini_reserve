@@ -43,9 +43,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reservation, only: [], shallow: true do
-    resources :enquetes, only: [:new, :create]
-  end
+  # resources :reservation, only: [], shallow: true do
+  #   resources :enquetes, only: [:new, :create]
+  # end
   resources :subscriptions, only: [:new, :create]
   resources :exchanges, only: [:new, :create, :show] do
     patch :reapply, on: :member

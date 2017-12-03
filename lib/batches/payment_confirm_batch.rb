@@ -11,6 +11,7 @@ class Batches::PaymentConfirmBatch < Batches::Base
   def self.send_confirm_price_mail
     Reservation.where(use_date: Date.yesterday).find_each do |reservation|
       ReservationMailer.confirm_use_price_to_shop(reservation).deliver_now
+      reservation.visited!
       logger.info("Send_confirm_price,#{reservation.use_date},#{reservation.id},#{reservation.shop.email},#{reservation.tax_included_price},#{reservation.people_count}")
     end
   end

@@ -19,7 +19,9 @@ class ReservationPayment < ApplicationRecord
       ActiveRecord::Base.transaction do
         token = PayjpApi.create_token(params)
         update!(payjp_token_id: token.id, status: :paid)
+        reservation.paid!
         payjp_api.create_charge(payjp_token_id, tax_included_amount)
+        create_reservation_benefit_record
       end
     rescue => e
       errors[:base] << '支払いに失敗しました'
@@ -35,6 +37,7 @@ class ReservationPayment < ApplicationRecord
       ActiveRecord::Base.transaction do
         update!(payjp_token_id: token_id, status: :force_paid)
         payjp_api.create_charge(payjp_token_id, tax_included_amount)
+        create_reservation_benefit_record
       end
     rescue => e
       failed!
@@ -63,5 +66,16 @@ class ReservationPayment < ApplicationRecord
     if payjp_token_id.blank? && customer_id.blank?
       errors[:base] << '支払い情報に誤りがあります'
     end
+  end
+
+  def create_reservation_benefit_record
+    reservation_benefit = reservation.build_reservation_benefit(
+      user: reservation.user,
+      use_price: amount
+    )
+    reservation_benefit.set_point
+    reservation_benefit.save!
+    reservation_benefit.grant_to_user! # TODO: 既存の仕組みをそのまま利用しているためリファクタ必要
+    reservation.paid!
   end
 end

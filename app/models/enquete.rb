@@ -19,5 +19,6 @@ class Enquete < ApplicationRecord
     )
     reservation_benefit.set_point
     reservation_benefit.save
+    reservation.answered!
   end
 end
