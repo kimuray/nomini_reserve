@@ -49,7 +49,7 @@ class Shop < ApplicationRecord
     shop_usages.pluck(:price).max
   end
 
-  # deviseメール対策(要改善)
+  #TODO deviseメール対策(要改善)
   def full_name_kana
     name
   end
