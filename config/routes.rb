@@ -54,7 +54,9 @@ Rails.application.routes.draw do
   resources :reservation_payments, only: [:show, :update] do
     patch :registed_card, on: :member
   end
-  resources :cities, only: [:index]
+  namespace :api do
+    resources :cities, only: [:index]
+  end
 
   devise_for :admins,
     path: 'admin',

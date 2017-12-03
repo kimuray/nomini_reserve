@@ -5,7 +5,7 @@ $(function () {
 
   $('#prefecture').change(function() {
     $.get({
-      url: "/cities",
+      url: "/api/cities",
       data: { prefecture_id: $('#prefecture').has('option:selected').val() }
     });
   });
