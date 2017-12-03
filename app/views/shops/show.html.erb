@@ -26,10 +26,17 @@
           <% end %>
         <% end %>
       </div>
-      <h3 class="shop-detail-title text-info">電話番号</h3>
-      <div class="ml-2 mb-3">
-        <%= @shop.phone_number %>
-      </div>
+      <% if current_user.subscription.present? %>
+        <h3 class="shop-detail-title text-info">電話番号</h3>
+        <div class="ml-2 mb-3">
+          <%= @shop.phone_number %>
+        </div>
+
+        <h3 class="shop-detail-title text-info">住所</h3>
+        <div class="ml-2 mb-3">
+          <%= @shop.address_text %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="row">
