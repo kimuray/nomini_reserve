@@ -17,3 +17,4 @@
 //= require admin/AdminLTE/plugins/fastclick.min
 //= require admin/AdminLTE/bootstrap.min
 //= require admin/AdminLTE/app.min
+//= require common

@@ -6,6 +6,11 @@
         <%= form.password_field :password %>
         <%= form.password_field :password_confirmation %>
         <%= form.text_field :name %>
+        <div class="form-group">
+          <%= form.label Prefecture.human_attribute_name(:name) %>
+          <%= select nil, :prefecture, prefecture_list(shop.city), {}, {class: 'form-control'}  %>
+        </div>
+        <%= form.select :city_code, city_list(shop.city), selected: shop.city %>
         <%= form.text_area :description %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>
