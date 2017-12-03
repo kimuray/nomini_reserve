@@ -8,6 +8,8 @@
         <%= form.text_field :name %>
         <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: shop.prefecture_id %>
         <%= form.select :city_code, city_list(shop.city), selected: shop.city %>
+        <%= form.text_field :area_text, placeholder: '九段南' %>
+        <%= form.text_field :address_detail, placeholder: '○丁目○-○ ○○ビル 5F' %>
         <%= form.text_area :description %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>

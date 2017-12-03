@@ -18,6 +18,16 @@
     </div>
 
     <div class="field form-group row signup-form">
+      <%= form.label :area_text, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_field :area_text, placeholder: '九段南', class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :address_detail, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_field :address_detail, placeholder: '○丁目○-○ ○○ビル 5F', class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
       <%= form.label :image, class: "col-sm-3 signup-label" %><br />
       <%= form.file_field :image, class: "col-sm-9 form-control" %>
       <%= form.hidden_field :image_cache %>
