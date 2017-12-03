@@ -1,5 +1,5 @@
 <div class="container bg-white mt-3 pb-2 main-area">
-  <h2 class="shop-name text-info py-3 m-0"><%= @shop.name %></h2>
+  <h2 class="shop-name text-info py-3 m-0"><%= shop_name_text(@shop) %></h2>
   <div class="row">
     <div class="col-md-8">
       <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
