@@ -12,6 +12,7 @@ ja:
         price: 価格
         phone_number: 電話番号
         remember_me: ログインしたままにする
+        prefecture_id: 都道府県
         city_code: 市区町村
         created_at: 登録日時
         updated_at: 更新日時
