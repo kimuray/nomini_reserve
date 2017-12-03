@@ -8,6 +8,16 @@
     </div>
 
     <div class="field form-group row signup-form">
+      <%= form.label Prefecture.human_attribute_name(:name), class: "col-sm-3 signup-label" %>
+      <%= select nil, :prefecture, prefecture_list(@shop.city)  %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :city_code, class: "col-sm-3 signup-label" %><br />
+      <%= form.select :city_code, city_list(@shop.city), {}, { id: :shop_city_code } %>
+    </div>
+
+    <div class="field form-group row signup-form">
       <%= form.label :image, class: "col-sm-3 signup-label" %><br />
       <%= form.file_field :image, class: "col-sm-9 form-control" %>
       <%= form.hidden_field :image_cache %>
