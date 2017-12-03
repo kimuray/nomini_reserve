@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
+  include AccessCheckable
+
   before_action :authenticate_user!
-  before_action :confirm_subscription_existed, only: [:show, :create, :edit, :update, :confirm, :cancel]
+  before_action :confirm_subscription_existed, only: [:create, :edit, :update, :confirm, :cancel]
 
   def index
     @reservations = current_user.reservations.includes(:shop).page(params[:page])
@@ -68,11 +70,5 @@ class ReservationsController < ApplicationController
   def send_reservation_mail
     ReservationMailer.notice_reservation_to_nomini(@reservation).deliver_now
     ReservationMailer.notice_reservation_to_user(@reservation).deliver_now
-  end
-
-  def confirm_subscription_existed
-    if current_user.subscription.blank?
-      redirect_to new_subscription_url, notice: '予約するためにはクレジットカード登録が必要です。'
-    end
   end
 end
