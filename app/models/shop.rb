@@ -8,6 +8,8 @@ class Shop < ApplicationRecord
   has_many :reservations
   has_many :reservation_categories, through: :shop_usages
   has_many :shop_usages, dependent: :destroy
+  belongs_to :city, foreign_key: :city_code, primary_key: :city_code, optional: true
+  belongs_to :prefecture, optional: true
 
   accepts_nested_attributes_for :shop_usages, allow_destroy: true, reject_if: :all_blank
 
@@ -47,4 +49,10 @@ class Shop < ApplicationRecord
   def top_price
     shop_usages.pluck(:price).max
   end
+
+  #TODO deviseメール対策(要改善)
+  def full_name_kana
+    name
+  end
+
 end

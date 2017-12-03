@@ -6,6 +6,8 @@
         <%= form.password_field :password %>
         <%= form.password_field :password_confirmation %>
         <%= form.text_field :name %>
+        <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: shop.prefecture_id %>
+        <%= form.select :city_code, city_list(shop.city), selected: shop.city %>
         <%= form.text_area :description %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>

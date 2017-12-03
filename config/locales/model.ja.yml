@@ -12,6 +12,8 @@ ja:
         price: 価格
         phone_number: 電話番号
         remember_me: ログインしたままにする
+        prefecture_id: 都道府県
+        city_code: 市区町村
         created_at: 登録日時
         updated_at: 更新日時
       reservation_category:
@@ -142,6 +144,10 @@ ja:
         status: 紹介ステータス
         created_at: 登録日時
         updated_at: 更新日時
+      prefecture:
+        name: 都道府県
+      city:
+        name: 市区町村
   enums:
     reservation:
       status:

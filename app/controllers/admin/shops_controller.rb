@@ -14,6 +14,7 @@ class Admin::ShopsController < AdminController
     @shop = Shop.new
     @shop.shop_usages.build
     @reservation_categories = ReservationCategory.all
+    @shop.prefecture_id ||= Prefecture::DEFAULT
   end
 
   def edit
@@ -52,7 +53,7 @@ class Admin::ShopsController < AdminController
 
   def shop_params
     params.fetch(:shop, {}).permit(
-      :email, :password, :password_confirmation, :name, :description, :image, :image_cache,
+      :email, :password, :password_confirmation, :name, :description, :prefecture_id, :city_code, :image, :image_cache,
       :service_time, :price, :phone_number, shop_usages_attributes: [:id, :reservation_category_id, :price]
     )
   end

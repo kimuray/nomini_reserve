@@ -9,4 +9,10 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, options)
     markdown.render(text).html_safe
   end
+
+  # 市区町村のリスト
+  def city_list(city)
+    city ||= City.initial_display
+    options_for_select(city.same_prefecture_cities.map{|city| [city.name, city.city_code]}, city.city_code)
+  end
 end

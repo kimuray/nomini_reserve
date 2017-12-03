@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130151342) do
+ActiveRecord::Schema.define(version: 20171203080220) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20171130151342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bank_accounts_on_user_id"
+  end
+
+  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city_code", null: false
+    t.integer "big_city_flag", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_code"], name: "index_cities_on_city_code", unique: true
+    t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
   end
 
   create_table "enquete_answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -99,6 +110,12 @@ ActiveRecord::Schema.define(version: 20171130151342) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "introduced_user_id"], name: "index_introductions_on_user_id_and_introduced_user_id", unique: true
     t.index ["user_id"], name: "index_introductions_on_user_id"
+  end
+
+  create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reservation_benefits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -182,6 +199,8 @@ ActiveRecord::Schema.define(version: 20171130151342) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "city_code"
+    t.integer "prefecture_id"
     t.index ["email"], name: "index_shops_on_email", unique: true
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
   end
