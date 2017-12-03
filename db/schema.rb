@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20171202141956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "limited_on"
+    t.string "customer_id"
     t.index ["reservation_id"], name: "index_reservation_payments_on_reservation_id"
     t.index ["user_id"], name: "index_reservation_payments_on_user_id"
   end

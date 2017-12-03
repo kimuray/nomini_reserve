@@ -20,7 +20,7 @@
           <% @reservation_payments.each do |reservation_payment| %>
             <tr>
               <td><%= reservation_payment.id %></td>
-              <td><%= reservation_payment.status %></td>
+              <td><%= reservation_payment.status_i18n %></td>
               <td><%= reservation_payment.user.full_name_kana %></td>
               <td><%= reservation_payment.payjp_token_id %></td>
               <td><%= reservation_payment.amount %> 円</td>

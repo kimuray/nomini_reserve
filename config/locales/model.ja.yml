@@ -128,6 +128,7 @@ ja:
         reservation_id: 予約ID
         user_name: ユーザー名
         payjp_token_id: トークンID(payjp)
+        customer_id: 顧客ID(payjp)
         amount: 支払い額
         currency: ISOコード
         status: ステータス
