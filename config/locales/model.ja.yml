@@ -67,6 +67,7 @@ ja:
         message: メッセージ
         status: 予約ステータス
         price: 利用料金
+        is_alacarte: アラカルト
         created_at: 登録日時
         updated_at: 更新日時
       enquete:

@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   # Association
   belongs_to :user
   belongs_to :shop
-  belongs_to :reservation_category
+  belongs_to :reservation_category, optional: true
   has_many :enquetes
   has_one :reservation_benefit
   has_one :reservation_payment

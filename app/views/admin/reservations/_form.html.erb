@@ -4,6 +4,7 @@
       <%= bootstrap_form_for [:admin, reservation] do |form| %>
         <%= form.number_field :shop_id %>
         <%= form.number_field :user_id %>
+        <%= form.check_box :is_alacarte %>
         <%= form.collection_select :reservation_category_id, ReservationCategory.select(:id, :name), :id, :name  %>
         <%= form.number_field :people_count %>
         <%= form.date_field :use_date %>

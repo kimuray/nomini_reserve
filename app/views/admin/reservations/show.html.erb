@@ -29,7 +29,11 @@
       <h3 class="box-title"><%= Reservation.human_attribute_name(:reservation_category) %></h3>
     </div>
     <div class="box-body">
-      <%= @reservation.reservation_category&.name %>
+      <% if @reservation.is_alacarte %>
+        アラカルト
+      <% else %>
+        <%= @reservation.reservation_category&.name %>
+      <% end %>
     </div>
 
     <div class="box-header with-border">

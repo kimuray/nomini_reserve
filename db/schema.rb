@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203091856) do
+ActiveRecord::Schema.define(version: 20171204141610) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 20171203091856) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_alacarte", default: false, null: false
     t.index ["reservation_category_id"], name: "index_reservations_on_reservation_category_id"
     t.index ["shop_id"], name: "index_reservations_on_shop_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
