@@ -12,6 +12,9 @@ class Reservation < ApplicationRecord
   validates :use_date, presence: true
   validates :use_time, presence: true
   validates :status  , presence: true
+  validates :reservation_category_id, presence: true, unless: :is_alacarte
+
+  before_create :delete_reservation_category_when_alacarte
 
   enum status: { applying: 0, remand: 1, done: 2, visited: 3, paid: 4, answered: 5, canceled: 6 }
 
@@ -38,5 +41,13 @@ class Reservation < ApplicationRecord
     payment.user = user
     payment.limited_on = Date.tomorrow # TODO: 決済日付が決定次第変更可能性あり
     payment
+  end
+
+  private
+
+  def delete_reservation_category_when_alacarte
+    if is_alacarte
+      reservation_category_id = nil
+    end
   end
 end

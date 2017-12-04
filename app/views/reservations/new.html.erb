@@ -6,7 +6,21 @@
     <% end %>
   </ul>
   <%= bootstrap_form_for (reservation), url: confirm_shop_reservations_path(shop_id: shop.id) do |form| %>
-    <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約カテゴリ" %>
+    <div class="radio">
+      <label for="reservation_course">
+        <input type="radio" value="0" name="reservation[is_alacarte]"
+               id="reservation_course" <% unless @reservation.is_alacarte %>checked<% end %>> コース
+      </label>
+      <label for="reservation_alacarte">
+        <input type="radio" value="1" name="reservation[is_alacarte]"
+               id="reservation_alacarte" <% if @reservation.is_alacarte %>checked<% end %>> アラカルト
+      </label>
+    </div>
+
+    <div class="collapse" id="reservation_category_select">
+      <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約カテゴリ" %>
+    </div>
+
     <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
     <%= form.text_field :use_date, id: "datetimepicker" %>
     <%= form.time_select :use_time, minute_step: 10 %>

@@ -63,7 +63,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.fetch(:reservation, {}).permit(
       :shop_id, :user_id, :reservation_category_id, :people_count,
-      :use_date, :use_time, :message, :status
+      :use_date, :use_time, :message, :status, :is_alacarte
     )
   end
 
