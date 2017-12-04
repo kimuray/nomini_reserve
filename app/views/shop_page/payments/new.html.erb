@@ -17,7 +17,11 @@
       </div>
       <div class="col-md-9">
         <p class="confirm-value">
-          <%= @reservation_payment.reservation.reservation_category&.name %>
+          <% if  @reservation_payment.reservation.is_alacarte %>
+            アラカルト
+          <% else %>
+            <%= @reservation_payment.reservation.reservation_category&.name %>
+          <% end %>
         </p>
       </div>
     </div>
@@ -28,7 +32,11 @@
       </div>
       <div class="col-md-9">
         <p class="confirm-value">
-          <%= @reservation_payment.reservation.output_price %>円
+          <% if  @reservation_payment.reservation.is_alacarte %>
+            当日の会計金額を利用金額欄に入力してください
+          <% else %>
+            <%= @reservation_payment.reservation.output_price %>円
+          <% end %>
         </p>
       </div>
     </div>

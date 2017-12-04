@@ -25,15 +25,21 @@ class Reservation < ApplicationRecord
 
   # 価格表示
   def output_price
-    ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
+    unless is_alacarte
+      ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
+    end
   end
 
   def sum_price
-    output_price * people_count
+    unless is_alacarte
+      output_price * people_count
+    end
   end
 
   def tax_included_price
-    (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
+    unless is_alacarte
+      (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
+    end
   end
 
   def setting_payment(params=nil)
