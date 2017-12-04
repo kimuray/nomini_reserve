@@ -18,7 +18,7 @@
     </div>
 
     <div class="collapse" id="reservation_category_select">
-      <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約カテゴリ" %>
+      <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約内容" %>
     </div>
 
     <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>

@@ -8,7 +8,7 @@
   <p>店舗名</p>
   <p class="ml-2 font-weight-bold"><%= @reservation.shop&.name %></p>
   <%= bootstrap_form_for (@reservation), url: reservation_path(@reservation) do |form| %>
-    <%= form.select :reservation_category_id, @reservation.shop.valid_categories_list, label: "予約カテゴリ" %>
+    <%= form.select :reservation_category_id, @reservation.shop.valid_categories_list, label: "予約内容" %>
     <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
     <%= form.text_field :use_date, id: "datetimepicker" %>
     <%= form.time_select :use_time, minute_step: 10 %>
