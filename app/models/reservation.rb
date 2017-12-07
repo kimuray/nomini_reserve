@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   # Association
   belongs_to :user
   belongs_to :shop
-  belongs_to :reservation_category
+  belongs_to :reservation_category, optional: true
   has_many :enquetes
   has_one :reservation_benefit
   has_one :reservation_payment
@@ -12,6 +12,9 @@ class Reservation < ApplicationRecord
   validates :use_date, presence: true
   validates :use_time, presence: true
   validates :status  , presence: true
+  validates :reservation_category_id, presence: true, unless: :is_alacarte
+
+  before_create :delete_reservation_category_when_alacarte
 
   enum status: { applying: 0, remand: 1, done: 2, visited: 3, paid: 4, answered: 5, canceled: 6 }
 
@@ -22,15 +25,21 @@ class Reservation < ApplicationRecord
 
   # 価格表示
   def output_price
-    ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
+    unless is_alacarte
+      ShopUsage.find_by(shop: self.shop, reservation_category: self.reservation_category)&.price
+    end
   end
 
   def sum_price
-    output_price * people_count
+    unless is_alacarte
+      output_price * people_count
+    end
   end
 
   def tax_included_price
-    (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
+    unless is_alacarte
+      (sum_price * 1.08).floor # TODO: 消費税をどこかで定数化する
+    end
   end
 
   def setting_payment(params=nil)
@@ -38,5 +47,13 @@ class Reservation < ApplicationRecord
     payment.user = user
     payment.limited_on = Date.tomorrow # TODO: 決済日付が決定次第変更可能性あり
     payment
+  end
+
+  private
+
+  def delete_reservation_category_when_alacarte
+    if is_alacarte
+      reservation_category_id = nil
+    end
   end
 end

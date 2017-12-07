@@ -58,8 +58,8 @@ ja:
         user: ユーザー
         user_id: ユーザーID
         user_name: 利用者指名
-        reservation_category: 予約カテゴリ
-        reservation_category_id: 予約カテゴリID
+        reservation_category: 予約内容
+        reservation_category_id: 予約内容
         people_count: 利用人数
         use_datetime: 利用日時
         use_date: 利用日付
@@ -67,6 +67,7 @@ ja:
         message: メッセージ
         status: 予約ステータス
         price: 利用料金
+        is_alacarte: アラカルト
         created_at: 登録日時
         updated_at: 更新日時
       enquete:

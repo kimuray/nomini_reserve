@@ -18,7 +18,11 @@
       </div>
       <div class="col-md-9">
         <p class="confirm-value">
-          <%= @reservation.reservation_category&.name %>
+        <% if @reservation.is_alacarte %>
+          アラカルト
+        <% else %>
+          <%= @reservation.reservation_category.name %>
+        <% end %>
         </p>
       </div>
     </div>
@@ -29,7 +33,11 @@
       </div>
       <div class="col-md-9">
         <p class="confirm-value">
-          <%= @reservation.output_price %>円
+          <% if @reservation.is_alacarte %>
+            当日の注文によって金額が確定します
+          <% else %>
+            <%= @reservation.tax_included_price %> 円
+          <% end %>
         </p>
       </div>
     </div>

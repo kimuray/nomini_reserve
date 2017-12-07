@@ -8,7 +8,11 @@
 <ul>
   <li>
     <h4>カテゴリ</h4>
-    <p><%= @reservation.reservation_category.name %></p>
+    <% if @reservation.is_alacarte %>
+      <p>アラカルト</p>
+    <% else %>
+      <p><%= @reservation.reservation_category.name %></p>
+    <% end %>
   </li>
   <li>
     <h4>予約店舗</h4>
@@ -31,7 +35,11 @@
   </li>
   <li>
     <h4>金額</h4>
-    <p><%= @reservation.tax_included_price %>円</p>
+    <% if @reservation.is_alacarte %>
+      <p>当日の注文によって金額が確定します</p>
+    <% else %>
+      <p><%= @reservation.tax_included_price %>円</p>
+    <% end %>
   </li>
   <li>
     <h4>備考</h4>
