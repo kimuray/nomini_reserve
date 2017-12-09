@@ -18,9 +18,9 @@ class User < ApplicationRecord
                                  dependent: :destroy
 
   # Validation
-  validates :l_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}
-  validates :f_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}
-  validates :phone_number, presence: true, format: { with: /\A[0-9]+\z/, message: "電話番号は数字のみで入力してください。"}
+  validates :l_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}, unless: :new_record?
+  validates :f_name_kana, presence: true, format: { with: /\A[ァ-ンー－]+\z/, message: "フルネームは全角カタカナで入力してください。"}, unless: :new_record?
+  validates :phone_number, presence: true, format: { with: /\A[0-9]+\z/, message: "電話番号は数字のみで入力してください。"}, unless: :new_record?
 
   # 全角を半角に変換
   def phone_number=(value)
