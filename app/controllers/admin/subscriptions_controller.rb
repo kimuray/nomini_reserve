@@ -55,6 +55,6 @@ class Admin::SubscriptionsController < AdminController
   end
 
   def subscription_params
-    params.fetch(:subscription, {}).permit(:user_id, :status, :customer_id)
+    params.fetch(:subscription, {}).permit(:user_id, :status, :customer_id, :next_charge_on, :trail_finished_on)
   end
 end

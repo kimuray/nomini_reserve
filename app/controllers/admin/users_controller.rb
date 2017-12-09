@@ -47,7 +47,8 @@ class Admin::UsersController < AdminController
   def user_params
     params.fetch(:user, {}).permit(
       :email, :password, :password_confirmation, :confirmed_at, :l_name, :f_name, :l_name_kana, :f_name_kana,
-      :phone_number, :enterprise_name, :bank_name, :bank_branch_name, :bank_account_number, :occupation, :point_count 
+      :phone_number, :enterprise_name, :bank_name, :bank_branch_name, :bank_account_number,
+      :occupation, :point_count, :monthly_usage_amount
     )
   end
 end

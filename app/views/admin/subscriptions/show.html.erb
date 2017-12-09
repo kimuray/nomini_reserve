@@ -24,6 +24,20 @@
     <div class="box-body">
       <%= @subscription.customer_id %>
     </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Subscription.human_attribute_name(:next_charge_on) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @subscription.next_charge_on %>
+    </div>
+
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Subscription.human_attribute_name(:trail_finished_on) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @subscription.trail_finished_on %>
+    </div>
     
     <div class="box-header with-border">
       <h3 class="box-title"><%= Subscription.human_attribute_name(:created_at) %></h3>
