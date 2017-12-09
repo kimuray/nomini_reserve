@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <nav class="navbar navbar-light">
+  <%= link_to "nomini", mypage_path, class: "navbar-brand text-white float-left nomini-title"%>
+  <%= image_tag("NOMINI.PNG", class: "nomini-logo") %>
   <div class="container">
-    <%= link_to "nomini", mypage_path, class: "navbar-brand text-muted"%>
     <ul class="nav">
       <% if shop_signed_in? %>
           <li class="nav-item ml-3">
@@ -28,7 +29,7 @@
             <%= link_to "店舗を見る", shops_path, class: "btn btn-info shop-guide-btn" %>
           </li>
         <% else %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %>
+          <!-- <%= link_to "ログイン", new_user_session_path, class: "btn btn-info" %> -->
         <% end %>
       <% end %>
     </ul>

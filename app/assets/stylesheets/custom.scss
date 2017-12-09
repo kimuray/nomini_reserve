@@ -1,4 +1,8 @@
 $text-main: #333;
+$header-color: #A0A0A4;
+$main-text-color: #A0A0A4;
+$back-color: #ECECEC;
+$main-line-color: #F0F0F0;
 
 html {
   position: relative;
@@ -11,6 +15,22 @@ body {
     margin-bottom: 136px;
   }
 }
+.logo-area{
+  position: relative;
+}
+.main-text{
+  color: $main-text-color;
+}
+.nomini-title{
+  position: absolute;
+}
+.nomini-logo{
+  width:auto;
+  height:50px;
+  max-width:100%;
+  max-height:100%;
+  margin: 0 auto;
+}
 
 .footer {
   position: absolute;
@@ -18,7 +38,7 @@ body {
   width: 100%;
   height: 60px;
   background-color: #fff;
-  border-top: 1px solid #e3e8ed;
+  border-top: 1px solid $main-line-color;
   .container{
     height: 100%;
     .navbar{
@@ -42,7 +62,7 @@ body {
 }
 
 .shop-list{
-  border: 1px solid #e3e8ed;
+  border: 1px solid $main-line-color;
 }
 
 .shop-show-image{
@@ -51,18 +71,19 @@ body {
 }
 
 .nomini-header{
-  border-bottom: 1px solid #e3e8ed;
+  border-bottom: 1px solid $main-line-color;
+  background: $header-color;
 }
 
 .alert-area{
-  border: 1px solid #e3e8ed;
+  border: 1px solid $main-line-color;
   .alert{
     margin: 0;
   }
 }
 
 .main-area{
-  border: 1px solid #e3e8ed;
+  border: 1px solid $main-line-color;
   .page-heading{
     font-size: 1.5rem;
     font-weight: 800;
@@ -105,7 +126,7 @@ body {
 }
 
 .account-sub{
-  border-top: 1px solid #e3e8ed;
+  border-top: 1px solid $main-line-color;
 }
 
 .user-info{
@@ -145,9 +166,9 @@ body {
   }
   @media (max-width: 767px) {
     margin-bottom: 8px;
-    border-left: 1px solid #e3e8ed;
-    border-right: 1px solid #e3e8ed;
-    border-bottom: 1px solid #e3e8ed;
+    border-left: 1px solid $main-line-color;
+    border-right: 1px solid $main-line-color;
+    border-bottom: 1px solid $main-line-color;
   }
 }
 
@@ -286,7 +307,7 @@ body {
 }
 
 .confirm-list{
-  border-bottom: 1px solid #e3e8ed;
+  border-bottom: 1px solid $main-line-color;
   padding: 16px 0;
   @media (max-width: 767px) {
       padding: 8px 0;
