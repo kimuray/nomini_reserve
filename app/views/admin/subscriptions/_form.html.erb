@@ -4,9 +4,9 @@
       <%= bootstrap_form_for [:admin, subscription] do |form| %>
         <%= form.number_field :user_id %>
         <%= form.select :status, Subscription.statuses_i18n.invert, {} %>
-        <%= form.text_field :payjp_token %>
         <%= form.text_field :customer_id %>
-        <%= form.text_field :subscription_id %>
+        <%= form.date_field :next_charge_on %>
+        <%= form.date_field :trail_finished_on %>
 
         <div class="box-footer">
           <%= form.primary '登録する' %>

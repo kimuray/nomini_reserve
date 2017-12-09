@@ -19,13 +19,6 @@
     </div>
 
     <div class="box-header with-border">
-      <h3 class="box-title"><%= Subscription.human_attribute_name(:payjp_token) %></h3>
-    </div>
-    <div class="box-body">
-      <%= @subscription.payjp_token %>
-    </div>
-
-    <div class="box-header with-border">
       <h3 class="box-title"><%= Subscription.human_attribute_name(:customer_id) %></h3>
     </div>
     <div class="box-body">
@@ -33,12 +26,18 @@
     </div>
 
     <div class="box-header with-border">
-      <h3 class="box-title"><%= Subscription.human_attribute_name(:subscription_id) %></h3>
+      <h3 class="box-title"><%= Subscription.human_attribute_name(:next_charge_on) %></h3>
     </div>
     <div class="box-body">
-      <%= @subscription.subscription_id %>
+      <%= @subscription.next_charge_on %>
     </div>
 
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= Subscription.human_attribute_name(:trail_finished_on) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @subscription.trail_finished_on %>
+    </div>
     
     <div class="box-header with-border">
       <h3 class="box-title"><%= Subscription.human_attribute_name(:created_at) %></h3>

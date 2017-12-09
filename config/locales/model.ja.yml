@@ -48,6 +48,7 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         remember_me: ログインしたままにする
+        monthly_usage_amount: 月間利用金額
       bank_account:
         bank_name: 銀行名
         bank_branch_name: 支店名
@@ -97,9 +98,9 @@ ja:
       subscription:
         user_id: ユーザーID
         status: ステータス
-        payjp_token: トークンID(payjp)
         customer_id: カスタマーID(payjp)
-        subscription_id: 定期購読ID(payjp)
+        next_charge_on: 次回課金日
+        trail_finished_on: トライアル期間終了日
         created_at: 登録日時
         updated_at: 更新日時
       shop_usage:
@@ -193,3 +194,9 @@ ja:
         paid: 決済完了
         force_paid: 強制決済
         failed: 決済失敗
+    subscription:
+      status:
+        cancel: 課金停止
+        trial: トライアル
+        active: 課金中
+        examption: 課金免除

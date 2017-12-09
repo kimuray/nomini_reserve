@@ -84,6 +84,13 @@
     </div>
 
     <div class="box-header with-border">
+      <h3 class="box-title"><%= User.human_attribute_name(:monthly_usage_amount) %></h3>
+    </div>
+    <div class="box-body">
+      <%= @user.monthly_usage_amount %> 円
+    </div>
+
+    <div class="box-header with-border">
       <h3 class="box-title"><%= User.human_attribute_name(:updated_at) %></h3>
     </div>
     <div class="box-body">
