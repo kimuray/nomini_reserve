@@ -27,7 +27,7 @@ class Admin::SubscriptionsController < AdminController
 
   def update
     if @subscription.update(subscription_params)
-      redirect_to @subscription, notice: 'subscription was successfully updated.'
+      redirect_to admin_subscription_url(@subscription), notice: 'subscription was successfully updated.'
     else
       render :edit
     end
