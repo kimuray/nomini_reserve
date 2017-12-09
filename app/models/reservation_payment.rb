@@ -13,6 +13,7 @@ class ReservationPayment < ApplicationRecord
     (amount * Settings.consumption_tax).to_i
   end
 
+  # TODO: 決済処理に似た処理が多いため要リファクタリング
   def liquidation(params)
     payjp_api = PayjpApi.new
     begin
@@ -21,7 +22,7 @@ class ReservationPayment < ApplicationRecord
         update!(payjp_token_id: token.id, status: :paid)
         reservation.paid!
         payjp_api.create_charge(payjp_token_id, tax_included_amount)
-        create_reservation_benefit_record
+        grant_benefit_after_paid
       end
     rescue => e
       errors[:base] << '支払いに失敗しました'
@@ -37,7 +38,7 @@ class ReservationPayment < ApplicationRecord
       ActiveRecord::Base.transaction do
         update!(payjp_token_id: token_id, status: :force_paid)
         payjp_api.create_charge(payjp_token_id, tax_included_amount)
-        create_reservation_benefit_record
+        grant_benefit_after_paid
       end
     rescue => e
       failed!
@@ -52,6 +53,7 @@ class ReservationPayment < ApplicationRecord
       ActiveRecord::Base.transaction do
         update!(customer_id: user.subscription.customer_id, status: :paid)
         payjp_api.create_charge_by_registed_card(customer_id, tax_included_amount)
+        grant_benefit_after_paid
       end
     rescue => e
       errors[:base] << '支払いに失敗しました'
@@ -70,12 +72,17 @@ class ReservationPayment < ApplicationRecord
 
   def create_reservation_benefit_record
     reservation_benefit = reservation.build_reservation_benefit(
-      user: reservation.user,
+      user: user,
       use_price: amount
     )
     reservation_benefit.set_point
     reservation_benefit.save!
     reservation_benefit.grant_to_user! # TODO: 既存の仕組みをそのまま利用しているためリファクタ必要
     reservation.paid!
+  end
+
+  def grant_benefit_after_paid
+    create_reservation_benefit_record
+    user.add_monthly_usage_amount!(amount)
   end
 end
