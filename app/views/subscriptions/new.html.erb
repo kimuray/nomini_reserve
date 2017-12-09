@@ -1,9 +1,26 @@
 <div class="main-area container bg-white mt-3 payment-info">
   <div class="payment-form">
-    <h2 class="main-text text-center page-heading mb-4 mt-4">クレジットカード登録</h2>
+    <ul class="reservation-chack text-danger">
+      <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
 
     <%= form_for(@subscription) do |f| %>
-      <span class="charge-errors"></span>
+      <h2 class="main-text text-center page-heading mb-4 mt-4">会員情報の本登録</h2>
+      <div class="field form-group row center-form">
+        <%= label :full_name_kana, "フルネーム(全角カナ)", class: "col-sm-4 signup-label" %><br />
+        <%= text_field :user, :l_name_kana, placeholder: "セイ", class: "col-sm-4 form-control" %>
+        <%= text_field :user, :f_name_kana, placeholder: "メイ", class: "col-sm-4 form-control" %>
+      </div>
+
+      <div class="field form-group row center-form">
+        <%= label :phone_number, "電話番号", class: "col-sm-4 signup-label" %><br />
+        <%= text_field :user, :phone_number, placeholder: "08012345678", class: "col-sm-8 form-control" %>
+      </div>
+
+      <h2 class="main-text text-center page-heading mb-4 mt-4">クレジットカード登録</h2>
+
       <div class="field form-group text-center">
         <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
       </div>
