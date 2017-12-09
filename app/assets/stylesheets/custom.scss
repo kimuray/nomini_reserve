@@ -40,6 +40,9 @@ body {
   position: absolute;
   float: right;
   right: 24px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .footer {
