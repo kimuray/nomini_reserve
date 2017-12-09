@@ -1,5 +1,5 @@
 <div class="main-area container bg-white mt-3">
-  <h2 class="text-info text-center page-heading mb-4 mt-4">ユーザー情報変更</h2>
+  <h2 class="main-text text-center page-heading mb-4 mt-4">ユーザー情報変更</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -49,14 +49,14 @@
     </div>
   <% end %>
   <div class="text-center account-sub p-4">
-    <%= link_to "パスワード変更", users_edit_password_path,class: "text-info" %>
+    <%= link_to "パスワード変更", users_edit_password_path,class: "main-text" %>
   </div>
 
   <div class="text-center account-sub p-4">
     <% if current_user.bank_account.blank? %>
-      <%= link_to "口座情報を登録する", new_bank_account_path, class: "text-info" %>
+      <%= link_to "口座情報を登録する", new_bank_account_path, class: "main-text" %>
     <% else %>
-      <%= link_to "口座情報を更新する", edit_bank_account_path, class: "text-info" %>
+      <%= link_to "口座情報を更新する", edit_bank_account_path, class: "main-text" %>
     <% end %>
   </div>
 

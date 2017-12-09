@@ -1,5 +1,5 @@
 <div class="main-area container bg-white mt-3">
-  <h2 class="text-info text-center page-heading mb-4 mt-4">店舗ログイン</h2>
+  <h2 class="main-text text-center page-heading mb-4 mt-4">店舗ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field form-group text-center login-form">
@@ -23,6 +23,6 @@
   <% end %>
 
   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <p class="text-center"><%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name), class: "text-info" %></p>
+    <p class="text-center"><%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name), class: "main-text" %></p>
   <% end -%>
 </div>
