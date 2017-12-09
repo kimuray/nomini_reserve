@@ -28,17 +28,6 @@
       </div>
     <% end %>
 
-    <div class="field form-group row center-form">
-      <%= f.label "フルネーム(全角カナ)", class: "col-sm-4 signup-label" %><br />
-      <%= f.text_field :l_name_kana, placeholder: "セイ", class: "col-sm-4 form-control" %>
-      <%= f.text_field :f_name_kana, placeholder: "メイ", class: "col-sm-4 form-control" %>
-    </div>
-
-    <div class="field form-group row center-form">
-      <%= f.label :phone_number, class: "col-sm-4 signup-label" %><br />
-      <%= f.text_field :phone_number, placeholder: "08012345678", class: "col-sm-8 form-control" %>
-    </div>
-
     <div class="actions text-center mb-3">
       <%= f.submit "登録する", class: "btn btn-info" %>
     </div>
