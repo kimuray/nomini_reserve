@@ -11,8 +11,7 @@
         <tr>
           <th class="col-md-1"><%= Subscription.human_attribute_name(:id) %></th>
           <th class="col-md-3"><%= Subscription.human_attribute_name(:status) %></th>
-          <th class="col-md-3"><%= Subscription.human_attribute_name(:payjp_token) %></th>
-          <th class="col-md-2"><%= Subscription.human_attribute_name(:subscription_id) %></th>
+          <th class="col-md-3"><%= Subscription.human_attribute_name(:customer_id) %></th>
           <th class="col-md-3"></th>
         </tr>
           <% if @subscriptions.any? %>
@@ -20,8 +19,7 @@
             <tr>
               <td><%= subscription.id %></td>
               <td><%= subscription.status_i18n %></td>
-              <td><%= subscription.payjp_token %></td>
-              <td><%= subscription.subscription_id %></td>
+              <td><%= subscription.customer_id %></td>
               <td>
                 <div class="text-right">
                 <%= link_to admin_subscription_path(subscription), class: 'btn btn-default' do %><i class="fa fa-search"></i> 詳細<% end %>

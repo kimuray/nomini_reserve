@@ -97,9 +97,7 @@ ja:
       subscription:
         user_id: ユーザーID
         status: ステータス
-        payjp_token: トークンID(payjp)
         customer_id: カスタマーID(payjp)
-        subscription_id: 定期購読ID(payjp)
         created_at: 登録日時
         updated_at: 更新日時
       shop_usage:
@@ -193,3 +191,9 @@ ja:
         paid: 決済完了
         force_paid: 強制決済
         failed: 決済失敗
+    subscription:
+      status:
+        cancel: 課金停止
+        trial: トライアル
+        active: 課金中
+        examption: 課金免除

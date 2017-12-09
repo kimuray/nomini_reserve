@@ -39,12 +39,12 @@ class Admin::SubscriptionsController < AdminController
   end
 
   def cancel
-    @subscription.cancel
+    @subscription.cancel!
     redirect_to admin_subscription_url(@subscription), notice: '課金を停止しました'
   end
 
   def restart
-    @subscription.restart
+    @subscription.active!
     redirect_to admin_subscription_url(@subscription), notice: '課金を再開しました'
   end
 
@@ -55,6 +55,6 @@ class Admin::SubscriptionsController < AdminController
   end
 
   def subscription_params
-    params.fetch(:subscription, {}).permit(:user_id, :status, :payjp_token, :customer_id, :subscription_id)
+    params.fetch(:subscription, {}).permit(:user_id, :status, :customer_id)
   end
 end
