@@ -9,3 +9,8 @@ end
 every 1.day, at: '1:00 am' do
   runner "Batches::ForcePaymentBatch.exec"
 end
+
+# 定期課金
+every 1.day, at: '3:00 am' do
+  runner "Batches::SubscriptionBatch.exec"
+end

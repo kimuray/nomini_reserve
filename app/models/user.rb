@@ -59,4 +59,9 @@ class User < ApplicationRecord
   def full_name_kana
     "#{l_name_kana} #{f_name_kana}"
   end
+
+  def add_monthly_usage_amount!(amount)
+    sum = monthly_usage_amount + amount
+    update!(monthly_usage_amount: sum)
+  end
 end
