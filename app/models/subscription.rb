@@ -3,14 +3,14 @@ class Subscription < ApplicationRecord
 
   before_destroy :delete_record
 
-  enum status: { cancel: 0, active: 1, trial: 2 }
+  enum status: { cancel: 0, trial: 1, active: 2, examption: 3 }
+
+  validates :customer_id, presence: true
 
   # TODO: PayjpApiの呼び出しを後でリファクタリング
-  def create_record(token, plan)
+  def create_record(token)
     payjp_api = PayjpApi.new
-    customer = payjp_api.create_customer(token)
-    subscription = payjp_api.create_subscription(customer.id, plan)
-    self.attributes = { payjp_token: token, customer_id: customer.id, subscription_id: subscription.id }
+    self.customer_id = payjp_api.create_customer(token).id
     self.save
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204141610) do
+ActiveRecord::Schema.define(version: 20171209030855) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -211,14 +211,10 @@ ActiveRecord::Schema.define(version: 20171204141610) do
   create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.integer "status", default: 1
-    t.string "payjp_token"
     t.string "customer_id"
-    t.string "subscription_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
-    t.index ["payjp_token"], name: "index_subscriptions_on_payjp_token"
-    t.index ["subscription_id"], name: "index_subscriptions_on_subscription_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
