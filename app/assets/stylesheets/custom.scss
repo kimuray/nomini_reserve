@@ -4,6 +4,7 @@ $main-text-color: #A0A0A4;
 $back-color: #ECECEC;
 $main-line-color: #F0F0F0;
 $mild-black: #222222;
+$main-purple: #200243;
 
 html {
   position: relative;
@@ -23,8 +24,8 @@ body {
   color: $main-text-color;
 }
 .main-btn{
-  background: white;
-  color: $main-text-color;
+  background: $main-purple;
+  color: white;
 }
 .nomini-title{
   position: absolute;
