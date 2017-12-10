@@ -32,12 +32,12 @@ class ReservationPayment < ApplicationRecord
   end
 
   # OPTIMIZE: liquidationと似た処理が多いので最適化できるかも
-  def force_liquidation(token_id)
+  def force_liquidation(customer_id)
     payjp_api = PayjpApi.new
     begin
       ActiveRecord::Base.transaction do
         update!(payjp_token_id: token_id, status: :force_paid)
-        payjp_api.create_charge(payjp_token_id, tax_included_amount)
+        payjp_api.create_charge_by_registed_card(customer_id, tax_included_amount)
         grant_benefit_after_paid
       end
     rescue => e
