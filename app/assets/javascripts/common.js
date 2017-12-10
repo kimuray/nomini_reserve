@@ -1,6 +1,6 @@
 $(function () {
   $('.alert-area').mouseover(function(){
-    $('.alert-area').hide();
+    $('.alert-area').hide('fade', '', 500);
   });
 
   $('#shop_prefecture_id').change(function() {
