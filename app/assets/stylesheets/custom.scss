@@ -3,6 +3,7 @@ $header-color: #A0A0A4;
 $main-text-color: #A0A0A4;
 $back-color: #ECECEC;
 $main-line-color: #F0F0F0;
+$mild-black: #222222;
 
 html {
   position: relative;
@@ -27,6 +28,9 @@ body {
 }
 .nomini-title{
   position: absolute;
+}
+.bg-black{
+  background: $mild-black;
 }
 .nomini-logo{
   width:auto;
