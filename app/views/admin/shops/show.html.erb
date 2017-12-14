@@ -46,7 +46,7 @@
       <h3 class="box-title"><%= Shop.human_attribute_name(:image) %></h3>
     </div>
     <div class="box-body">
-      <%= image_tag @shop.image if @shop.image.present? %>
+      <%= image_tag @shop.image, class: 'img-responsive' if @shop.image.present? %>
     </div>
 
     <div class="box-header with-border">
@@ -60,7 +60,7 @@
       <h3 class="box-title"><%= Shop.human_attribute_name(:price) %></h3>
     </div>
     <div class="box-body">
-      <%= @shop.price %>円
+      <%= @shop.price %>
     </div>
 
     <div class="box-header with-border">

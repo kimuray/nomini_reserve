@@ -13,8 +13,8 @@
         <%= form.text_area :description %>
         <%= form.file_field :image %>
         <%= form.hidden_field :image_cache %>
-        <%= form.number_field :service_time %>
-        <%= form.number_field :price %>
+        <%= form.number_field :service_time, step: :any %>
+        <%= form.text_field :price %>
         <%= form.text_field :phone_number %>
         <% if params[:action] == 'new' %>
           <% ReservationCategory.all.each do |rc| %>
