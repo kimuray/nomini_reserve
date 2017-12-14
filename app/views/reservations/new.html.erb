@@ -20,6 +20,12 @@
     <div class="collapse" id="reservation_category_select">
       <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約内容" %>
     </div>
+    <div class="collapse" id="reservation_alacarte_price">
+      <label class="control-label required" for="reservation_people_count">
+        <%= t('activerecord.attributes.shop.price') %>
+      </label>
+      <p><%= shop.price %></p>
+    </div>
 
     <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
     <%= form.text_field :use_date, id: "datetimepicker" %>

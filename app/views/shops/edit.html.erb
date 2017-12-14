@@ -40,7 +40,12 @@
 
     <div class="field form-group row signup-form">
       <%= form.label :service_time, class: "col-sm-3 signup-label" %><br />
-      <%= form.number_field :service_time, class: "col-sm-9 form-control" %>
+      <%= form.number_field :service_time, step: :any, class: "col-sm-9 form-control" %>
+    </div>
+
+    <div class="field form-group row signup-form">
+      <%= form.label :price, class: "col-sm-3 signup-label" %><br />
+      <%= form.text_field :price, class: "col-sm-9 form-control" %>
     </div>
 
     <div class="field form-group row signup-form">

@@ -9,7 +9,7 @@ ja:
         description: 店舗説明
         image: 店舗イメージ
         service_time: サービス提供時間
-        price: 価格
+        price: アラカルト価格帯
         phone_number: 電話番号
         remember_me: ログインしたままにする
         prefecture_id: 都道府県
