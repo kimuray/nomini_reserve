@@ -6,25 +6,28 @@
     <% end %>
   </ul>
   <%= bootstrap_form_for (reservation), url: confirm_shop_reservations_path(shop_id: shop.id) do |form| %>
-    <div class="radio">
-      <label for="reservation_course">
-        <input type="radio" value="0" name="reservation[is_alacarte]"
-               id="reservation_course" <% unless @reservation.is_alacarte %>checked<% end %>> コース
-      </label>
-      <label for="reservation_alacarte">
-        <input type="radio" value="1" name="reservation[is_alacarte]"
-               id="reservation_alacarte" <% if @reservation.is_alacarte %>checked<% end %>> アラカルト
-      </label>
-    </div>
+    <div id="js_reservation_course_select">
+      <div class="radio">
+        <label for="reservation_course" @click="showCourse=true">
+          <input type="radio" value="0" name="reservation[is_alacarte]"
+                 id="reservation_course" <% unless @reservation.is_alacarte %>checked<% end %>> コース
+        </label>
+        <label for="reservation_alacarte" @click="showCourse=false">
+          <input type="radio" value="1" name="reservation[is_alacarte]"
+                 id="reservation_alacarte" <% if @reservation.is_alacarte %>checked<% end %>> アラカルト
+        </label>
+      </div>
 
-    <div class="collapse" id="reservation_category_select">
-      <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約内容" %>
-    </div>
-    <div class="collapse" id="reservation_alacarte_price">
-      <label class="control-label required" for="reservation_people_count">
-        <%= t('activerecord.attributes.shop.price') %>
-      </label>
-      <p><%= shop.price %></p>
+      <div id="reservation_category_select" v-if="showCourse">
+        <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約内容" %>
+      </div>
+
+      <div id="reservation_alacarte_price" v-else>
+        <label class="control-label required" for="reservation_people_count">
+          <%= t('activerecord.attributes.shop.price') %>
+        </label>
+        <p><%= shop.price %></p>
+      </div>
     </div>
 
     <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
@@ -37,3 +40,7 @@
     </div>
   <% end %>
 </div>
+
+<%= content_for :use_javascript do %>
+  <%= javascript_pack_tag 'reservation_course_select' %>
+<% end %>
