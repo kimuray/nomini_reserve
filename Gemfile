@@ -19,6 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootstrap_form'
 gem 'kaminari'
 gem 'redcarpet'
+gem 'webpacker'
 
 # Server
 gem 'unicorn'
