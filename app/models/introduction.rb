@@ -1,7 +1,7 @@
 class Introduction < ApplicationRecord
 
   # 紹介したユーザーに加算されるポイント
-  INTRODUCTION_POINT = 3000
+  INTRODUCTION_POINT = 2_000
 
   # Association
   belongs_to :user
