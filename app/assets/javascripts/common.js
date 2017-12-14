@@ -23,3 +23,7 @@ $(function() {
     });
   }
 });
+
+$(function() {
+  flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
+});
