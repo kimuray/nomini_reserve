@@ -13,7 +13,7 @@
       </div>
       <h3 class="shop-detail-title main-text">提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
-      <h3 class="shop-detail-title main-text">価格</h3>
+      <h3 class="shop-detail-title main-text">アラカルト価格帯</h3>
       <div class="ml-2 mb-3">
         <% @shop.shop_usages.each do |shop_usage| %>
           <% unless shop_usage.price.blank? %>
@@ -29,7 +29,7 @@
       <% if current_user.subscription.present? %>
         <h3 class="shop-detail-title main-text">電話番号</h3>
         <div class="ml-2 mb-3">
-          <%= @shop.phone_number %>
+          <a href="tel:<%= @shop.phone_number %>"><%= @shop.phone_number %></a>
         </div>
 
         <h3 class="shop-detail-title main-text">住所</h3>

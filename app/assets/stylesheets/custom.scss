@@ -17,6 +17,16 @@ body {
     margin-bottom: 136px;
   }
 }
+
+// PCの電話番号リンクのカーソルをポインタにならないように設定
+a[href^="tel:"] {
+  cursor: default;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .logo-area{
   position: relative;
 }
