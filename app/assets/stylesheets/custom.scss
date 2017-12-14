@@ -50,6 +50,54 @@ body {
   }
 }
 
+// 新規会員登録コンテナ
+.sign-up-countainer{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sign-up-alert{
+  margin: 0 auto;
+  color: $header-color;
+  font-size: 0.8rem;
+  max-width: 650px;
+  padding-bottom: 1rem;
+  .sign-up-alert-text{
+    margin: 0;
+  }
+}
+
+// メールアドレス入力フォーム
+.email-form{
+  position: relative;
+  &::before{
+    font-family: FontAwesome;
+    content: '\f003';
+    position: absolute;
+    top: 50%;
+    height: 10px;
+    line-height: 10px;
+    margin-top: -5px;
+    left: 10px;
+    color: $header-color;
+  }
+}
+// パスワード入力フォーム
+.password-form{
+  position: relative;
+  &::before{
+    font-family: FontAwesome;
+    content: '\f023';
+    position: absolute;
+    top: 50%;
+    height: 10px;
+    line-height: 10px;
+    margin-top: -5px;
+    left: 13px;
+    color: $header-color;
+  }
+}
+
 .footer {
   position: absolute;
   bottom: 0;
