@@ -1,50 +1,19 @@
-<p><%= @reservation.user.full_name_kana %>様</p>
+<p><%= @reservation.user.full_name_kana %></p>
 
 <p>
-  ご予約いただきありがとうございます。<br>
-  予約成否の返信があるまで少々お待ちください。
+  いつも『nomini』をご利用いただき、誠にありがとうございます。<br>
+  以下の通り予約を申請致します。<br>
+  店舗側のご回答をお待ちください。
 </p>
 
-<ul>
-  <li>
-    <h4>カテゴリ</h4>
-    <% if @reservation.is_alacarte %>
-      <p>アラカルト</p>
-    <% else %>
-      <p><%= @reservation.reservation_category.name %></p>
-    <% end %>
-  </li>
-  <li>
-    <h4>予約店舗</h4>
-    <p>
-      <%= @reservation.shop.name %><br>
-      URL: <%= link_to shop_url(@reservation.shop), shop_url(@reservation.shop) %>
-    </p>
-  </li>
-  <li>
-    <h4>予約日時</h4>
-    <p><%= "#{l(@reservation.use_date, format: :long)} #{l(@reservation.use_time, format: :time_only)}" %></p>
-  </li>
-  <li>
-    <h4>予約人数</h4>
-    <p><%= @reservation.people_count %>人</p>
-  </li>
-  <li>
-    <h4>予約者</h4>
-    <p><%= @reservation.user.full_name_kana %></p>
-  </li>
-  <li>
-    <h4>金額</h4>
-    <% if @reservation.is_alacarte %>
-      <p>当日の注文によって金額が確定します</p>
-    <% else %>
-      <p><%= @reservation.tax_included_price %>円</p>
-    <% end %>
-  </li>
-  <li>
-    <h4>備考</h4>
-    <%= simple_format(@reservation.message) %>
-  </li>
-</ul>
+<%= render 'mailers/shared/reservation_content_for_web', reservation: @reservation %>
 
-このメールは配信専用です。返信はできませんので御了承ください。
+<p>
+  ※ このメールは自動配信されています。<br>
+  このメールにご返信されても、お問い合わせ等にはお答えできません。
+</p>
+
+-----------------------------------<br>
+nomini
+　編集・著作・発行：株式会社nomini　<%= link_to nil, 'https://nomini.jp/' %><br>
+-----------------------------------<br>
