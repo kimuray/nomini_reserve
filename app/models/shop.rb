@@ -58,5 +58,4 @@ class Shop < ApplicationRecord
   def address_text
     "#{prefecture.name} #{city.name} #{area_text} #{address_detail}"
   end
-
 end
