@@ -8,6 +8,7 @@ class ReservationPaymentsController < ApplicationController
   def update
     if @reservation_payment.liquidation(params)
       send_mails
+      current_user.passive_introduction&.point_add
       redirect_to mypage_url, notice: '決済を完了しました'
     else
       render :show
@@ -17,6 +18,7 @@ class ReservationPaymentsController < ApplicationController
   def registed_card
     if @reservation_payment.registed_card_liquidation(current_user)
       send_mails
+      current_user.passive_introduction&.point_add
       redirect_to mypage_url, notice: '決済を完了しました'
     else
       render :show
