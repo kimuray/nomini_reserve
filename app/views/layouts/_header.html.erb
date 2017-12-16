@@ -1,6 +1,22 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <nav class="navbar navbar-light">
   <%= link_to image_tag("nomini_w00.png", class: "nomini-logo-img"), mypage_path, class: "nomini-logo-link" %>
+  <div id="nav-drawer">
+    <input id="nav-input" type="checkbox" class="nav-unshown">
+    <label id="nav-open" for="nav-input" class="m-0"><span></span></label>
+    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+    <div id="nav-content">
+      <div class="mobile-menu-contents bg-mild-black">
+        <ul class="mobile-menu-list">
+          <li><i class="fa fa-glass mr-3"></i><%= link_to "店舗を見る", shops_path %></li>
+          <li><i class="fa fa-user mr-3"></i><%= link_to "マイページ", mypage_path %></li>
+          <li><i class="fa fa-gear mr-3"></i><%= link_to "ユーザー設定", edit_user_registration_path %></li>
+          <li><i class="fa fa-envelope mr-3"></i><%= link_to "友人紹介", new_introduction_path %></li>
+          <li><i class="fa fa-money mr-3"></i><%= link_to "換金申請", new_exchange_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="right-nav">
     <ul class="nav">
       <% if shop_signed_in? %>

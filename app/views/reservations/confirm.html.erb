@@ -1,4 +1,4 @@
-<div class="container bg-white mt-3 pb-2 main-area">
+<div class="container mt-3 pb-2">
   <h2 class="main-text py-3 m-0">予約情報確認</h2>
   <!-- Main content -->
   <div class="confirm-box">
@@ -83,7 +83,7 @@
           <%= f.hidden_field :is_alacarte %>
           <%= f.hidden_field :reservation_category_id %>
           <%= f.submit '戻る', name: 'back', class: "btn btn-outline-secondary" %>
-          <%= f.submit '予約確定', class: "btn btn-info" %>
+          <%= f.submit '予約確定', class: "btn main-btn" %>
         <% end %>
       </div>
 
