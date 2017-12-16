@@ -38,6 +38,12 @@
   </tr>
   <tr>
     <th>お会計合計</th>
-    <td><%= reservation.is_alacarte ? "アラカルトは店舗利用後に金額が確定します" : "#{reservation.sum_price}円" %></td>
+    <td>
+      <% if reservation.is_alacarte %>
+        アラカルトは店舗利用後に金額が確定します
+      <% else %>
+        <%= "#{reservation.output_price}(コース料金)×(#{reservation.people_count}名-幹事1名)=#{reservation.sum_price}円" %>
+      <% end %>
+    </td>
   </tr>
 </table>

@@ -32,7 +32,7 @@ class Reservation < ApplicationRecord
 
   def sum_price
     unless is_alacarte
-      output_price * people_count
+      output_price * (people_count - 1) # -1は幹事分
     end
   end
 
