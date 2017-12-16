@@ -68,6 +68,20 @@ a[href^="tel:"] {
   margin: 0 auto;
 }
 
+// ログインフォームコンテナ
+.sign-in-countainer{
+  max-width: 400px;
+  margin: 0 auto;
+}
+// パスワード忘れのアナウンス
+.password-remember{
+  font-size: 0.8rem;
+}
+// ログインしたままにする
+.remember-me{
+  color: $main-purple;
+}
+
 .sign-up-alert{
   margin: 0 auto;
   color: $header-color;
@@ -188,10 +202,14 @@ a[href^="tel:"] {
   padding-left: 0;
 }
 
+.login-btn{
+  width: 240px;
+}
+
 .facebook-login-button{
   color: #fff;
   background: #4267b2;
-  width: auto;
+  width: 240px;
   text-align: center;
   padding: 10px 20px;
   &:hover{
