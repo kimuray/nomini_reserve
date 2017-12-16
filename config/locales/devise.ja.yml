@@ -18,9 +18,9 @@ ja:
       unconfirmed: "続ける前に、アカウントの確認をお願いします。"
     mailer:
       confirmation_instructions:
-        subject: "アカウントの登録方法"
+        subject: "【nomini】<要保管 ID/パスワード記載> nominiメンバー登録※まだ登録は完了しておりません。メール記載のURLよりマイページにログインしてください。"
       reset_password_instructions:
-        subject: "パスワードの再設定"
+        subject: "【nomini】パスワードの再設定"
       unlock_instructions:
         subject: "アカウントのロック解除"
     omniauth_callbacks:

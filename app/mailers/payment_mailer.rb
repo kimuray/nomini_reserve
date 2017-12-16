@@ -4,11 +4,11 @@ class PaymentMailer < ApplicationMailer
 
   def notification(payment)
     @payment = payment
-    mail(to: @payment.user.email, subject: "【nomini】#{@payment.reservation.shop.name}ご利用の決済について")
+    mail(to: @payment.user.email, subject: "【nomini】ご利用ありがとうございました。お支払い手続きをお済ませ下さい。")
   end
 
   def force_paid(payment)
     @payment = payment
-    mail(to: @payment.user.email, subject: "【nomini】#{@payment.reservation.shop.name}ご利用の決済が完了しました")
+    mail(to: @payment.user.email, subject: "【nomini】ご利用後のお支払い状況のご確認をお願い致します。")
   end
 end
