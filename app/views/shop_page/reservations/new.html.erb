@@ -11,10 +11,25 @@
       <%= form.text_field :phone_number, placeholder: 'ハイフンなしで入力してください。', class: "col-sm-8 form-control" %>
     </div>
 
-    <div class="field form-group row center-form">
-      <%= form.label :reservation_category_id, class: "col-sm-4 signup-label m-0" %>
-      <%= form.select :reservation_category_id, current_shop.valid_categories_list, {label: "予約内容"}, { class: "col-sm-8 form-control" } %>
+    <div class="radio field form-group row center-form">
+      <%= form.label '予約内容', class: "col-sm-4 signup-label m-0" %>
+      <label for="reservation_course">
+        <input type="radio" value="0" name="reservation[is_alacarte]"
+               id="reservation_course" <% unless @reservation.is_alacarte %>checked<% end %>> コース
+      </label>
+      <label for="reservation_alacarte">
+        <input type="radio" value="1" name="reservation[is_alacarte]"
+               id="reservation_alacarte" <% if @reservation.is_alacarte %>checked<% end %>> アラカルト
+      </label>
     </div>
+
+    <div id="reservation_category_select" class="collapse">
+      <div class="field form-group row center-form">
+        <%= form.label 'コース種類', class: "col-sm-4 signup-label m-0" %>
+        <%= form.select :reservation_category_id, current_shop.valid_categories_list, {label: "予約内容"}, { class: "col-sm-8 form-control" } %>
+      </div>
+    </div>
+
 
     <div class="field form-group row center-form">
       <%= form.label :people_count, class: "col-sm-4 signup-label m-0" %>

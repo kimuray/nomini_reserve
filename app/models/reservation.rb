@@ -32,7 +32,7 @@ class Reservation < ApplicationRecord
 
   def sum_price
     unless is_alacarte
-      output_price * people_count
+      output_price * (people_count - 1) # -1は幹事分
     end
   end
 
@@ -45,7 +45,7 @@ class Reservation < ApplicationRecord
   def setting_payment(params=nil)
     payment = build_reservation_payment(params)
     payment.user = user
-    payment.limited_on = Date.tomorrow # TODO: 決済日付が決定次第変更可能性あり
+    payment.limited_on = 1.week.since # TODO: 決済日付が決定次第変更可能性あり
     payment
   end
 

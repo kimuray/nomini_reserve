@@ -33,7 +33,7 @@ class Admin::ShopsController < AdminController
 
   def update
     @reservation_categories = ReservationCategory.all
-    if @shop.update(shop_params)
+    if @shop.update_without_password(shop_params)
       redirect_to admin_shop_url(@shop), notice: 'Shop was successfully updated.'
     else
       render :edit
