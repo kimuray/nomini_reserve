@@ -11,4 +11,9 @@ class PaymentMailer < ApplicationMailer
     @payment = payment
     mail(to: @payment.user.email, subject: "【nomini】ご利用後のお支払い状況のご確認をお願い致します。")
   end
+
+  def payment_complete(payment)
+    @payment = payment
+    mail(to: @payment.user.email, subject: "【nomini】お支払いが完了しました。またのご利用をお待ちしております。")
+  end
 end
