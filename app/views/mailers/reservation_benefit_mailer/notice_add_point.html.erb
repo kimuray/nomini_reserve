@@ -1,0 +1,19 @@
+<p><%= @reservation_benefit.user.full_name_kana %>様</p>
+
+<p>
+  先日は『nomini』のご利用ありがとうございました。<br>
+  今回ご利用による取得ポイントをお知らせいたします。
+</p>
+
+<p>
+  ◆nominiポイント◆<br>
+  ・今回取得ポイント:<%= @reservation_benefit.point %>ポイント<br>
+  ・累積ポイント: <%= @reservation_benefit.user.point_count %>ポイント
+</p>
+
+<p>
+  取得されたポイントはマイページのポイント交換申請よりamazonギフト券に変更可能です。<br>
+  <%= link_to nil, new_exchange_url %>
+</p>
+
+<%= render 'mailers/shared/mail_footer' %>

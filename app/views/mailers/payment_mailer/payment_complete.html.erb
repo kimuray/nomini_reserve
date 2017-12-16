@@ -1,0 +1,11 @@
+<p><%= @payment.user.full_name_kana %>様</p>
+
+<p>
+  以下ご利用のお支払いが完了致しました。<br>
+  またのご利用お待ちしております。
+</p>
+
+-----------------------------------------------<br>
+<%= render 'mailers/shared/reservation_content', reservation: @payment.reservation %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/mail_footer' %>

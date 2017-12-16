@@ -1,0 +1,19 @@
+<p><%= @user.full_name_kana %>様</p>
+
+<p>
+  いつも『nomini』のご利用いただきありがとうございます。
+  ご紹介いただいた<%= @introduced_user.full_name_kana %>様が今回『nomini』をご利用いただきましたので紹介ポイントを付与いたします。
+</p>
+
+<p>
+  ◆nominiポイント◆<br>
+  ・今回取得ポイント:<%= Introduction::INTRODUCTION_POINT %>ポイント<br>
+  ・累積ポイント: <%= @user.point_count %>ポイント
+</p>
+
+<p>
+  取得されたポイントはマイページのポイント交換申請よりamazonギフト券に変更可能です。<br>
+  <%= link_to nil, new_exchange_url %>
+</p>
+
+<%= render 'mailers/shared/mail_footer' %>
