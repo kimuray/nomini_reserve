@@ -30,7 +30,7 @@
   </tr>
   <tr>
     <th>料金(お一人様)</th>
-    <td><%= reservation.is_alacarte ? reservation.price : "#{reservation.output_price}円" %></td>
+    <td><%= reservation.is_alacarte ? reservation.shop.price : "#{reservation.output_price}円" %></td>
   </tr>
   <tr>
     <th>ご利用人数</th>
