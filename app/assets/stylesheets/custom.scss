@@ -77,6 +77,17 @@ a[href^="tel:"] {
 .password-remember{
   font-size: 0.8rem;
 }
+
+// パスワード再発行画面のタイトル文字
+@media (max-width: 767px) {
+  .password-forget-title{
+    font-size: 1.3rem;
+  }
+  .password-forget-guide{
+    font-size: 0.8rem;
+  }
+}
+
 // ログインしたままにする
 .remember-me{
   color: $main-purple;

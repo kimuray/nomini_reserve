@@ -1,6 +1,6 @@
 <div class="container">
-  <h2 class="main-text text-center page-heading mb-5 mt-5">パスワードをお忘れですか？</h2>
-  <p class="text-center main-text">ご登録頂きました「メールアドレス」を入力し、「送信する」を押してください。</p>
+  <h2 class="main-text text-center page-heading mb-5 mt-5 password-forget-title">パスワードをお忘れですか？</h2>
+  <p class="text-center main-text password-forget-guide">ご登録頂きました「メールアドレス」を入力し、「送信する」を押してください。</p>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
