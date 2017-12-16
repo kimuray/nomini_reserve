@@ -302,17 +302,12 @@ a[href^="tel:"] {
 
 .course-price{
   font-size: 0.8rem;
+  border-left: 2px solid $main-purple;
 }
 
 .shop-detail{
   white-space: pre-wrap;
   word-wrap: break-word;
-}
-
-.image-wrap{
-  overflow: hidden;
-  width: 100%;/* トリミングしたい枠の幅 */
-  height: 100%;/* トリミングしたい枠の高さ */
 }
 
 .visible-origin-xs {
@@ -350,9 +345,21 @@ a[href^="tel:"] {
     right: 0 !important;
     left: auto !important;
   }
+  .image-wrap{
+    position: relative;
+    overflow: hidden;
+    width: 100%;/* トリミングしたい枠の幅 */
+    height: 100%;/* トリミングしたい枠の高さ */
+    min-height: 200px;
+  }
   .shop-image{
+    position: absolute;
+    width: 560px;
     height: auto;
-    width: 120%;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
   }
   .shop-info-1{
     margin-top: 16px;
@@ -373,9 +380,20 @@ a[href^="tel:"] {
   .shop-name{
     padding-top: 8px;
   }
+  .image-wrap{
+    position: relative;
+    overflow: hidden;
+    width: 100%;/* トリミングしたい枠の幅 */
+    height: 100%;/* トリミングしたい枠の高さ */
+  }
   .shop-image{
-    height: 150%;
-    width: auto;
+    position: absolute;
+    width: 320px;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
   }
 }
 

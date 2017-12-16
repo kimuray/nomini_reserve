@@ -6,7 +6,7 @@
 <div class="container">
   <% @shops.each do |shop| %>
     <div class="row bg-white mb-3 shop-list">
-      <div class="col-md-3 pb-2 picture-test">
+      <div class="col-md-3 pb-2 pt-2">
         <div class="image-wrap">
           <%= image_tag shop.image, size: '50x50', class: "align-self-center shop-image pt-2" %>
         </div>
@@ -22,7 +22,7 @@
             <h3><%= shop_name_text(shop) %></h3>
           </div>
           <div class="col-md-2">
-            <%= link_to '詳細を見る', shop_path(shop), class: "float-md-right btn btn-info shop-detail-btn" %>
+            <%= link_to '詳細を見る', shop_path(shop), class: "float-md-right btn main-btn shop-detail-btn" %>
           </div>
 
           <p class="shop-description mb-0 p-2">
@@ -31,7 +31,7 @@
           <div class="row w-100 pl-4 pb-2">
             <% shop.shop_usages.each do |shop_usage| %>
               <% unless shop_usage.price.blank? %>
-                <div class="col-4 course-price border border-info p-0 pl-2 pr-2 border-top-0 border-bottom-0 border-right-0">
+                <div class="col-4 course-price p-0 pl-2 pr-2">
                   <div class="row">
                     <span class="col-12 col-md-5"><%= shop_usage.reservation_category.name %></span>
                     <span class="col-12 col-md-7"><%= shop_usage.price %>円</span>
