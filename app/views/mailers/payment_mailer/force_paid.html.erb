@@ -1,26 +1,16 @@
 <p><%= @payment.user.full_name_kana %>様</p>
 
 <p>
-  nominiをご利用いただきありがとうございます。<br>
-  下記、決済を行いましたのでご確認ください。
+  お世話になります。<br>
+  この度はnominiのご利用誠にありがとうございました。<br>
+
+  以下ご利用内容のお支払いを<%= link_to 'nomini「利用規約」', 'http://nomini.jp/?page_id=142' %>に基づき自動決済させて頂きました。<br>
+  内容をご確認頂けますようよろしくお願い致します。<br>
+
+  またのご利用をお待ちしております。<br>
 </p>
 
-<ul>
-  <li>
-    <h4>ご利用店舗</h4>
-    <p><%= @payment.reservation.shop.name %></p>
-    URL: <%= link_to shop_url(@payment.reservation.shop), shop_url(@payment.reservation.shop) %>
-  </li>
-  <li>
-    <h4>ご利用日時</h4>
-    <p>
-      <%= "#{l(@payment.reservation.use_date, format: :long)} #{l(@payment.reservation.use_time, format: :time_only)}" %>
-    </p>
-  </li>
-  <li>
-    <h4>決済金額(税込)</h4>
-    <p><%= @payment.tax_included_amount %>円</p>
-  </li>
-</ul>
-
-このメールは配信専用です。返信はできませんので御了承ください。
+-----------------------------------------------<br>
+<%= render 'mailers/shared/reservation_content', reservation: @payment.reservation %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/mail_footer' %>
