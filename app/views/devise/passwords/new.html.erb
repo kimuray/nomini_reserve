@@ -1,17 +1,26 @@
-<div class="main-area container bg-white mt-3">
-  <h2 class="main-text text-center page-heading mb-4 mt-4">パスワード再設定</h2>
+<div class="container">
+  <h2 class="main-text text-center page-heading mb-5 mt-5">パスワードをお忘れですか？</h2>
+  <p class="text-center main-text">ご登録頂きました「メールアドレス」を入力し、「送信する」を押してください。</p>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field form-group text-center login-form">
-      <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
+    <div class="sign-up-countainer">
+      <div class="field form-group center-form email-form">
+        <%= f.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
+      </div>
     </div>
 
-    <div class="actions form-group text-center">
-      <%= f.submit "パスワードのリセットメールを送信する", class: "btn btn-info" %>
+    <div class="actions form-group text-center mb-4 mt-4">
+      <%= f.submit "送信する", class: "btn main-btn btn-lg" %>
     </div>
   <% end %>
+
+  <p class="text-center main-text">メールアドレスが分からない場合は、LINE＠nominiよりお問い合わせ下さい。</p>
+
+  <div class="text-center">
+    <%= link_to image_tag("lineat.png", class: "lineat-logo"), "http://line.me/R/ti/p/%40muv5134q", class: "btn lineat-btn" %>
+  </div>
 
   <%= render "devise/shared/links" %>
 </div>
