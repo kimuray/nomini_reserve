@@ -1,0 +1,12 @@
+<div class="main-area container bg-white mt-3">
+  <h2 class="main-text text-center page-heading mb-4 mt-4">利用規約</h2>
+
+  <div class="field form-group text-center login-form">
+    <p>nominiを利用するためには利用規約の同意が必要となります。</p>
+    <p><%= link_to '利用規約はこちら', 'http://nomini.jp/?page_id=142', target: '_blank' %></p>
+  </div>
+
+  <div class="actions form-group text-center">
+    <%= link_to "利用規約に同意する", shop_page_agree_path, method: :patch, class: "btn btn-info" %>
+  </div>
+</div>
