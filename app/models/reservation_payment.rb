@@ -21,7 +21,7 @@ class ReservationPayment < ApplicationRecord
         token = PayjpApi.create_token(params)
         update!(payjp_token_id: token.id, status: :paid)
         reservation.paid!
-        payjp_api.create_charge(payjp_token_id, sum_price)
+        payjp_api.create_charge(payjp_token_id, amount)
         grant_benefit_after_paid
       end
     rescue => e
@@ -37,7 +37,7 @@ class ReservationPayment < ApplicationRecord
     begin
       ActiveRecord::Base.transaction do
         update!(payjp_token_id: customer_id, status: :force_paid)
-        payjp_api.create_charge_by_registed_card(customer_id, sum_price)
+        payjp_api.create_charge_by_registed_card(customer_id, amount)
         grant_benefit_after_paid
       end
     rescue => e
@@ -52,7 +52,7 @@ class ReservationPayment < ApplicationRecord
     begin
       ActiveRecord::Base.transaction do
         update!(customer_id: user.subscription.customer_id, status: :paid)
-        payjp_api.create_charge_by_registed_card(customer_id, sum_price)
+        payjp_api.create_charge_by_registed_card(customer_id, amount)
         grant_benefit_after_paid
       end
     rescue => e
