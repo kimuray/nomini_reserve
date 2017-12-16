@@ -1,4 +1,8 @@
 class ShopPage::PaymentsController < ApplicationController
+  include AccessCheckable
+
+  before_action :confirm_agreement
+
   def new
     @reservation_payment = Reservation.find(params[:reservation_id]).setting_payment
   end

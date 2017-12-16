@@ -1,4 +1,7 @@
 class ShopPage::ReservationsController < ShopPageController
+  include AccessCheckable
+
+  before_action :confirm_agreement
 
   def index
     @reservations = current_shop.reservations.includes(:user).page(params[:page])
