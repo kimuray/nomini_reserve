@@ -1,0 +1,34 @@
+<ul>
+  <li>
+    <strong>予約番号</strong><br>
+    <%= reservation.id %>
+  </li>
+  <li>
+    <strong>予約内容</strong><br>
+    <%= reservation.is_alacarte ? 'アラカルト' : reservation.reservation_category.name %>
+  </li>
+  <li>
+    <strong>予約店舗</strong><br>
+    <%= reservation.shop.name %>
+  </li>
+  <li>
+    <strong>予約者氏名</strong><br>
+    <%= reservation.user.full_name_kana %>
+  </li>
+  <li>
+    <strong>予約者の電話番号</strong><br>
+    <%= reservation.user.phone_number %>
+  </li>
+  <li>
+    <strong>予約日時</strong><br>
+    <%= "#{l(reservation.use_date, format: :long)} #{l(reservation.use_time, format: :time_only)}" %>
+  </li>
+  <li>
+    <strong>予約人数</strong><br>
+    <%= "#{reservation.people_count}名" %>
+  </li>
+  <li>
+    <strong>予約人数</strong><br>
+    <%= reservation.is_alacarte ? "アラカルトは店舗利用後に金額が確定します" : "#{reservation.tax_included_price}円" %>
+  </li>
+</ul>

@@ -1,6 +1,23 @@
 <p><%= @resource.email %>様</p>
 
-<p>この度はnominiへの会員登録をお申し込みいただき、誠にありがとうございました。</p>
-<p>以下のURLをクリック、またはお使いのブラウザのアドレスバーに入力いただきアクセスしていただいた時点で会員登録が完了します。</p>
+<p>
+  nominiメンバーにご登録いただきありがとうございます。<br>
+  下記ページよりアクセスすることで会員登録が完了します。<br>
+  会員登録完了後、ログインを行ってください。<br>
+  なお、本メールは削除せずに保管してください。<br>
 
-<p><%= link_to nil, confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p><%= link_to nil, confirmation_url(@resource, confirmation_token: @token) %></p>
+</p>
+
+<p>
+  <table>
+    <tr>
+      <th>ID(メールアドレス)</th><td><%= @resource.email %></td>
+    </tr>
+    <tr>
+      <th>パスワード</th><td><%= @resource.password %></td>
+    </tr>
+  </table>
+</p>
+
+<%= render 'mailers/shared/mail_footer' %>

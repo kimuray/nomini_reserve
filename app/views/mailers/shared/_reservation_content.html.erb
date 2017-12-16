@@ -1,0 +1,43 @@
+<p>【ご予約内容】</p>
+<table>
+  <tr>
+    <th>ご予約依頼番号</th>
+    <td><%= reservation.id %></td>
+  </tr>
+  <tr>
+    <th>代表者名</th>
+    <td><%= reservation.user.full_name_kana %></td>
+  </tr>
+  <tr>
+    <th>ご予約店名</th>
+    <td><%= reservation.shop.name %></td>
+  </tr>
+  <tr>
+    <th>お店電話番号</th>
+    <td><%= reservation.shop.phone_number %></td>
+  </tr>
+  <tr>
+    <th>お店所在地</th>
+    <td><%= reservation.shop.address_text %></td>
+  </tr>
+  <tr>
+    <th>ご来店希望日時</th>
+    <td><%= "#{l(reservation.use_date, format: :long)} #{l(reservation.use_time, format: :time_only)}" %></td>
+  </tr>
+  <tr>
+    <th>ご利用方法</th>
+    <td><%= reservation.is_alacarte ? 'アラカルト' : reservation.reservation_category.name %></td>
+  </tr>
+  <tr>
+    <th>料金(お一人様)</th>
+    <td><%= reservation.is_alacarte ? reservation.price : "#{reservation.output_price}円" %></td>
+  </tr>
+  <tr>
+    <th>ご利用人数</th>
+    <td><%= "#{reservation.people_count}人" %></td>
+  </tr>
+  <tr>
+    <th>お会計合計</th>
+    <td><%= reservation.is_alacarte ? "アラカルトは店舗利用後に金額が確定します" : "#{reservation.tax_included_price}円(税込)" %></td>
+  </tr>
+</table>

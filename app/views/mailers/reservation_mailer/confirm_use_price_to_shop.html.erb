@@ -1,50 +1,24 @@
 <p><%= @reservation.shop.name %> ご担当者様</p>
 
 <p>
-  ご利用金額確認をお願いいたします。
+  いつも『nomini』をご利用いただき、誠にありがとうございます。<br>
+  本日nomini会員により利用させて頂きました内容の承認又は変更をお願い致します。<br>
+  下記URLより承認又は変更の操作をお願いします。
 </p>
 
-<ul>
-  <li>
-    <h4>カテゴリ</h4>
-    <% if @reservation.is_alacarte %>
-      <p>アラカルト</p>
-    <% else %>
-      <p><%= @reservation.reservation_category.name %></p>
-    <% end %>
-  </li>
-  <li>
-    <h4>予約者名</h4>
-    <p>
-      <%= @reservation.user.full_name_kana %><br>
-    </p>
-  </li>
-  <li>
-    <h4>登録者電話番号</h4>
-    <p>
-      <%= @reservation.user.phone_number %><br>
-    </p>
-  </li>
-  <li>
-    <h4>予約日時</h4>
-    <p><%= "#{l(@reservation.use_date, format: :long)} #{l(@reservation.use_time, format: :time_only)}" %></p>
-  </li>
-  <li>
-    <h4>予約人数</h4>
-    <p><%= @reservation.people_count %>人</p>
-  </li>
-  <li>
-    <h4>金額</h4>
-    <% if @reservation.is_alacarte %>
-      <p>当日の注文によって金額が確定します</p>
-    <% else %>
-      <p><%= @reservation.tax_included_price %>円</p>
-    <% end %>
-  </li>
-  <li>
-    <h4>以下、URLから金額の確定をよろしくお願いいたします</h4>
-    <p><%= link_to '金額確認画面へ', new_shop_page_reservation_payment_url(@reservation) %></p>
-  </li>
-</ul>
+<p>
+  以下、URLから金額の確定をよろしくお願いいたします<br>
+  <%= link_to nil, new_shop_page_reservation_payment_url(@reservation) %>
+</p>
 
-このメールは配信専用です。返信はできませんので御了承ください。
+<%= render 'mailers/shared/reservation_content_for_web', reservation: @reservation %>
+
+<p>
+  【注意事項】</br>
+  本メール到着より48時間以内に必ず承認又は変更を行ってください。<br>
+  48時間を超えて操作が行われない場合には現状の内容で承認させて頂きます。<br>
+  ※当日の人数が増えている場合は必ず変更をお願い致します。変更されていない場合は当初予約金額分のみのお振込みとなります。<br>
+   また48時間経過後の申請は受け付けておりませんのでご注意ください。
+</p>
+
+<%= render 'mailers/shared/mail_footer' %>

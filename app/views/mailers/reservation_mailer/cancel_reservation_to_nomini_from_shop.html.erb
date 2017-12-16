@@ -1,49 +1,15 @@
-<p>nomini様</p>
+<p>nomini 担当者各位</p>
 
 <p>
-  店舗より予約がキャンセルされました。確認してください。
+  以下の予約が取り消されました。<br>
+  <%= link_to '管理ページへ', admin_reservation_url(@reservation) %>
 </p>
 
-<ul>
-  <li>
-    <h4>カテゴリ</h4>
-    <% if @reservation.is_alacarte %>
-      <p>アラカルト</p>
-    <% else %>
-      <p><%= @reservation.reservation_category.name %></p>
-    <% end %>
-  </li>
-  <li>
-    <h4>予約店舗</h4>
-    <p>
-      <%= @reservation.shop.name %><br>
-      URL: <%= link_to shop_url(@reservation.shop), shop_url(@reservation.shop) %>
-    </p>
-  </li>
-  <li>
-    <h4>予約日時</h4>
-    <p><%= "#{l(@reservation.use_date, format: :long)} #{l(@reservation.use_time, format: :time_only)}" %></p>
-  </li>
-  <li>
-    <h4>予約人数</h4>
-    <p><%= @reservation.people_count %>人</p>
-  </li>
-  <li>
-    <h4>予約者</h4>
-    <p><%= @reservation.user.full_name_kana %></p>
-  </li>
-  <li>
-    <h4>金額</h4>
-    <% if @reservation.is_alacarte %>
-      <p>当日の注文によって金額が確定します</p>
-    <% else %>
-      <p><%= @reservation.tax_included_price %>円</p>
-    <% end %>
-  </li>
-  <li>
-    <h4>備考</h4>
-    <%= simple_format(@reservation.message) %>
-  </li>
-</ul>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/reservation_content', reservation: @reservation %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/cancel_provision' %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/mypage_notes' %>
 
-このメールは配信専用です。返信はできませんので御了承ください。
+<%= render 'mailers/shared/mail_footer' %>

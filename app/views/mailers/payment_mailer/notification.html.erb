@@ -1,30 +1,25 @@
 <p><%= @payment.user.full_name_kana %>様</p>
 
 <p>
-  nominiをご利用いただきありがとうございます。<br>
+  この度は『nomini』をご利用いただき、誠にありがとうございました。<br>
+
+  先日の予約の請求金額をご確認の上、変更がない場合はマイページより承認をお願いいたします。<br>
+  なお、ご利用日時から一週間以内にお支払いがご確認出来ない場合、<%= link_to 'nomini「利用規約」', 'http://nomini.jp/?page_id=142' %>に基づき自動決済させて頂きます事をご了承下さい。<br>
+
+  ※このメールの内容に覚えがない場合は、恐れ入りますが、直接お店までお問い合わせください。
 </p>
 
-<ul>
-  <li>
-    <h4>ご利用店舗</h4>
-    <p><%= @payment.reservation.shop.name %></p>
-    URL: <%= link_to shop_url(@payment.reservation.shop), shop_url(@payment.reservation.shop) %>
-  </li>
-  <li>
-    <h4>ご利用日時</h4>
-    <p>
-      <%= "#{l(@payment.reservation.use_date, format: :long)} #{l(@payment.reservation.use_time, format: :time_only)}" %>
-    </p>
-  </li>
-  <li>
-    <h4>決済金額(税込)</h4>
-    <p><%= @payment.tax_included_amount %>円</p>
-  </li>
-  <li>
-    <h4>決済URL</h4>
-    <p><%= link_to reservation_payment_url(@payment), reservation_payment_url(@payment) %></p>
-    <p>※ 翌日までに確定されない場合、自動で決済いたしますので御了承下さい。</p>
-  </li>
-</ul>
+<p>
+  決済は以下URLからお願いいたします<br>
+  <%= link_to nil, reservation_payment_url(@payment) %><br>
+  ※ 一週間後までに確定されない場合、自動で決済いたしますので御了承下さい。
+</p>
 
-このメールは配信専用です。返信はできませんので御了承ください。
+-----------------------------------------------<br>
+<%= render 'mailers/shared/reservation_content', reservation: @payment.reservation %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/cancel_provision' %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/mypage_notes' %>
+-----------------------------------------------<br>
+<%= render 'mailers/shared/mail_footer' %>

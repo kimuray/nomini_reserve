@@ -36,7 +36,7 @@ class ReservationPayment < ApplicationRecord
     payjp_api = PayjpApi.new
     begin
       ActiveRecord::Base.transaction do
-        update!(payjp_token_id: token_id, status: :force_paid)
+        update!(payjp_token_id: customer_id, status: :force_paid)
         payjp_api.create_charge_by_registed_card(customer_id, tax_included_amount)
         grant_benefit_after_paid
       end

@@ -10,7 +10,7 @@ class Batches::ForcePaymentBatch < Batches::Base
 
   def self.force_payment
     ReservationPayment.requested.where(limited_on: Date.yesterday).find_each do |payment|
-      customer_id = payment.user&.subscription&.customar_id
+      customer_id = payment.user&.subscription&.customer_id
       payment.force_liquidation(customer_id)
       if payment.force_paid?
         PaymentMailer.force_paid(payment).deliver_now
