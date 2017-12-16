@@ -8,12 +8,4 @@
 
 <%= render 'mailers/shared/reservation_content_for_web', reservation: @reservation %>
 
-<p>
-  ※ このメールは自動配信されています。<br>
-  このメールにご返信されても、お問い合わせ等にはお答えできません。
-</p>
-
------------------------------------<br>
-nomini
-　編集・著作・発行：株式会社nomini　<%= link_to nil, 'https://nomini.jp/' %><br>
------------------------------------<br>
+<%= render 'mailers/shared/mail_footer' %>
