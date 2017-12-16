@@ -5,6 +5,7 @@ $back-color: #ECECEC;
 $main-line-color: #F0F0F0;
 $mild-black: #222222;
 $main-purple: #200243;
+$light-purple: #46098E;
 
 html {
   position: relative;
@@ -36,6 +37,10 @@ a[href^="tel:"] {
 .main-btn{
   background: $main-purple;
   color: white;
+  &:hover{
+    color: white;
+    background: $light-purple;
+  }
 }
 .nomini-title{
   position: absolute;
