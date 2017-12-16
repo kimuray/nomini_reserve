@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   namespace :shop_page do
     root 'reservations#index'
+    get :request_agreement
+    patch :agree
     resources :reservations, shallow: true do
       post :confirm, on: :collection
       patch :cancel, on: :member

@@ -10,7 +10,7 @@
       <table class="table table-striped">
         <tr>
           <th class="col-md-1"><%= Shop.human_attribute_name(:id) %></th>
-          <th class="col-md-3"><%= Shop.human_attribute_name(:name) %></th>
+          <th class="col-md-4"><%= Shop.human_attribute_name(:name) %></th>
           <th class="col-md-3"><%= Shop.human_attribute_name(:phone_number) %></th>
           <th class="col-md-3"></th>
         </tr>
@@ -18,7 +18,14 @@
             <% @shops.each do |shop| %>
             <tr>
               <td><%= shop.id %></td>
-              <td><%= shop.name %></td>
+              <td>
+                <%= shop.name %>
+                <% if shop.is_agree %>
+                  <span class="label label-primary">利用規約同意</span>
+                <% else %>
+                  <span class="label label-danger">利用規約未同意</span>
+                <% end%>
+              </td>
               <td><%= shop.phone_number %></td>
               <td>
                 <div class="text-right">
