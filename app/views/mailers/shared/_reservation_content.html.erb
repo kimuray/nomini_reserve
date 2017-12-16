@@ -33,8 +33,12 @@
     <td><%= reservation.is_alacarte ? reservation.price : "#{reservation.output_price}円" %></td>
   </tr>
   <tr>
+    <th>ご利用人数</th>
+    <td><%= "#{reservation.people_count}人" %></td>
+  </tr>
+  <tr>
     <th>お会計合計</th>
-    <td><%= reservation.is_alacarte ? "アラカルトは店舗利用後に金額が確定します" : "#{reservation.tax_included_price}円" %></td>
+    <td><%= reservation.is_alacarte ? "アラカルトは店舗利用後に金額が確定します" : "#{reservation.tax_included_price}円(税込)" %></td>
   </tr>
 </table>
 <p>※お会計はご登録されているクレジットカードへ後日請求させていただきます。</p>
