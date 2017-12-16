@@ -436,9 +436,9 @@ a[href^="tel:"] {
   .show-image-wrap{
     position: relative;
     overflow: hidden;
-    width: 100%;/* トリミングしたい枠の幅 */
-    height: 100%;/* トリミングしたい枠の高さ */
-    min-height: 500px;
+    width: 600px;/* トリミングしたい枠の幅 */
+    height: 400px;/* トリミングしたい枠の高さ */
+    background: $mild-black;
   }
   .shop-image{
     position: absolute;
@@ -452,7 +452,7 @@ a[href^="tel:"] {
   .shop-show-image{
     position: absolute;
     width: auto;
-    height: 100%;
+    height: 400px;
     left: 50%;
     top: 50%;
     -webkit-transform: translate3d(-50%, -50%, 0);
