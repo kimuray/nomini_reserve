@@ -14,7 +14,7 @@ class ShopPage::ReservationsController < ShopPageController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.user = User.find(params[:reservation][:customer_id])
+    @reservation.user = User.joins(:subscription).find(params[:reservation][:customer_id])
     @reservation.shop = current_shop
     @reservation.done!
     if params[:back].blank? && @reservation.save
@@ -47,7 +47,7 @@ class ShopPage::ReservationsController < ShopPageController
   end
 
   def confirm
-    @customer_user = User.find_by(phone_number: params[:reservation][:phone_number])
+    @customer_user = User.joins(:subscription).find_by(phone_number: params[:reservation][:phone_number])
     @reservation = Reservation.new(reservation_params)
     if @customer_user.blank?
       @reservation.errors[:base] << 'お客様情報が見つかりませんでした。'
