@@ -43,11 +43,13 @@ a[href^="tel:"] {
 .bg-black{
   background: $mild-black;
 }
-.nomini-logo{
+.nomini-logo-img{
   width:auto;
   height:50px;
   max-width:100%;
   max-height:100%;
+}
+.nomini-logo-link{
   margin: 0 auto;
 }
 
