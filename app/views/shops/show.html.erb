@@ -1,38 +1,42 @@
-<div class="container bg-white mt-3 pb-2 main-area">
-  <h2 class="shop-name main-text py-3 m-0"><%= shop_name_text(@shop) %></h2>
+<div class="bg-black shop-show-name">
+  <div class="container">
+    <h2 class="shop-name-head main-text py-3 m-0 text-white"><%= shop_name_text(@shop) %></h2>
+  </div>
+</div>
+<div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 show-image-wrap">
       <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
     </div>
 
     <div class="col-md-4 shop-info-1">
-      <div class="mb-3">
-        <% if shop_signed_in? && @shop.correct?(current_shop) %>
+      <% if shop_signed_in? && @shop.correct?(current_shop) %>
+        <div class="mb-3">
           <%= link_to '店舗情報編集', edit_shops_path, class: "btn btn-block btn-primary" %>
-        <% end %>
-      </div>
-      <h3 class="shop-detail-title main-text">提供時間</h3>
+        </div>
+      <% end %>
+      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-clock-o pr-2"></i>提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
-      <h3 class="shop-detail-title main-text">アラカルト価格帯</h3>
+      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-yen pr-2"></i>アラカルト価格帯</h3>
       <div class="ml-2 mb-3">
         <% @shop.shop_usages.each do |shop_usage| %>
           <% unless shop_usage.price.blank? %>
           <div>
-            <div class="row course-show-price p-0 pl-2 pr-2">
-              <span class="col-6"><i class="fa fa-caret-right main-text pr-1"></i><%= shop_usage.reservation_category.name %></span>
-              <span class="pl-2 col-6"><%= shop_usage.price %>円</span>
+            <div class="row p-0 pl-2 pr-2 w-100">
+              <span class="col-5"><i class="fa fa-caret-right pp-text pr-1"></i><%= shop_usage.reservation_category.name %></span>
+              <span class="pl-2 col-5"><%= shop_usage.price %>円</span>
             </div>
           </div>
           <% end %>
         <% end %>
       </div>
       <% if current_user.subscription.present? %>
-        <h3 class="shop-detail-title main-text">電話番号</h3>
+        <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-phone pr-2"></i>電話番号</h3>
         <div class="ml-2 mb-3">
           <a href="tel:<%= @shop.phone_number %>"><%= @shop.phone_number %></a>
         </div>
 
-        <h3 class="shop-detail-title main-text">住所</h3>
+        <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-map-marker pr-2"></i>住所</h3>
         <div class="ml-2 mb-3">
           <%= @shop.address_text %>
         </div>
@@ -40,11 +44,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <h3 class="shop-detail-title main-text pt-3">お店詳細</h3>
+    <div class="col-md-8 p-0">
+      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2 mt-3">店舗詳細</h3>
       <div class="shop-detail mb-3"><%= markdown(@shop.description) %></div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 shop-show-form">
       <%= render template: 'reservations/new', locals: { reservation: @reservation, shop: @shop } %>
     </div>
   </div>

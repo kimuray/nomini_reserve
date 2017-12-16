@@ -1,11 +1,11 @@
-<div class=" p-3 border border-mated rounded mt-3">
-  <h3 class="shop-detail-title main-text text-center">予約情報入力</h3>
-  <ul class="reservation-chack text-danger">
-    <% reservation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
-  </ul>
-  <%= bootstrap_form_for (reservation), url: confirm_shop_reservations_path(shop_id: shop.id) do |form| %>
+<h3 class="shop-detail-title text-white bg-header-color px-3 py-2"><i class="fa fa-glass mr-2"></i>予約情報入力</h3>
+<div class="p-3 border border-mated rounded bg-white">
+  <% reservation.errors.full_messages.each do |msg| %>
+    <ul class="reservation-chack text-danger">
+      <li><%= msg %></li>
+    </ul>
+  <% end %>
+  <%= form_for (reservation), url: confirm_shop_reservations_path(shop_id: shop.id) do |form| %>
     <div class="radio">
       <label for="reservation_course">
         <input type="radio" value="0" name="reservation[is_alacarte]"
@@ -16,24 +16,42 @@
                id="reservation_alacarte" <% if @reservation.is_alacarte %>checked<% end %>> アラカルト
       </label>
     </div>
-
+    <%= form.label :reservation_reservation_category_id, class: "mt-2 font-weight-bold" do %>
+      <i class="fa fa-caret-right mr-1 pp-text"></i>予約内容
+    <% end %>
     <div class="collapse" id="reservation_category_select">
-      <%= form.select :reservation_category_id, shop.valid_categories_list, label: "予約内容" %>
+      <%= form.select :reservation_category_id, shop.valid_categories_list, {}, {class: 'form-control'} %>
     </div>
     <div class="collapse" id="reservation_alacarte_price">
-      <label class="control-label required" for="reservation_people_count">
+      <label class="control-label required font-weight-bold" for="reservation_people_count">
         <%= t('activerecord.attributes.shop.price') %>
       </label>
-      <p><%= shop.price %></p>
+      <p><%= shop.price %>円</p>
     </div>
 
-    <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}  %>
-    <%= form.text_field :use_date, id: "datetimepicker" %>
-    <%= form.time_select :use_time, minute_step: 10 %>
-    <%= form.text_area :message %>
+    <%= form.label :people_count, class: "mt-2 font-weight-bold" do %>
+      <i class="fa fa-caret-right mr-1 pp-text"></i>利用人数
+    <% end %>
+    <%= form.select :people_count, (1..30).map {|num| num.to_s + "名"}, {}, {class: 'form-control'} %>
 
-    <div class="box-footer text-center">
-      <%= form.primary '予約情報を確認する', class: "btn btn-info" %>
+    <%= form.label :use_date, class: "mt-2 font-weight-bold" do %>
+      <i class="fa fa-caret-right mr-1 pp-text"></i>利用日付
+    <% end %>
+    <%= form.text_field :use_date, id: "datetimepicker", class: 'form-control' %>
+
+    <%= form.label :use_time, class: "mt-2 font-weight-bold" do %>
+      <i class="fa fa-caret-right mr-1 pp-text"></i>利用時刻
+    <% end %>
+    <br>
+    <%= form.time_select :use_time, { minute_step: 10 }, class: 'form-control' %>
+    <br>
+    <%= form.label :message, class: "mt-2 font-weight-bold" do %>
+      <i class="fa fa-caret-right mr-1 pp-text"></i>メッセージ
+    <% end %>
+    <%= form.text_area :message, class: "form-control" %>
+
+    <div class="box-footer text-center mt-3">
+      <%= form.submit '予約情報を確認する', class: "btn main-btn" %>
     </div>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<div class="main-area container bg-white mt-3 payment-info">
+<div class="container mt-3 payment-info">
   <div class="payment-form">
     <ul class="reservation-chack text-danger">
       <% @user.errors.full_messages.each do |msg| %>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="actions form-group text-center">
-        <%= f.submit '登録', class: "btn btn-info" %>
+        <%= f.submit '登録', class: "btn main-btn" %>
       </div>
     <% end %>
   </div>
