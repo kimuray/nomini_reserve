@@ -16,6 +16,11 @@
     </div>
     <div class="box-body">
       <%= @shop.name %>
+      <% if @shop.is_agree %>
+        <span class="label label-primary">利用規約同意</span>
+      <% else %>
+        <span class="label label-danger">利用規約未同意</span>
+      <% end%>
     </div>
 
     <div class="box-header with-border">
