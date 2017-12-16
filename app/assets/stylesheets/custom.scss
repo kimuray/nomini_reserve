@@ -326,6 +326,7 @@ a[href^="tel:"] {
 .shop-detail-title{
   font-size: 1.2rem;
   font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .course-price{
@@ -403,6 +404,12 @@ a[href^="tel:"] {
   .shop-show-name{
     margin-bottom: 0;
     border-bottom: 1px solid #F0F0F0;
+  }
+  .shop-show-form{
+    padding: 0;
+    .shop-detail-title{
+      margin: 0;
+    }
   }
 }
 
