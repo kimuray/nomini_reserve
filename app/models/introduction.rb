@@ -31,6 +31,8 @@ class Introduction < ApplicationRecord
         user.point_count += INTRODUCTION_POINT
         user.save!
         provided!
+        # TODO: メール送信はここではないはず
+        ReservationBenefitMailer.notice_add_introduction_point(user, introduced_user).deliver_now
       end
     end
   end
