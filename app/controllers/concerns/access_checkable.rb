@@ -20,4 +20,10 @@ module AccessCheckable
       redirect_to root_url, notice: 'ページのアクセスが許可されていません'
     end
   end
+
+  def access_check_shop(shop)
+    unless shop == current_shop
+      redirect_to shop_page_root_url, notice: 'ページのアクセスが許可されていません'
+    end
+  end
 end
