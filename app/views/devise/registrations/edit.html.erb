@@ -45,19 +45,19 @@
     </div>
 
     <div class="actions text-center mb-3">
-      <%= f.submit "更新する", class: "btn btn-info" %>
+      <%= f.submit "更新する", class: "btn main-btn btn-lg" %>
     </div>
   <% end %>
   <div class="text-center account-sub p-4">
     <%= link_to "パスワード変更", users_edit_password_path,class: "main-text" %>
   </div>
 
-  <div class="text-center account-sub p-4">
+  <!-- <div class="text-center account-sub p-4">
     <% if current_user.bank_account.blank? %>
       <%= link_to "口座情報を登録する", new_bank_account_path, class: "main-text" %>
     <% else %>
       <%= link_to "口座情報を更新する", edit_bank_account_path, class: "main-text" %>
     <% end %>
-  </div>
+  </div> -->
 
 </div>
