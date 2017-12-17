@@ -60,7 +60,7 @@
   </ul>
   <%= form_with model: [:shop_page, @reservation_payment], local: true do |form| %>
     <div class="field form-group row center-form">
-      <%= form.label '利用金額(税抜き) 修正がない場合はそのまま確定ボタンを押してください', class: "col-sm-4 signup-label m-0" %>
+      <%= form.label '利用金額 修正がない場合はそのまま確定ボタンを押してください', class: "col-sm-4 signup-label m-0" %>
       <%= form.text_field :amount, placeholder: '金額を入力してください', value: @reservation_payment.reservation.sum_price, class: "col-sm-8 form-control" %>
     </div>
 

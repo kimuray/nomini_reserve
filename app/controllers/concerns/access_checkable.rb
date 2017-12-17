@@ -14,4 +14,10 @@ module AccessCheckable
       redirect_to shop_page_request_agreement_url, notice: '店舗機能を利用するためには利用規約の同意が必要です'
     end
   end
+
+  def access_check_user(user)
+    unless user == current_user
+      redirect_to root_url, notice: 'ページのアクセスが許可されていません'
+    end
+  end
 end
