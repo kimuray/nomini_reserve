@@ -354,6 +354,16 @@ a[href^="tel:"] {
 .shop-detail{
   white-space: pre-wrap;
   word-wrap: break-word;
+  h1{
+    font-size: 1.4rem;
+    border-bottom: 1px solid $main-line-color;
+    padding: 8px 0;
+    &:before{
+      font-family: FontAwesome;
+      content: '\f10c';
+      margin-right: 8px;
+    }
+  }
 }
 
 .visible-origin-xs {
