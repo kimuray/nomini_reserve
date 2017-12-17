@@ -1,16 +1,18 @@
-<div id="nav-drawer">
-  <input id="nav-input" type="checkbox" class="nav-unshown">
-  <label id="nav-open" for="nav-input" class="m-0"><span></span></label>
-  <label class="nav-unshown" id="nav-close" for="nav-input"></label>
-  <div id="nav-content">
-    <div class="mobile-menu-contents bg-mild-black">
-      <ul class="mobile-menu-list">
-        <li><%= link_to shops_path do %><i class="fa fa-glass mr-3"></i>店舗を見る<% end %></li>
-        <li><%= link_to mypage_path do %><i class="fa fa-user mr-3"></i>マイページ<% end%></li>
-        <li><%= link_to edit_user_registration_path do %><i class="fa fa-gear mr-3"></i>ユーザー設定<% end%></li>
-        <li><%= link_to new_introduction_path do %><i class="fa fa-envelope mr-3"></i>友人紹介<% end%></li>
-        <li><%= link_to new_exchange_path do %><i class="fa fa-money mr-3"></i>換金申請<% end%></li>
-      </ul>
+<div class="mobile-nav">
+  <div id="nav-drawer">
+    <input id="nav-input" type="checkbox" class="nav-unshown">
+    <label id="nav-open" for="nav-input" class="m-0"><span></span></label>
+    <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+    <div id="nav-content">
+      <div class="mobile-menu-contents bg-mild-black">
+        <ul class="mobile-menu-list">
+          <li><%= link_to shops_path do %><i class="fa fa-glass mr-3"></i>店舗を見る<% end %></li>
+          <li><%= link_to mypage_path do %><i class="fa fa-user mr-3"></i>マイページ<% end%></li>
+          <li><%= link_to edit_user_registration_path do %><i class="fa fa-gear mr-3"></i>ユーザー設定<% end%></li>
+          <li><%= link_to new_introduction_path do %><i class="fa fa-envelope mr-3"></i>友人紹介<% end%></li>
+          <li><%= link_to new_exchange_path do %><i class="fa fa-money mr-3"></i>換金申請<% end%></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

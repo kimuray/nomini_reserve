@@ -439,7 +439,7 @@ a[href^="tel:"] {
     display: inline;
   }
   .shop-list{
-    height: 150px;
+    height: 180px;
   }
   .shop-name{
     padding-top: 8px;
@@ -459,7 +459,7 @@ a[href^="tel:"] {
   }
   .shop-image{
     position: absolute;
-    width: 320px;
+    width: 360px;
     height: auto;
     left: 50%;
     top: 50%;
@@ -589,6 +589,10 @@ a[href^="tel:"] {
     display: none;
   }
 }
+.mobile-nav{
+  position: absolute;
+  right: 10px;
+}
 #nav-drawer {
   position: relative;
 }
@@ -642,9 +646,8 @@ a[href^="tel:"] {
   left: 0;
   z-index: 9999;/*最前面に*/
   width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
-  max-width: 330px;/*最大幅（調整してください）*/
+  max-width: 300px;/*最大幅（調整してください）*/
   height: 100%;
-  background: #fff;/*背景色*/
   transition: .3s ease-in-out;/*滑らかに表示*/
   -webkit-transform: translateX(-105%);
   transform: translateX(-105%);/*左に隠しておく*/
