@@ -23,4 +23,10 @@ module ApplicationHelper
     end
   end
 
+  # TODO: 上のやつ統合できそう
+  def shop_description_text(shop)
+    if current_user.subscription.present?
+      shop.description
+    end
+  end
 end
