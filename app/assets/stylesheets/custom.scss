@@ -277,6 +277,11 @@ a[href^="tel:"] {
 
 .user-info{
   color: #fff;
+  &:hover{
+    color: $main-purple;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 .top-nav{
@@ -669,6 +674,14 @@ a[href^="tel:"] {
     color: white;
     a{
       color: white;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
     }
   }
+}
+
+.current-point{
+  font-size: 1.2rem;
+  font-weight: bold;
 }
