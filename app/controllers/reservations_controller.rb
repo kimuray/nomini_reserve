@@ -2,6 +2,8 @@ class ReservationsController < ApplicationController
   include AccessCheckable
 
   before_action :authenticate_user!
+  before_action :set_reservation, only: [:show, :edit, :update, :cancel]
+  before_action :correct_user, only: [:show, :edit, :update, :cancel]
   before_action :confirm_subscription_existed, only: [:create, :edit, :update, :confirm, :cancel]
 
   def index
@@ -11,7 +13,6 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.includes(:shop, :reservation_category).find(params[:id])
   end
 
   def create
@@ -27,11 +28,9 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation = Reservation.find(params[:id])
   end
 
   def update
-    @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
       ReservationMailer.update_reservation_to_user(@reservation).deliver_now
       ReservationMailer.update_reservation_to_nomini(@reservation).deliver_now
@@ -42,7 +41,6 @@ class ReservationsController < ApplicationController
   end
 
   def cancel
-    @reservation = Reservation.find(params[:id])
     @reservation.canceled!
     ReservationMailer.cancel_reservation_to_user(@reservation).deliver_now
     ReservationMailer.cancel_reservation_to_nomini(@reservation).deliver_now
@@ -59,6 +57,14 @@ class ReservationsController < ApplicationController
   end
 
   private
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def correct_user
+    access_check_user(@reservation.user)
+  end
 
   def reservation_params
     params.fetch(:reservation, {}).permit(
