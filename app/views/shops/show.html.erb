@@ -17,7 +17,7 @@
       <% end %>
       <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-clock-o pr-2"></i>提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
-      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-yen pr-2"></i>アラカルト価格帯</h3>
+      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-yen pr-2"></i>価格</h3>
       <div class="ml-2 mb-3">
         <% @shop.shop_usages.each do |shop_usage| %>
           <% unless shop_usage.price.blank? %>
