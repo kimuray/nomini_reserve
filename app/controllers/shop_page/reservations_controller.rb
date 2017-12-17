@@ -1,14 +1,15 @@
 class ShopPage::ReservationsController < ShopPageController
-  # include AccessCheckable
-  #
+  include AccessCheckable
+
   # before_action :confirm_agreement
+  before_action :set_reservation, only: [:show, :edit, :update, :cancel]
+  before_action :correct_shop, only: [:show, :edit, :update, :cancel]
 
   def index
     @reservations = current_shop.reservations.includes(:user).page(params[:page])
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
   end
 
   def new
@@ -29,11 +30,9 @@ class ShopPage::ReservationsController < ShopPageController
   end
 
   def edit
-    @reservation = Reservation.find(params[:id])
   end
 
   def update
-    @reservation = Reservation.find(params[:id])
     if @reservation.update(reservation_params)
       send_update_mail
       redirect_to shop_page_reservation_url(@reservation), notice: '予約内容を変更しました。'
@@ -43,7 +42,6 @@ class ShopPage::ReservationsController < ShopPageController
   end
 
   def cancel
-    @reservation = Reservation.find(params[:id])
     @reservation.canceled!
     send_cancel_mail
     redirect_to shop_page_root_path, notice: '予約をキャンセルしました'
@@ -64,6 +62,14 @@ class ShopPage::ReservationsController < ShopPageController
   end
 
   private
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def correct_shop
+    access_check_shop(@reservation.shop)
+  end
 
   def reservation_params
     params.fetch(:reservation, {}).permit(
