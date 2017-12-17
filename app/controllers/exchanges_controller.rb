@@ -1,6 +1,9 @@
 class ExchangesController < ApplicationController
+  include AccessCheckable
+
   before_action :authenticate_user!
   before_action :set_exchange, only: [:show, :reapply]
+  before_action :correct_user, only: [:show, :reapply]
 
   def show
   end
@@ -31,6 +34,10 @@ class ExchangesController < ApplicationController
 
   def set_exchange
     @exchange = Exchange.find(params[:id])
+  end
+
+  def correct_user
+    access_check_user(@exchange.user)
   end
 
   def exchange_params
