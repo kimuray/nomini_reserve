@@ -46,7 +46,7 @@
   <div class="row mt-2">
     <div class="col-md-8 p-0">
       <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2">店舗詳細</h3>
-      <div class="shop-detail mb-3"><%= markdown(@shop.description) %></div>
+      <div class="shop-detail mb-3 px-2"><%= markdown(@shop.description) %></div>
     </div>
     <div class="col-md-4 shop-show-form">
       <%= render template: 'reservations/new', locals: { reservation: @reservation, shop: @shop } %>
