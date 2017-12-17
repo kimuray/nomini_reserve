@@ -36,7 +36,7 @@
           <% if @reservation.is_alacarte %>
             当日の注文によって金額が確定します
           <% else %>
-            <%= @reservation.tax_included_price %> 円
+            <%= @reservation.sum_price %> 円
           <% end %>
         </p>
       </div>
