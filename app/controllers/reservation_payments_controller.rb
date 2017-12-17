@@ -1,6 +1,9 @@
 class ReservationPaymentsController < ApplicationController
+  include AccessCheckable
+
   before_action :authenticate_user!
   before_action :set_reservation_payment
+  before_action :correct_user
 
   def show
   end
@@ -29,6 +32,10 @@ class ReservationPaymentsController < ApplicationController
 
   def set_reservation_payment
     @reservation_payment = ReservationPayment.find(params[:id])
+  end
+
+  def correct_user
+    access_check_user(@reservation_payment.user)
   end
 
   def send_mails
