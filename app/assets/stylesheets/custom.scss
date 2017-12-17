@@ -93,6 +93,16 @@ a[href^="tel:"] {
   margin: 0 auto;
 }
 
+// 幅指定コンテナ
+.narrow-container{
+  max-width: 400px;
+  margin: 0 auto;
+}
+.middle-container{
+  max-width: 650px;
+  margin: 0 auto;
+}
+
 // ログインフォームコンテナ
 .sign-in-countainer{
   max-width: 400px;
