@@ -9,7 +9,7 @@ class ReservationPaymentsController < ApplicationController
   end
 
   def update
-    if @reservation_payment.liquidation(params)
+    if @reservation_payment.liquidation(params['payjpToken'])
       send_mails
       current_user.passive_introduction&.point_add
       redirect_to mypage_url, notice: '決済を完了しました'

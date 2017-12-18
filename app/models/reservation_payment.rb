@@ -14,12 +14,11 @@ class ReservationPayment < ApplicationRecord
   end
 
   # TODO: 決済処理に似た処理が多いため要リファクタリング
-  def liquidation(params)
+  def liquidation(token)
     payjp_api = PayjpApi.new
     begin
       ActiveRecord::Base.transaction do
-        token = PayjpApi.create_token(params)
-        update!(payjp_token_id: token.id, status: :paid)
+        update!(payjp_token_id: token, status: :paid)
         reservation.paid!
         payjp_api.create_charge(payjp_token_id, amount)
         grant_benefit_after_paid
