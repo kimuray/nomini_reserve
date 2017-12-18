@@ -1,9 +1,7 @@
-<div class="bg-black shop-show-name">
-  <div class="container">
-    <h2 class="shop-name-head main-text py-3 m-0 text-white"><%= shop_name_text(@shop) %></h2>
-  </div>
-</div>
 <div class="container">
+    <div class="container">
+      <h2 class="main-text pt-3"><%= shop_name_text(@shop) %></h2>
+    </div>
   <div class="row">
     <div class="col-md-8 show-image-wrap">
       <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
