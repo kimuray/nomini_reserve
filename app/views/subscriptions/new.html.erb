@@ -43,7 +43,7 @@
       </div>
 
       <div class="actions form-group text-center">
-        <%= f.submit '登録', class: "btn main-btn" %>
+        <a href="#" id="submit_subscription" class="btn main-btn">登録</a>
       </div>
     <% end %>
   </div>
@@ -56,16 +56,16 @@
         number = form.find('input[name="number"]'),
         cvc = form.find('input[name="cvc"]'),
         exp_month = form.find('select[name="exp_month"]'),
-        exp_year = form.find('input[name="exp_year"]');
+        exp_year = form.find('select[name="exp_year"]');
 
-      $("#new_subscription").submit(function() {
+      $("#submit_subscription").on('click', function() {
         form.find("input[type=submit]").prop("disabled", true);
 
         var card = {
-          number: number.value,
-          cvc: cvc.value,
-          exp_month: exp_month.value,
-          exp_year: exp_year.value
+          number: number.val(),
+          cvc: cvc.val(),
+          exp_month: exp_month.val(),
+          exp_year: exp_year.val()
         };
         Payjp.createToken(card, function(s, response) {
           if (response.error) {

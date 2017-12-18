@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
       @subscription = current_user.build_subscription
       if @user.update(user_params)
         begin
-          token = PayjpApi.create_token(params)
+          token = params['payjpToken']
         rescue Payjp::CardError => e
           body = e.json_body
           err = body[:error]
@@ -21,7 +21,7 @@ class SubscriptionsController < ApplicationController
           flash.now[:alert] = "決済エラーが発生しました。"
           render :new and return
         end
-        @subscription.create_record(token.id)
+        @subscription.create_record(token)
         redirect_to mypage_url, notice: '支払い情報を保存しました'
       else
         render :new
