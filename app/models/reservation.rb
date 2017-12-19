@@ -49,6 +49,10 @@ class Reservation < ApplicationRecord
     payment
   end
 
+  def can_change?
+    applying? || remand? || done?
+  end
+
   private
 
   def delete_reservation_category_when_alacarte
