@@ -21,7 +21,7 @@ class Shop < ApplicationRecord
             unless: :new_record?
 
   scope :can_display, -> {
-    where(is_display: true)
+    where(is_display: true, is_agree: true)
   }
 
   # 全角を半角に変換
