@@ -5,9 +5,10 @@
       <div class="box-body no-padding">
         <table class="table container">
             <tr class="row pc-only-block">
-              <th class="col-sm-5">予約日時</th>
-              <th class="col-sm-5">店舗名</th>
+              <th class="col-sm-4">予約日時</th>
+              <th class="col-sm-4">店舗名</th>
               <th class="col-sm-2">状況</th>
+              <th class="col-sm-2">金額確認</th>
             </tr>
             <% if @reservations.any? %>
               <% @reservations.each do |reservation| %>
@@ -26,6 +27,11 @@
                   <td class="col-sm-2 p-0">
                     <%= link_to reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.status_i18n %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-2 p-0">
+                    <% if reservation.reservation_payment.present? && reservation.reservation_payment.requested? %>
+                      <%= link_to '金額確認', reservation_payment_path(reservation.reservation_payment), class: 'btn btn-primary' %>
                     <% end %>
                   </td>
                 </tr>

@@ -163,6 +163,7 @@ ja:
         visited: 利用済
         answered: アンケート回答済
         canceled: キャンセル
+        paid: 支払済
     reservation_benefit:
       status:
         pending: 承認待ち

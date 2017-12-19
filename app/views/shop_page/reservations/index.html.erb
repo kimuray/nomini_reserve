@@ -9,9 +9,10 @@
         <table class="table container">
             <tr class="row pc-only-block">
               <th class="col-sm-3">予約日時</th>
-              <th class="col-sm-3">お客様氏名</th>
+              <th class="col-sm-2">お客様氏名</th>
               <th class="col-sm-3">お客様電話番号</th>
-              <th class="col-sm-3">状況</th>
+              <th class="col-sm-2">状況</th>
+              <th class="col-sm-2">金額設定</th>
             </tr>
             <% if @reservations.any? %>
               <% @reservations.each do |reservation| %>
@@ -22,7 +23,7 @@
                       <%= reservation.use_time.strftime("%H時%M分") %>
                     <% end %>
                   </td>
-                  <td class="col-sm-3 p-0">
+                  <td class="col-sm-2 p-0">
                     <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.user&.full_name_kana %>
                     <% end %>
@@ -32,9 +33,14 @@
                       <%= reservation.user&.phone_number %>
                     <% end %>
                   </td>
-                  <td class="col-sm-3 p-0">
+                  <td class="col-sm-2 p-0">
                     <%= link_to shop_page_reservation_path(reservation), class: 'd-block p-2 text-black reservation-td' do %>
                       <%= reservation.status_i18n %>
+                    <% end %>
+                  </td>
+                  <td class="col-sm-2 p-0">
+                    <% if reservation.unpayment? %>
+                      <%= link_to '金額確認', new_shop_page_reservation_payment_path(reservation), class: 'btn btn-primary' %>
                     <% end %>
                   </td>
                 </tr>

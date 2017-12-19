@@ -53,6 +53,14 @@ class Reservation < ApplicationRecord
     applying? || remand? || done?
   end
 
+  def unsettled_price?
+    visited? && reservation_payment.blank?
+  end
+
+  def unpayment?
+    reservation_payment.present? && reservation_payment.requested?
+  end
+
   private
 
   def delete_reservation_category_when_alacarte
