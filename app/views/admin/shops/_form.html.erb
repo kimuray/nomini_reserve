@@ -16,6 +16,7 @@
         <%= form.number_field :service_time, step: :any %>
         <%= form.text_field :price %>
         <%= form.text_field :phone_number %>
+        <%= form.check_box :is_display %>
         <%= form.check_box :is_agree %>
         <% if params[:action] == 'new' %>
           <% ReservationCategory.all.each do |rc| %>
