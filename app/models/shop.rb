@@ -20,6 +20,10 @@ class Shop < ApplicationRecord
             format: { with: /\A[0-9-]+\z/, message: '電話番号は数字、ハイフンのみ入力できます。' },
             unless: :new_record?
 
+  scope :can_display, -> {
+    where(is_display: true)
+  }
+
   # 全角を半角に変換
   def phone_number=(value)
     value.tr!('０-９ー','0-9-') if value.is_a?(String)

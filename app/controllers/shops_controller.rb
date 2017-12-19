@@ -8,10 +8,14 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show]
 
   def index
-    @shops = Shop.page(params[:page])
+    @shops = Shop.can_display.page(params[:page])
   end
 
   def show
+    # TODO: 暫定対処のため後々修正
+    unless @shop.is_display
+      render file: Rails.root.join('public/404.html'), layout: false, status: 404
+    end
     @reservation = Shop.find(params[:id]).reservations.build
   end
 
