@@ -2,16 +2,20 @@ class ShopsController < ApplicationController
   include AccessCheckable
 
   before_action :authenticate_shop!, only: [:edit, :update]
-  # before_action :confirm_agreement,  only: [:edit, :update]
+  before_action :confirm_agreement,  only: [:edit, :update]
   before_action :authenticate_user!, unless: :shop_signed_in?
   before_action :confirm_subscription_existed, only: [:show], if: :user_signed_in?
   before_action :set_shop, only: [:show]
 
   def index
-    @shops = Shop.page(params[:page])
+    @shops = Shop.can_display.page(params[:page])
   end
 
   def show
+    # TODO: 暫定対処のため後々修正
+    unless @shop.is_display
+      render file: Rails.root.join('public/404.html'), layout: false, status: 404
+    end
     @reservation = Shop.find(params[:id]).reservations.build
   end
 

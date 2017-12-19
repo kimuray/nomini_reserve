@@ -87,7 +87,7 @@
         </p>
       </div>
     </div>
-    <% unless @reservation.canceled? %>
+    <% if @reservation.can_change? %>
       <div class="mb-2 float-right">
         <%= link_to "予約内容を変更する", edit_shop_page_reservation_path(@reservation), class: "btn btn-outline-info mr-2 mb-1" %>
         <%= link_to "予約をキャンセルする", cancel_shop_page_reservation_path(@reservation), class: "btn btn-outline-secondary mb-1", method: :patch, data: { confirm: '予約をキャンセルしてよろしいですか？' } %>

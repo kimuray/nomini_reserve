@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :reservation_category, optional: true
   has_many :enquetes
   has_one :reservation_benefit
-  has_one :reservation_payment
+  has_one :reservation_payment, dependent: :destroy
 
   # Validation
   validates :people_count, presence: true
@@ -47,6 +47,18 @@ class Reservation < ApplicationRecord
     payment.user = user
     payment.limited_on = 1.week.since # TODO: 決済日付が決定次第変更可能性あり
     payment
+  end
+
+  def can_change?
+    applying? || remand? || done?
+  end
+
+  def unsettled_price?
+    visited? && reservation_payment.blank?
+  end
+
+  def unpayment?
+    reservation_payment.present? && reservation_payment.requested?
   end
 
   private
