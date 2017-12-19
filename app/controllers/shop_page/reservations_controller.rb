@@ -1,7 +1,7 @@
 class ShopPage::ReservationsController < ShopPageController
   include AccessCheckable
 
-  # before_action :confirm_agreement
+  before_action :confirm_agreement
   before_action :set_reservation, only: [:show, :edit, :update, :cancel]
   before_action :correct_shop, only: [:show, :edit, :update, :cancel]
 
