@@ -4,7 +4,7 @@ set :application,   'nomini'
 set :repo_url,      'git@github.com:kimuray/nomini_reserve.git'
 set :branch,        ENV['BRANCH'] || 'master'
 set :deploy_to,     '/var/www/nomini'
-set :linked_files,  %w(config/secrets.yml config/database.yml .env)
+set :linked_files,  %w(config/secrets.yml config/database.yml .env customer_sheet.csv)
 set :linked_dirs,   %w(log tmp/pids tmp/cache tmp/sockets)
 set :keep_releases, 5
 set :rbenv_ruby,    '2.4.2'
