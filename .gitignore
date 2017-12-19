@@ -16,6 +16,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 node_modules/
+customer_sheet.csv
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
