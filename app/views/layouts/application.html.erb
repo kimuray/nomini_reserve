@@ -20,7 +20,7 @@
         <p class="alert alert-<%= key %>"><%= value %></p>
       </div>
     <% end %>
-    <% unless @recommend_shops.blank? %>
+    <% if @recommend_shops.present? || current_user&.subscription.present? %>
       <div class="main-area container bg-white mt-3 recommend-area pb-3">
         <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
       </div>
