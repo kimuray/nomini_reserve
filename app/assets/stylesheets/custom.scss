@@ -699,3 +699,11 @@ a[href^="tel:"] {
   font-size: 1.2rem;
   font-weight: bold;
 }
+.facebook-wrapper{
+  overflow: auto;
+  max-width: 100%;
+  width: 100%;
+  .fb-page{
+    width: 100%;
+  }
+}
