@@ -699,3 +699,18 @@ a[href^="tel:"] {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+.charge-recommend{
+  width: 100%;
+  height: auto;
+  border: 1px solid $main-line-color;
+}
+
+.facebook-wrapper{
+  overflow: auto;
+  max-width: 100%;
+  width: 100%;
+  .fb-page{
+    width: 100%;
+  }
+}
