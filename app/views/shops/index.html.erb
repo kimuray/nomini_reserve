@@ -28,7 +28,7 @@
           <p class="shop-description mb-0 p-2">
             <%= shop_description_text(shop) %>
           </p>
-          <div class="row w-100 pl-4 pb-2">
+          <div class="row w-100 pl-4 pb-2 pt-2">
             <% shop.shop_usages.each do |shop_usage| %>
               <% unless shop_usage.price.blank? %>
                 <div class="col-4 course-price p-0 pl-2 pr-2">
