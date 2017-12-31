@@ -21,8 +21,10 @@
       </div>
     <% end %>
     <% if @recommend_shops.present? && current_user&.subscription.present? %>
-      <div class="main-area container bg-white mt-3 recommend-area pb-3">
-        <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
+      <div class="container">
+        <div class="main-area container bg-white mt-3 recommend-area pb-3">
+          <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
+        </div>
       </div>
     <% end %>
 
