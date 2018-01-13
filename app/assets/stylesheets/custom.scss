@@ -5,7 +5,9 @@ $back-color: #ECECEC;
 $main-line-color: #F0F0F0;
 $mild-black: #222222;
 $main-purple: #200243;
+$main-navy: #18224B;
 $light-purple: #46098E;
+$light-navy: #47579B;
 
 html {
   position: relative;
@@ -43,7 +45,7 @@ a[href^="tel:"] {
   color: $text-main;
 }
 .pp-text{
-  color: $main-purple;
+  color: $main-navy;
 }
 
 .logo-area{
@@ -53,11 +55,11 @@ a[href^="tel:"] {
   color: $main-text-color;
 }
 .main-btn{
-  background: $main-purple;
+  background: $main-navy;
   color: white;
   &:hover{
     color: white;
-    background: $light-purple;
+    background: $light-navy;
   }
 }
 .nomini-title{
@@ -126,7 +128,7 @@ a[href^="tel:"] {
 
 // ログインしたままにする
 .remember-me{
-  color: $main-purple;
+  color: $main-navy;
 }
 
 .sign-up-alert{
@@ -279,7 +281,7 @@ a[href^="tel:"] {
 .user-info{
   color: #fff;
   &:hover{
-    color: $main-purple;
+    color: $main-navy;
     text-decoration: none;
     cursor: pointer;
   }
@@ -349,7 +351,7 @@ a[href^="tel:"] {
 
 .course-price{
   font-size: 0.8rem;
-  border-left: 2px solid $main-purple;
+  border-left: 2px solid $main-navy;
 }
 
 .shop-detail{
