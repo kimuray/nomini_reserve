@@ -30,18 +30,18 @@
 
         <div class="field form-group">
           <div class="row">
-            <div class="col-md-3">
-              <label for="exp_month" class="expiration-date">有効期限</label>
+            <div class="col-md-4">
+              <label for="exp_month" class="expiration-date signup-label">有効期限</label>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <%= select nil, :exp_month, exp_month_range, {}, {class: 'form-control exp_month'}  %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <%= select nil, :exp_year, exp_year_range, {}, {class: 'form-control exp_year'}  %>
             </div>
-            <div class="col-md-3">
-              <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="セキュリティコード（数字3桁）">
-            </div>
+          </div>
+          <div class="mt-3">
+            <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="セキュリティコード（数字3桁）">
           </div>
         </div>
         <p class="regist-explain text-center credit-info-explain mt-3">・ご利用終了後、会計金額がご登録のクレジットカードより引き落とし処理がされます。</p>
