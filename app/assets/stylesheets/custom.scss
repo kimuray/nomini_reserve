@@ -138,6 +138,9 @@ a[href^="tel:"] {
   font-size: 0.8rem;
   max-width: 650px;
   padding-bottom: 1rem;
+  @media (max-width: 767px) {
+    font-size: 0.6rem;
+  }
   .sign-up-alert-text{
     margin: 0;
   }
@@ -250,9 +253,19 @@ a[href^="tel:"] {
   margin: 48px 0;
   @media (max-width: 767px) {
     color: $text-main;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 0;
     margin: 32px 0;
+  }
+  &.regist-title{
+    margin-bottom: 8px;
+  }
+}
+.regist-explain{
+  @media (max-width: 767px) {
+    font-size: 0.6rem;
+    color: $text-main;
+    margin-bottom: 32px;
   }
 }
 .acount-wrap{

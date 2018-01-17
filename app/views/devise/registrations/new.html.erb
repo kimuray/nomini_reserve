@@ -1,5 +1,6 @@
 <div class="container mt-5 mb-5">
-  <h2 class="main-text text-center page-heading mb-5 mt-4">nomini新規会員登録</h2>
+  <h2 class="main-text text-center page-heading acount-title regist-title">かんたん登録</h2>
+  <p class="regist-explain text-center">お店を見るには無料のかんたん登録が必要となります。</p>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <% if resource.errors.any? %>
@@ -11,26 +12,28 @@
         </div>
       </div>
     <% end %>
-    <div class="sign-up-countainer">
-      <div class="field form-group center-form email-form">
-        <%= f.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
-      </div>
-    </div>
-    <div class="sign-up-alert">
-      <p class="sign-up-alert-text">【注意】@docomo.ne.jp, @ezweb.ne.jp などはメールが届かない不具合が報告されております。</p>
-      <p class="sign-up-alert-text">【推奨】GoogleやYahooなどのアドレスをご記入ください。</p>
-    </div>
-    <% if f.object.password_required? %>
+    <div class="acount-wrap">
       <div class="sign-up-countainer">
-        <div class="field form-group center-form password-form">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード：#{@minimum_password_length}文字以上", class: "form-control text-center" %>
-        </div>
-
-        <div class="field form-group row center-form">
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード確認", class: "form-control text-center" %>
+        <div class="field form-group center-form email-form">
+          <%= f.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
         </div>
       </div>
-    <% end %>
+      <div class="sign-up-alert">
+        <p class="sign-up-alert-text">【注意】@docomo.ne.jp, @ezweb.ne.jp などはメールが届かない不具合が報告されております。</p>
+        <p class="sign-up-alert-text">【推奨】GoogleやYahooなどのアドレスをご記入ください。</p>
+      </div>
+      <% if f.object.password_required? %>
+        <div class="sign-up-countainer">
+          <div class="field form-group center-form password-form">
+            <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード：#{@minimum_password_length}文字以上", class: "form-control text-center" %>
+          </div>
+
+          <div class="field form-group row center-form">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード確認", class: "form-control text-center" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <div class="actions text-center mb-3 mt-5">
       <%= f.submit "登録する", class: "btn main-btn btn-lg" %>
