@@ -1,29 +1,31 @@
 <div class="container mt-3">
-  <h2 class="main-text text-center page-heading mb-5 mt-5">ログイン</h2>
+  <h2 class="main-text text-center page-heading acount-title">ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="sign-in-countainer">
-      <div class="field form-group center-form email-form">
-        <%= f.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
+    <div class="acount-wrap">
+      <div class="sign-in-countainer">
+        <div class="field form-group center-form email-form">
+          <%= f.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
+        </div>
       </div>
+
+      <div class="sign-in-countainer">
+        <div class="field form-group center-form password-form">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control text-center" %>
+        </div>
+      </div>
+
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <p class="text-center mb-2 password-forget">※パスワードを忘れた場合は<%= link_to "こちら", new_password_path(resource_name), class: "main-text password-remember" %></p>
+      <% end -%>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field form-group text-center mb-2 remember-me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "remember-label" %>
+        </div>
+      <% end -%>
     </div>
-
-    <div class="sign-in-countainer">
-      <div class="field form-group center-form password-form">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control text-center" %>
-      </div>
-    </div>
-
-    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-      <p class="text-center mb-2"><%= link_to "※パスワードを忘れた場合はこちら", new_password_path(resource_name), class: "main-text password-remember" %></p>
-    <% end -%>
-
-    <% if devise_mapping.rememberable? -%>
-      <div class="field form-group text-center mb-2 remember-me">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
 
     <div class="actions form-group text-center">
       <%= f.submit "ログイン", class: "btn main-btn btn-lg login-btn" %>

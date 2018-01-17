@@ -1,4 +1,4 @@
-$text-main: #333;
+$text-main: #484848;
 $header-color: #A0A0A4;
 $main-text-color: #A0A0A4;
 $back-color: #ECECEC;
@@ -8,6 +8,7 @@ $main-purple: #200243;
 $main-navy: #18224B;
 $light-purple: #46098E;
 $light-navy: #47579B;
+$main-light-gray: #F8F8F8;
 
 html {
   position: relative;
@@ -243,6 +244,30 @@ a[href^="tel:"] {
 	align-items: center;
   margin-bottom: 0;
   padding-left: 0;
+}
+
+.acount-title{
+  margin: 48px 0;
+  @media (max-width: 767px) {
+    color: $text-main;
+    font-size: 1rem;
+    margin: 0;
+    margin: 32px 0;
+  }
+}
+.acount-wrap{
+  @media (max-width: 767px) {
+    background: $main-light-gray;
+    padding: 32px 16px 16px;
+    margin-bottom: 16px;
+  }
+  .remember-label, .password-forget{
+    font-size: 0.8rem;
+    color: $main-text-color;
+    a{
+      color: $text-main;
+    }
+  }
 }
 
 .login-btn{
