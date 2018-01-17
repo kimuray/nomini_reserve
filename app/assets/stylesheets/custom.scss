@@ -247,12 +247,14 @@ a[href^="tel:"] {
 	align-items: center;
   margin-bottom: 0;
   padding-left: 0;
+  color: $text-main;
 }
 
 .acount-title{
   margin: 48px 0;
+  color: $text-main;
+  font-size: 1.5rem;
   @media (max-width: 767px) {
-    color: $text-main;
     font-size: 1.2rem;
     margin: 0;
     margin: 32px 0;
@@ -260,19 +262,35 @@ a[href^="tel:"] {
   &.regist-title{
     margin-bottom: 8px;
   }
+  &.card-info-title{
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
 }
 .regist-explain{
+  color: $text-main;
   @media (max-width: 767px) {
     font-size: 0.6rem;
     color: $text-main;
     margin-bottom: 32px;
+    &.credit-info-explain{
+      margin-bottom: 16px;
+    }
   }
 }
 .acount-wrap{
+  background: $main-light-gray;
+  padding: 32px 16px 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
   @media (max-width: 767px) {
-    background: $main-light-gray;
-    padding: 32px 16px 16px;
-    margin-bottom: 16px;
+    &.definitive-registration{
+      padding: 16px 16px;
+      margin-bottom: 0;
+    }
+    .regist-last-name{
+      margin-bottom: 4px;
+    }
   }
   .remember-label, .password-forget{
     font-size: 0.8rem;

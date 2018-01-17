@@ -7,39 +7,45 @@
     </ul>
 
     <%= form_for(@subscription) do |f| %>
-      <h2 class="main-text text-center page-heading mb-4 mt-4">会員情報の本登録</h2>
-      <div class="field form-group row center-form">
-        <%= label :full_name_kana, "フルネーム(全角カナ)", class: "col-sm-4 signup-label" %><br />
-        <%= text_field :user, :l_name_kana, placeholder: "セイ", class: "col-sm-4 form-control" %>
-        <%= text_field :user, :f_name_kana, placeholder: "メイ", class: "col-sm-4 form-control" %>
+      <h2 class="main-text text-center page-heading mb-4 mt-4 acount-title">会員情報を完成させましょう</h2>
+      <div class="acount-wrap definitive-registration">
+        <div class="field form-group row center-form">
+          <%= label :full_name_kana, "フルネーム(全角カナ)", class: "col-sm-4 signup-label" %><br />
+          <%= text_field :user, :l_name_kana, placeholder: "セイ", class: "col-sm-4 form-control regist-last-name" %>
+          <%= text_field :user, :f_name_kana, placeholder: "メイ", class: "col-sm-4 form-control" %>
+        </div>
+
+        <div class="field form-group row center-form">
+          <%= label :phone_number, "電話番号", class: "col-sm-4 signup-label" %><br />
+          <%= text_field :user, :phone_number, placeholder: "08012345678", class: "col-sm-8 form-control" %>
+        </div>
       </div>
 
-      <div class="field form-group row center-form">
-        <%= label :phone_number, "電話番号", class: "col-sm-4 signup-label" %><br />
-        <%= text_field :user, :phone_number, placeholder: "08012345678", class: "col-sm-8 form-control" %>
-      </div>
+      <h2 class="main-text text-center page-heading acount-title card-info-title">クレジットカード登録</h2>
+      <p class="regist-explain text-center credit-info-explain">会費・提携店舗での飲食代金は全てオンライン上での決済となります。</p>
+      <div class="acount-wrap definitive-registration">
+        <div class="field form-group text-center">
+          <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
+        </div>
 
-      <h2 class="main-text text-center page-heading mb-4 mt-4">クレジットカード登録</h2>
-
-      <div class="field form-group text-center">
-        <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
-      </div>
-
-      <div class="field form-group">
-        <div class="row">
-          <div class="col-md-3">
-            <label for="exp_month" class="expiration-date">有効期限</label>
-          </div>
-          <div class="col-md-3">
-            <%= select nil, :exp_month, exp_month_range, {}, {class: 'form-control exp_month'}  %>
-          </div>
-          <div class="col-md-3">
-            <%= select nil, :exp_year, exp_year_range, {}, {class: 'form-control exp_year'}  %>
-          </div>
-          <div class="col-md-3">
-            <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="CVC">
+        <div class="field form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="exp_month" class="expiration-date">有効期限</label>
+            </div>
+            <div class="col-md-3">
+              <%= select nil, :exp_month, exp_month_range, {}, {class: 'form-control exp_month'}  %>
+            </div>
+            <div class="col-md-3">
+              <%= select nil, :exp_year, exp_year_range, {}, {class: 'form-control exp_year'}  %>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="セキュリティコード（数字3桁）">
+            </div>
           </div>
         </div>
+        <p class="regist-explain text-center credit-info-explain mt-3">・ご利用終了後、会計金額がご登録のクレジットカードより引き落とし処理がされます。</p>
+        <p class="regist-explain text-center credit-info-explain mb-0">・なお、万が一キャンセルが発生した際は「nominiキャンセルポリシー」に従い、キャンセル金額分をクレジットカードから引き落としさせて頂きます。</p>
       </div>
 
       <div class="actions form-group text-center">
