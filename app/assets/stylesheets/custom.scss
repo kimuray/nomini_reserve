@@ -637,12 +637,14 @@ a[href^="tel:"] {
     @media (max-width: 767px) {
       width: auto;
     }
-    .expiration-date{
-      margin: 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      font-weight: bold;
+    @media (min-width: 767px){
+      .expiration-date{
+        margin: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
     }
   }
 }
