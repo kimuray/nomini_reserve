@@ -1,4 +1,4 @@
-$text-main: #333;
+$text-main: #484848;
 $header-color: #A0A0A4;
 $main-text-color: #A0A0A4;
 $back-color: #ECECEC;
@@ -8,6 +8,7 @@ $main-purple: #200243;
 $main-navy: #18224B;
 $light-purple: #46098E;
 $light-navy: #47579B;
+$main-light-gray: #F8F8F8;
 
 html {
   position: relative;
@@ -137,6 +138,9 @@ a[href^="tel:"] {
   font-size: 0.8rem;
   max-width: 650px;
   padding-bottom: 1rem;
+  @media (max-width: 767px) {
+    font-size: 0.6rem;
+  }
   .sign-up-alert-text{
     margin: 0;
   }
@@ -243,6 +247,58 @@ a[href^="tel:"] {
 	align-items: center;
   margin-bottom: 0;
   padding-left: 0;
+  color: $text-main;
+}
+
+.acount-title{
+  margin: 48px 0;
+  color: $text-main;
+  font-size: 1.5rem;
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+    margin: 0;
+    margin: 32px 0;
+  }
+  &.regist-title{
+    margin-bottom: 8px;
+  }
+  &.card-info-title{
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+}
+.regist-explain{
+  color: $text-main;
+  @media (max-width: 767px) {
+    font-size: 0.6rem;
+    color: $text-main;
+    margin-bottom: 32px;
+    &.credit-info-explain{
+      margin-bottom: 16px;
+    }
+  }
+}
+.acount-wrap{
+  background: $main-light-gray;
+  padding: 32px 16px 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  @media (max-width: 767px) {
+    &.definitive-registration{
+      padding: 16px 16px;
+      margin-bottom: 0;
+    }
+    .regist-last-name{
+      margin-bottom: 4px;
+    }
+  }
+  .remember-label, .password-forget{
+    font-size: 0.8rem;
+    color: $main-text-color;
+    a{
+      color: $text-main;
+    }
+  }
 }
 
 .login-btn{
