@@ -1,12 +1,11 @@
 <div class="container mt-3 payment-info">
   <div class="payment-form">
-    <ul class="reservation-chack text-danger">
-      <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
-
     <%= form_for(@subscription) do |f| %>
+      <ul class="reservation-chack text-danger payment-errors">
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
       <h2 class="main-text text-center page-heading mb-4 mt-4 acount-title">会員情報を完成させましょう</h2>
       <div class="acount-wrap definitive-registration">
         <div class="field form-group row center-form">
@@ -75,7 +74,8 @@
         };
         Payjp.createToken(card, function(s, response) {
           if (response.error) {
-            form.find('.payment-errors').text(response.error.message);
+            var message = transrateErrorMessage(response.error.code);
+            form.find('.payment-errors').text(message);
             form.find('button').prop('disabled', false);
           }
           else {
@@ -92,5 +92,31 @@
         });
       });
     })();
+
+    function transrateErrorMessage(errorCode) {
+      switch(errorCode) {
+        case 'invalid_number':
+          return 'カード番号が不正です';
+          break;
+        case 'invalid_cvc':
+          return 'CVCが不正です';
+          break;
+        case 'invalid_expiration_date':
+          return '有効期限年、月が不正です';
+          break;
+        case 'invalid_expiry_month':
+          return '有効期限月が不正です';
+          break;
+        case 'invalid_expiry_year':
+          return '有効期限年が不正です';
+          break;
+        case 'expired_card':
+          return 'カードの有効期限が切れています';
+          break;
+        default:
+          return 'カード情報が不正です';
+          break;
+      }
+    }
   </script>
 <% end %>
