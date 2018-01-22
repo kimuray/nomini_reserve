@@ -11,6 +11,7 @@
           <li><%= link_to edit_user_registration_path do %><i class="fa fa-gear mr-3"></i>ユーザー設定<% end%></li>
           <li><%= link_to new_introduction_path do %><i class="fa fa-envelope mr-3"></i>友人紹介<% end%></li>
           <li><%= link_to new_exchange_path do %><i class="fa fa-money mr-3"></i>換金申請<% end%></li>
+          <li><%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out mr-3"></i>ログアウト<% end%></li>
         </ul>
       </div>
     </div>

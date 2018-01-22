@@ -31,6 +31,7 @@
     <%= yield %>
     <% if user_signed_in? %>
       <%= render 'layouts/footer' %>
+      <%= render 'layouts/mobile_fixed_menu' %>
     <% end %>
 
     <%= yield :payjp_form %>
