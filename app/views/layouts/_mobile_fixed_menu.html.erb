@@ -1,0 +1,17 @@
+<div class="mobile-fixed-menu fixed-bottom">
+  <div class="mobile-fixed-menu-item">
+    <%= link_to "#", { :onclick => "history.back()" } do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="mobile-fixed-menu-item">
+    <%= link_to root_path do %>
+      <i class="fa fa-home"></i>
+    <% end %>
+  </div>
+  <div class="mobile-fixed-menu-item">
+    <%= link_to shops_path do %>
+      <i class="fa fa-search"></i>
+    <% end %>
+  </div>
+</div>

@@ -191,6 +191,7 @@ a[href^="tel:"] {
   }
   @media (max-width: 767px) {
     height: 120px;
+    padding-bottom: 46px;
     .nav-item{
       text-align: center;
     }
@@ -772,5 +773,24 @@ a[href^="tel:"] {
   width: 100%;
   .fb-page{
     width: 100%;
+  }
+}
+
+.mobile-fixed-menu{
+  display: none;
+  @media (max-width: 767px){
+    display: flex;
+    height: 40px;
+    background: $header-color;
+    .mobile-fixed-menu-item{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      a{
+        color: white;
+      }
+    }
   }
 }
