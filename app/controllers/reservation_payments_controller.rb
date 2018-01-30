@@ -40,7 +40,9 @@ class ReservationPaymentsController < ApplicationController
 
   def send_mails
     reservation_benefit = @reservation_payment.reservation.reservation_benefit
-    ReservationBenefitMailer.notice_add_point(reservation_benefit).deliver_now
+    if reservation_benefit.present?
+      ReservationBenefitMailer.notice_add_point(reservation_benefit).deliver_now
+    end
     PaymentMailer.payment_complete(@reservation_payment).deliver_now
   end
 end
