@@ -81,7 +81,9 @@ class ReservationPayment < ApplicationRecord
   end
 
   def grant_benefit_after_paid
-    create_reservation_benefit_record
-    user.add_monthly_usage_amount!(amount)
+    if reservation.is_alacarte
+      create_reservation_benefit_record
+      user.add_monthly_usage_amount!(amount)
+    end
   end
 end

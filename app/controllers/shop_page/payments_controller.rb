@@ -1,6 +1,7 @@
 class ShopPage::PaymentsController < ApplicationController
   include AccessCheckable
 
+  before_action :authenticate_shop!
   before_action :confirm_agreement
   before_action :set_reservation
   before_action :correct_shop
