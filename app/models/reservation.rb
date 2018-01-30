@@ -58,7 +58,7 @@ class Reservation < ApplicationRecord
   end
 
   def unpayment?
-    reservation_payment.present? && reservation_payment.requested?
+    (reservation_payment.present? && reservation_payment.requested?) || visited?
   end
 
   private

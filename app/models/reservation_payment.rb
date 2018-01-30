@@ -77,7 +77,6 @@ class ReservationPayment < ApplicationRecord
     reservation_benefit.set_point
     reservation_benefit.save!
     reservation_benefit.grant_to_user! # TODO: 既存の仕組みをそのまま利用しているためリファクタ必要
-    reservation.paid!
   end
 
   def grant_benefit_after_paid
@@ -85,5 +84,6 @@ class ReservationPayment < ApplicationRecord
       create_reservation_benefit_record
       user.add_monthly_usage_amount!(amount)
     end
+    reservation.paid!
   end
 end
