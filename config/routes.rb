@@ -91,4 +91,5 @@ Rails.application.routes.draw do
     end
     resources :reservation_payments
   end
+  get 'inquiry', to: 'statics#inquiry'
 end
