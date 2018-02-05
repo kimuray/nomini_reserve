@@ -1,0 +1,27 @@
+<% content_for :content_header do %>
+  <h1>ポイント設定</h1>
+<% end %>
+<!-- Main content -->
+<% @system_settings.each do |system_setting| %>
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title"><%= system_setting.logical_name %></h3>
+      </div>
+      <div class="box-body">
+        <%= form_with model: system_setting, url: admin_system_setting_path(system_setting), method: :patch, local: true do |form| %>
+          <div class="row">
+            <div class="col-md-9">
+              <div class="form-group">
+                <%= form.number_field :value, class: 'form-control', required: true %>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <%= form.submit '更新', class: 'btn btn-info', data: { confirm: "#{system_setting.logical_name}を変更しますか？" } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
