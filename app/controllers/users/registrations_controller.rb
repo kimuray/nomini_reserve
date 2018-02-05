@@ -5,15 +5,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_introduction_params, only: [:new]
   after_action :introduction_registrate, only: [:create]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @subscription = Subscription.new if params[:bulk]
+    super
+  end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do
+      if params[:payjpToken]
+        if !resource.persisted?
+          @subscription = Subscription.new
+          render :new and return
+        end
+        bulk_subscription_create
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -79,6 +86,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def bulk_subscription_create
+    ActiveRecord::Base.transaction do
+      @subscription = resource.build_subscription
+      begin
+        token = params['payjpToken']
+      rescue Payjp::CardError => e
+        body = e.json_body
+        err = body[:error]
+        flash.now[:alert] = t("payjp.#{err[:code]}")
+        render :new and return
+      rescue => e
+        #TODO カード情報以外起因のエラー処理
+        flash.now[:alert] = "決済エラーが発生しました。"
+        render :new and return
+      end
+      @subscription.create_record(token)
+    end
+  end
 
   private
   def password_params
