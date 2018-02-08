@@ -79,7 +79,7 @@
           <%= f.hidden_field :customer_id, value: @customer_user.id %>
           <%= f.hidden_field :people_count %>
           <%= f.hidden_field :use_date %>
-          <%= f.hidden_field :use_time %>
+          <%= f.hidden_field :use_time, value: @reservation.use_time %>
           <%= f.hidden_field :message %>
           <%= f.hidden_field :is_alacarte %>
           <%= f.hidden_field :reservation_category_id %>
