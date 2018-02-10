@@ -1,0 +1,134 @@
+<div class="container mt-5 mb-5">
+  <h2 class="text-center page-heading regist-title mb-5">nominiメンバー登録</h2>
+  <%= form_with model: @user, url: member_user_url, local: true, id: "new_member_user" do |form| %>
+    <ul class="reservation-chack text-danger payment-errors">
+      <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <div class="acount-wrap">
+      <div class="sign-up-countainer">
+        <div class="field form-group center-form email-form">
+          <%= form.email_field :email, placeholder: "メールアドレス(ID)", autofocus: true, class: "form-control text-center" %>
+        </div>
+      </div>
+      <div class="sign-up-alert">
+        <p class="sign-up-alert-text">【注意】@docomo.ne.jp, @ezweb.ne.jp などはメールが届かない不具合が報告されております。</p>
+        <p class="sign-up-alert-text">【推奨】GoogleやYahooなどのアドレスをご記入ください。</p>
+      </div>
+      <div class="sign-up-countainer">
+        <div class="field form-group center-form password-form">
+          <%= form.password_field :password, autocomplete: "off", placeholder: "パスワード：6文字以上", class: "form-control text-center" %>
+        </div>
+
+        <div class="field form-group row center-form">
+          <%= form.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード確認", class: "form-control text-center" %>
+        </div>
+      </div>
+      <div class="sign-up-countainer">
+        <div class="field form-group center-form kana-name-form clearfix">
+          <%= form.text_field :l_name_kana, placeholder: "姓(全角カナ)", class: "form-control regist-last-name text-center" %>
+          <%= form.text_field :f_name_kana, placeholder: "名(全角カナ)", class: "form-control regist-first-name text-center" %>
+        </div>
+      </div>
+      <div class="sign-up-countainer">
+        <div class="field form-group center-form phone-number-form">
+          <%= form.text_field :phone_number, placeholder: "電話番号(ハイフンなし)", class: "col-sm-12 form-control text-center" %>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-center page-heading card-info-title acount-title my-5">クレジットカード情報の入力</h3>
+    <div class="acount-wrap definitive-registration">
+      <div class="sign-up-countainer">
+        <div class="field form-group text-center">
+          <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
+        </div>
+      </div>
+
+      <div class="sign-up-countainer">
+        <div class="field form-group text-center exp-form clearfix">
+          <%= select nil, :exp_month, exp_month_range, {prompt: "有効期限(月)"}, {class: 'form-control exp_month'} %>
+          <%= select nil, :exp_year, exp_year_range, {prompt: "有効期限(年)"}, {class: 'form-control exp_year'} %>
+        </div>
+      </div>
+
+      <div class="sign-up-countainer">
+        <div class="sign-up-countainer">
+          <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="セキュリティコード（数字3桁）"　>
+        </div>
+      </div>
+      <p class="regist-explain text-center credit-info-explain mt-3">・ご利用終了後、会計金額がご登録のクレジットカードより引き落とし処理がされます。</p>
+      <p class="regist-explain text-center credit-info-explain mb-0">・なお、万が一キャンセルが発生した際は「nominiキャンセルポリシー」に従い、キャンセル金額分をクレジットカードから引き落としさせて頂きます。</p>
+    </div>
+
+    <div class="actions form-group text-center">
+      <a href="#" id="submit_subscription" class="btn main-btn btn-lg">登録</a>
+    </div>
+    <%= yield :payjp_form %>
+  <% end %>
+  <div class="sign-up-alert">
+    <p class="sign-up-alert-text">※入力頂いたメールアドレスにnominiより認証メールが送信されます。メール記載のURLよりログインください。</p>
+    <p class="sign-up-alert-text">※登録することで利用規約とプライバシーポリシーに同意した事とみなします。</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  (function() {
+    var form = $("#new_member_user"),
+      number = form.find('input[name="number"]'),
+      cvc = form.find('input[name="cvc"]'),
+      exp_month = form.find('select[name="exp_month"]'),
+      exp_year = form.find('select[name="exp_year"]');
+    $("#submit_subscription").on('click', function() {
+      form.find("input[type=submit]").prop("disabled", true);
+      var card = {
+        number: number.val(),
+        cvc: cvc.val(),
+        exp_month: exp_month.val(),
+        exp_year: exp_year.val()
+      };
+      Payjp.createToken(card, function(s, response) {
+        if (response.error) {
+          var message = transrateErrorMessage(response.error.code);
+          form.find('.payment-errors').text(message);
+          form.find('button').prop('disabled', false);
+        }
+        else {
+          $(".number").removeAttr("name");
+          $(".cvc").removeAttr("name");
+          $(".exp_month").removeAttr("name");
+          $(".exp_year").removeAttr("name");
+          var token = response.id;
+          form.append($('<input type="hidden" name="payjpToken" />').val(token));
+          form.get(0).submit();
+        }
+      });
+    });
+  })();
+  function transrateErrorMessage(errorCode) {
+    switch(errorCode) {
+      case 'invalid_number':
+        return 'カード番号が不正です';
+        break;
+      case 'invalid_cvc':
+        return 'CVCが不正です';
+        break;
+      case 'invalid_expiration_date':
+        return '有効期限年、月が不正です';
+        break;
+      case 'invalid_expiry_month':
+        return '有効期限月が不正です';
+        break;
+      case 'invalid_expiry_year':
+        return '有効期限年が不正です';
+        break;
+      case 'expired_card':
+        return 'カードの有効期限が切れています';
+        break;
+      default:
+        return 'カード情報が不正です';
+        break;
+    }
+  }
+</script>

@@ -36,7 +36,10 @@ Rails.application.routes.draw do
     resource :introduction, only: [:new, :create]
   end
 
-  get  '/mypage',    to: 'reservations#index'
+  # 本登録同時実施の際のユーザー登録
+  resource :user, path: 'user/member', as: 'member_user', only: [:new, :create]
+
+  get '/mypage', to: 'reservations#index'
 
   resources :shops, only: [:index, :show], shallow: true do
     resources :reservations, except: [:new] do
