@@ -8,7 +8,8 @@ class SubscriptionsController < ApplicationController
     ActiveRecord::Base.transaction do
       @user = current_user
       @subscription = current_user.build_subscription
-      if @user.update(user_params)
+      @user.attributes = user_params
+      if @user.save(context: :member_create)
         begin
           token = params['payjpToken']
         rescue Payjp::CardError => e
