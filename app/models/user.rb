@@ -30,8 +30,10 @@ class User < ApplicationRecord
 
   # FaceBookログイン用
   def self.find_for_facebook_oauth(auth)
-    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+    find_or_create_by(email: auth.info.email) do |user|
       user.email = auth.info.email
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.skip_confirmation!
     end
   end
