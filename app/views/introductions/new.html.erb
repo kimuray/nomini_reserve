@@ -4,11 +4,14 @@
   <%= form_for @introduction, url: introduction_path do |f| %>
     <div class="sign-up-countainer">
       <div class="field form-group center-form email-form">
-        <%= f.email_field :introduced_email, placeholder: "メールアドレス(ID)", class: "form-control text-center" %>
+        <%= f.email_field :introduced_email, placeholder: "メールアドレス", class: "form-control text-center" %>
       </div>
     </div>
     <div class="actions form-group text-center">
       <%= f.submit "紹介メール送信", class: "btn main-btn" %>
     </div>
   <% end %>
+
+  <%= render 'shared/about_point' %>
+
 </div>
