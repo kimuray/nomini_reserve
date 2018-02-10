@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
-  margin-bottom: 76px;
+  margin-bottom: 60px;
   @media (max-width: 767px) {
     margin-bottom: 136px;
   }
@@ -794,4 +794,28 @@ a[href^="tel:"] {
 
 .point-description{
   margin-top: 64px;
+}
+.bg-guide-img{
+  background-image: image-url('subscription-guide');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  .bg-guide-img-cover{
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 355, 255, 0.5);
+    .bg-guide-img-contents{
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      padding: 64px 0;
+      color: #484848;
+      h2{
+        font-size: 1.5rem;
+      }
+      p{
+        font-size: 1.4rem;
+      }
+    }
+  }
 }
