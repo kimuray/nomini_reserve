@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save(context: :member_create)
       bulk_subscription_create
+      redirect_to new_user_session_path
     else
       render :new
     end
