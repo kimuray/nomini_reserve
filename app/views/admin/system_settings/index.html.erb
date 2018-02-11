@@ -6,7 +6,7 @@
   <div class="col-md-6">
     <div class="box box-primary">
       <div class="box-header">
-        <h3 class="box-title"><%= system_setting.config_name %></h3>
+        <h3 class="box-title"><%= t("system_setting.#{system_setting.config_name}") %></h3>
       </div>
       <div class="box-body">
         <%= form_with model: system_setting, url: admin_system_setting_path(system_setting), method: :patch, local: true do |form| %>
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="col-md-3">
-              <%= form.submit '更新', class: 'btn btn-info', data: { confirm: "#{system_setting.config_name}を変更しますか？" } %>
+              <%= form.submit '更新', class: 'btn btn-info', data: { confirm: t("system_setting.#{system_setting.config_name}") + "を変更しますか？" } %>
             </div>
           </div>
         <% end %>

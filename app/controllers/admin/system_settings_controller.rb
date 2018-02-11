@@ -8,7 +8,7 @@ class Admin::SystemSettingsController < AdminController
     @system_setting = SystemSetting.find(params[:id])
 
     if @system_setting.update(system_setting_params)
-      redirect_to admin_system_settings_url, notice: "#{@system_setting.config_name}を修正しました"
+      redirect_to admin_system_settings_url, notice: t("system_setting.#{@system_setting.config_name}") + "を修正しました"
     else
       render :index
     end
