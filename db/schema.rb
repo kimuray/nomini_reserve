@@ -219,12 +219,11 @@ ActiveRecord::Schema.define(version: 20180205145410) do
   end
 
   create_table "system_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "physical_name", null: false
-    t.string "logical_name", null: false
+    t.string "config_name", null: false
     t.integer "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["physical_name"], name: "index_system_settings_on_physical_name"
+    t.index ["config_name"], name: "index_system_settings_on_config_name"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
