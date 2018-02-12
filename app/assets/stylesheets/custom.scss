@@ -220,6 +220,9 @@ a[href^="tel:"] {
       display: inline-block;
       float: left;
     }
+    @media (max-width: 767px) {
+      margin-bottom: 8px;
+    }
   }
   .exp_year{
     width: 100%;
@@ -876,6 +879,17 @@ a[href^="tel:"] {
       }
       p{
         font-size: 1.4rem;
+      }
+      @media (max-width: 767px){
+        h1{
+          font-size: 1.5rem;
+        }
+        h2{
+          font-size: 1.2rem;
+        }
+        p{
+          font-size: 1rem;
+        }
       }
     }
   }
