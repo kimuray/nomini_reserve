@@ -1,10 +1,12 @@
 class Exchange < ApplicationRecord
+  EXCHANGE_LINE = SystemSetting.exchange_line
+
   belongs_to :user
 
   enum status: { pending: 0, done: 1, remand: 2 }
 
   validates :point, presence: true,
-            numericality: { only_integer: true, greater_than_or_equal_to: 10_000 }
+            numericality: { only_integer: true, greater_than_or_equal_to: EXCHANGE_LINE }
   validate :less_than_possession_points
 
   after_create :update_point_balance

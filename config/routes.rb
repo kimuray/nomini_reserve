@@ -95,6 +95,7 @@ Rails.application.routes.draw do
       patch :remand, on: :member
     end
     resources :reservation_payments
+    resources :system_settings, only: [:index, :update]
   end
   get 'inquiry', to: 'statics#inquiry'
 end

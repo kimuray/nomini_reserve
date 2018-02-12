@@ -213,3 +213,6 @@ ja:
     invalid_expiry_month: 有効ではない有効期限月
     invalid_expiry_year: 有効ではない有効期限年
     expired_card: 有効期限切れ
+  system_setting:
+    introduction: 紹介ポイント
+    exchange: 最低換金額
