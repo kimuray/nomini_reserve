@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205145410) do
+ActiveRecord::Schema.define(version: 20180217132052) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -166,6 +166,14 @@ ActiveRecord::Schema.define(version: 20180205145410) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "shop_landscapes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "shop_id", null: false
+    t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_landscapes_on_shop_id"
+  end
+
   create_table "shop_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "shop_id"
     t.bigint "reservation_category_id"
@@ -271,6 +279,7 @@ ActiveRecord::Schema.define(version: 20180205145410) do
   add_foreign_key "reservations", "reservation_categories"
   add_foreign_key "reservations", "shops"
   add_foreign_key "reservations", "users"
+  add_foreign_key "shop_landscapes", "shops"
   add_foreign_key "shop_usages", "reservation_categories"
   add_foreign_key "shop_usages", "shops"
   add_foreign_key "subscriptions", "users"

@@ -8,6 +8,7 @@ class Shop < ApplicationRecord
   has_many :reservations
   has_many :reservation_categories, through: :shop_usages
   has_many :shop_usages, dependent: :destroy
+  has_many :shop_landscapes, dependent: :destroy
   belongs_to :city, foreign_key: :city_code, primary_key: :city_code, optional: true
   belongs_to :prefecture, optional: true
 
