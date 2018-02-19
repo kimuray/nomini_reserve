@@ -13,6 +13,7 @@ class Shop < ApplicationRecord
   belongs_to :prefecture, optional: true
 
   accepts_nested_attributes_for :shop_usages, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :shop_landscapes, allow_destroy: true, reject_if: :all_blank
 
   # Validation
   validates :name,     presence: true
@@ -44,6 +45,11 @@ class Shop < ApplicationRecord
   def build_shop_usages
     build_count = ReservationCategory.count - self.shop_usages.size
     build_count.times { self.shop_usages.build }
+  end
+
+  def build_shop_landscapes
+    build_count = ShopLandscape::LIMIT_COUNT - shop_landscapes.size
+    build_count.times { shop_landscapes.build }
   end
 
   def correct?(current_shop)

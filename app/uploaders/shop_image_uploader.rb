@@ -3,6 +3,10 @@ class ShopImageUploader < CarrierWave::Uploader::Base
 
   Rails.env.production? ? (storage :fog) : (storage :file)
 
+  version :thumb do
+    process resize_to_fill: [140, 100]
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{model.id}"
   end
