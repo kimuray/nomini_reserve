@@ -117,6 +117,9 @@
       <%= link_to edit_admin_shop_path(@shop), class: 'btn btn-info' do %>
         <i class="fa fa-edit">編集</i>
       <% end %>
+      <%= link_to edit_landscapes_admin_shop_path(@shop), class: 'btn btn-info' do %>
+        <i class="fa fa-edit">画像登録</i>
+      <% end %>
       <%= link_to admin_shop_path(@shop), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } do %>
         <i class="fa fa-trash-o">削除</i>
       <% end %>

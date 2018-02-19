@@ -1,5 +1,5 @@
 class Admin::ShopsController < AdminController
-  before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_action :set_shop, only: [:show, :edit, :update, :destroy, :edit_landscapes, :landscapes]
 
   def index
     @shops = Shop.page(params[:id])
@@ -45,6 +45,18 @@ class Admin::ShopsController < AdminController
     redirect_to admin_shops_url, notice: 'Shop was successfully destroyed.'
   end
 
+  def edit_landscapes
+    @shop.build_shop_landscapes
+  end
+
+  def landscapes
+    if @shop.update(shop_params)
+      redirect_to edit_landscapes_admin_shop_url(@shop), notice: '画像を登録しました'
+    else
+      render :edit_landscapes
+    end
+  end
+
   private
 
   def set_shop
@@ -55,7 +67,9 @@ class Admin::ShopsController < AdminController
     params.fetch(:shop, {}).permit(
       :email, :password, :password_confirmation, :name, :description, :prefecture_id, :city_code, :area_text,
       :address_detail, :image, :image_cache, :is_agree, :is_display,
-      :service_time, :price, :phone_number, shop_usages_attributes: [:id, :reservation_category_id, :price]
+      :service_time, :price, :phone_number,
+      shop_usages_attributes: [:id, :reservation_category_id, :price],
+      shop_landscapes_attributes: [:id, :image, :image_cache]
     )
   end
 end
