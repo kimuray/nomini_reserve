@@ -77,6 +77,7 @@ Rails.application.routes.draw do
         patch :landscapes
       end
     end
+    resources :shop_landscapes, only: :destroy
     resources :reservation_categories
     resources :enquete_items
     resources :users

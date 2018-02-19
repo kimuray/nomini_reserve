@@ -12,6 +12,7 @@
           <%= landscape_form.hidden_field :image_cache %>
           <% if landscape_form.object.image.present? %>
             <%= image_tag landscape_form.object.image_url(:thumb) %>
+            <%= link_to '削除', admin_shop_landscape_url(landscape_form.object), class: 'btn btn-danger', method: :delete, data: { confirm: '削除してよろしいですか？' } %>
           <% end %>
         <% end %>
         <div class="box-footer">
