@@ -71,7 +71,13 @@ Rails.application.routes.draw do
     only: :session
   namespace :admin do
     get :dashboard
-    resources :shops
+    resources :shops do
+      member do
+        get :edit_landscapes
+        patch :landscapes
+      end
+    end
+    resources :shop_landscapes, only: :destroy
     resources :reservation_categories
     resources :enquete_items
     resources :users
