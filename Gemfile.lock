@@ -310,6 +310,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    geocoder (1.4.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.5.6)
@@ -538,6 +539,7 @@ DEPENDENCIES
   faker
   ffaker
   fog
+  geocoder
   jbuilder (~> 2.5)
   kaminari
   letter_opener

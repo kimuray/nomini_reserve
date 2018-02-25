@@ -42,6 +42,7 @@ gem 'config'
 gem 'enum_help'
 gem 'whenever', require: false
 gem 'seed-fu'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
