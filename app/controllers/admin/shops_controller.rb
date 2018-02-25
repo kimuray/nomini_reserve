@@ -67,7 +67,7 @@ class Admin::ShopsController < AdminController
     params.fetch(:shop, {}).permit(
       :email, :password, :password_confirmation, :name, :description, :prefecture_id, :city_code, :area_text,
       :address_detail, :image, :image_cache, :is_agree, :is_display,
-      :service_time, :price, :phone_number,
+      :service_time, :price, :phone_number ,:latitude, :longitude, :is_display_map,
       shop_usages_attributes: [:id, :reservation_category_id, :price],
       shop_landscapes_attributes: [:id, :image, :image_cache]
     )
