@@ -47,6 +47,11 @@
       <div class="shop-detail mb-3 px-2"><%= markdown(@shop.description) %></div>
     </div>
     <div class="col-md-4 shop-show-form">
+      <% if @shop.is_display_map %>
+        <div class="google-map-wrapper">
+          <div class="google-map"></div>
+        </div>
+      <% end %>
       <%= render template: 'reservations/new', locals: { reservation: @reservation, shop: @shop } %>
     </div>
   </div>
@@ -54,3 +59,20 @@
 <script type="text/javascript">
   flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
 </script>
+<script>
+  var map;
+  var marker;
+  var shop_position = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>}
+  function initMap() {
+    map = new google.maps.Map(document.querySelector('.google-map'), {
+      center: shop_position,
+      zoom: 15
+    });
+    marker = new google.maps.Marker({
+      position: shop_position,
+      map: map
+    })
+
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<% ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
