@@ -104,4 +104,5 @@ Rails.application.routes.draw do
     resources :system_settings, only: [:index, :update]
   end
   get 'inquiry', to: 'statics#inquiry'
+  get 'thanks', to: 'statics#thanks'
 end
