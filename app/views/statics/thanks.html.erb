@@ -1,3 +1,15 @@
+<%= content_for :conversion_tag do %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113626386-2"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113626386-2');
+  </script>
+<% end %>
+
 <div class="bg-guide-img">
   <div class="bg-guide-img-cover">
     <div class="bg-guide-img-contents">
