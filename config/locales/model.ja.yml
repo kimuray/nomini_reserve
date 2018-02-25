@@ -20,6 +20,7 @@ ja:
         is_display: 公開許可
         created_at: 登録日時
         updated_at: 更新日時
+        is_display_map: GoogleMap表示
       reservation_category:
         name: 予約カテゴリ名
         created_at: 登録日時

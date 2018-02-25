@@ -26,6 +26,17 @@ class Shop < ApplicationRecord
     where(is_display: true, is_agree: true)
   }
 
+  attr_accessor :address
+
+  before_validation do
+    self.address = address_text
+  end
+
+  geocoded_by :address
+  before_validation :geocode
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
   # 全角を半角に変換
   def phone_number=(value)
     value.tr!('０-９ー','0-9-') if value.is_a?(String)
