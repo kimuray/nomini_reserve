@@ -3,6 +3,8 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :image, ShopImageUploader
+  geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
 
   # Association
   has_many :reservations
@@ -25,6 +27,15 @@ class Shop < ApplicationRecord
   scope :can_display, -> {
     where(is_display: true, is_agree: true)
   }
+
+  attr_accessor :address
+
+  before_validation do
+    self.address = address_text
+  end
+
+  before_validation :geocode
+  after_validation :reverse_geocode
 
   # 全角を半角に変換
   def phone_number=(value)
