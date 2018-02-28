@@ -60,10 +60,10 @@
   flatpickr('#datetimepicker',{dateFormat: 'Y/m/d', allowInput: true, clickOpens: true});
 </script>
 <script>
-  var map;
-  var marker;
-  var shop_position = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>}
   function initMap() {
+    var map;
+    var marker;
+    var shop_position = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>}
     map = new google.maps.Map(document.querySelector('.google-map'), {
       center: shop_position,
       zoom: 15

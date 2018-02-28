@@ -3,6 +3,8 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :image, ShopImageUploader
+  geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
 
   # Association
   has_many :reservations
@@ -32,9 +34,7 @@ class Shop < ApplicationRecord
     self.address = address_text
   end
 
-  geocoded_by :address
   before_validation :geocode
-  reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
   # 全角を半角に変換
