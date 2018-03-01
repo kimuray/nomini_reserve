@@ -562,9 +562,19 @@ a[href^="tel:"] {
   margin: 0 auto;
 }
 
+// idセレクタを使うのは苦しいが其の場凌ぎ
+#slider .slider-image {
+  min-height: 400px;
+}
+
 .slider-nav {
   width: 90%;
   margin: 20px auto;
+
+  img {
+    width: 140px;
+    height: 100px;
+  }
 }
 
 /* PC */

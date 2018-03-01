@@ -5,17 +5,18 @@
   <div class="row">
     <div class="col-md-8">
       <div class="show-image-wrap">
-        <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
+        <div id="slider">
+          <div>
+            <%= image_tag @shop.image, class: 'img-fluid slider-image'%>
+          </div>
+          <% @shop.shop_landscapes.each do |landscape| %>
+            <div>
+              <%= image_tag landscape.image_url, class: 'img-fluid slider-image' %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div id="slider-nav" class="slider-nav">
-        <div>
-          <%= image_tag @shop.image, size: '140x100', class: 'slider-image'%>
-        </div>
-        <% @shop.shop_landscapes.each do |landscape| %>
-          <div>
-            <%= image_tag landscape.image_url(:thumb), class: 'slider-image' %>
-          </div>
-        <% end %>
       </div>
     </div>
 
