@@ -15,5 +15,6 @@
 //= require jquery-3.2.1.min.js
 //= require bootstrap.min.js
 //= require flatpickr.min.js
+//= require slick.js
 //= require rails-ujs
 //= require_tree .
