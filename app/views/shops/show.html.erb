@@ -1,6 +1,6 @@
 <div class="container pb-3">
     <div class="container">
-      <h2 class="main-text pt-3"><%= shop_name_text(@shop) %></h2>
+      <h2 class="main-text pt-3 page-title"><%= shop_name_text(@shop) %></h2>
     </div>
   <div class="row">
     <div class="col-md-8 show-image-wrap">
@@ -13,9 +13,9 @@
           <%= link_to '店舗情報編集', edit_shops_path, class: "btn btn-block btn-primary" %>
         </div>
       <% end %>
-      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-clock-o pr-2"></i>提供時間</h3>
+      <h3 class="shop-detail-title text-white bg-black px-3 mb-3 py-2"><i class="fa fa-clock-o pr-2"></i>提供時間</h3>
       <div class="ml-2 mb-3"><%= @shop.service_time&.floor %>分</div>
-      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-yen pr-2"></i>価格</h3>
+      <h3 class="shop-detail-title text-white bg-black px-3 mb-3 py-2"><i class="fa fa-yen pr-2"></i>価格</h3>
       <div class="ml-2 mb-3">
         <% @shop.shop_usages.each do |shop_usage| %>
           <% unless shop_usage.price.blank? %>
@@ -29,12 +29,12 @@
         <% end %>
       </div>
       <% if current_user.subscription.present? %>
-        <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-phone pr-2"></i>電話番号</h3>
+        <h3 class="shop-detail-title text-white bg-black px-3 mb-3 py-2"><i class="fa fa-phone pr-2"></i>電話番号</h3>
         <div class="ml-2 mb-3">
           <a href="tel:<%= @shop.phone_number %>"><%= @shop.phone_number %></a>
         </div>
 
-        <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2"><i class="fa fa-map-marker pr-2"></i>住所</h3>
+        <h3 class="shop-detail-title text-white bg-black px-3 mb-3 py-2"><i class="fa fa-map-marker pr-2"></i>住所</h3>
         <div class="ml-2 mb-3">
           <%= @shop.address_text %>
         </div>
@@ -43,7 +43,7 @@
   </div>
   <div class="row mt-2">
     <div class="col-md-8 p-0">
-      <h3 class="shop-detail-title text-white bg-header-color px-3 mb-3 py-2">店舗詳細</h3>
+      <h3 class="shop-detail-title text-white bg-black px-3 mb-3 py-2">店舗詳細</h3>
       <div class="shop-detail mb-3 px-2"><%= markdown(@shop.description) %></div>
     </div>
     <div class="col-md-4 shop-show-form">
