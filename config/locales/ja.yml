@@ -216,3 +216,5 @@ ja:
   system_setting:
     introduction: 紹介ポイント
     exchange: 最低換金額
+  guide:
+    acount_mail_send: 入力頂いたメールアドレスにnominiより認証メールが送信されます。メール記載のURLよりログインください。

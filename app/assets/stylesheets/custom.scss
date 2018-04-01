@@ -46,7 +46,7 @@ a[href^="tel:"] {
   color: $text-main;
 }
 .pp-text{
-  color: $main-navy;
+  color: black;
 }
 
 .logo-area{
@@ -56,7 +56,7 @@ a[href^="tel:"] {
   color: $main-text-color;
 }
 .main-btn{
-  background: $main-navy;
+  background: black;
   color: white;
   &:hover{
     color: white;
@@ -126,7 +126,7 @@ a[href^="tel:"] {
 
 // ログインしたままにする
 .remember-me{
-  color: $main-navy;
+  color: black;
 }
 
 .sign-up-alert{
@@ -269,8 +269,7 @@ a[href^="tel:"] {
 }
 
 .nomini-header{
-  border-bottom: 1px solid $main-line-color;
-  background: $header-color;
+  background: white;
 }
 
 .alert-area{
@@ -394,9 +393,9 @@ a[href^="tel:"] {
 }
 
 .user-info{
-  color: #fff;
+  color: black;
   &:hover{
-    color: $main-navy;
+    color: black;
     text-decoration: none;
     cursor: pointer;
   }
@@ -466,7 +465,7 @@ a[href^="tel:"] {
 
 .course-price{
   font-size: 0.8rem;
-  border-left: 2px solid $main-navy;
+  border-left: 2px solid black;
 }
 
 .shop-detail{
@@ -743,7 +742,7 @@ a[href^="tel:"] {
   height: 3px;/*線の太さ*/
   width: 25px;/*長さ*/
   border-radius: 3px;
-  background: white;
+  background: $mild-black;
   display: block;
   content: '';
   cursor: pointer;
@@ -839,7 +838,7 @@ a[href^="tel:"] {
   @media (max-width: 767px){
     display: flex;
     height: 40px;
-    background: $header-color;
+    background: black;
     .mobile-fixed-menu-item{
       flex: 1;
       display: flex;
@@ -901,4 +900,9 @@ a[href^="tel:"] {
   .google-map{
     height: 100%;
   }
+}
+
+.contact-btn{
+  padding: 8px;
+  border-radius: 2px;
 }
