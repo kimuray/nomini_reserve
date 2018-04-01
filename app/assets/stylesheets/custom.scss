@@ -53,7 +53,7 @@ a[href^="tel:"] {
   position: relative;
 }
 .main-text{
-  color: $main-text-color;
+  color: $mild-black;
 }
 .main-btn{
   background: black;
@@ -67,7 +67,7 @@ a[href^="tel:"] {
   position: absolute;
 }
 .bg-black{
-  background: $mild-black;
+  background: black;
 }
 .nomini-logo-img{
   width:auto;
@@ -905,4 +905,11 @@ a[href^="tel:"] {
 .contact-btn{
   padding: 8px;
   border-radius: 2px;
+}
+
+.page-title{
+  @media (max-width: 767px){
+    text-align: center;
+    font-size: 1.4rem;
+  }
 }
