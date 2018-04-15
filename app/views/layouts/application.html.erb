@@ -8,6 +8,18 @@
     <script type="text/javascript" src="https://js.pay.jp/"></script>
     <script type="text/javascript">Payjp.setPublicKey("<%= ENV['PAYJP_PUBLIC_KEY'] %>");</script>
     <%= javascript_include_tag 'application' %>
+
+    <!-- Global site tag (gtag.js) - Google AdWords: 819279987 -->
+    <% if Rails.env.production? %>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-819279987"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'AW-819279987');
+      </script>
+    <% end %>
   </head>
 
   <body class="bg-white">
