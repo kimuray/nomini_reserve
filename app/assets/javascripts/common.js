@@ -46,3 +46,24 @@ $(function() {
     });
   }
 });
+
+$(function() {
+  $('#slider-nav').append($('#slider').contents().clone());
+
+  $('#slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '#slider-nav'
+  });
+  $('#slider-nav').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    asNavFor: '#slider',
+    dots: true,
+    centerMode: true,
+    focusOnSelect: true
+  });
+});

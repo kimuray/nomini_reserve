@@ -557,6 +557,25 @@ a[href^="tel:"] {
   }
 }
 
+.slider-image {
+  margin: 0 auto;
+}
+
+// idセレクタを使うのは苦しいが其の場凌ぎ
+#slider .slider-image {
+  min-height: 400px;
+}
+
+.slider-nav {
+  width: 90%;
+  margin: 20px auto;
+
+  img {
+    width: 140px;
+    height: 100px;
+  }
+}
+
 /* PC */
 @media (min-width: 767px){
   .mobile-only-inline{
@@ -580,7 +599,7 @@ a[href^="tel:"] {
   .show-image-wrap{
     position: relative;
     overflow: hidden;
-    width: 600px;/* トリミングしたい枠の幅 */
+    // width: 600px;/* トリミングしたい枠の幅 */
     height: 400px;/* トリミングしたい枠の高さ */
     background: $mild-black;
   }

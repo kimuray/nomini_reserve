@@ -4,7 +4,5 @@
 @import "bootstrap/*";
 @import "custom.scss";
 @import "flatpickr.min.scss";
-
-/*
- *= require_tree .
- */
+@import "slick.scss";
+@import "slick-theme.scss"

@@ -3,8 +3,21 @@
       <h2 class="main-text pt-3 page-title"><%= shop_name_text(@shop) %></h2>
     </div>
   <div class="row">
-    <div class="col-md-8 show-image-wrap">
-      <%= image_tag @shop.image, size: '500x500', class: "d-flex align-self-center shop-show-image"%>
+    <div class="col-md-8">
+      <div class="show-image-wrap">
+        <div id="slider">
+          <div>
+            <%= image_tag @shop.image, class: 'img-fluid slider-image'%>
+          </div>
+          <% @shop.shop_landscapes.each do |landscape| %>
+            <div>
+              <%= image_tag landscape.image_url, class: 'img-fluid slider-image' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="slider-nav" class="slider-nav">
+      </div>
     </div>
 
     <div class="col-md-4 shop-info-1">
