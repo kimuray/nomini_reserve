@@ -50,7 +50,7 @@
       <%= form_for(@reservation_payment, html: { id: 'payment_form' }) do |f| %>
         <span class="charge-errors"></span>
         <div class="field form-group text-center">
-          <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号">
+          <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号 / 「VISA」「Mastercard」のみ登録可">
         </div>
 
         <div class="field form-group">
