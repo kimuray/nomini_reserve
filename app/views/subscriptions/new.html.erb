@@ -6,23 +6,28 @@
             <li><%= msg %></li>
         <% end %>
       </ul>
-      <h2 class="main-text text-center page-heading mb-4 mt-4 acount-title">会員情報を完成させましょう</h2>
+      <h2 class="main-text text-center page-heading mb-4 mt-4 acount-title">会員情報登録</h2>
+      <p class="regist-explain text-center credit-info-explain">詳細を見るには会員情報を入力する必要があります。</p>
       <div class="acount-wrap definitive-registration">
         <div class="field form-group row center-form">
-          <%= label :full_name_kana, "フルネーム(全角カナ)", class: "col-sm-4 signup-label" %><br />
+          <%= label :full_name_kana, "フルネーム(全角カナ)", class: "col-sm-4 signup-label font-weight-bold" %><br />
           <%= text_field :user, :l_name_kana, placeholder: "セイ", class: "col-sm-4 form-control regist-last-name" %>
           <%= text_field :user, :f_name_kana, placeholder: "メイ", class: "col-sm-4 form-control" %>
         </div>
 
         <div class="field form-group row center-form">
-          <%= label :phone_number, "電話番号", class: "col-sm-4 signup-label" %><br />
+          <%= label :phone_number, "電話番号", class: "col-sm-4 signup-label font-weight-bold" %><br />
           <%= text_field :user, :phone_number, placeholder: "08012345678", class: "col-sm-8 form-control" %>
         </div>
       </div>
 
-      <h2 class="main-text text-center page-heading acount-title card-info-title">クレジットカード登録</h2>
-      <p class="regist-explain text-center credit-info-explain">提携店舗での飲食代金は全てオンライン上での決済となります。</p>
+<!--      <h2 class="main-text text-center page-heading acount-title card-info-title">クレジットカード登録</h2> -->
+<!--      <p class="regist-explain text-center credit-info-explain">提携店舗での飲食代金は全てオンライン上での決済となります。</p> -->
       <div class="acount-wrap definitive-registration">
+        <div class="mb-4 ">
+          <label for="exp_month" class="expiration-date signup-label">クレジットカード番号</label>
+        </div>
+
         <div class="field form-group text-center">
           <input type="text" class="form-control number" name="number" maxlength="16" placeholder="カード番号 / 「VISA」「Mastercard」のみ登録可">
         </div>
@@ -43,8 +48,9 @@
             <input type="text" class="form-control cvc" name="cvc" maxlength="3" placeholder="セキュリティコード（数字3桁）">
           </div>
         </div>
-        <p class="regist-explain text-center credit-info-explain mt-3">・ご利用終了後、会計金額がご登録のクレジットカードより引き落とし処理がされます。</p>
-        <p class="regist-explain text-center credit-info-explain mb-0">・なお、万が一キャンセルが発生した際は「nominiキャンセルポリシー」に従い、キャンセル金額分をクレジットカードから引き落としさせて頂きます。</p>
+        <p class="regist-explain credit-info-explain mt-3">・提携店舗での飲食代金は全てオンライン上での決済となります。</p>
+        <p class="regist-explain credit-info-explain mt-3">・ご利用終了後、会計金額がご登録のクレジットカードより引き落とし処理がされます。</p>
+        <p class="regist-explain credit-info-explain mb-0">・なお、万が一キャンセルが発生した際は「nominiキャンセルポリシー」に従い、キャンセル金額分をクレジットカードから引き落としさせて頂きます。</p>
       </div>
 
       <div class="actions form-group text-center">
