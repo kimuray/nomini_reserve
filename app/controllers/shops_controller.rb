@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
   before_action :authenticate_shop!, only: [:edit, :update]
   before_action :confirm_agreement,  only: [:edit, :update]
   before_action :authenticate_user!, unless: :shop_signed_in?
-  before_action :confirm_subscription_existed, only: [:show], if: :user_signed_in?
+  # before_action :confirm_subscription_existed, only: [:show], if: :user_signed_in?
   before_action :set_shop, only: [:show]
 
   def index

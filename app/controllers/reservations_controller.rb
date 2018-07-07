@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_reservation, only: [:show, :edit, :update, :cancel]
   before_action :correct_user, only: [:show, :edit, :update, :cancel]
-  before_action :confirm_subscription_existed, only: [:create, :edit, :update, :confirm, :cancel]
+  # before_action :confirm_subscription_existed, only: [:create, :edit, :update, :confirm, :cancel]
 
   def index
     @reservations = current_user.reservations.includes(:shop).page(params[:page])
