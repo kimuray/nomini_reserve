@@ -22,29 +22,30 @@
   </head>
 
   <body class="bg-white">
-    <header class="nomini-header">
-      <%= render 'layouts/header' %>
-    </header>
+    <div class="wrapper">
+      <header class="nomini-header">
+        <%= render 'layouts/header' %>
+      </header>
 
-    <% flash.each do |key, value| %>
-      <div class="alert-area bg-white navbar">
-        <p class="alert alert-<%= key %>"><%= value %></p>
-      </div>
-    <% end %>
-    <% if @recommend_shops.present? && current_user&.subscription.present? %>
-      <div class="container">
-        <div class="main-area container bg-white mt-3 recommend-area pb-3">
-          <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
+      <% flash.each do |key, value| %>
+        <div class="alert-area bg-white navbar">
+          <p class="alert alert-<%= key %>"><%= value %></p>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+      <% if @recommend_shops.present? && current_user&.subscription.present? %>
+        <div class="container">
+          <div class="main-area container bg-white mt-3 recommend-area pb-3">
+            <%= render 'layouts/recommend', recommend_shops: @recommend_shops %>
+          </div>
+        </div>
+      <% end %>
 
-    <%= yield %>
-    <% if user_signed_in? %>
-      <%= render 'layouts/footer' %>
-      <%= render 'layouts/mobile_fixed_menu' %>
-    <% end %>
-
+      <%= yield %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/footer' %>
+        <%= render 'layouts/mobile_fixed_menu' %>
+      <% end %>
+    </div>
     <%= yield :payjp_form %>
   </body>
 </html>

@@ -23,6 +23,15 @@ body {
   }
 }
 
+.wrapper {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+   flex-flow: column;
+  -webkit-box-pack:justify;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
 // PCの電話番号リンクのカーソルをポインタにならないように設定
 a[href^="tel:"] {
   cursor: default;
